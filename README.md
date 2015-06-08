@@ -37,3 +37,8 @@ statements, etc...  Example:
         res = plpy.execute('select * from version()')
         return res[0]['version']
     $python$;
+
+
+# Bonus
+
+Some usefull snippts

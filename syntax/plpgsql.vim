@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language:     SQL, PL/PGQL (PostgreSQL 9.4)
 " Maintainer:   space::tekk
-" Last Change:  2015-06-07
+" Last Change:  2015-06-08
 
 " For version 5.x: Clear all syntax items
 " For version 6.x: Quit when a syntax file was already loaded
@@ -14,133 +14,17 @@ endif
 syn case ignore
 
 " Keywords:
-syn keyword pgsqlKeyword abort absent absolute access according action ada add admin after
-syn keyword pgsqlKeyword aggregate all allocate also alter always analyse analyze and are
-syn keyword pgsqlKeyword array_max_cardinality as asc asensitive assertion
-syn keyword pgsqlKeyword assignment asymmetric at atomic attribute attributes authorization
-
-syn keyword pgsqlKeyword backward base64 before begin begin_frame begin_partition bernoulli
-syn keyword pgsqlKeyword between binary blob blocked bom both
-syn keyword pgsqlKeyword breadth by
-
-syn keyword pgsqlKeyword cache call called cascade cascaded case cast catalog
-syn keyword pgsqlKeyword catalog_name chain char characteristics
-syn keyword pgsqlKeyword characters character_length character_set_catalog character_set_name
-syn keyword pgsqlKeyword character_set_schema check checkpoint class class_origin
-syn keyword pgsqlKeyword clob close cluster cobol collate collation collation_catalog
-syn keyword pgsqlKeyword collation_name collation_schema collect column columns column_name
-syn keyword pgsqlKeyword command_function command_function_code comment comments commit
-syn keyword pgsqlKeyword committed concurrently condition condition_number configuration
-syn keyword pgsqlKeyword connect connection connection_name constraint constraints
-syn keyword pgsqlKeyword constraint_catalog constraint_name constraint_schema constructor
-syn keyword pgsqlKeyword content continue control conversion convert copy
-syn keyword pgsqlKeyword corresponding cost create cross csv cube
-syn keyword pgsqlKeyword current current_role current_row
-syn keyword pgsqlKeyword current_default_transform_group current_path
-syn keyword pgsqlKeyword current_transform_group_for_type
-syn keyword pgsqlKeyword cursor cursor_name cycle
-
-syn keyword pgsqlKeyword data database datalink datetime_interval_code day db deallocate
-syn keyword pgsqlKeyword datetime_interval_precision dec declare default defaults
-syn keyword pgsqlKeyword deferrable deferred defined definer degree delete delimiter delimiters
-syn keyword pgsqlKeyword depth deref derived desc describe descriptor deterministic
-syn keyword pgsqlKeyword diagnostics dictionary disable discard disconnect dispatch distinct
-syn keyword pgsqlKeyword dlnewcopy dlpreviouscopy dlurlcomplete dlurlcompleteonly dlurlpath
-syn keyword pgsqlKeyword dlurlcompletewrite dlurlpathonly dlurlpathwrite dlurlscheme dlvalue
-syn keyword pgsqlKeyword do dlurlserver document domain drop dynamic dynamic_function
-syn keyword pgsqlKeyword dynamic_function_code
-
-syn keyword pgsqlKeyword each element else empty enable encoding encrypted end end end_frame
-syn keyword pgsqlKeyword end_partition enforced equals escape event except exception
-syn keyword pgsqlKeyword exclude excluding exclusive exec execute exists explain expression
-syn keyword pgsqlKeyword extension external
-
-syn keyword pgsqlKeyword false fetch file filter final first flag
-syn keyword pgsqlKeyword following for force foreign fortran forward found frame_row free freeze
-syn keyword pgsqlKeyword from fs full function functions fusion
-
-syn keyword pgsqlKeyword general generated get global go goto grant granted group
-syn keyword pgsqlKeyword grouping groups
-
-syn keyword pgsqlKeyword handler having header hex hierarchy hold hour
-
-syn keyword pgsqlKeyword identity if ignore ilike immediate immediately immutable implementation
-syn keyword pgsqlKeyword implicit import in including increment indent index indexes indicator
-syn keyword pgsqlKeyword inherit inherits initially inline inner inout input insensitive insert
-syn keyword pgsqlKeyword instance instantiable instead int integrity intersect intersection
-syn keyword pgsqlKeyword into invoker is isolation
-
-syn keyword pgsqlKeyword join
-
-syn keyword pgsqlKeyword key key_member key_type
-
-syn keyword pgsqlKeyword label language large last lateral lc_collate lc_ctype
-syn keyword pgsqlKeyword leading leakproof left level library like like_regex limit
-syn keyword pgsqlKeyword link listen load local location locator lock
-
-syn keyword pgsqlKeyword map mapping match matched materialized maxvalue max_cardinality member
-syn keyword pgsqlKeyword merge message_length message_octet_length message_text method minute
-syn keyword pgsqlKeyword minvalue modifies module month more move multiset mumps name
-syn keyword pgsqlKeyword names namespace national natural nchar nclob nesting new next nfc nfd nfkc
-syn keyword pgsqlKeyword nfkd nil no none normalize normalized not nothing notify nowait
-syn keyword pgsqlKeyword null nullable nulls number object
-syn keyword pgsqlKeyword occurrences_regex octets of off offset oids old on only open
-syn keyword pgsqlKeyword operator option options or order ordering ordinality others out outer
-syn keyword pgsqlKeyword output over overlaps overriding owned owner
-
-syn keyword pgsqlKeyword pad parameter parameter_mode parameter_name parameter_ordinal_position
-syn keyword pgsqlKeyword parameter_specific_catalog parameter_specific_name parameter_specific_schema
-syn keyword pgsqlKeyword parser partial partition pascal passing passthrough password percent
-syn keyword pgsqlKeyword period permission placing
-syn keyword pgsqlKeyword plans pli portion position_regex precedes preceding
-syn keyword pgsqlKeyword prepare prepared preserve primary prior privileges procedural procedure
-syn keyword pgsqlKeyword program public
-
-syn keyword pgsqlKeyword quote
-
-syn keyword pgsqlKeyword range read reads reassign recheck recovery recursive ref references
-syn keyword pgsqlKeyword referencing refresh
-syn keyword pgsqlKeyword reindex relative release rename
-syn keyword pgsqlKeyword repeatable replica requiring reset respect restart restore restrict
-syn keyword pgsqlKeyword result return returned_cardinality returned_length returned_octet_length
-syn keyword pgsqlKeyword returned_sqlstate returning returns revoke role rollback rollup routine
-syn keyword pgsqlKeyword routine_catalog routine_name routine_schema row rows row_count rule
-
-syn keyword pgsqlKeyword savepoint scale schema schema_name scope scope_catalog scope_name scope_schema
-syn keyword pgsqlKeyword scroll search second section security select selective self sensitive sequence
-syn keyword pgsqlKeyword sequences serializable server server_name session set setof sets
-syn keyword pgsqlKeyword share show similar simple size snapshot some source space specific
-syn keyword pgsqlKeyword specifictype specific_name sql sqlcode sqlerror sqlexception sqlstate sqlwarning
-syn keyword pgsqlKeyword stable standalone start state statement static statistics
-syn keyword pgsqlKeyword stdin stdout storage strict structure style subclass_origin
-syn keyword pgsqlKeyword submultiset substring_regex succeeds symmetric sysid system
-syn keyword pgsqlKeyword system_time system_user
-
-syn keyword pgsqlKeyword table tables tablesample tablespace temp template temporary then
-syn keyword pgsqlKeyword ties timezone_hour timezone_minute to token top_level_count
-syn keyword pgsqlKeyword trailing transaction transactions_committed transactions_rolled_back
-syn keyword pgsqlKeyword transaction_active transform transforms translate_regex translation
-syn keyword pgsqlKeyword treat trigger_catalog trigger_name trigger_schema trim_array true
-syn keyword pgsqlKeyword truncate trusted type types table_name
-
-syn keyword pgsqlKeyword uescape unbounded uncommitted under unencrypted union unique unknown unlink
-syn keyword pgsqlKeyword unlisten unlogged unnamed until untyped update uri usage
-syn keyword pgsqlKeyword user_defined_type_catalog user_defined_type_code user_defined_type_name
-syn keyword pgsqlKeyword user_defined_type_schema using
-
-syn keyword pgsqlKeyword vacuum valid validate validator value values value_of varbinary varchar variadic
-syn keyword pgsqlKeyword verbose versioning view views volatile
-
-syn keyword pgsqlKeyword when whenever where whitespace window with within without work
-syn keyword pgsqlKeyword wrapper write
-
-syn keyword pgsqlKeyword xmlattributes xmlbinary xmlcast xmldeclaration
-syn keyword pgsqlKeyword xmldocument xmliterate xmlnamespaces xmlparse
-syn keyword pgsqlKeyword xmlquery xmlschema xmlserialize xmltable xmltext xmlvalidate
-
-syn keyword pgsqlKeyword year yes
-
-syn keyword pgsqlKeyword zone
+syn keyword pgsqlKeyword all analyse analyze and any array as asc asymmetric authorization between
+syn keyword pgsqlKeyword bigint binary bit boolean both case cast check collate collation column
+syn keyword pgsqlKeyword concurrently create cross current_catalog current_date current_role
+syn keyword pgsqlKeyword current_schema current_time current_timestamp current_user default
+syn keyword pgsqlKeyword deferrable desc distinct do else end except for foreign freeze from full
+syn keyword pgsqlKeyword grant group having ilike in initially inner intersect into is isnull join
+syn keyword pgsqlKeyword lateral leading left like limit localtime localtimestamp natural not
+syn keyword pgsqlKeyword notnull null offset on only or order outer overlaps placing primary
+syn keyword pgsqlKeyword references returning right select session_user similar some symmetric table
+syn keyword pgsqlKeyword then to trailing true union unique user using variadic verbose when where
+syn keyword pgsqlKeyword window with
 
 " Types:
 syn keyword pgsqlType smallint integer bigint double precision serial bigserial float real
