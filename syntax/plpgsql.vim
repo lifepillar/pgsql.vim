@@ -140,7 +140,8 @@ if !exists("pgsql_no_sql_92")
 endif
 
 " Keywords:
-syn keyword pgsqlKeyword extension if type perform raise coalesce nullif greatest least
+syn keyword pgsqlKeyword extension if type perform raise coalesce greatest least foreach loop
+syn keyword pgsqlKeyword ordinality
 
 " Constants:
 syn keyword pgsqlConstant debug5 debug4 debug3 debug2 debug1 log notice warning error fatal panic
