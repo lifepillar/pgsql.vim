@@ -13,18 +13,229 @@ endif
 
 syn case ignore
 
+" PostgreSQL:
+if !exists("pgsql_no_keywords")
+    syn keyword pgsqlReserved all analyze any array as asc asymmetric authorization binary both case cast
+    syn keyword pgsqlReserved check collate collation column concurrently constraint create cross
+    syn keyword pgsqlReserved current_catalog current_date current_role current_schema current_time
+    syn keyword pgsqlReserved current_timestamp current_user default deferrable desc distinct do else end
+    syn keyword pgsqlReserved except false fetch for foreign freeze from full grant group having ilike in
+    syn keyword pgsqlReserved initially inner intersect into is isnull join lateral leading left like limit
+    syn keyword pgsqlReserved localtime localtimestamp natural not notnull null offset on only or order outer
+    syn keyword pgsqlReserved overlaps placing primary references returning right select session_user similar
+    syn keyword pgsqlReserved some symmetric table then to trailing true union unique user using variadic
+    syn keyword pgsqlReserved verbose when where window with
+endif
+
+" SQL2011:
+if !exists("pgsql_no_sql_2011")
+    syn keyword pgsqlReservedSql2011 abs all allocate alter and any are array array_agg array_max_cardinality as
+    syn keyword pgsqlReservedSql2011 asensitive asymmetric at atomic authorization avg begin begin_frame
+    syn keyword pgsqlReservedSql2011 begin_partition between bigint binary blob boolean both by call called
+    syn keyword pgsqlReservedSql2011 cardinality cascaded case cast ceil ceiling char character character_length
+    syn keyword pgsqlReservedSql2011 char_length check clob close coalesce collate collect column commit condition
+    syn keyword pgsqlReservedSql2011 connect constraint convert corr corresponding count covar_pop covar_samp
+    syn keyword pgsqlReservedSql2011 create cross cube cume_dist current current_catalog current_date
+    syn keyword pgsqlReservedSql2011 current_default_transform_group current_path current_role current_row
+    syn keyword pgsqlReservedSql2011 current_schema current_time current_timestamp current_transform_group_for_type
+    syn keyword pgsqlReservedSql2011 current_user cursor cycle datalink date day deallocate dec decimal declare
+    syn keyword pgsqlReservedSql2011 default delete dense_rank deref describe deterministic disconnect distinct
+    syn keyword pgsqlReservedSql2011 dlnewcopy dlpreviouscopy dlurlcomplete dlurlcompleteonly dlurlcompletewrite
+    syn keyword pgsqlReservedSql2011 dlurlpath dlurlpathonly dlurlpathwrite dlurlscheme dlurlserver dlvalue double
+    syn keyword pgsqlReservedSql2011 drop dynamic each element else end end end_frame end_partition equals escape
+    syn keyword pgsqlReservedSql2011 every except exec execute exists exp external extract false fetch filter
+    syn keyword pgsqlReservedSql2011 first_value float floor for foreign frame_row free from full function fusion
+    syn keyword pgsqlReservedSql2011 get global grant group grouping groups having hold hour identity import in
+    syn keyword pgsqlReservedSql2011 indicator inner inout insensitive insert int integer intersect intersection
+    syn keyword pgsqlReservedSql2011 interval into is join lag language large last_value lateral lead leading left
+    syn keyword pgsqlReservedSql2011 like like_regex ln local localtime localtimestamp lower match max member merge
+    syn keyword pgsqlReservedSql2011 method min minute mod modifies module month multiset national natural nchar
+    syn keyword pgsqlReservedSql2011 nclob new no none normalize not nth_value ntile null nullif numeric
+    syn keyword pgsqlReservedSql2011 occurrences_regex octet_length of offset old on only open or order out outer
+    syn keyword pgsqlReservedSql2011 over overlaps overlay parameter partition percent percentile_cont
+    syn keyword pgsqlReservedSql2011 percentile_disc percent_rank period portion position position_regex power
+    syn keyword pgsqlReservedSql2011 precedes precision prepare primary procedure range rank reads real recursive
+    syn keyword pgsqlReservedSql2011 ref references referencing regr_avgx regr_avgy regr_count regr_intercept
+    syn keyword pgsqlReservedSql2011 regr_r2 regr_slope regr_sxx regr_sxy regr_syy release result return returns
+    syn keyword pgsqlReservedSql2011 revoke right rollback rollup row rows row_number savepoint scope scroll
+    syn keyword pgsqlReservedSql2011 search second select sensitive session_user set similar smallint some specific
+    syn keyword pgsqlReservedSql2011 specifictype sql sqlexception sqlstate sqlwarning sqrt start static stddev_pop
+    syn keyword pgsqlReservedSql2011 stddev_samp submultiset substring substring_regex succeeds sum symmetric
+    syn keyword pgsqlReservedSql2011 system system_time system_user table tablesample then time timestamp
+    syn keyword pgsqlReservedSql2011 timezone_hour timezone_minute to trailing translate translate_regex
+    syn keyword pgsqlReservedSql2011 translation treat trigger trim trim_array true truncate uescape union unique
+    syn keyword pgsqlReservedSql2011 unknown unnest update upper user using value values value_of varbinary varchar
+    syn keyword pgsqlReservedSql2011 varying var_pop var_samp versioning when whenever where width_bucket window
+    syn keyword pgsqlReservedSql2011 with within without xml xmlagg xmlattributes xmlbinary xmlcast xmlcomment
+    syn keyword pgsqlReservedSql2011 xmlconcat xmldocument xmlelement xmlexists xmlforest xmliterate xmlnamespaces
+    syn keyword pgsqlReservedSql2011 xmlparse xmlpi xmlquery xmlserialize xmltable xmltext xmlvalidate year
+endif
+
+" SQL2008
+if !exists("pgsql_no_sql_2008")
+    syn keyword pgsqlSql2008 abs all allocate alter and any are array array_agg as asensitive asymmetric at
+    syn keyword pgsqlSql2008 atomic authorization avg begin between bigint binary blob boolean both by call
+    syn keyword pgsqlSql2008 called cardinality cascaded case cast ceil ceiling char character
+    syn keyword pgsqlSql2008 character_length char_length check clob close coalesce collate collect column
+    syn keyword pgsqlSql2008 commit condition connect constraint convert corr corresponding count covar_pop
+    syn keyword pgsqlSql2008 covar_samp create cross cube cume_dist current current_catalog current_date
+    syn keyword pgsqlSql2008 current_default_transform_group current_path current_role current_schema
+    syn keyword pgsqlSql2008 current_time current_timestamp current_transform_group_for_type current_user
+    syn keyword pgsqlSql2008 cursor cycle datalink date day deallocate dec decimal declare default delete
+    syn keyword pgsqlSql2008 dense_rank deref describe deterministic disconnect distinct dlnewcopy
+    syn keyword pgsqlSql2008 dlpreviouscopy dlurlcomplete dlurlcompleteonly dlurlcompletewrite dlurlpath
+    syn keyword pgsqlSql2008 dlurlpathonly dlurlpathwrite dlurlscheme dlurlserver dlvalue double drop
+    syn keyword pgsqlSql2008 dynamic each element else end end escape every except exec execute exists exp
+    syn keyword pgsqlSql2008 external extract false fetch filter first_value float floor for foreign free
+    syn keyword pgsqlSql2008 from full function fusion get global grant group grouping having hold hour
+    syn keyword pgsqlSql2008 identity import in indicator inner inout insensitive insert int integer
+    syn keyword pgsqlSql2008 intersect intersection interval into is join lag language large last_value
+    syn keyword pgsqlSql2008 lateral lead leading left like like_regex ln local localtime localtimestamp
+    syn keyword pgsqlSql2008 lower match max max_cardinality member merge method min minute mod modifies
+    syn keyword pgsqlSql2008 module month multiset national natural nchar nclob new no none normalize not
+    syn keyword pgsqlSql2008 nth_value ntile null nullif numeric occurrences_regex octet_length of offset
+    syn keyword pgsqlSql2008 old on only open or order out outer over overlaps overlay parameter partition
+    syn keyword pgsqlSql2008 percentile_cont percentile_disc percent_rank position position_regex power
+    syn keyword pgsqlSql2008 precision prepare primary procedure range rank reads real recursive ref
+    syn keyword pgsqlSql2008 references referencing regr_avgx regr_avgy regr_count regr_intercept regr_r2
+    syn keyword pgsqlSql2008 regr_slope regr_sxx regr_sxy regr_syy release result return returns revoke
+    syn keyword pgsqlSql2008 right rollback rollup row rows row_number savepoint scope scroll search
+    syn keyword pgsqlSql2008 second select sensitive session_user set similar smallint some specific
+    syn keyword pgsqlSql2008 specifictype sql sqlexception sqlstate sqlwarning sqrt start static stddev_pop
+    syn keyword pgsqlSql2008 stddev_samp submultiset substring substring_regex sum symmetric system
+    syn keyword pgsqlSql2008 system_user table tablesample then time timestamp timezone_hour timezone_minute
+    syn keyword pgsqlSql2008 to trailing translate translate_regex translation treat trigger trim trim_array
+    syn keyword pgsqlSql2008 true truncate uescape union unique unknown unnest update upper user using
+    syn keyword pgsqlSql2008 value values varbinary varchar varying var_pop var_samp when whenever where
+    syn keyword pgsqlSql2008 width_bucket window with within without xml xmlagg xmlattributes xmlbinary
+    syn keyword pgsqlSql2008 xmlcast xmlcomment xmlconcat xmldocument xmlelement xmlexists xmlforest
+    syn keyword pgsqlSql2008 xmliterate xmlnamespaces xmlparse xmlpi xmlquery xmlserialize xmltable xmltext
+    syn keyword pgsqlSql2008 xmlvalidate year
+endif
+
+" SQL92
+if !exists("pgsql_no_sql_92")
+    syn keyword pgsqlSql92 absolute action add all allocate alter and any are as asc assertion at
+    syn keyword pgsqlSql92 authorization avg begin between bit bit_length both by cascade cascaded case
+    syn keyword pgsqlSql92 cast catalog char character character_length char_length check close coalesce
+    syn keyword pgsqlSql92 collate collation column commit connect connection constraint constraints
+    syn keyword pgsqlSql92 continue convert corresponding count create cross current current_date
+    syn keyword pgsqlSql92 current_time current_timestamp current_user cursor date day deallocate dec
+    syn keyword pgsqlSql92 decimal declare default deferrable deferred delete desc describe descriptor
+    syn keyword pgsqlSql92 diagnostics disconnect distinct domain double drop else end end escape except
+    syn keyword pgsqlSql92 exception exec execute exists external extract false fetch first float for
+    syn keyword pgsqlSql92 foreign found from full get global go goto grant group having hour identity
+    syn keyword pgsqlSql92 immediate in indicator initially inner input insensitive insert int integer
+    syn keyword pgsqlSql92 intersect interval into is isolation join key language last leading left
+    syn keyword pgsqlSql92 level like local lower match max min minute module month names national
+    syn keyword pgsqlSql92 natural nchar next no not null nullif numeric octet_length of on only open
+    syn keyword pgsqlSql92 option or order outer output overlaps pad partial position precision prepare
+    syn keyword pgsqlSql92 preserve primary prior privileges procedure public read real references
+    syn keyword pgsqlSql92 relative restrict revoke right rollback rows schema scroll second section
+    syn keyword pgsqlSql92 select session session_user set size smallint some space sql sqlcode sqlerror
+    syn keyword pgsqlSql92 sqlstate substring sum system_user table temporary then time timestamp
+    syn keyword pgsqlSql92 timezone_hour timezone_minute to trailing transaction translate translation
+    syn keyword pgsqlSql92 trim true union unique unknown update upper usage user using value values
+    syn keyword pgsqlSql92 varchar varying view when whenever where with work write year zone
+endif
+
 " Keywords:
-syn keyword pgsqlKeyword all analyse analyze and any array as asc asymmetric authorization between
-syn keyword pgsqlKeyword bigint binary bit boolean both case cast check collate collation column
-syn keyword pgsqlKeyword concurrently create cross current_catalog current_date current_role
-syn keyword pgsqlKeyword current_schema current_time current_timestamp current_user default
-syn keyword pgsqlKeyword deferrable desc distinct do else end except for foreign freeze from full
-syn keyword pgsqlKeyword grant group having ilike in initially inner intersect into is isnull join
-syn keyword pgsqlKeyword lateral leading left like limit localtime localtimestamp natural not
-syn keyword pgsqlKeyword notnull null offset on only or order outer overlaps placing primary
-syn keyword pgsqlKeyword references returning right select session_user similar some symmetric table
-syn keyword pgsqlKeyword then to trailing true union unique user using variadic verbose when where
-syn keyword pgsqlKeyword window with
+syn keyword pgsqlKeyword extension if type perform raise
+
+" Constants:
+syn keyword pgsqlConstant debug5 debug4 debug3 debug2 debug1 log notice warning error fatal panic
+
+" Error Codes:
+if !exists("pgsql_no_error_codes_highlight")
+    syn keyword pgsqlErrorCode successful_completion warning dynamic_result_sets_returned
+    syn keyword pgsqlErrorCode implicit_zero_bit_padding null_value_eliminated_in_set_function
+    syn keyword pgsqlErrorCode privilege_not_granted privilege_not_revoked string_data_right_truncation
+    syn keyword pgsqlErrorCode deprecated_feature no_data no_additional_dynamic_result_sets_returned
+    syn keyword pgsqlErrorCode sql_statement_not_yet_complete connection_exception
+    syn keyword pgsqlErrorCode connection_does_not_exist connection_failure
+    syn keyword pgsqlErrorCode sqlclient_unable_to_establish_sqlconnection
+    syn keyword pgsqlErrorCode sqlserver_rejected_establishment_of_sqlconnection
+    syn keyword pgsqlErrorCode transaction_resolution_unknown protocol_violation triggered_action_exception
+    syn keyword pgsqlErrorCode feature_not_supported invalid_transaction_initiation locator_exception
+    syn keyword pgsqlErrorCode invalid_locator_specification invalid_grantor invalid_grant_operation
+    syn keyword pgsqlErrorCode invalid_role_specification diagnostics_exception
+    syn keyword pgsqlErrorCode stacked_diagnostics_accessed_without_active_handler
+    syn keyword pgsqlErrorCode case_not_found cardinality_violation data_exception array_subscript_error
+    syn keyword pgsqlErrorCode character_not_in_repertoire datetime_field_overflow division_by_zero
+    syn keyword pgsqlErrorCode error_in_assignment escape_character_conflict indicator_overflow
+    syn keyword pgsqlErrorCode interval_field_overflow invalid_argument_for_logarithm
+    syn keyword pgsqlErrorCode invalid_argument_for_ntile_function invalid_argument_for_nth_value_function
+    syn keyword pgsqlErrorCode invalid_argument_for_power_function invalid_argument_for_width_bucket_function
+    syn keyword pgsqlErrorCode invalid_character_value_for_cast invalid_datetime_format
+    syn keyword pgsqlErrorCode invalid_escape_character invalid_escape_octet invalid_escape_sequence
+    syn keyword pgsqlErrorCode nonstandard_use_of_escape_character invalid_indicator_parameter_value
+    syn keyword pgsqlErrorCode invalid_parameter_value invalid_regular_expression
+    syn keyword pgsqlErrorCode invalid_row_count_in_limit_clause invalid_row_count_in_result_offset_clause
+    syn keyword pgsqlErrorCode invalid_time_zone_displacement_value invalid_use_of_escape_character
+    syn keyword pgsqlErrorCode most_specific_type_mismatch null_value_not_allowed
+    syn keyword pgsqlErrorCode null_value_no_indicator_parameter numeric_value_out_of_range
+    syn keyword pgsqlErrorCode string_data_length_mismatch string_data_right_truncation substring_error
+    syn keyword pgsqlErrorCode trim_error unterminated_c_string zero_length_character_string
+    syn keyword pgsqlErrorCode floating_point_exception invalid_text_representation
+    syn keyword pgsqlErrorCode invalid_binary_representation bad_copy_file_format untranslatable_character
+    syn keyword pgsqlErrorCode not_an_xml_document invalid_xml_document invalid_xml_content invalid_xml_comment
+    syn keyword pgsqlErrorCode invalid_xml_processing_instruction integrity_constraint_violation
+    syn keyword pgsqlErrorCode restrict_violation not_null_violation foreign_key_violation unique_violation
+    syn keyword pgsqlErrorCode check_violation exclusion_violation invalid_cursor_state invalid_transaction_state
+    syn keyword pgsqlErrorCode active_sql_transaction branch_transaction_already_active
+    syn keyword pgsqlErrorCode held_cursor_requires_same_isolation_level
+    syn keyword pgsqlErrorCode inappropriate_access_mode_for_branch_transaction
+    syn keyword pgsqlErrorCode inappropriate_isolation_level_for_branch_transaction
+    syn keyword pgsqlErrorCode no_active_sql_transaction_for_branch_transaction
+    syn keyword pgsqlErrorCode read_only_sql_transaction schema_and_data_statement_mixing_not_supported
+    syn keyword pgsqlErrorCode no_active_sql_transaction in_failed_sql_transaction invalid_sql_statement_name
+    syn keyword pgsqlErrorCode triggered_data_change_violation invalid_authorization_specification
+    syn keyword pgsqlErrorCode invalid_password dependent_privilege_descriptors_still_exist
+    syn keyword pgsqlErrorCode dependent_objects_still_exist invalid_transaction_termination
+    syn keyword pgsqlErrorCode sql_routine_exception function_executed_no_return_statement
+    syn keyword pgsqlErrorCode modifying_sql_data_not_permitted prohibited_sql_statement_attempted
+    syn keyword pgsqlErrorCode reading_sql_data_not_permitted invalid_cursor_name external_routine_exception
+    syn keyword pgsqlErrorCode containing_sql_not_permitted modifying_sql_data_not_permitted
+    syn keyword pgsqlErrorCode prohibited_sql_statement_attempted reading_sql_data_not_permitted
+    syn keyword pgsqlErrorCode external_routine_invocation_exception invalid_sqlstate_returned
+    syn keyword pgsqlErrorCode null_value_not_allowed trigger_protocol_violated srf_protocol_violated
+    syn keyword pgsqlErrorCode savepoint_exception invalid_savepoint_specification invalid_catalog_name
+    syn keyword pgsqlErrorCode invalid_schema_name transaction_rollback transaction_integrity_constraint_violation
+    syn keyword pgsqlErrorCode serialization_failure statement_completion_unknown deadlock_detected
+    syn keyword pgsqlErrorCode syntax_error_or_access_rule_violation syntax_error insufficient_privilege
+    syn keyword pgsqlErrorCode cannot_coerce grouping_error windowing_error invalid_recursion invalid_foreign_key
+    syn keyword pgsqlErrorCode invalid_name name_too_long reserved_name datatype_mismatch indeterminate_datatype
+    syn keyword pgsqlErrorCode collation_mismatch indeterminate_collation wrong_object_type undefined_column
+    syn keyword pgsqlErrorCode undefined_function undefined_table undefined_parameter undefined_object
+    syn keyword pgsqlErrorCode duplicate_column duplicate_cursor duplicate_database duplicate_function
+    syn keyword pgsqlErrorCode duplicate_prepared_statement duplicate_schema duplicate_table duplicate_alias
+    syn keyword pgsqlErrorCode duplicate_object ambiguous_column ambiguous_function ambiguous_parameter
+    syn keyword pgsqlErrorCode ambiguous_alias invalid_column_reference invalid_column_definition
+    syn keyword pgsqlErrorCode invalid_cursor_definition invalid_database_definition invalid_function_definition
+    syn keyword pgsqlErrorCode invalid_prepared_statement_definition invalid_schema_definition
+    syn keyword pgsqlErrorCode invalid_table_definition invalid_object_definition with_check_option_violation
+    syn keyword pgsqlErrorCode insufficient_resources disk_full out_of_memory too_many_connections
+    syn keyword pgsqlErrorCode configuration_limit_exceeded program_limit_exceeded statement_too_complex
+    syn keyword pgsqlErrorCode too_many_columns too_many_arguments object_not_in_prerequisite_state object_in_use
+    syn keyword pgsqlErrorCode cant_change_runtime_param lock_not_available operator_intervention query_canceled
+    syn keyword pgsqlErrorCode admin_shutdown crash_shutdown cannot_connect_now database_dropped system_error
+    syn keyword pgsqlErrorCode io_error undefined_file duplicate_file config_file_error lock_file_exists
+    syn keyword pgsqlErrorCode fdw_error fdw_column_name_not_found fdw_dynamic_parameter_value_needed
+    syn keyword pgsqlErrorCode fdw_function_sequence_error fdw_inconsistent_descriptor_information
+    syn keyword pgsqlErrorCode fdw_invalid_attribute_value fdw_invalid_column_name fdw_invalid_column_number
+    syn keyword pgsqlErrorCode fdw_invalid_data_type fdw_invalid_data_type_descriptors
+    syn keyword pgsqlErrorCode fdw_invalid_descriptor_field_identifier
+    syn keyword pgsqlErrorCode fdw_invalid_handle fdw_invalid_option_index fdw_invalid_option_name
+    syn keyword pgsqlErrorCode fdw_invalid_string_length_or_buffer_length fdw_invalid_string_format
+    syn keyword pgsqlErrorCode fdw_invalid_use_of_null_pointer fdw_too_many_handles fdw_out_of_memory
+    syn keyword pgsqlErrorCode fdw_no_schemas fdw_option_name_not_found fdw_reply_handle fdw_schema_not_found
+    syn keyword pgsqlErrorCode fdw_table_not_found fdw_unable_to_create_execution fdw_unable_to_create_reply
+    syn keyword pgsqlErrorCode fdw_unable_to_establish_connection plpgsql_error raise_exception no_data_found
+    syn keyword pgsqlErrorCode too_many_rows internal_error data_corrupted index_corrupted
+endif
+
+" Options:
+syn keyword pgsqlOption client_min_messages
 
 " Types:
 syn keyword pgsqlType smallint integer bigint double precision serial bigserial float real
@@ -50,11 +261,8 @@ syn keyword pgsqlType json jsonb
 syn keyword pgsqlType int4range int8range numrange tsrange tstzrange daterange
 syn keyword pgsqlType pg_lsn
 
-" PLs:
-syn keyword pgsqlPL plpgsql plpythonu plpython plperl plpgsqlu
-
-" Operators:
-syn keyword pgsqlOperator notnull isnull
+" Extensions:
+syn keyword pgsqlExtensions plpgsql plpythonu plpython plperl plpgsqlu hstore
 
 " Numbers:
 syn match pgsqlNumber "-\=\<\d*\.\=[0-9_]\>"
@@ -74,8 +282,8 @@ syn match  pgsqlComment  "--.*$"               contains=pgsqlTodo
 syn sync ccomment pgsqlComment
 
 " Conditional:
-syn keyword pgsqlConditional case when then else end
-syn keyword pgsqlConditional coalesce nullif greatest least
+" syn keyword pgsqlConditional case when then else end
+" syn keyword pgsqlConditional coalesce nullif greatest least
 
 " Builtin:
 if !exists("pgsql_no_builtin_highlight")
@@ -263,7 +471,14 @@ if version >= 508 || !exists("did_pgsql_syn_inits")
     command -nargs=+ HiLink hi def link <args>
   endif
 
+  HiLink pgsqlReserved        Statement
+  HiLink pgsqlReservedSql2011 Statement
+  HiLink pgsqlSql2008         Statement
+  HiLink pgsqlSql92           Statement
   HiLink pgsqlKeyword         Statement
+  HiLink pgsqlExtensions      Type
+  HiLink pgsqlStatement       Statement
+  HiLink pgsqlSubquery        Statement
   HiLink pgsqlString          String
   HiLink pgsqlIdentifier      Identifier
   HiLink pgsqlNumber          Number
@@ -276,6 +491,9 @@ if version >= 508 || !exists("did_pgsql_syn_inits")
   HiLink pgsqlBuiltinFunction Builtin
   HiLink pgsqlPL              Statement
   HiLink pgsqlTodo            Todo
+  HiLink pgsqlConstant        Constant
+  HiLink pgsqlErrorCode       Constant
+  HiLink pgsqlOption          Define
 
   delcommand HiLink
 endif
