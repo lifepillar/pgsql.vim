@@ -1,0 +1,66 @@
+#
+# PostgreSQL snippets
+#
+global !p
+def complete_list(t, opts):
+	if t:
+		opts = [m[len(t):] for m in opts if m.startswith(t)]
+	if len(opts) == 1:
+		return opts[0]
+	return '{' + '|'.join(opts) + '}'
+endglobal
+
+snippet do "do statetement" w
+do language $1`!p snip.rv=complete_list(t[1], ['plpgsql', 'plpython', 'plpythonu'])` $$1$
+$0
+$$1$ language;
+endsnippet
+
+snippet begin "begin" w
+begin
+	$0
+${1:exception when${2: others} then}
+end;
+endsnippet
+
+snippet raise "raise" w
+raise $1`!p snip.rv=complete_list(t[1], ['exception', 'warning', 'notice'])` ${2:'${3:%}', }$0;
+endsnippet
+
+snippet create "create database object" w
+create ${2:or replace }$1`!p snip.rv=complete_list(t[1], ['function', 'index', 'table', 'schema', 'view'])`$0;
+endsnippet
+
+snippet if "if condition" w
+if ${1:not $2} then
+	$0
+end if;
+endsnippet
+
+snippet execute "execute statetement" w
+execute '$0'${1: using $2${3: into $4}};
+endsnippet
+
+snippet drop "drop database object" w
+drop function if exists ${1:title} (${0:args});
+endsnippet
+
+snippet function "create function" w
+function ${1:title}(${3:args}) returns ${4:void} language ${5:plpgsql} as $$5$
+$0
+$$5$
+endsnippet
+
+snippet index "create index" w
+index $1_$2_inx on ${1:title} (${2:_column}$3)$0;
+endsnippet
+
+snippet table "create tablle" w
+table ${1:if not exists }${2:_table} (
+	$0
+}
+endsnippet
+
+snippet column
+	${1:title} ${2:text}${3: not null}${4: default}$0
+endsnippet

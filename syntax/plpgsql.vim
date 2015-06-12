@@ -495,4 +495,4 @@ if version >= 508 || !exists("did_pgsql_syn_inits")
   delcommand HiLink
 endif
 
-let b:current_syntax = "plpgsql"
+let b:current_syntax = "pgsql"

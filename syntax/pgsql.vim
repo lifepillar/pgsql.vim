@@ -20,7 +20,7 @@ unlet b:current_syntax
 
 syn include @Python syntax/python.vim
 
-syn region plPython start=+\$py\$+ end=+\$py\$;+ keepend contains=@Python
-syn region plPython start=+\$python\$+ end=+\$python\$;+ keepend contains=@Python
+syn region plPython start=+\$plpython\$+ end=+\$plpython\$;+ keepend contains=@Python
+syn region plPython start=+\$plpythonu\$+ end=+\$plpythonu\$;+ keepend contains=@Python
 
 let b:current_syntax = "pgsql"
