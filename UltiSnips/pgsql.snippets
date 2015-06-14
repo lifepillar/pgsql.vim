@@ -14,7 +14,13 @@ def dbpls():
 	return ['plpgsql', 'plpython', 'plpythonu']
 def dbtypes():
 	return ['text', 'integer', 'bigserial', 'serial', 'json', 'double precision', 'timestamp with time zone']
+def dbcnst():
+	return ['exception', 'warning', 'notice']
 endglobal
+
+snippet select "select statetement" w
+select ${1:*} from ${2:table_name}${3: where $4}${5: using $6${7: into $8}};
+endsnippet
 
 snippet do "do statetement" w
 do language $1`!p snip.rv=complete_list(t[1], dbpls())` $$1$
@@ -32,7 +38,7 @@ end;
 endsnippet
 
 snippet raise "raise" w
-raise $1`!p snip.rv=complete_list(t[1], ['exception', 'warning', 'notice'])` ${2:'%', }$0;
+raise $1`!p snip.rv=complete_list(t[1], dbcnst())` ${2:'%', }$0;
 endsnippet
 
 snippet create "create database object" w
@@ -50,13 +56,13 @@ end if;
 endsnippet
 
 snippet execute "execute statetement" w
-execute '$0'${1: using $2${3: into $4}};
+execute '$0'${1: using ${2}${3: into ${4}}};
 endsnippet
 
 snippet function "create function" w
-${1:or replace }function ${2:function_name} (${3:args}) returns ${4:void} language ${5:plpgsql} as $$5$
+${1:or replace }function ${2:function_name} (${3:fa${4}}) returns ${5:void} language ${6:plpgsql} as $$6$
 $0
-$$5$
+$$6$
 endsnippet
 
 snippet index "create index" w
@@ -65,7 +71,8 @@ endsnippet
 
 snippet table "create table" w
 table${1: if not exists} ${2:table_name} (
-	${3:column}$0
+	${3:tc${4}}
+	$0
 );
 endsnippet
 
@@ -73,7 +80,11 @@ snippet schema "create schema" w
 schema${1: if not exists} ${2:schema_name};
 endsnippet
 
-snippet column "column definition" w
-${2:column_title} $1`!p snip.rv=complete_list(t[1], dbtypes())`${3: not null}${4:,}
-${5:column}$0
+snippet tc "table column definition" w
+${2:column_title} $1`!p snip.rv=complete_list(t[1], dbtypes())`${3: not null}${4:,
+tc${5}}
+endsnippet
+
+snippet fa "function argument" w
+${2:arg_title} $1`!p snip.rv=complete_list(t[1], dbtypes())`${3: default ${4}}${5:, fa${6}}
 endsnippet
