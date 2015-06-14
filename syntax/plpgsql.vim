@@ -141,7 +141,7 @@ endif
 
 " Keywords:
 syn keyword pgsqlKeyword extension if type perform raise coalesce greatest least foreach loop
-syn keyword pgsqlKeyword ordinality
+syn keyword pgsqlKeyword ordinality index exit immutable strict
 
 " Constants:
 syn keyword pgsqlConstant debug5 debug4 debug3 debug2 debug1 log notice warning error fatal panic
@@ -263,7 +263,13 @@ syn keyword pgsqlType int4range int8range numrange tsrange tstzrange daterange
 syn keyword pgsqlType pg_lsn
 
 " Extensions:
-syn keyword pgsqlExtensions plpgsql plpythonu plpython plperl plpgsqlu hstore
+syn keyword pgsqlExtensions plpgsql plpythonu plpython plperl plpgsqlu hstore adminpack auth_delay
+syn keyword pgsqlExtensions auto_explain btree_gin btree_gist chkpass citext cube dblink dict_int
+syn keyword pgsqlExtensions dict_xsyn dummy_seclabel earthdistance file_fdw fuzzystrmatch intagg
+syn keyword pgsqlExtensions intarray isn lo ltree pageinspect passwordcheck pg_buffercache pgcrypto
+syn keyword pgsqlExtensions pg_freespacemap pg_prewarm pgrowlocks pg_stat_statements pgstattuple
+syn keyword pgsqlExtensions pg_trgm postgres_fdw seg sepgsql spi sslinfo tablefunc tcn test_decoding
+syn keyword pgsqlExtensions test_parser test_shm_mq tsearch2 unaccent uuid-ossp xml2
 
 " Numbers:
 syn match pgsqlNumber "-\=\<\d*\.\=[0-9_]\>"

@@ -13,7 +13,7 @@ endglobal
 snippet do "do statetement" w
 do language $1`!p snip.rv=complete_list(t[1], ['plpgsql', 'plpython', 'plpythonu'])` $$1$
 $0
-$$1$ language;
+$$1$;
 endsnippet
 
 snippet begin "begin" w
@@ -28,7 +28,7 @@ raise $1`!p snip.rv=complete_list(t[1], ['exception', 'warning', 'notice'])` ${2
 endsnippet
 
 snippet create "create database object" w
-create ${2:or replace }$1`!p snip.rv=complete_list(t[1], ['function', 'index', 'table', 'schema', 'view'])`$0;
+create $1`!p snip.rv=complete_list(t[1], ['function', 'index', 'table', 'schema', 'view'])`$0
 endsnippet
 
 snippet if "if condition" w
@@ -52,15 +52,15 @@ $$5$
 endsnippet
 
 snippet index "create index" w
-index $1_$2_inx on ${1:title} (${2:_column}$3)$0;
+index ${1/\w+\.(\w+)/$1/}_$2_inx on ${1:title} (${2:column_name}${3: opclass});
 endsnippet
 
-snippet table "create tablle" w
-table ${1:if not exists }${2:_table} (
+snippet table "create table" w
+table ${1:if not exists }${2:table_name} (
 	$0
-}
+)
 endsnippet
 
-snippet column
-	${1:title} ${2:text}${3: not null}${4: default}$0
+snippet col
+	${1:title}${2: text}${3: not null}${4: default}${5: references ${6:reftable} on delete$0
 endsnippet
