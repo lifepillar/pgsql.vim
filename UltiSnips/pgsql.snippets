@@ -7,11 +7,17 @@ def complete_list(t, opts):
 		opts = [m[len(t):] for m in opts if m.startswith(t)]
 	if len(opts) == 1:
 		return opts[0]
-	return '{' + '|'.join(opts) + '}'
+	return '[' + ','.join(opts) + ']'
+def dbobjs():
+	return ['function', 'table', 'schema', 'index']
+def dbpls():
+	return ['plpgsql', 'plpython', 'plpythonu']
+def dbtypes():
+	return ['text', 'integer', 'bigserial', 'serial', 'json', 'double precision', 'timestamp with time zone']
 endglobal
 
 snippet do "do statetement" w
-do language $1`!p snip.rv=complete_list(t[1], ['plpgsql', 'plpython', 'plpythonu'])` $$1$
+do language $1`!p snip.rv=complete_list(t[1], dbpls())` $$1$
 $0
 $$1$;
 endsnippet
@@ -19,16 +25,22 @@ endsnippet
 snippet begin "begin" w
 begin
 	$0
-${1:exception when${2: others} then}
+${1:exception when${2: others} then
+	$3
+}
 end;
 endsnippet
 
 snippet raise "raise" w
-raise $1`!p snip.rv=complete_list(t[1], ['exception', 'warning', 'notice'])` ${2:'${3:%}', }$0;
+raise $1`!p snip.rv=complete_list(t[1], ['exception', 'warning', 'notice'])` ${2:'%', }$0;
 endsnippet
 
 snippet create "create database object" w
-create $1`!p snip.rv=complete_list(t[1], ['function', 'index', 'table', 'schema', 'view'])`$0
+create $1`!p snip.rv=complete_list(t[1], dbobjs())`$0
+endsnippet
+
+snippet drop "drop database object" w
+drop $1`!p snip.rv=complete_list(t[1], dbobjs())`${2: if exists} ${3:name}${4: (${5:arg})};
 endsnippet
 
 snippet if "if condition" w
@@ -41,12 +53,8 @@ snippet execute "execute statetement" w
 execute '$0'${1: using $2${3: into $4}};
 endsnippet
 
-snippet drop "drop database object" w
-drop function if exists ${1:title} (${0:args});
-endsnippet
-
 snippet function "create function" w
-function ${1:title}(${3:args}) returns ${4:void} language ${5:plpgsql} as $$5$
+${1:or replace }function ${2:function_name} (${3:args}) returns ${4:void} language ${5:plpgsql} as $$5$
 $0
 $$5$
 endsnippet
@@ -56,11 +64,16 @@ index ${1/\w+\.(\w+)/$1/}_$2_inx on ${1:title} (${2:column_name}${3: opclass});
 endsnippet
 
 snippet table "create table" w
-table ${1:if not exists }${2:table_name} (
-	$0
-)
+table${1: if not exists} ${2:table_name} (
+	${3:column}$0
+);
 endsnippet
 
-snippet col
-	${1:title}${2: text}${3: not null}${4: default}${5: references ${6:reftable} on delete$0
+snippet schema "create schema" w
+schema${1: if not exists} ${2:schema_name};
+endsnippet
+
+snippet column "column definition" w
+${2:column_title} $1`!p snip.rv=complete_list(t[1], dbtypes())`${3: not null}${4:,}
+${5:column}$0
 endsnippet
