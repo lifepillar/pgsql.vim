@@ -141,7 +141,7 @@ endif
 
 " Keywords:
 syn keyword pgsqlKeyword extension if type perform raise coalesce greatest least foreach loop
-syn keyword pgsqlKeyword ordinality index exit immutable strict
+syn keyword pgsqlKeyword ordinality index exit immutable strict volatile
 
 " Constants:
 syn keyword pgsqlConstant debug5 debug4 debug3 debug2 debug1 log notice warning error fatal panic

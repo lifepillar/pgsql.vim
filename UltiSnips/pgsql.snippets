@@ -23,9 +23,9 @@ select ${1:*} from ${2:table_name}${3: where $4}${5: using $6${7: into $8}};
 endsnippet
 
 snippet do "do statetement" w
-do language $1`!p snip.rv=complete_list(t[1], dbpls())` $$1$
+do language ${1:plpgsql} $${1/^pl(\w+)u?$/$1/}$
 $0
-$$1$;
+$${1/^pl(\w+)u?$/$1/}$;
 endsnippet
 
 snippet begin "begin" w
@@ -46,7 +46,7 @@ create $1`!p snip.rv=complete_list(t[1], dbobjs())`$0
 endsnippet
 
 snippet drop "drop database object" w
-drop $1`!p snip.rv=complete_list(t[1], dbobjs())`${2: if exists} ${3:name}${4: (${5:arg})};
+drop $1`!p snip.rv=complete_list(t[1], dbobjs())`${2: if exists} ${3:name}${4: (${5:arg})}${6: cascade}${0};
 endsnippet
 
 snippet if "if condition" w
@@ -60,13 +60,13 @@ execute '$0'${1: using ${2}${3: into ${4}}};
 endsnippet
 
 snippet function "create function" w
-${1:or replace }function ${2:function_name} (${3:fa${4}}) returns ${5:void} language ${6:plpgsql} as $$6$
+${1:or replace }function ${2:function_name} (${3:fa${4}}) returns ${5:void} language ${6:plpgsql} as $${6/^pl(\w+)u?$/$1/}$
 $0
-$$6$
+$${6/^pl(\w+)u?$/$1/}$
 endsnippet
 
 snippet index "create index" w
-index ${1/\w+\.(\w+)/$1/}_$2_inx on ${1:title} (${2:column_name}${3: opclass});
+index ${1/\w+\."?(\w+)"?/$1/}_$2_inx on ${1:title} (${2:column_name}${3: opclass});
 endsnippet
 
 snippet table "create table" w
