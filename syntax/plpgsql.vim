@@ -139,9 +139,13 @@ if !exists("pgsql_no_sql_92")
     syn keyword pgsqlSql92 varchar varying view when whenever where with work write year zone
 endif
 
+" Operators:
+syn match pgsqlOperator "\%([:=\|||\|\->>\|;\|.\|$]\)"
+syn match pgsqlEqualOperator "\%( =\)"
+
 " Keywords:
-syn keyword pgsqlKeyword extension if type perform raise coalesce greatest least foreach loop
-syn keyword pgsqlKeyword ordinality index exit immutable strict volatile
+syn keyword pgsqlKeyword extension if type perform raise coalesce greatest least foreach loop copy
+syn keyword pgsqlKeyword ordinality index exit immutable strict volatile after before instead
 
 " Constants:
 syn keyword pgsqlConstant debug5 debug4 debug3 debug2 debug1 log notice warning error fatal panic
@@ -236,7 +240,7 @@ if !exists("pgsql_no_error_codes_highlight")
 endif
 
 " Options:
-syn keyword pgsqlOption client_min_messages
+syn keyword pgsqlOption client_min_messages search_path
 
 " Types:
 syn keyword pgsqlType smallint integer bigint double precision serial bigserial float real
@@ -488,7 +492,8 @@ if version >= 508 || !exists("did_pgsql_syn_inits")
   HiLink pgsqlVariable        Identifier
   HiLink pgsqlComment         Comment
   HiLink pgsqlType            Type
-  HiLink pgsqlOperator        Statement
+  HiLink pgsqlOperator        Operator
+  HiLink pgsqlEqualOperator   Statement
   HiLink pgsqlConditional     Statement
   HiLink pgsqlFunction        Function
   HiLink pgsqlBuiltinFunction Builtin

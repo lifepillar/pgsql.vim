@@ -13,27 +13,25 @@ def dbobjs():
 def dbpls():
 	return ['plpgsql', 'plpython', 'plpythonu']
 def dbtypes():
-	return ['text', 'integer', 'bigserial', 'serial', 'json', 'double precision', 'timestamp with time zone']
+	return ['text', 'integer', 'bigint', 'bigserial', 'serial', 'jsonb', 'double precision', 'timestamp with time zone']
 def dbcnst():
 	return ['exception', 'warning', 'notice']
 endglobal
 
-snippet select "select statetement" w
-select ${1:*} from ${2:table_name}${3: where $4}${5: using $6${7: into $8}};
+snippet sel "select statetement" w
+select ${1:*} from ${2:name}${3: where $4}${5: using $6${7: into $8}};
 endsnippet
 
 snippet do "do statetement" w
-do language ${1:plpgsql} $${1/^pl(\w+)u?$/$1/}$
-$0
-$${1/^pl(\w+)u?$/$1/}$;
+do language ${1:plpgsql} $${1/^pl(\w+)u?$/do$1/}$
+${0}
+$${1/^pl(\w+)u?$/do$1/}$;
 endsnippet
 
-snippet begin "begin" w
+snippet beg "begin" w
 begin
-	$0
-${1:exception when${2: others} then
-	$3
-}
+	${0}
+${1:exception when${2: others} then ${3}}
 end;
 endsnippet
 
@@ -41,7 +39,7 @@ snippet raise "raise" w
 raise $1`!p snip.rv=complete_list(t[1], dbcnst())` ${2:'%', }$0;
 endsnippet
 
-snippet create "create database object" w
+snippet cre "create database object" w
 create $1`!p snip.rv=complete_list(t[1], dbobjs())`$0
 endsnippet
 
@@ -55,14 +53,14 @@ if ${1:not $2} then
 end if;
 endsnippet
 
-snippet execute "execute statetement" w
-execute '$0'${1: using ${2}${3: into ${4}}};
+snippet exe "execute statetement" w
+execute '$0'${1: ${2:using ${3}}${4: into ${5}}};
 endsnippet
 
 snippet function "create function" w
 ${1:or replace }function ${2:function_name} (${3:fa${4}}) returns ${5:void} language ${6:plpgsql} as $${6/^pl(\w+)u?$/$1/}$
 $0
-$${6/^pl(\w+)u?$/$1/}$
+$${6/^pl(\w+)u?$/$1/}$;
 endsnippet
 
 snippet index "create index" w
@@ -81,10 +79,15 @@ schema${1: if not exists} ${2:schema_name};
 endsnippet
 
 snippet tc "table column definition" w
-${2:column_title} $1`!p snip.rv=complete_list(t[1], dbtypes())`${3: not null}${4:,
-tc${5}}
+${2:column_title} $1`!p snip.rv=complete_list(t[1], dbtypes())`${3: not null${4}}${5:,
+tc${6}}
 endsnippet
 
 snippet fa "function argument" w
-${2:arg_title} $1`!p snip.rv=complete_list(t[1], dbtypes())`${3: default ${4}}${5:, fa${6}}
+p_${2} $1`!p snip.rv=complete_list(t[1], dbtypes())`${3:, fa${4}}
+endsnippet
+
+snippet for "for loop" w
+for ${1} in ${0} loop
+end loop;
 endsnippet
