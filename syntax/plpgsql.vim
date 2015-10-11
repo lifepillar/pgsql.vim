@@ -22,7 +22,7 @@ if !exists("pgsql_no_keywords")
     syn keyword pgsqlReserved except false fetch for foreign freeze from full grant group having ilike in
     syn keyword pgsqlReserved initially inner intersect into is isnull join lateral leading left like limit
     syn keyword pgsqlReserved localtime localtimestamp natural not notnull null offset on only or order outer
-    syn keyword pgsqlReserved overlaps placing primary references returning right select session_user similar
+    syn keyword pgsqlReserved overlaps placing primary references replace returning right select session_user similar
     syn keyword pgsqlReserved some symmetric table then to trailing true union unique user using variadic
     syn keyword pgsqlReserved verbose when where window with
 endif
@@ -312,7 +312,8 @@ if !exists("pgsql_no_builtin_highlight")
     syn keyword pgsqlBuiltinFunction lpad ltrim md5 pg_client_encoding quote_ident quote_literal
     syn keyword pgsqlBuiltinFunction quote_literal quote_nullable quote_nullable regexp_matches
     syn keyword pgsqlBuiltinFunction regexp_replace regexp_split_to_array regexp_split_to_table
-    syn keyword pgsqlBuiltinFunction world repeat replace reverse right rpad rtrim split_part strpos
+    syn keyword pgsqlBuiltinFunction world repeat reverse right rpad rtrim split_part strpos
+    " syn keyword pgsqlBuiltinFunction replace
     syn keyword pgsqlBuiltinFunction substr to_ascii to_hex translate ascii_to_mic ascii_to_utf8
     syn keyword pgsqlBuiltinFunction big5_to_euc_tw big5_to_mic big5_to_utf8 euc_cn_to_mic
     syn keyword pgsqlBuiltinFunction euc_cn_to_utf8 euc_jp_to_mic euc_jp_to_sjis euc_jp_to_utf8
