@@ -263,7 +263,7 @@ syn keyword pgsqlType bit
 syn keyword pgsqlType tsvector tsquery
 syn keyword pgsqlType uuid
 syn keyword pgsqlType xml
-syn keyword pgsqlType array 
+syn keyword pgsqlType array
 syn keyword pgsqlType oid regproc regprocedure regoper regoperator regclass regtype
 syn keyword pgsqlType regconfig regdictionary
 syn keyword pgsqlType any anyarray anyelement anyenum anynonarray anyrange cstring
