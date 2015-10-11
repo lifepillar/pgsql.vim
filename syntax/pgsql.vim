@@ -11,7 +11,7 @@ elseif exists("b:current_syntax")
   finish
 endif
 
-" Always ignore case 
+" Always ignore case
 syn case ignore
 
 runtime! syntax/plpgsql.vim
