@@ -4,15 +4,15 @@
 " Maintainer:  Pim Snel <pim at lingewoud dot nl>
 " Last Change: PM Wed Apr 25 20:27:33 CEST 2007
 " Version:     0.1
-" Download:    
+" Download:
 
 " Notes:
-" This file is a rewrite for PostgreSQL of the more general SQL 
-" intenting vim file made for Oracle and Sybase Adaptive Server 
+" This file is a rewrite for PostgreSQL of the more general SQL
+" intenting vim file made for Oracle and Sybase Adaptive Server
 " Anywhere (ASA). All credits go to David Fishburn.
 "
 " Known Issues:
-" File is far from finished.    
+" File is far from finished.
 
 " Only load this indent file when no other was loaded.
 if exists("b:did_indent")
@@ -150,7 +150,7 @@ function s:GetStmtStarterIndent( keyword, curr_lnum )
     " Default - reduce indent by 1
     let ind = indent(a:curr_lnum) - &sw
 
-	"    \ '\%(\%(\<end\s\+\)\@<!\<for\>\)\|' .
+    "    \ '\%(\%(\<end\s\+\)\@<!\<for\>\)\|' .
     if a:keyword =~? 'end'
         exec 'normal! ^'
         let stmts = '^\s*\%('.
