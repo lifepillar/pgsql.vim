@@ -154,6 +154,9 @@ syn keyword psqlKeyword echo timing
 " Constants:
 syn keyword pgsqlConstant debug5 debug4 debug3 debug2 debug1 log notice warning error fatal panic
 
+" Variables:
+syn match pgsqlVariable "\<_[A-Za-z0-9][A-Za-z0-9_]*\>"
+
 " Error Codes:
 if !exists("pgsql_no_error_codes_highlight")
     syn keyword pgsqlErrorCode successful_completion warning dynamic_result_sets_returned
