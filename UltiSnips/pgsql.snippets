@@ -9,7 +9,7 @@ def complete_list(t, opts):
 		return opts[0]
 	return '[' + ','.join(opts) + ']'
 def dbobjs():
-	return ['function', 'table', 'schema', 'index']
+	return ['function', 'table', 'schema', 'index', 'domain', 'rule', 'trigger']
 def dbpls():
 	return ['plpgsql', 'plpython', 'plpythonu']
 def dbtypes():
@@ -78,6 +78,29 @@ snippet schema "create schema" w
 schema${1: if not exists} ${2:schema_name};
 endsnippet
 
+snippet domain "create domain" w
+domain ${2} as $1`!p snip.rv=complete_list(t[1], dbtypes())`
+constraint ${3} check (${4});
+endsnippet
+
+snippet rule "create rule" w
+${1:or replace }rule ${2:rule_name} as
+on ${3}
+to ${4}
+where ${5}
+do ${6:instead} ${7}
+endsnippet
+
+snippet trigger "create trigger" w
+${1:constraint }trigger ${2:trigger_name}
+${3:before/after/instead of}
+on ${4}
+${5:not }deferrable initially ${6:immediate}
+for each ${7:row}
+when (${8})
+execute procedure ${9}();
+endsnippet
+
 snippet tc "table column definition" w
 ${2:column_title} $1`!p snip.rv=complete_list(t[1], dbtypes())`${3: not null${4}}${5:,
 tc${6}}
@@ -91,3 +114,4 @@ snippet for "for loop" w
 for ${1} in ${0} loop
 end loop;
 endsnippet
+
