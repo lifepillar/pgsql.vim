@@ -22,7 +22,7 @@ snippet sel "select statetement" w
 select ${1:*} from ${2:name}${3: where $4}${5: using $6${7: into $8}};
 endsnippet
 
-snippet do "do statetement" w
+snippet do "do statement" w
 do language ${1:plpgsql} $${1/^pl(\w+)u?$/do$1/}$
 ${0}
 $${1/^pl(\w+)u?$/do$1/}$;
