@@ -151,6 +151,11 @@ syn keyword pgsqlKeyword errcode
 " Psql Keywords:
 syn keyword psqlKeyword echo timing
 
+" FIXME: non-reserved keywords
+syn keyword pgsqlKeyword extension if type perform raise coalesce greatest least foreach loop copy
+syn keyword pgsqlKeyword ordinality index exit immutable leakproof stable strict volatile after before instead
+syn keyword pgsqlKeyword security invoker definer cost
+
 " Constants:
 syn keyword pgsqlConstant debug5 debug4 debug3 debug2 debug1 log notice warning error fatal panic
 
