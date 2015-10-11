@@ -19,7 +19,10 @@ def dbcnst():
 endglobal
 
 snippet sel "select statetement" w
-select ${1:*} from ${2:name}${3: where $4}${5: using $6${7: into $8}};
+select ${1:*}
+	from ${2:name}
+${3: where $4}
+${5: using $6${7: into $8}};
 endsnippet
 
 snippet do "do statement" w
@@ -58,7 +61,11 @@ execute '$0'${1: ${2:using ${3}}${4: into ${5}}};
 endsnippet
 
 snippet function "create function" w
-${1:or replace }function ${2:function_name} (${3:fa${4}}) returns ${5:void} language ${6:plpgsql} as $${6/^pl(\w+)u?$/$1/}$
+${1:or replace }function ${2:function_name} (
+	${3:fa${4}}
+)
+returns ${5:void}
+language ${6:plpgsql} ${7:volatile} as $${6/^pl(\w+)u?$/$1/}$
 $0
 $${6/^pl(\w+)u?$/$1/}$;
 endsnippet
