@@ -20,10 +20,13 @@ if !exists("pgsql_no_keywords")
     syn keyword pgsqlReserved current_catalog current_date current_role current_schema current_time
     syn keyword pgsqlReserved current_timestamp current_user default deferrable desc distinct do else end
     syn keyword pgsqlReserved except false fetch for foreign freeze from full grant group having ilike in
+    syn keyword pgsqlReserved event
     syn keyword pgsqlReserved initially inner intersect into is isnull join lateral leading left like limit
     syn keyword pgsqlReserved localtime localtimestamp natural not notnull null offset on only or order outer
-    syn keyword pgsqlReserved overlaps placing primary references replace returning right select session_user similar
-    syn keyword pgsqlReserved some symmetric table then to trailing true union unique user using variadic
+    syn keyword pgsqlReserved overlaps placing primary references replace returning right select sequence session_user
+    syn keyword pgsqlReserved similar some symmetric table
+    syn keyword pgsqlReserved tg_argv tg_event tg_level tg_nargs tg_name tg_op tg_relid tg_relname tg_tag tg_table_name tg_table_schema tg_when
+    syn keyword pgsqlReserved then to trailing true union unique user using variadic
     syn keyword pgsqlReserved verbose when where window with
 endif
 
