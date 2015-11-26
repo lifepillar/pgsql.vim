@@ -23,7 +23,7 @@ if !exists("pgsql_no_keywords")
     syn keyword pgsqlReserved event
     syn keyword pgsqlReserved initially inner intersect into is isnull join lateral leading left like limit
     syn keyword pgsqlReserved localtime localtimestamp natural not notnull null offset on only or order outer
-    syn keyword pgsqlReserved overlaps placing primary references replace returning right select sequence session_user
+    syn keyword pgsqlReserved overlaps placing primary query references replace returning right select sequence session_user
     syn keyword pgsqlReserved similar some symmetric table
     syn keyword pgsqlReserved tg_argv tg_event tg_level tg_nargs tg_name tg_op tg_relid tg_relname tg_tag tg_table_name tg_table_schema tg_when
     syn keyword pgsqlReserved then to trailing true union unique user using variadic
