@@ -144,8 +144,12 @@ syn match pgsqlOperator "\%([:=\|||\|\->>\|;\|.\|$]\)"
 syn match pgsqlEqualOperator "\%( =\)"
 
 " Keywords:
-syn keyword pgsqlKeyword extension if type perform raise coalesce greatest least foreach loop copy
+syn keyword pgsqlKeyword extension elseif if type perform raise coalesce greatest least foreach loop copy
 syn keyword pgsqlKeyword ordinality index exit immutable strict volatile after before instead
+syn keyword pgsqlKeyword errcode
+
+" Psql Keywords:
+syn keyword psqlKeyword echo timing
 
 " Constants:
 syn keyword pgsqlConstant debug5 debug4 debug3 debug2 debug1 log notice warning error fatal panic
@@ -502,6 +506,8 @@ if version >= 508 || !exists("did_pgsql_syn_inits")
   HiLink pgsqlConstant        Constant
   HiLink pgsqlErrorCode       Constant
   HiLink pgsqlOption          Define
+
+  HiLink psqlKeyword          SpecialKey
 
   delcommand HiLink
 endif
