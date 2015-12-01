@@ -15,7 +15,7 @@ let s:dictionary = s:path.'/dic/pgsql'
 
 
 function! pgsql#load_keywords()
-    execute 'set dictionary+=' . s:dictionary
+    execute 'setlocal dictionary+=' . s:dictionary
 endfunction
 
 
