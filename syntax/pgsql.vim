@@ -564,6 +564,7 @@ syn keyword plpgsqlKeyword contained tg_level tg_name tg_nargs tg_op tg_relid tg
 syn keyword plpgsqlKeyword contained tg_table_name tg_table_schema tg_tag tg_when then type using
 syn keyword plpgsqlKeyword contained while
 
+" PL/pgSQL
 syn region plpgsql start=+\$pgsql\$+ end=+\$pgsql\$+ keepend contains=ALL
 syn region plpgsql start=+\$\$+ end=+\$\$+ keepend contains=ALL
 
