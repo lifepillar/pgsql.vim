@@ -572,6 +572,9 @@ syn region plpgsql start=+\$\$+ end=+\$\$+ keepend contains=ALL
 syn include @Python syntax/python.vim
 syn region plPython start=+\$python\$+ end=+\$python\$+ keepend contains=@Python
 
+" Syntax Synchronizing
+syn sync minlines=10 maxlines=100
+
 " Define the default highlighting.
 " For version 5.7 and earlier: only when not done already
 " For version 5.8 and later: only when an item doesn't have highlighting yet
