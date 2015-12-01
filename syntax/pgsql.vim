@@ -597,7 +597,6 @@ if version >= 508 || !exists("did_pgsql_syn_inits")
   HiLink pgsqlConstant           Constant
   HiLink pgsqlErrorCode          Special
   HiLink pgsqlExtensions         Type
-  HiLink pgsqlFunction           Function
   HiLink pgsqlIdentifier         Identifier
   HiLink pgsqlNumber             Number
   HiLink pgsqlOperator           Operator
