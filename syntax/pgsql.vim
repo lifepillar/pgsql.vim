@@ -550,7 +550,6 @@ if !exists("pgsql_no_builtin_highlight")
   syn keyword pgsqlConstant pg_trigger pg_ts_config pg_ts_config_map pg_ts_dict
   syn keyword pgsqlConstant pg_ts_parser pg_ts_template pg_type pg_user
   syn keyword pgsqlConstant pg_user_mapping pg_user_mappings pg_views
-
 endif
 
 " PL/pgSQL
