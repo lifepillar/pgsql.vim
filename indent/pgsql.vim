@@ -46,7 +46,7 @@ set cpo&vim
 let s:SQLBlockStart = '^\s*\%('.
                 \ 'if\|else\|elseif\|elsif\|'.
                 \ 'while\|loop\|do\|for\|'.
-                \ 'begin\|'.
+                \ 'declare\|begin\|'.
                 \ 'case\|when\|merge\|exception'.
                 \ '\)\>'
 let s:SQLBlockEnd = '^\s*\(end\)\>'
