@@ -1,8 +1,7 @@
 " Vim pgsql plugin
 " Language:    SQL
-" Maintainer:  space::tekk <inbox@spacetekk.ru>
-" Version:     1.0
-" Last Change: 2015-06-09
+" Author:  space::tekk <inbox@spacetekk.ru>
+" Maintainer: Lifepillar <lifepillar@lifepillar.me>
 
 if exists('g:loaded_pgsql')
     finish
