@@ -1,1 +1,1 @@
-au BufNewFile,BufRead *.pgsql setfiletype pgsql
+au BufNewFile,BufRead *.pgsql setfiletype sql | SQLSetType pgsql
