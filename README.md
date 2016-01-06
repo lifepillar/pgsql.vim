@@ -20,15 +20,13 @@ Keywords according to:
 # Usage
 
 Highlights `.pgsql` files out of the box. If you want to highlight `.sql` files
-using this plugin, add this to your `.vimrc` (see `:h ft_sql.txt`):
+using this plugin by default, add this to your `.vimrc` (see `:h ft_sql.txt`):
 
     let g:sql_type_default = 'pgsql'
 
-You can add `pgsql` dictionary to Vim completion, with:
+Alternatively, after loading a `.sql` file use this command:
 
-    set dictionary+=~/.vim/bundle/pgsql.vim/dic/pgsql
-
-See also `:h i_CTRL-X_CTRL-K`.
+    :SQLSetType pgsql.vim
 
 
 # PL/pgSQL Support
