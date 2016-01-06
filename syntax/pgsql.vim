@@ -308,7 +308,7 @@ syn keyword sqlType      regprocedure regtype serial smallint text time timestam
 syn keyword sqlType      tsquery tsrange tstzrange tsvector txid_snapshot uuid
 syn keyword sqlType      varchar varying void xml
 
-" Constants:
+" Constants
 syn keyword sqlConstant  debug5 debug4 debug3 debug2 debug1 log notice warning
 syn keyword sqlConstant  error fatal panic
 " System catalogs:
@@ -338,27 +338,27 @@ syn keyword sqlConstant  pg_trigger pg_ts_config pg_ts_config_map pg_ts_dict
 syn keyword sqlConstant  pg_ts_parser pg_ts_template pg_type pg_user
 syn keyword sqlConstant  pg_user_mapping pg_user_mappings pg_views
 
-" Variables:
+" Variables
 syn match sqlVariable    "\<_[A-Za-z0-9][A-Za-z0-9_]*\>"
 
-" Numbers:
+" Numbers
 syn match sqlNumber      "-\=\<\d*\.\=[0-9_]\>"
 
-" Strings:
+" Strings
 syn region sqlIdentifier start=+"+  skip=+\\\\\|\\"+  end=+"+
 syn region sqlString     start=+'+  skip=+\\\\\|\\'+  end=+'+ contains=@Spell
 
-" Comments:
+" Comments
 syn region sqlComment    start="/\*" end="\*/" contains=sqlTodo,@Spell
 syn match  sqlComment    "#.*$"                contains=sqlTodo,@Spell
 syn match  sqlComment    "--.*$"               contains=sqlTodo,@Spell
 
 syn sync ccomment sqlComment
 
-" Options:
+" Options
 syn keyword sqlOption    client_min_messages search_path
 
-" Error Codes:
+" Error Codes
 syn keyword sqlErrorCode successful_completion warning dynamic_result_sets_returned
 syn keyword sqlErrorCode implicit_zero_bit_padding null_value_eliminated_in_set_function
 syn keyword sqlErrorCode privilege_not_granted privilege_not_revoked string_data_right_truncation
@@ -445,7 +445,7 @@ syn keyword sqlErrorCode fdw_table_not_found fdw_unable_to_create_execution fdw_
 syn keyword sqlErrorCode fdw_unable_to_establish_connection plpgsql_error raise_exception no_data_found
 syn keyword sqlErrorCode too_many_rows internal_error data_corrupted index_corrupted
 
-" Extensions:
+" Extensions
 syn keyword sqlExtension plpgsql plpythonu plpython plperl plpgsqlu hstore adminpack auth_delay
 syn keyword sqlExtension auto_explain btree_gin btree_gist chkpass citext cube dblink dict_int
 syn keyword sqlExtension dict_xsyn dummy_seclabel earthdistance file_fdw fuzzystrmatch intagg
@@ -454,10 +454,10 @@ syn keyword sqlExtension pg_freespacemap pg_prewarm pgrowlocks pg_stat_statement
 syn keyword sqlExtension pg_trgm postgres_fdw seg sepgsql spi sslinfo tablefunc tcn test_decoding
 syn keyword sqlExtension test_parser test_shm_mq tsearch2 unaccent uuid-ossp xml2
 
-" Psql Keywords:
+" Psql Keywords
 syn keyword sqlPsqlKeyword cd conninfo echo qecho prompt pset setenv timing unset
 
-" Todo:
+" Todo
 syn keyword sqlTodo contained TODO FIXME XXX DEBUG NOTE
 
 " PL/pgSQL
