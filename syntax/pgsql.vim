@@ -27,7 +27,7 @@ syn keyword sqlKeyword   collation_catalog collation_name collation_schema colle
 syn keyword sqlKeyword   column_name command_function command_function_code comments committed
 syn keyword sqlKeyword   concurrently condition condition_number configuration conflict connect
 syn keyword sqlKeyword   connection connection_name constraint constraints constraint_catalog
-syn keyword sqlKeyword   constraint_name constraint_schema constructor contains content continue
+syn keyword sqlKeyword   constraint_name constraint_schema constructor content continue contains
 syn keyword sqlKeyword   control conversion convert corr corresponding cost count covar_pop covar_samp
 syn keyword sqlKeyword   cross csv cube cume_dist current current_catalog current_date
 syn keyword sqlKeyword   current_default_transform_group current_path current_role current_row
