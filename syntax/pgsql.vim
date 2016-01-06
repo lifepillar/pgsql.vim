@@ -472,7 +472,7 @@ syn region plPython start=+\$python\$+ end=+\$python\$+ keepend contains=@Python
 syn sync minlines=10 maxlines=100
 
 " Default highlighting
-command -nargs=+ HiLink hi def link <args>
+command -nargs=+ HiLink hi! def link <args>
 
 HiLink sqlComment        Comment
 HiLink sqlConstant       Constant
