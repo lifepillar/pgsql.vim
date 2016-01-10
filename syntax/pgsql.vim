@@ -814,6 +814,10 @@ syn keyword sqlType zone time without timestamp timestampz timetz tinterval trig
 syn keyword sqlType tsm_handler tsquery tsrange tstzrange tsvector txid_snapshot unknown uuid
 syn keyword sqlType varbit varchar void xid xml
 
+" PostGIS 2.2 types
+" From pg_type and PostGIS manual
+syn keyword sqlType box2d box2df box3d geography geometry geomtry_dump gidx pgis_abs raster spheroid
+
 " Constants
 syn keyword sqlConstant  debug5 debug4 debug3 debug2 debug1 log notice warning
 syn keyword sqlConstant  error fatal panic
