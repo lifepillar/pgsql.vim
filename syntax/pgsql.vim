@@ -799,6 +799,54 @@ syn keyword sqlFunction topoelementarray_agg topoelementarray_append topogeo_add
 syn keyword sqlFunction topogeo_addlinestring topogeo_addpoint topogeo_addpolygon topologysummary
 syn keyword sqlFunction totopogeom validatetopology
 
+" pgTap
+"
+" create extension pgtap with schema pgtap;
+"
+" select  distinct p.proname
+" from    pg_catalog.pg_namespace n
+" join    pg_catalog.pg_proc p
+" on      p.pronamespace = n.oid
+" where   n.nspname = 'pgtap' and p.proname not like '\_%' order by p.proname;
+syn keyword sqlFunction add_result alike any_column_privs_are bag_eq bag_has bag_hasnt bag_ne can
+syn keyword sqlFunction cast_context_is casts_are check_test cmp_ok col_default_is col_has_check
+syn keyword sqlFunction col_has_default col_hasnt_default col_is_fk col_is_null col_is_pk
+syn keyword sqlFunction col_is_unique col_isnt_fk col_isnt_pk col_not_null col_type_is
+syn keyword sqlFunction collect_tap column_privs_are columns_are composite_owner_is
+syn keyword sqlFunction database_privs_are db_owner_is diag diag_test_name display_oper do_tap
+syn keyword sqlFunction doesnt_imatch doesnt_match domain_type_is domain_type_isnt domains_are
+syn keyword sqlFunction enum_has_labels enums_are fail fdw_privs_are findfuncs finish fk_ok
+syn keyword sqlFunction foreign_table_owner_is foreign_tables_are function_lang_is
+syn keyword sqlFunction function_owner_is function_privs_are function_returns functions_are
+syn keyword sqlFunction groups_are has_cast has_check has_column has_composite has_domain
+syn keyword sqlFunction has_enum has_fk has_foreign_table has_function has_group has_index
+syn keyword sqlFunction has_language has_leftop has_materialized_view has_opclass has_operator
+syn keyword sqlFunction has_pk has_relation has_rightop has_role has_rule has_schema has_sequence
+syn keyword sqlFunction has_table has_tablespace has_trigger has_type has_unique has_user
+syn keyword sqlFunction has_view hasnt_cast hasnt_column hasnt_composite hasnt_domain hasnt_enum
+syn keyword sqlFunction hasnt_fk hasnt_foreign_table hasnt_function hasnt_group hasnt_index
+syn keyword sqlFunction hasnt_language hasnt_materialized_view hasnt_opclass hasnt_pk
+syn keyword sqlFunction hasnt_relation hasnt_role hasnt_rule hasnt_schema hasnt_sequence
+syn keyword sqlFunction hasnt_table hasnt_tablespace hasnt_trigger hasnt_type hasnt_user
+syn keyword sqlFunction hasnt_view ialike imatches in_todo index_is_primary index_is_type
+syn keyword sqlFunction index_is_unique index_owner_is indexes_are is is_aggregate is_clustered
+syn keyword sqlFunction is_definer is_empty is_member_of is_strict is_superuser isa_ok isnt
+syn keyword sqlFunction isnt_empty isnt_strict isnt_superuser language_is_trusted
+syn keyword sqlFunction language_owner_is language_privs_are languages_are lives_ok matches
+syn keyword sqlFunction materialized_view_owner_is materialized_views_are no_plan num_failed ok
+syn keyword sqlFunction opclass_owner_is opclasses_are operators_are os_name pass performs_ok
+syn keyword sqlFunction performs_within pg_version pg_version_num pgtap_version plan
+syn keyword sqlFunction relation_owner_is results_eq results_ne roles_are row_eq rule_is_instead
+syn keyword sqlFunction rule_is_on rules_are runtests schema_owner_is schema_privs_are
+syn keyword sqlFunction schemas_are sequence_owner_is sequence_privs_are sequences_are
+syn keyword sqlFunction server_privs_are set_eq set_has set_hasnt set_ne skip table_owner_is
+syn keyword sqlFunction table_privs_are tables_are tablespace_owner_is tablespace_privs_are
+syn keyword sqlFunction tablespaces_are throws_ilike throws_imatching throws_like throws_matching
+syn keyword sqlFunction throws_ok todo todo_end todo_start trigger_is triggers_are type_owner_is
+syn keyword sqlFunction types_are unalike unialike users_are view_owner_is views_are
+syn keyword sqlFunction volatility_is
+
+
 syn keyword sqlOperator  all and any between distinct escape except exists
 syn keyword sqlOperator  ilike in intersect like not or like_regex similar
 syn keyword sqlOperator  some to union
