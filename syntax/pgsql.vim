@@ -773,6 +773,33 @@ syn keyword sqlFunction st_distance_spheroid geography st_clip st_forcecollectio
 syn keyword sqlFunction geography_gist_decompress geometry_gist_decompress_2d st_countagg st_tri
 syn keyword sqlFunction st_pixelaspolygons
 
+" PostGIS 2.2 Topology functions
+" To build this list:
+"
+" create extension postgis_topology;
+" \t
+" \o postgis_topology.txt
+" select  distinct p.proname
+" from    pg_catalog.pg_namespace n
+" join    pg_catalog.pg_proc p
+" on      p.pronamespace = n.oid
+" where   n.nspname = 'topology' and p.proname not like '\_%' order by p.proname;
+syn keyword sqlFunction addedge addface addnode addtopogeometrycolumn addtosearchpath asgml
+syn keyword sqlFunction astopojson cleartopogeom copytopology createtopogeom createtopology
+syn keyword sqlFunction droptopogeometrycolumn droptopology equals geometry geometrytype
+syn keyword sqlFunction getedgebypoint getfacebypoint getnodebypoint getnodeedges getringedges
+syn keyword sqlFunction gettopogeomelementarray gettopogeomelements gettopologyid gettopologyname
+syn keyword sqlFunction gettopologysrid intersects layertrigger polygonize
+syn keyword sqlFunction postgis_topology_scripts_installed relationtrigger st_addedgemodface
+syn keyword sqlFunction st_addedgenewfaces st_addisoedge st_addisonode st_changeedgegeom
+syn keyword sqlFunction st_createtopogeo st_geometrytype st_getfaceedges st_getfacegeometry
+syn keyword sqlFunction st_inittopogeo st_modedgeheal st_modedgesplit st_moveisonode
+syn keyword sqlFunction st_newedgeheal st_newedgessplit st_remedgemodface st_remedgenewface
+syn keyword sqlFunction st_remisonode st_removeisoedge st_removeisonode st_simplify
+syn keyword sqlFunction topoelementarray_agg topoelementarray_append topogeo_addgeometry
+syn keyword sqlFunction topogeo_addlinestring topogeo_addpoint topogeo_addpolygon topologysummary
+syn keyword sqlFunction totopogeom validatetopology
+
 syn keyword sqlOperator  all and any between distinct escape except exists
 syn keyword sqlOperator  ilike in intersect like not or like_regex similar
 syn keyword sqlOperator  some to union
@@ -819,6 +846,8 @@ syn keyword sqlType varbit varchar void xid xml
 syn keyword sqlType addbandarg agg_count agg_samealignment box2d box2df box3d geography
 syn keyword sqlType geometry geomtry_dump geomval gidx pgis_abs rastbandarg raster reclassarg
 syn keyword sqlType spheroid summarystats unionarg valid_detail
+syn keyword sqlType getfaceedges_returntype layer topoelement topoelementarray topogeometry
+syn keyword sqlType topology topology_id_seq validatetopology_returntype
 
 " Constants
 syn keyword sqlConstant  debug5 debug4 debug3 debug2 debug1 log notice warning
