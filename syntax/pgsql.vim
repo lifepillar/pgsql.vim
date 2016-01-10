@@ -14,7 +14,7 @@ syn case ignore
 syn keyword sqlSpecial   false null true unknown
 
 " SQL keywords (see Table C-1 in App. C of PostgreSQL manual)
-syn keyword sqlKeyword   abort abs absent absolute access according action ada add admin after
+syn keyword sqlKeyword   abort abs absent absolute access according action ada add admin after array
 syn keyword sqlKeyword   aggregate allocate also always analyse are array_agg array_max_cardinality as
 syn keyword sqlKeyword   asc asensitive assertion assignment asymmetric at atomic attribute attributes
 syn keyword sqlKeyword   authorization avg backward base64 before begin begin_frame begin_partition
@@ -626,18 +626,38 @@ syn keyword sqlStatement alter analyze comment commit copy create delete drop
 syn keyword sqlStatement execute explain grant insert lock revoke rollback
 syn keyword sqlStatement savepoint select set truncate update
 
-" Data types (see Table 8-1 in PostgreSQL manual)
-syn keyword sqlType      any anyarray anyelement anyenum anynonarray anyrange
-syn keyword sqlType      array bigint bigserial bit boolean box bytea char
-syn keyword sqlType      character cidr circle cstring date daterange decimal
-syn keyword sqlType      double dw_handler enum float inet int int4range int8range
-syn keyword sqlType      integer internal interval json jsonb language_handler
-syn keyword sqlType      line lseg macaddr money numeric numrange oid opaque path
-syn keyword sqlType      pg_lsn point polygon precision real record regclass
-syn keyword sqlType      regconfig regdictionary regoper regoperator regproc
-syn keyword sqlType      regprocedure regtype serial smallint text time timestamp
-syn keyword sqlType      tsquery tsrange tstzrange tsvector txid_snapshot uuid
-syn keyword sqlType      varchar varying void xml
+" To build this list:
+"
+" psql template1
+" \t
+" \o types.txt
+" select distinct pg_catalog.format_type(t.oid, null) as "name"
+"   from pg_catalog.pg_type t
+"   left join pg_catalog.pg_namespace n
+"     on n.oid = t.typnamespace
+"  where (t.typrelid = 0 or (select c.relkind = 'c' from pg_catalog.pg_class c
+"                             where c.oid = t.typrelid))
+"    and not exists(select 1 from pg_catalog.pg_type el
+"                    where el.oid = t.typelem and el.typarray = t.oid)
+"    and pg_catalog.pg_type_is_visible(t.oid)
+"  order by "name";
+"
+"  Note that there are data type names composed of more than one word and
+"  some other are between quotes. The list must be complemented with the
+"  types and aliases listed in Table 8-1 of PostgreSQL manual.
+syn keyword sqlType abstime aclitem any anyarray anyelement anyenum anynonarray anyrange
+syn keyword sqlType bigint bigserial bit boolean box bytea char character varying cid cidr
+syn keyword sqlType circle cstring date daterange decimal double precision event_trigger
+syn keyword sqlType fdw_handler float4 float8 gtsvector inet int int2 int2vector int4
+syn keyword sqlType int4range int8 int8range integer internal interval json jsonb
+syn keyword sqlType language_handler line lseg macaddr money name numeric numrange oid
+syn keyword sqlType oidvector opaque path pg_ddl_command pg_lsn pg_node_tree point polygon
+syn keyword sqlType real record refcursor regclass regconfig regdictionary regnamespace
+syn keyword sqlType regoper regoperator regproc regprocedure regrole regtype reltime serial
+syn keyword sqlType serial2 serial4 serial8 smallint smallserial smgr text tid time with time
+syn keyword sqlType zone time without timestamp timestampz timetz tinterval trigger
+syn keyword sqlType tsm_handler tsquery tsrange tstzrange tsvector txid_snapshot unknown uuid
+syn keyword sqlType varbit varchar void xid xml
 
 " Constants
 syn keyword sqlConstant  debug5 debug4 debug3 debug2 debug1 log notice warning
