@@ -107,6 +107,37 @@ Code between `$python$` pairs is highlighted as Python. For example:
     $python$;
 
 
+# Customizing syntax coloring
+
+This plugin defines the following highlight groups:
+
+```
+sqlComment
+sqlConstant
+sqlErrorCode
+sqlExtension
+sqlFunction
+sqlIdentifier
+sqlKeyword
+sqlNumber
+sqlOperator
+sqlOption
+sqlSpecial
+sqlStatement
+sqlString
+sqlType
+sqlTodo
+sqlVariable
+sqlPsqlKeyword
+```
+
+You may override a highlight group definition in your `vimrc`. For example:
+
+```
+hi! sqlKeyword  Keyword
+```
+
+
 # Bonus
 
 Some useful [UltiSnips](https://github.com/SirVer/ultisnips) snippets.
