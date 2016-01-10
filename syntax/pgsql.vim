@@ -14,90 +14,90 @@ syn case ignore
 syn keyword sqlSpecial   false null true
 
 " SQL keywords (see Table C-1 in App. C of PostgreSQL manual)
-syn keyword sqlKeyword   abort abs absent absolute access according action ada add admin after array
-syn keyword sqlKeyword   aggregate allocate also always analyse are array_agg array_max_cardinality as
-syn keyword sqlKeyword   asc asensitive assertion assignment asymmetric at atomic attribute attributes
-syn keyword sqlKeyword   authorization avg backward base64 before begin begin_frame begin_partition
-syn keyword sqlKeyword   bernoulli binary bit_length blob blocked bom both breadth by cache call called
-syn keyword sqlKeyword   cardinality cascade cascaded case cast catalog catalog_name ceil ceiling chain
-syn keyword sqlKeyword   characteristics characters character_length character_set_catalog
-syn keyword sqlKeyword   character_set_name character_set_schema char_length check checkpoint class
-syn keyword sqlKeyword   class_origin clob close cluster coalesce cobol collate collation
-syn keyword sqlKeyword   collation_catalog collation_name collation_schema collect column columns
-syn keyword sqlKeyword   column_name command_function command_function_code comments committed
-syn keyword sqlKeyword   concurrently condition condition_number configuration conflict connect
-syn keyword sqlKeyword   connection connection_name constraint constraints constraint_catalog
-syn keyword sqlKeyword   constraint_name constraint_schema constructor content continue contains
-syn keyword sqlKeyword   control conversion convert corr corresponding cost count covar_pop covar_samp
-syn keyword sqlKeyword   cross csv cube cume_dist current current_catalog current_date
-syn keyword sqlKeyword   current_default_transform_group current_path current_role current_row
-syn keyword sqlKeyword   current_schema current_time current_timestamp current_transform_group_for_type
-syn keyword sqlKeyword   current_user cursor cursor_name cycle data database datalink
-syn keyword sqlKeyword   datetime_interval_code datetime_interval_precision day db deallocate dec
-syn keyword sqlKeyword   declare default defaults deferrable deferred defined definer degree delimiter
-syn keyword sqlKeyword   delimiters dense_rank depth deref derived desc describe descriptor
-syn keyword sqlKeyword   deterministic diagnostics dictionary disable discard disconnect dispatch
-syn keyword sqlKeyword   dlnewcopy dlpreviouscopy dlurlcomplete dlurlcompleteonly dlurlcompletewrite
-syn keyword sqlKeyword   dlurlpath dlurlpathonly dlurlpathwrite dlurlscheme dlurlserver dlvalue do
-syn keyword sqlKeyword   document domain dynamic dynamic_function dynamic_function_code each element
-syn keyword sqlKeyword   else empty enable encoding encrypted end end-exec end_frame end_partition
-syn keyword sqlKeyword   enforced equals event every exception exclude excluding exclusive exec exp
-syn keyword sqlKeyword   expression extension external extract family fetch file filter final first
-syn keyword sqlKeyword   first_value flag floor following for force foreign fortran forward found
-syn keyword sqlKeyword   frame_row free freeze from fs full function functions fusion general generated
-syn keyword sqlKeyword   get global go goto granted greatest group grouping groups handler having
-syn keyword sqlKeyword   header hex hierarchy hold hour id identity if ignore immediate immediately
-syn keyword sqlKeyword   immutable implementation implicit import including increment indent index
-syn keyword sqlKeyword   indexes indicator inherit inherits initially inline inner inout input
-syn keyword sqlKeyword   insensitive instance instantiable instead integrity intersection into invoker
-syn keyword sqlKeyword   is isnull isolation join key key_member key_type label lag language large last
-syn keyword sqlKeyword   last_value lateral lead leading leakproof least left length level library
-syn keyword sqlKeyword   like_regex limit link listen ln load local localtime localtimestamp location
-syn keyword sqlKeyword   locator locked logged lower map mapping match matched materialized max
-syn keyword sqlKeyword   maxvalue max_cardinality member merge message_length message_octet_length
-syn keyword sqlKeyword   message_text method min minute minvalue mod mode modifies module month more
-syn keyword sqlKeyword   move multiset mumps name names namespace national natural nchar nclob nesting
-syn keyword sqlKeyword   new next nfc nfd nfkc nfkd nil no none normalize normalized not nothing notify
-syn keyword sqlKeyword   notnull nowait nth_value ntile nullable nullif nulls number object
-syn keyword sqlKeyword   occurrences_regex octets octet_length of off offset oids old on only open
-syn keyword sqlKeyword   operator option options or order ordering ordinality others out outer output
-syn keyword sqlKeyword   over overlaps overlay overriding owned owner pad parameter parameter_mode
-syn keyword sqlKeyword   parameter_name parameter_ordinal_position parameter_specific_catalog
-syn keyword sqlKeyword   parameter_specific_name parameter_specific_schema parser partial partition
-syn keyword sqlKeyword   pascal passing passthrough password percent percentile_cont percentile_disc
-syn keyword sqlKeyword   percent_rank period permission placing plans pli policy portion position
-syn keyword sqlKeyword   position_regex power precedes preceding precision prepare prepared preserve
-syn keyword sqlKeyword   primary prior privileges procedural procedure program public quote range rank
-syn keyword sqlKeyword   read reads real reassign recheck recovery recursive ref references referencing
-syn keyword sqlKeyword   refresh regr_avgx regr_avgy regr_count regr_intercept regr_r2 regr_slope
-syn keyword sqlKeyword   regr_sxx regr_sxy regr_syy reindex relative release rename repeatable replace
-syn keyword sqlKeyword   replica requiring reset respect restart restore restrict result return
-syn keyword sqlKeyword   returned_cardinality returned_length returned_octet_length returned_sqlstate
-syn keyword sqlKeyword   returning returns right role rollup routine routine_catalog routine_name
-syn keyword sqlKeyword   routine_schema row rows row_count row_number rule scale schema schema_name
-syn keyword sqlKeyword   scope scope_catalog scope_name scope_schema scroll search second section
-syn keyword sqlKeyword   security selective self sensitive sequence sequences serializable server
-syn keyword sqlKeyword   server_name session session_user setof sets share show similar simple size
-syn keyword sqlKeyword   skip snapshot some source space specific specifictype specific_name sql
-syn keyword sqlKeyword   sqlcode sqlerror sqlexception sqlstate sqlwarning sqrt stable standalone start
-syn keyword sqlKeyword   state statement static statistics stddev_pop stddev_samp stdin stdout storage
-syn keyword sqlKeyword   strict strip structure style subclass_origin submultiset substring
-syn keyword sqlKeyword   substring_regex succeeds sum symmetric sysid system system_time system_user
-syn keyword sqlKeyword   table tables tablesample tablespace table_name temp template temporary then
-syn keyword sqlKeyword   ties timezone_hour timezone_minute to token top_level_count trailing
-syn keyword sqlKeyword   transaction transactions_committed transactions_rolled_back transaction_active
-syn keyword sqlKeyword   transform transforms translate translate_regex translation treat trigger
-syn keyword sqlKeyword   trigger_catalog trigger_name trigger_schema trim trim_array trusted type types
-syn keyword sqlKeyword   uescape unbounded uncommitted under unencrypted union unique unknown unlink
-syn keyword sqlKeyword   unlisten unlogged unnamed unnest until untyped upper uri usage user
-syn keyword sqlKeyword   user_defined_type_catalog user_defined_type_code user_defined_type_name
-syn keyword sqlKeyword   user_defined_type_schema using vacuum valid validate validator value values
-syn keyword sqlKeyword   value_of varbinary variadic var_pop var_samp verbose version versioning view
-syn keyword sqlKeyword   views volatile when whenever where whitespace width_bucket window with within
-syn keyword sqlKeyword   without work wrapper write xmlagg xmlattributes xmlbinary xmlcast xmlcomment
-syn keyword sqlKeyword   xmlconcat xmldeclaration xmldocument xmlelement xmlexists xmlforest xmliterate
-syn keyword sqlKeyword   xmlnamespaces xmlparse xmlpi xmlquery xmlroot xmlschema xmlserialize xmltable
-syn keyword sqlKeyword   xmltext xmlvalidate year yes zone
+syn keyword sqlKeyword abort abs absent absolute access according action ada add admin after array
+syn keyword sqlKeyword aggregate allocate also always analyse are array_agg array_max_cardinality as
+syn keyword sqlKeyword asc asensitive assertion assignment asymmetric at atomic attribute attributes
+syn keyword sqlKeyword authorization avg backward base64 before begin begin_frame begin_partition
+syn keyword sqlKeyword bernoulli binary bit_length blob blocked bom both breadth by cache call called
+syn keyword sqlKeyword cardinality cascade cascaded case cast catalog catalog_name ceil ceiling chain
+syn keyword sqlKeyword characteristics characters character_length character_set_catalog
+syn keyword sqlKeyword character_set_name character_set_schema char_length check checkpoint class
+syn keyword sqlKeyword class_origin clob close cluster coalesce cobol collate collation
+syn keyword sqlKeyword collation_catalog collation_name collation_schema collect column columns
+syn keyword sqlKeyword column_name command_function command_function_code comments committed
+syn keyword sqlKeyword concurrently condition condition_number configuration conflict connect
+syn keyword sqlKeyword connection connection_name constraint constraints constraint_catalog
+syn keyword sqlKeyword constraint_name constraint_schema constructor content continue contains
+syn keyword sqlKeyword control conversion convert corr corresponding cost count covar_pop covar_samp
+syn keyword sqlKeyword cross csv cube cume_dist current current_catalog current_date
+syn keyword sqlKeyword current_default_transform_group current_path current_role current_row
+syn keyword sqlKeyword current_schema current_time current_timestamp current_transform_group_for_type
+syn keyword sqlKeyword current_user cursor cursor_name cycle data database datalink
+syn keyword sqlKeyword datetime_interval_code datetime_interval_precision day db deallocate dec
+syn keyword sqlKeyword declare default defaults deferrable deferred defined definer degree delimiter
+syn keyword sqlKeyword delimiters dense_rank depth deref derived desc describe descriptor
+syn keyword sqlKeyword deterministic diagnostics dictionary disable discard disconnect dispatch
+syn keyword sqlKeyword dlnewcopy dlpreviouscopy dlurlcomplete dlurlcompleteonly dlurlcompletewrite
+syn keyword sqlKeyword dlurlpath dlurlpathonly dlurlpathwrite dlurlscheme dlurlserver dlvalue do
+syn keyword sqlKeyword document domain dynamic dynamic_function dynamic_function_code each element
+syn keyword sqlKeyword else empty enable encoding encrypted end end-exec end_frame end_partition
+syn keyword sqlKeyword enforced equals event every exception exclude excluding exclusive exec exp
+syn keyword sqlKeyword expression extension external extract family fetch file filter final first
+syn keyword sqlKeyword first_value flag floor following for force foreign fortran forward found
+syn keyword sqlKeyword frame_row free freeze from fs full function functions fusion general generated
+syn keyword sqlKeyword get global go goto granted greatest group grouping groups handler having
+syn keyword sqlKeyword header hex hierarchy hold hour id identity if ignore immediate immediately
+syn keyword sqlKeyword immutable implementation implicit import including increment indent index
+syn keyword sqlKeyword indexes indicator inherit inherits initially inline inner inout input
+syn keyword sqlKeyword insensitive instance instantiable instead integrity intersection into invoker
+syn keyword sqlKeyword is isnull isolation join key key_member key_type label lag language large last
+syn keyword sqlKeyword last_value lateral lead leading leakproof least left length level library
+syn keyword sqlKeyword like_regex limit link listen ln load local localtime localtimestamp location
+syn keyword sqlKeyword locator locked logged lower map mapping match matched materialized max
+syn keyword sqlKeyword maxvalue max_cardinality member merge message_length message_octet_length
+syn keyword sqlKeyword message_text method min minute minvalue mod mode modifies module month more
+syn keyword sqlKeyword move multiset mumps name names namespace national natural nchar nclob nesting
+syn keyword sqlKeyword new next nfc nfd nfkc nfkd nil no none normalize normalized not nothing notify
+syn keyword sqlKeyword notnull nowait nth_value ntile nullable nullif nulls number object
+syn keyword sqlKeyword occurrences_regex octets octet_length of off offset oids old on only open
+syn keyword sqlKeyword operator option options or order ordering ordinality others out outer output
+syn keyword sqlKeyword over overlaps overlay overriding owned owner pad parameter parameter_mode
+syn keyword sqlKeyword parameter_name parameter_ordinal_position parameter_specific_catalog
+syn keyword sqlKeyword parameter_specific_name parameter_specific_schema parser partial partition
+syn keyword sqlKeyword pascal passing passthrough password percent percentile_cont percentile_disc
+syn keyword sqlKeyword percent_rank period permission placing plans pli policy portion position
+syn keyword sqlKeyword position_regex power precedes preceding precision prepare prepared preserve
+syn keyword sqlKeyword primary prior privileges procedural procedure program public quote range rank
+syn keyword sqlKeyword read reads real reassign recheck recovery recursive ref references referencing
+syn keyword sqlKeyword refresh regr_avgx regr_avgy regr_count regr_intercept regr_r2 regr_slope
+syn keyword sqlKeyword regr_sxx regr_sxy regr_syy reindex relative release rename repeatable replace
+syn keyword sqlKeyword replica requiring reset respect restart restore restrict result return
+syn keyword sqlKeyword returned_cardinality returned_length returned_octet_length returned_sqlstate
+syn keyword sqlKeyword returning returns right role rollup routine routine_catalog routine_name
+syn keyword sqlKeyword routine_schema row rows row_count row_number rule scale schema schema_name
+syn keyword sqlKeyword scope scope_catalog scope_name scope_schema scroll search second section
+syn keyword sqlKeyword security selective self sensitive sequence sequences serializable server
+syn keyword sqlKeyword server_name session session_user setof sets share show similar simple size
+syn keyword sqlKeyword skip snapshot some source space specific specifictype specific_name sql
+syn keyword sqlKeyword sqlcode sqlerror sqlexception sqlstate sqlwarning sqrt stable standalone start
+syn keyword sqlKeyword state statement static statistics stddev_pop stddev_samp stdin stdout storage
+syn keyword sqlKeyword strict strip structure style subclass_origin submultiset substring
+syn keyword sqlKeyword substring_regex succeeds sum symmetric sysid system system_time system_user
+syn keyword sqlKeyword table tables tablesample tablespace table_name temp template temporary then
+syn keyword sqlKeyword ties timezone_hour timezone_minute to token top_level_count trailing
+syn keyword sqlKeyword transaction transactions_committed transactions_rolled_back transaction_active
+syn keyword sqlKeyword transform transforms translate translate_regex translation treat trigger
+syn keyword sqlKeyword trigger_catalog trigger_name trigger_schema trim trim_array trusted type types
+syn keyword sqlKeyword uescape unbounded uncommitted under unencrypted union unique unknown unlink
+syn keyword sqlKeyword unlisten unlogged unnamed unnest until untyped upper uri usage user
+syn keyword sqlKeyword user_defined_type_catalog user_defined_type_code user_defined_type_name
+syn keyword sqlKeyword user_defined_type_schema using vacuum valid validate validator value values
+syn keyword sqlKeyword value_of varbinary variadic var_pop var_samp verbose version versioning view
+syn keyword sqlKeyword views volatile when whenever where whitespace width_bucket window with within
+syn keyword sqlKeyword without work wrapper write xmlagg xmlattributes xmlbinary xmlcast xmlcomment
+syn keyword sqlKeyword xmlconcat xmldeclaration xmldocument xmlelement xmlexists xmlforest xmliterate
+syn keyword sqlKeyword xmlnamespaces xmlparse xmlpi xmlquery xmlroot xmlschema xmlserialize xmltable
+syn keyword sqlKeyword xmltext xmlvalidate year yes zone
 " PL/pgSQL
 syn keyword sqlKeyword contained alias all array as begin by case close collate column constant
 syn keyword sqlKeyword contained constraint continue current current cursor datatype declare
@@ -846,7 +846,6 @@ syn keyword sqlFunction throws_ok todo todo_end todo_start trigger_is triggers_a
 syn keyword sqlFunction types_are unalike unialike users_are view_owner_is views_are
 syn keyword sqlFunction volatility_is
 
-
 syn keyword sqlOperator  all and any between distinct escape except exists
 syn keyword sqlOperator  ilike in intersect like not or like_regex similar
 syn keyword sqlOperator  some to union
@@ -898,43 +897,42 @@ syn keyword sqlType getfaceedges_returntype layer topoelement topoelementarray t
 syn keyword sqlType topology topology_id_seq validatetopology_returntype
 
 " Constants
-syn keyword sqlConstant  debug5 debug4 debug3 debug2 debug1 log notice warning
-syn keyword sqlConstant  error fatal panic
+syn keyword sqlConstant debug5 debug4 debug3 debug2 debug1 log notice warning
+syn keyword sqlConstant error fatal panic
 " System catalogs:
-syn keyword sqlConstant  pg_aggregate pg_am pg_amop pg_amproc pg_attrdef
-syn keyword sqlConstant  pg_attribute pg_auth_members pg_authid
-syn keyword sqlConstant  pg_available_extension_versions
-syn keyword sqlConstant  pg_available_extensions pg_cast pg_class
-syn keyword sqlConstant  pg_collation pg_constraint pg_conversion pg_cursors
-syn keyword sqlConstant  pg_database pg_db_role_setting pg_default_acl
-syn keyword sqlConstant  pg_depend pg_description pg_enum pg_event_trigger
-syn keyword sqlConstant  pg_extension pg_file_settings
-syn keyword sqlConstant  pg_foreign_data_wrapper pg_foreign_server
-syn keyword sqlConstant  pg_foreign_table pg_group pg_index pg_indexes
-syn keyword sqlConstant  pg_inherits pg_language pg_largeobject
-syn keyword sqlConstant  pg_largeobject_metadata pg_locks pg_matviews
-syn keyword sqlConstant  pg_namespace pg_opclass pg_operator pg_opfamily
-syn keyword sqlConstant  pg_pltemplate pg_policies pg_policy
-syn keyword sqlConstant  pg_prepared_statements pg_prepared_xacts pg_proc
-syn keyword sqlConstant  pg_range pg_replication_origin
-syn keyword sqlConstant  pg_replication_origin_status pg_replication_slots
-syn keyword sqlConstant  pg_rewrite pg_roles pg_rules pg_seclabel
-syn keyword sqlConstant  pg_seclabels pg_settings pg_shadow pg_shdepend
-syn keyword sqlConstant  pg_shdescription pg_shseclabel pg_statistic
-syn keyword sqlConstant  pg_stats pg_tables pg_tablespace
-syn keyword sqlConstant  pg_timezone_abbrevs pg_timezone_names pg_transform
-syn keyword sqlConstant  pg_trigger pg_ts_config pg_ts_config_map pg_ts_dict
-syn keyword sqlConstant  pg_ts_parser pg_ts_template pg_type pg_user
-syn keyword sqlConstant  pg_user_mapping pg_user_mappings pg_views
-
+syn keyword sqlConstant pg_aggregate pg_am pg_amop pg_amproc pg_attrdef
+syn keyword sqlConstant pg_attribute pg_auth_members pg_authid
+syn keyword sqlConstant pg_available_extension_versions
+syn keyword sqlConstant pg_available_extensions pg_cast pg_class
+syn keyword sqlConstant pg_collation pg_constraint pg_conversion pg_cursors
+syn keyword sqlConstant pg_database pg_db_role_setting pg_default_acl
+syn keyword sqlConstant pg_depend pg_description pg_enum pg_event_trigger
+syn keyword sqlConstant pg_extension pg_file_settings
+syn keyword sqlConstant pg_foreign_data_wrapper pg_foreign_server
+syn keyword sqlConstant pg_foreign_table pg_group pg_index pg_indexes
+syn keyword sqlConstant pg_inherits pg_language pg_largeobject
+syn keyword sqlConstant pg_largeobject_metadata pg_locks pg_matviews
+syn keyword sqlConstant pg_namespace pg_opclass pg_operator pg_opfamily
+syn keyword sqlConstant pg_pltemplate pg_policies pg_policy
+syn keyword sqlConstant pg_prepared_statements pg_prepared_xacts pg_proc
+syn keyword sqlConstant pg_range pg_replication_origin
+syn keyword sqlConstant pg_replication_origin_status pg_replication_slots
+syn keyword sqlConstant pg_rewrite pg_roles pg_rules pg_seclabel
+syn keyword sqlConstant pg_seclabels pg_settings pg_shadow pg_shdepend
+syn keyword sqlConstant pg_shdescription pg_shseclabel pg_statistic
+syn keyword sqlConstant pg_stats pg_tables pg_tablespace
+syn keyword sqlConstant pg_timezone_abbrevs pg_timezone_names pg_transform
+syn keyword sqlConstant pg_trigger pg_ts_config pg_ts_config_map pg_ts_dict
+syn keyword sqlConstant pg_ts_parser pg_ts_template pg_type pg_user
+syn keyword sqlConstant pg_user_mapping pg_user_mappings pg_views
 " PostGIS 2.2 Grand Unified Custom Variables (GUCs) (§8.2 from the manual)
 syn keyword sqlConstant backend gdal_datapath gdal_enabled_drivers enable_outdb_rasters
 
 " Variables
-syn match sqlVariable    "\<_[A-Za-z0-9][A-Za-z0-9_]*\>"
+syn match sqlVariable "\<_[A-Za-z0-9][A-Za-z0-9_]*\>"
 
 " Numbers
-syn match sqlNumber      "-\=\<\d*\.\=[0-9_]\>"
+syn match sqlNumber "-\=\<\d*\.\=[0-9_]\>"
 
 " Strings
 syn region sqlIdentifier start=+"+  skip=+\\\\\|\\"+  end=+"+
@@ -948,7 +946,7 @@ syn match  sqlComment    "--.*$"               contains=sqlTodo,@Spell
 syn sync ccomment sqlComment
 
 " Options
-syn keyword sqlOption    client_min_messages search_path
+syn keyword sqlOption client_min_messages search_path
 
 " Error Codes
 syn keyword sqlErrorCode successful_completion warning dynamic_result_sets_returned
