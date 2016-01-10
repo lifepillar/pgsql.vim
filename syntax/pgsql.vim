@@ -117,586 +117,506 @@ syn keyword sqlKeyword contained while
 " psql template1
 " \t
 " \o functions.txt
-" select  p.proname
+" select  distinct p.proname
 " from    pg_catalog.pg_namespace n
 " join    pg_catalog.pg_proc p
 " on      p.pronamespace = n.oid;
-syn keyword sqlFunction boolin boolout byteain byteaout charin charout namein nameout int2in
-syn keyword sqlFunction int2out int2vectorin int2vectorout int4in int4out regprocin regprocout
-syn keyword sqlFunction to_regproc to_regprocedure textin textout tidin tidout xidin xidout cidin
-syn keyword sqlFunction cidout oidvectorin oidvectorout boollt boolgt booleq chareq nameeq int2eq
-syn keyword sqlFunction int2lt int4eq int4lt texteq xideq cideq charne charlt charle chargt
-syn keyword sqlFunction charge int4 char nameregexeq nameregexne textregexeq textregexne textlen
-syn keyword sqlFunction textcat boolne version pg_ddl_command_in pg_ddl_command_out
-syn keyword sqlFunction pg_ddl_command_recv pg_ddl_command_send eqsel neqsel scalarltsel
-syn keyword sqlFunction scalargtsel eqjoinsel neqjoinsel scalarltjoinsel scalargtjoinsel
-syn keyword sqlFunction unknownin unknownout numeric_fac box_above_eq box_below_eq point_in
-syn keyword sqlFunction point_out lseg_in lseg_out path_in path_out box_in box_out box_overlap
-syn keyword sqlFunction box_ge box_gt box_eq box_lt box_le point_above point_left point_right
-syn keyword sqlFunction point_below point_eq on_pb on_ppath box_center areasel areajoinsel
-syn keyword sqlFunction int4mul int4ne int2ne int2gt int4gt int2le int4le int4ge int2ge int2mul
-syn keyword sqlFunction int2div int4div int2mod int4mod textne int24eq int42eq int24lt int42lt
-syn keyword sqlFunction int24gt int42gt int24ne int42ne int24le int42le int24ge int42ge int24mul
-syn keyword sqlFunction int42mul int24div int42div int2pl int4pl int24pl int42pl int2mi int4mi
-syn keyword sqlFunction int24mi int42mi oideq oidne box_same box_contain box_left box_overleft
-syn keyword sqlFunction box_overright box_right box_contained box_contain_pt pg_node_tree_in
-syn keyword sqlFunction pg_node_tree_out pg_node_tree_recv pg_node_tree_send float4in float4out
-syn keyword sqlFunction float4mul float4div float4pl float4mi float4um float4abs float4_accum
-syn keyword sqlFunction float4larger float4smaller int4um int2um float8in float8out float8mul
-syn keyword sqlFunction float8div float8pl float8mi float8um float8abs float8_accum float8larger
-syn keyword sqlFunction float8smaller lseg_center path_center poly_center dround dtrunc ceil
-syn keyword sqlFunction ceiling floor sign dsqrt dcbrt dpow dexp dlog1 float8 float4 int2 int2
-syn keyword sqlFunction line_distance abstimein abstimeout reltimein reltimeout timepl timemi
-syn keyword sqlFunction tintervalin tintervalout intinterval tintervalrel timenow abstimeeq
-syn keyword sqlFunction abstimene abstimelt abstimegt abstimele abstimege reltimeeq reltimene
-syn keyword sqlFunction reltimelt reltimegt reltimele reltimege tintervalsame tintervalct
-syn keyword sqlFunction tintervalov tintervalleneq tintervallenne tintervallenlt tintervallengt
-syn keyword sqlFunction tintervallenle tintervallenge tintervalstart tintervalend timeofday
-syn keyword sqlFunction isfinite inter_sl inter_lb float48mul float48div float48pl float48mi
-syn keyword sqlFunction float84mul float84div float84pl float84mi float4eq float4ne float4lt
-syn keyword sqlFunction float4le float4gt float4ge float8eq float8ne float8lt float8le float8gt
-syn keyword sqlFunction float8ge float48eq float48ne float48lt float48le float48gt float48ge
-syn keyword sqlFunction float84eq float84ne float84lt float84le float84gt float84ge width_bucket
-syn keyword sqlFunction float8 float4 int4 int2 int2vectoreq float8 int4 float4 int4 btgettuple
-syn keyword sqlFunction btgetbitmap btinsert btbeginscan btrescan btendscan btmarkpos btrestrpos
-syn keyword sqlFunction btbuild btbuildempty btbulkdelete btvacuumcleanup btcanreturn
-syn keyword sqlFunction btcostestimate btoptions bringetbitmap brininsert brinbeginscan
-syn keyword sqlFunction brinrescan brinendscan brinmarkpos brinrestrpos brinbuild brinbuildempty
-syn keyword sqlFunction brinbulkdelete brinvacuumcleanup brincostestimate brinoptions
-syn keyword sqlFunction brin_summarize_new_values poly_same poly_contain poly_left poly_overleft
-syn keyword sqlFunction poly_overright poly_right poly_contained poly_overlap poly_in poly_out
-syn keyword sqlFunction btint2cmp btint2sortsupport btint4cmp btint4sortsupport btint8cmp
-syn keyword sqlFunction btint8sortsupport btfloat4cmp btfloat4sortsupport btfloat8cmp
-syn keyword sqlFunction btfloat8sortsupport btoidcmp btoidsortsupport btoidvectorcmp btabstimecmp
-syn keyword sqlFunction btcharcmp btnamecmp btnamesortsupport bttextcmp bttextsortsupport
-syn keyword sqlFunction cash_cmp btreltimecmp bttintervalcmp btarraycmp lseg_distance
-syn keyword sqlFunction lseg_interpt dist_ps dist_pb dist_sb close_ps close_pb close_sb on_ps
-syn keyword sqlFunction path_distance dist_ppath on_sb inter_sb text text name bpchar name
-syn keyword sqlFunction hashgettuple hashgetbitmap hashinsert hashbeginscan hashrescan
-syn keyword sqlFunction hashendscan hashmarkpos hashrestrpos hashbuild hashbuildempty
-syn keyword sqlFunction hashbulkdelete hashvacuumcleanup hashcostestimate hashoptions hashint2
-syn keyword sqlFunction hashint4 hashint8 hashfloat4 hashfloat8 hashoid hashchar hashname
-syn keyword sqlFunction hashtext hashvarlena hashoidvector hash_aclitem hashint2vector
-syn keyword sqlFunction hashmacaddr hashinet hash_numeric text_larger text_smaller int8in int8out
-syn keyword sqlFunction int8um int8pl int8mi int8mul int8div int8eq int8ne int8lt int8gt int8le
-syn keyword sqlFunction int8ge int84eq int84ne int84lt int84gt int84le int84ge int4 int8 float8
-syn keyword sqlFunction int8 hash_array float4 int8 int2 int8 namelt namele namegt namege namene
-syn keyword sqlFunction bpchar varchar_transform varchar mktinterval oidvectorne oidvectorlt
-syn keyword sqlFunction oidvectorle oidvectoreq oidvectorge oidvectorgt getpgusername oidlt oidle
-syn keyword sqlFunction octet_length get_byte set_byte get_bit set_bit overlay overlay dist_pl
-syn keyword sqlFunction dist_lb dist_sl dist_cpoly poly_distance dist_ppoly dist_polyp
-syn keyword sqlFunction dist_cpoint text_lt text_le text_gt text_ge current_user session_user
-syn keyword sqlFunction array_eq array_ne array_lt array_gt array_le array_ge array_dims
-syn keyword sqlFunction array_ndims array_in array_out array_lower array_upper array_length
-syn keyword sqlFunction cardinality array_append array_prepend array_cat string_to_array
-syn keyword sqlFunction array_to_string string_to_array array_to_string array_larger
-syn keyword sqlFunction array_smaller array_position array_position array_positions
-syn keyword sqlFunction generate_subscripts generate_subscripts array_fill array_fill unnest
-syn keyword sqlFunction array_remove array_replace array_agg_transfn array_agg_finalfn array_agg
-syn keyword sqlFunction array_agg_array_transfn array_agg_array_finalfn array_agg width_bucket
-syn keyword sqlFunction array_typanalyze arraycontsel arraycontjoinsel smgrin smgrout smgreq
-syn keyword sqlFunction smgrne lo_import lo_import lo_export int4inc int4larger int4smaller
-syn keyword sqlFunction int2larger int2smaller gistgettuple gistgetbitmap gistinsert
-syn keyword sqlFunction gistbeginscan gistrescan gistendscan gistmarkpos gistrestrpos gistbuild
-syn keyword sqlFunction gistbuildempty gistbulkdelete gistvacuumcleanup gistcanreturn
-syn keyword sqlFunction gistcostestimate gistoptions tintervaleq tintervalne tintervallt
-syn keyword sqlFunction tintervalgt tintervalle tintervalge cash_mul_flt4 cash_div_flt4
-syn keyword sqlFunction flt4_mul_cash position textlike textnlike int48eq int48ne int48lt int48gt
-syn keyword sqlFunction int48le int48ge namelike namenlike bpchar current_database current_query
-syn keyword sqlFunction int4_mul_cash int2_mul_cash cash_mul_int4 cash_div_int4 cash_mul_int2
-syn keyword sqlFunction cash_div_int2 cash_in cash_out cash_eq cash_ne cash_lt cash_le cash_gt
-syn keyword sqlFunction cash_ge cash_pl cash_mi cash_mul_flt8 cash_div_flt8 cashlarger
-syn keyword sqlFunction cashsmaller flt8_mul_cash cash_words cash_div_cash numeric money money
-syn keyword sqlFunction money mod mod int8mod mod char text lo_open lo_close loread lowrite
-syn keyword sqlFunction lo_lseek lo_lseek64 lo_creat lo_create lo_tell lo_tell64 lo_truncate
-syn keyword sqlFunction lo_truncate64 lo_from_bytea lo_get lo_get lo_put on_pl on_sl close_pl
-syn keyword sqlFunction close_sl close_lb lo_unlink path_inter area width height box_distance
-syn keyword sqlFunction area box_intersect bound_box diagonal path_n_lt path_n_gt path_n_eq
-syn keyword sqlFunction path_n_le path_n_ge path_length point_ne point_vert point_horiz
-syn keyword sqlFunction point_distance slope lseg lseg_intersect lseg_parallel lseg_perp
-syn keyword sqlFunction lseg_vertical lseg_horizontal lseg_eq timestamp_izone_transform timezone
-syn keyword sqlFunction aclitemin aclitemout aclinsert aclremove aclcontains aclitemeq
-syn keyword sqlFunction makeaclitem acldefault aclexplode bpcharin bpcharout bpchartypmodin
-syn keyword sqlFunction bpchartypmodout varcharin varcharout varchartypmodin varchartypmodout
-syn keyword sqlFunction bpchareq bpcharlt bpcharle bpchargt bpcharge bpcharne bpchar_larger
-syn keyword sqlFunction bpchar_smaller bpcharcmp hashbpchar format_type date_in date_out date_eq
-syn keyword sqlFunction date_lt date_le date_gt date_ge date_ne date_cmp date_sortsupport time_lt
-syn keyword sqlFunction time_le time_gt time_ge time_ne time_cmp date_larger date_smaller date_mi
-syn keyword sqlFunction date_pli date_mii time_in time_out timetypmodin timetypmodout time_eq
-syn keyword sqlFunction circle_add_pt circle_sub_pt circle_mul_pt circle_div_pt timestamptz_in
-syn keyword sqlFunction timestamptz_out timestamptztypmodin timestamptztypmodout timestamptz_eq
-syn keyword sqlFunction timestamptz_ne timestamptz_lt timestamptz_le timestamptz_ge
-syn keyword sqlFunction timestamptz_gt to_timestamp timestamp_zone_transform timezone interval_in
-syn keyword sqlFunction interval_out intervaltypmodin intervaltypmodout interval_eq interval_ne
-syn keyword sqlFunction interval_lt interval_le interval_ge interval_gt interval_um interval_pl
-syn keyword sqlFunction interval_mi date_part date_part timestamptz timestamptz justify_interval
-syn keyword sqlFunction justify_hours justify_days timestamptz interval date date abstime age
-syn keyword sqlFunction mxid_age timestamptz_mi timestamptz_pl_interval timestamptz_mi_interval
-syn keyword sqlFunction reltime timestamptz_smaller timestamptz_larger interval_smaller
-syn keyword sqlFunction interval_larger age interval_transform interval obj_description
-syn keyword sqlFunction col_description shobj_description date_trunc date_trunc int8inc int8dec
-syn keyword sqlFunction int8inc_any int8dec_any int8abs int8larger int8smaller texticregexeq
-syn keyword sqlFunction texticregexne nameicregexeq nameicregexne int4abs int2abs overlaps
-syn keyword sqlFunction datetime_pl date_part int84pl int84mi int84mul int84div int48pl int48mi
-syn keyword sqlFunction int48mul int48div int82pl int82mi int82mul int82div int28pl int28mi
-syn keyword sqlFunction int28mul int28div oid int8 suppress_redundant_updates_trigger tideq
-syn keyword sqlFunction currtid currtid2 tidne tidgt tidlt tidge tidle bttidcmp tidlarger
-syn keyword sqlFunction tidsmaller timedate_pl datetimetz_pl timetzdate_pl now
-syn keyword sqlFunction transaction_timestamp statement_timestamp clock_timestamp positionsel
-syn keyword sqlFunction positionjoinsel contsel contjoinsel overlaps overlaps overlaps overlaps
-syn keyword sqlFunction overlaps overlaps overlaps overlaps timestamp_in timestamp_out
-syn keyword sqlFunction timestamptypmodin timestamptypmodout timestamptz_cmp interval_cmp time
-syn keyword sqlFunction length length xideqint4 interval_div dlog10 log ln round trunc sqrt cbrt
-syn keyword sqlFunction pow power exp obj_description oidvectortypes timetz_in timetz_out
-syn keyword sqlFunction timetztypmodin timetztypmodout timetz_eq timetz_ne timetz_lt timetz_le
-syn keyword sqlFunction timetz_ge timetz_gt timetz_cmp timestamptz time character_length
-syn keyword sqlFunction character_length interval char_length octet_length octet_length
-syn keyword sqlFunction time_larger time_smaller timetz_larger timetz_smaller char_length
-syn keyword sqlFunction date_part date_part date_part date_part age timetz isfinite isfinite
-syn keyword sqlFunction isfinite factorial abs abs abs abs abs name varchar current_schema
-syn keyword sqlFunction current_schemas overlay overlay isvertical ishorizontal isparallel isperp
-syn keyword sqlFunction isvertical ishorizontal isparallel isperp isvertical ishorizontal point
-syn keyword sqlFunction time box box_add box_sub box_mul box_div path_contain_pt poly_contain_pt
-syn keyword sqlFunction pt_contained_poly isclosed isopen path_npoints pclose popen path_add
-syn keyword sqlFunction path_add_pt path_sub_pt path_mul_pt path_div_pt point point_add point_sub
-syn keyword sqlFunction point_mul point_div poly_npoints box path polygon polygon circle_in
-syn keyword sqlFunction circle_out circle_same circle_contain circle_left circle_overleft
-syn keyword sqlFunction circle_overright circle_right circle_contained circle_overlap
-syn keyword sqlFunction circle_below circle_above circle_eq circle_ne circle_lt circle_gt
-syn keyword sqlFunction circle_le circle_ge area diameter radius circle_distance circle_center
-syn keyword sqlFunction circle circle polygon dist_pc circle_contain_pt pt_contained_circle box
-syn keyword sqlFunction circle box tinterval lseg_ne lseg_lt lseg_le lseg_gt lseg_ge lseg_length
-syn keyword sqlFunction close_ls close_lseg line_in line_out line_eq line line_interpt
-syn keyword sqlFunction line_intersect line_parallel line_perp line_vertical line_horizontal
-syn keyword sqlFunction length length point point point point lseg center center polygon npoints
-syn keyword sqlFunction npoints bit_in bit_out bittypmodin bittypmodout like notlike like notlike
-syn keyword sqlFunction nextval currval setval setval pg_sequence_parameters varbit_in varbit_out
-syn keyword sqlFunction varbittypmodin varbittypmodout biteq bitne bitge bitgt bitle bitlt bitcmp
-syn keyword sqlFunction random setseed asin acos atan atan2 sin cos tan cot degrees radians pi
-syn keyword sqlFunction interval_mul ascii chr repeat similar_escape mul_d_interval bpcharlike
-syn keyword sqlFunction bpcharnlike texticlike texticnlike nameiclike nameicnlike like_escape
-syn keyword sqlFunction bpcharicregexeq bpcharicregexne bpcharregexeq bpcharregexne bpchariclike
-syn keyword sqlFunction bpcharicnlike strpos lower upper initcap lpad rpad ltrim rtrim substr
-syn keyword sqlFunction translate lpad rpad ltrim rtrim substr btrim btrim substring substring
-syn keyword sqlFunction replace regexp_replace regexp_replace regexp_matches regexp_matches
-syn keyword sqlFunction split_part regexp_split_to_table regexp_split_to_table
-syn keyword sqlFunction regexp_split_to_array regexp_split_to_array to_hex to_hex
-syn keyword sqlFunction getdatabaseencoding pg_client_encoding length convert_from convert_to
-syn keyword sqlFunction convert pg_char_to_encoding pg_encoding_to_char pg_encoding_max_length
-syn keyword sqlFunction oidgt oidge pg_get_ruledef pg_get_viewdef pg_get_viewdef pg_get_userbyid
-syn keyword sqlFunction pg_get_indexdef pg_get_triggerdef pg_get_constraintdef pg_get_expr
-syn keyword sqlFunction pg_get_serial_sequence pg_get_functiondef pg_get_function_arguments
-syn keyword sqlFunction pg_get_function_identity_arguments pg_get_function_result
-syn keyword sqlFunction pg_get_function_arg_default pg_get_keywords pg_options_to_table pg_typeof
-syn keyword sqlFunction pg_collation_for pg_relation_is_updatable pg_column_is_updatable
-syn keyword sqlFunction unique_key_recheck RI_FKey_check_ins RI_FKey_check_upd
-syn keyword sqlFunction RI_FKey_cascade_del RI_FKey_cascade_upd RI_FKey_restrict_del
-syn keyword sqlFunction RI_FKey_restrict_upd RI_FKey_setnull_del RI_FKey_setnull_upd
-syn keyword sqlFunction RI_FKey_setdefault_del RI_FKey_setdefault_upd RI_FKey_noaction_del
-syn keyword sqlFunction RI_FKey_noaction_upd varbiteq varbitne varbitge varbitgt varbitle
-syn keyword sqlFunction varbitlt varbitcmp bitand bitor bitxor bitnot bitshiftleft bitshiftright
-syn keyword sqlFunction bitcat substring length octet_length bit int4 bit varbit_transform varbit
-syn keyword sqlFunction position substring overlay overlay get_bit set_bit macaddr_in macaddr_out
-syn keyword sqlFunction trunc macaddr_eq macaddr_lt macaddr_le macaddr_gt macaddr_ge macaddr_ne
-syn keyword sqlFunction macaddr_cmp macaddr_not macaddr_and macaddr_or inet_in inet_out cidr_in
-syn keyword sqlFunction cidr_out network_eq network_lt network_le network_gt network_ge
-syn keyword sqlFunction network_ne network_larger network_smaller network_cmp network_sub
-syn keyword sqlFunction network_subeq network_sup network_supeq network_overlap abbrev abbrev
-syn keyword sqlFunction set_masklen set_masklen family network netmask masklen broadcast host
-syn keyword sqlFunction text hostmask cidr inet_client_addr inet_client_port inet_server_addr
-syn keyword sqlFunction inet_server_port inetnot inetand inetor inetpl int8pl_inet inetmi_int8
-syn keyword sqlFunction inetmi inet_same_family inet_merge inet_gist_consistent inet_gist_union
-syn keyword sqlFunction inet_gist_compress inet_gist_decompress inet_gist_fetch inet_gist_penalty
-syn keyword sqlFunction inet_gist_picksplit inet_gist_same networksel networkjoinsel time_mi_time
-syn keyword sqlFunction boolle boolge btboolcmp time_hash timetz_hash interval_hash numeric_in
-syn keyword sqlFunction numeric_out numerictypmodin numerictypmodout numeric_transform numeric
-syn keyword sqlFunction numeric_abs abs sign round round trunc trunc ceil ceiling floor
-syn keyword sqlFunction numeric_eq numeric_ne numeric_gt numeric_ge numeric_lt numeric_le
-syn keyword sqlFunction numeric_add numeric_sub numeric_mul numeric_div mod numeric_mod sqrt
-syn keyword sqlFunction numeric_sqrt exp numeric_exp ln numeric_ln log numeric_log pow power
-syn keyword sqlFunction numeric_power numeric log numeric numeric int4 float4 float8 div
-syn keyword sqlFunction numeric_div_trunc width_bucket time_pl_interval time_mi_interval
-syn keyword sqlFunction timetz_pl_interval timetz_mi_interval numeric_inc numeric_smaller
-syn keyword sqlFunction numeric_larger numeric_cmp numeric_sortsupport numeric_uminus int8
-syn keyword sqlFunction numeric numeric int2 to_char to_char to_char to_char to_char to_char
-syn keyword sqlFunction to_number to_timestamp to_date to_char quote_ident quote_literal
-syn keyword sqlFunction quote_literal quote_nullable quote_nullable oidin oidout concat concat_ws
-syn keyword sqlFunction left right reverse format format bit_length bit_length bit_length
-syn keyword sqlFunction iclikesel icnlikesel iclikejoinsel icnlikejoinsel regexeqsel likesel
-syn keyword sqlFunction icregexeqsel regexnesel nlikesel icregexnesel regexeqjoinsel likejoinsel
-syn keyword sqlFunction icregexeqjoinsel regexnejoinsel nlikejoinsel icregexnejoinsel float8_avg
-syn keyword sqlFunction float8_var_pop float8_var_samp float8_stddev_pop float8_stddev_samp
-syn keyword sqlFunction numeric_accum numeric_avg_accum numeric_accum_inv int2_accum int4_accum
-syn keyword sqlFunction int8_accum int8_avg_accum int2_accum_inv int4_accum_inv int8_accum_inv
-syn keyword sqlFunction int8_avg_accum_inv numeric_sum numeric_avg numeric_var_pop
-syn keyword sqlFunction numeric_var_samp numeric_stddev_pop numeric_stddev_samp int2_sum int4_sum
-syn keyword sqlFunction int8_sum numeric_poly_sum numeric_poly_avg numeric_poly_var_pop
-syn keyword sqlFunction numeric_poly_var_samp numeric_poly_stddev_pop numeric_poly_stddev_samp
-syn keyword sqlFunction interval_accum interval_accum_inv interval_avg int2_avg_accum
-syn keyword sqlFunction int4_avg_accum int2_avg_accum_inv int4_avg_accum_inv int8_avg
-syn keyword sqlFunction int2int4_sum int8inc_float8_float8 float8_regr_accum float8_regr_sxx
-syn keyword sqlFunction float8_regr_syy float8_regr_sxy float8_regr_avgx float8_regr_avgy
-syn keyword sqlFunction float8_regr_r2 float8_regr_slope float8_regr_intercept float8_covar_pop
-syn keyword sqlFunction float8_covar_samp float8_corr string_agg_transfn string_agg_finalfn
-syn keyword sqlFunction string_agg bytea_string_agg_transfn bytea_string_agg_finalfn string_agg
-syn keyword sqlFunction to_ascii to_ascii to_ascii interval_pl_time int28eq int28ne int28lt
-syn keyword sqlFunction int28gt int28le int28ge int82eq int82ne int82lt int82gt int82le int82ge
-syn keyword sqlFunction int2and int2or int2xor int2not int2shl int2shr int4and int4or int4xor
-syn keyword sqlFunction int4not int4shl int4shr int8and int8or int8xor int8not int8shl int8shr
-syn keyword sqlFunction int8up int2up int4up float4up float8up numeric_uplus has_table_privilege
-syn keyword sqlFunction has_table_privilege has_table_privilege has_table_privilege
-syn keyword sqlFunction has_table_privilege has_table_privilege has_sequence_privilege
-syn keyword sqlFunction has_sequence_privilege has_sequence_privilege has_sequence_privilege
-syn keyword sqlFunction has_sequence_privilege has_sequence_privilege has_column_privilege
-syn keyword sqlFunction has_column_privilege has_column_privilege has_column_privilege
-syn keyword sqlFunction has_column_privilege has_column_privilege has_column_privilege
-syn keyword sqlFunction has_column_privilege has_column_privilege has_column_privilege
-syn keyword sqlFunction has_column_privilege has_column_privilege has_any_column_privilege
-syn keyword sqlFunction has_any_column_privilege has_any_column_privilege
-syn keyword sqlFunction has_any_column_privilege has_any_column_privilege
-syn keyword sqlFunction has_any_column_privilege pg_stat_get_numscans pg_stat_get_tuples_returned
-syn keyword sqlFunction pg_stat_get_tuples_fetched pg_stat_get_tuples_inserted
-syn keyword sqlFunction pg_stat_get_tuples_updated pg_stat_get_tuples_deleted
-syn keyword sqlFunction pg_stat_get_tuples_hot_updated pg_stat_get_live_tuples
-syn keyword sqlFunction pg_stat_get_dead_tuples pg_stat_get_mod_since_analyze
-syn keyword sqlFunction pg_stat_get_blocks_fetched pg_stat_get_blocks_hit
-syn keyword sqlFunction pg_stat_get_last_vacuum_time pg_stat_get_last_autovacuum_time
-syn keyword sqlFunction pg_stat_get_last_analyze_time pg_stat_get_last_autoanalyze_time
-syn keyword sqlFunction pg_stat_get_vacuum_count pg_stat_get_autovacuum_count
-syn keyword sqlFunction pg_stat_get_analyze_count pg_stat_get_autoanalyze_count
-syn keyword sqlFunction pg_stat_get_backend_idset bytealt byteale pg_stat_get_activity
-syn keyword sqlFunction pg_stat_get_wal_senders pg_backend_pid pg_stat_get_backend_pid
-syn keyword sqlFunction pg_stat_get_backend_dbid pg_stat_get_backend_userid
-syn keyword sqlFunction pg_stat_get_backend_activity pg_stat_get_backend_waiting
-syn keyword sqlFunction pg_stat_get_backend_activity_start pg_stat_get_backend_xact_start
-syn keyword sqlFunction pg_stat_get_backend_start pg_stat_get_backend_client_addr
-syn keyword sqlFunction pg_stat_get_backend_client_port pg_stat_get_db_numbackends
-syn keyword sqlFunction pg_stat_get_db_xact_commit pg_stat_get_db_xact_rollback
-syn keyword sqlFunction pg_stat_get_db_blocks_fetched pg_stat_get_db_blocks_hit
-syn keyword sqlFunction pg_stat_get_db_tuples_returned pg_stat_get_db_tuples_fetched
-syn keyword sqlFunction pg_stat_get_db_tuples_inserted pg_stat_get_db_tuples_updated
-syn keyword sqlFunction pg_stat_get_db_tuples_deleted pg_stat_get_db_conflict_tablespace
-syn keyword sqlFunction pg_stat_get_db_conflict_lock pg_stat_get_db_conflict_snapshot
-syn keyword sqlFunction pg_stat_get_db_conflict_bufferpin
-syn keyword sqlFunction pg_stat_get_db_conflict_startup_deadlock pg_stat_get_db_conflict_all
-syn keyword sqlFunction pg_stat_get_db_deadlocks pg_stat_get_db_stat_reset_time
-syn keyword sqlFunction pg_stat_get_db_temp_files pg_stat_get_db_temp_bytes
-syn keyword sqlFunction pg_stat_get_db_blk_read_time pg_stat_get_db_blk_write_time byteagt
-syn keyword sqlFunction pg_stat_get_archiver pg_stat_get_bgwriter_timed_checkpoints
-syn keyword sqlFunction pg_stat_get_bgwriter_requested_checkpoints
-syn keyword sqlFunction pg_stat_get_bgwriter_buf_written_checkpoints
-syn keyword sqlFunction pg_stat_get_bgwriter_buf_written_clean
-syn keyword sqlFunction pg_stat_get_bgwriter_maxwritten_clean
-syn keyword sqlFunction pg_stat_get_bgwriter_stat_reset_time pg_stat_get_checkpoint_write_time
-syn keyword sqlFunction pg_stat_get_checkpoint_sync_time pg_stat_get_buf_written_backend
-syn keyword sqlFunction pg_stat_get_buf_fsync_backend pg_stat_get_buf_alloc
-syn keyword sqlFunction pg_stat_get_function_calls pg_stat_get_function_total_time
-syn keyword sqlFunction pg_stat_get_function_self_time pg_stat_get_xact_numscans
-syn keyword sqlFunction pg_stat_get_xact_tuples_returned pg_stat_get_xact_tuples_fetched
-syn keyword sqlFunction pg_stat_get_xact_tuples_inserted pg_stat_get_xact_tuples_updated
-syn keyword sqlFunction pg_stat_get_xact_tuples_deleted pg_stat_get_xact_tuples_hot_updated
-syn keyword sqlFunction pg_stat_get_xact_blocks_fetched pg_stat_get_xact_blocks_hit
-syn keyword sqlFunction pg_stat_get_xact_function_calls pg_stat_get_xact_function_total_time
-syn keyword sqlFunction pg_stat_get_xact_function_self_time pg_stat_get_snapshot_timestamp
-syn keyword sqlFunction pg_stat_clear_snapshot pg_stat_reset pg_stat_reset_shared
-syn keyword sqlFunction pg_stat_reset_single_table_counters
-syn keyword sqlFunction pg_stat_reset_single_function_counters pg_trigger_depth
-syn keyword sqlFunction pg_tablespace_location encode decode byteaeq byteage byteane byteacmp
-syn keyword sqlFunction timestamp_transform time_transform timestamp oidlarger oidsmaller
-syn keyword sqlFunction timestamptz time timetz textanycat anytextcat bytealike byteanlike like
-syn keyword sqlFunction notlike like_escape length byteacat substring substring substr substr
-syn keyword sqlFunction position btrim time date_trunc date_part timestamp timestamp timestamp
-syn keyword sqlFunction timestamp timestamptz date abstime timestamp_mi timestamp_pl_interval
-syn keyword sqlFunction timestamp_mi_interval timestamp_smaller timestamp_larger timezone
-syn keyword sqlFunction timezone timestamp_hash overlaps overlaps overlaps overlaps timestamp_cmp
-syn keyword sqlFunction timestamp_sortsupport time timetz isfinite to_char timestamp_eq
-syn keyword sqlFunction timestamp_ne timestamp_lt timestamp_le timestamp_ge timestamp_gt age age
-syn keyword sqlFunction timezone timezone date_pl_interval date_mi_interval substring substring
-syn keyword sqlFunction bit int8 current_setting set_config pg_show_all_settings pg_lock_status
-syn keyword sqlFunction pg_prepared_xact pg_last_xlog_replay_location pg_get_multixact_members
-syn keyword sqlFunction pg_xact_commit_timestamp pg_last_committed_xact pg_describe_object
-syn keyword sqlFunction pg_identify_object pg_identify_object_as_address pg_get_object_address
-syn keyword sqlFunction pg_table_is_visible pg_type_is_visible pg_function_is_visible
-syn keyword sqlFunction pg_operator_is_visible pg_opclass_is_visible pg_opfamily_is_visible
-syn keyword sqlFunction pg_conversion_is_visible pg_ts_parser_is_visible pg_ts_dict_is_visible
-syn keyword sqlFunction pg_ts_template_is_visible pg_ts_config_is_visible pg_collation_is_visible
-syn keyword sqlFunction pg_my_temp_schema pg_is_other_temp_schema pg_cancel_backend
-syn keyword sqlFunction pg_terminate_backend pg_stop_backup pg_is_in_backup pg_backup_start_time
-syn keyword sqlFunction pg_switch_xlog pg_create_restore_point pg_current_xlog_location
-syn keyword sqlFunction pg_current_xlog_insert_location pg_xlogfile_name_offset pg_xlogfile_name
-syn keyword sqlFunction pg_xlog_location_diff pg_export_snapshot pg_is_in_recovery
-syn keyword sqlFunction pg_last_xlog_receive_location pg_last_xact_replay_timestamp
-syn keyword sqlFunction pg_xlog_replay_pause pg_xlog_replay_resume pg_is_xlog_replay_paused
-syn keyword sqlFunction pg_reload_conf pg_rotate_logfile pg_stat_file pg_stat_file pg_read_file
-syn keyword sqlFunction pg_read_file pg_read_file pg_read_binary_file pg_read_binary_file
-syn keyword sqlFunction pg_read_binary_file pg_ls_dir pg_ls_dir pg_sleep pg_sleep_for
-syn keyword sqlFunction pg_sleep_until text avg avg avg avg avg avg avg sum sum sum sum sum sum
-syn keyword sqlFunction sum sum max max max max max max max max max max max max max max max max
-syn keyword sqlFunction max max max max min min min min min min min min min min min min min min
-syn keyword sqlFunction min min min min min min count count var_pop var_pop var_pop var_pop
-syn keyword sqlFunction var_pop var_pop var_samp var_samp var_samp var_samp var_samp var_samp
-syn keyword sqlFunction variance variance variance variance variance variance stddev_pop
-syn keyword sqlFunction stddev_pop stddev_pop stddev_pop stddev_pop stddev_pop stddev_samp
-syn keyword sqlFunction stddev_samp stddev_samp stddev_samp stddev_samp stddev_samp stddev stddev
-syn keyword sqlFunction stddev stddev stddev stddev regr_count regr_sxx regr_syy regr_sxy
-syn keyword sqlFunction regr_avgx regr_avgy regr_r2 regr_slope regr_intercept covar_pop
-syn keyword sqlFunction covar_samp corr text_pattern_lt text_pattern_le text_pattern_ge
-syn keyword sqlFunction text_pattern_gt bttext_pattern_cmp bpchar_pattern_lt bpchar_pattern_le
-syn keyword sqlFunction bpchar_pattern_ge bpchar_pattern_gt btbpchar_pattern_cmp btint48cmp
-syn keyword sqlFunction btint84cmp btint24cmp btint42cmp btint28cmp btint82cmp btfloat48cmp
-syn keyword sqlFunction btfloat84cmp regprocedurein regprocedureout regoperin regoperout
-syn keyword sqlFunction to_regoper to_regoperator regoperatorin regoperatorout regclassin
-syn keyword sqlFunction regclassout to_regclass regtypein regtypeout to_regtype regclass
-syn keyword sqlFunction regrolein regroleout to_regrole regnamespacein regnamespaceout
-syn keyword sqlFunction to_regnamespace fmgr_internal_validator fmgr_c_validator
-syn keyword sqlFunction fmgr_sql_validator has_database_privilege has_database_privilege
-syn keyword sqlFunction has_database_privilege has_database_privilege has_database_privilege
-syn keyword sqlFunction has_database_privilege has_function_privilege has_function_privilege
-syn keyword sqlFunction has_function_privilege has_function_privilege has_function_privilege
-syn keyword sqlFunction has_function_privilege has_language_privilege has_language_privilege
-syn keyword sqlFunction has_language_privilege has_language_privilege has_language_privilege
-syn keyword sqlFunction has_language_privilege has_schema_privilege has_schema_privilege
-syn keyword sqlFunction has_schema_privilege has_schema_privilege has_schema_privilege
-syn keyword sqlFunction has_schema_privilege has_tablespace_privilege has_tablespace_privilege
-syn keyword sqlFunction has_tablespace_privilege has_tablespace_privilege
-syn keyword sqlFunction has_tablespace_privilege has_tablespace_privilege
-syn keyword sqlFunction has_foreign_data_wrapper_privilege has_foreign_data_wrapper_privilege
-syn keyword sqlFunction has_foreign_data_wrapper_privilege has_foreign_data_wrapper_privilege
-syn keyword sqlFunction has_foreign_data_wrapper_privilege has_foreign_data_wrapper_privilege
-syn keyword sqlFunction has_server_privilege has_server_privilege has_server_privilege
-syn keyword sqlFunction has_server_privilege has_server_privilege has_server_privilege
-syn keyword sqlFunction has_type_privilege has_type_privilege has_type_privilege
-syn keyword sqlFunction has_type_privilege has_type_privilege has_type_privilege pg_has_role
-syn keyword sqlFunction pg_has_role pg_has_role pg_has_role pg_has_role pg_has_role
-syn keyword sqlFunction pg_column_size pg_tablespace_size pg_tablespace_size pg_database_size
-syn keyword sqlFunction pg_database_size pg_relation_size pg_relation_size pg_total_relation_size
-syn keyword sqlFunction pg_size_pretty pg_size_pretty pg_table_size pg_indexes_size
-syn keyword sqlFunction pg_relation_filenode pg_filenode_relation pg_relation_filepath
-syn keyword sqlFunction postgresql_fdw_validator record_in record_out cstring_in cstring_out
-syn keyword sqlFunction any_in any_out anyarray_in anyarray_out void_in void_out trigger_in
-syn keyword sqlFunction trigger_out event_trigger_in event_trigger_out language_handler_in
-syn keyword sqlFunction language_handler_out internal_in internal_out opaque_in opaque_out
-syn keyword sqlFunction anyelement_in anyelement_out shell_in shell_out domain_in domain_recv
-syn keyword sqlFunction anynonarray_in anynonarray_out fdw_handler_in fdw_handler_out
-syn keyword sqlFunction tsm_handler_in tsm_handler_out bernoulli system md5 md5 date_lt_timestamp
-syn keyword sqlFunction date_le_timestamp date_eq_timestamp date_gt_timestamp date_ge_timestamp
-syn keyword sqlFunction date_ne_timestamp date_cmp_timestamp date_lt_timestamptz
-syn keyword sqlFunction date_le_timestamptz date_eq_timestamptz date_gt_timestamptz
-syn keyword sqlFunction date_ge_timestamptz date_ne_timestamptz date_cmp_timestamptz
-syn keyword sqlFunction timestamp_lt_date timestamp_le_date timestamp_eq_date timestamp_gt_date
-syn keyword sqlFunction timestamp_ge_date timestamp_ne_date timestamp_cmp_date
-syn keyword sqlFunction timestamptz_lt_date timestamptz_le_date timestamptz_eq_date
-syn keyword sqlFunction timestamptz_gt_date timestamptz_ge_date timestamptz_ne_date
-syn keyword sqlFunction timestamptz_cmp_date timestamp_lt_timestamptz timestamp_le_timestamptz
-syn keyword sqlFunction timestamp_eq_timestamptz timestamp_gt_timestamptz
-syn keyword sqlFunction timestamp_ge_timestamptz timestamp_ne_timestamptz
-syn keyword sqlFunction timestamp_cmp_timestamptz timestamptz_lt_timestamp
-syn keyword sqlFunction timestamptz_le_timestamp timestamptz_eq_timestamp
-syn keyword sqlFunction timestamptz_gt_timestamp timestamptz_ge_timestamp
-syn keyword sqlFunction timestamptz_ne_timestamp timestamptz_cmp_timestamp array_recv array_send
-syn keyword sqlFunction record_recv record_send int2recv int2send int4recv int4send int8recv
-syn keyword sqlFunction int8send int2vectorrecv int2vectorsend bytearecv byteasend textrecv
-syn keyword sqlFunction textsend unknownrecv unknownsend oidrecv oidsend oidvectorrecv
-syn keyword sqlFunction oidvectorsend namerecv namesend float4recv float4send float8recv
-syn keyword sqlFunction float8send point_recv point_send bpcharrecv bpcharsend varcharrecv
-syn keyword sqlFunction varcharsend charrecv charsend boolrecv boolsend tidrecv tidsend xidrecv
-syn keyword sqlFunction xidsend cidrecv cidsend regprocrecv regprocsend regprocedurerecv
-syn keyword sqlFunction regproceduresend regoperrecv regopersend regoperatorrecv regoperatorsend
-syn keyword sqlFunction regclassrecv regclasssend regtyperecv regtypesend regrolerecv regrolesend
-syn keyword sqlFunction regnamespacerecv regnamespacesend bit_recv bit_send varbit_recv
-syn keyword sqlFunction varbit_send numeric_recv numeric_send abstimerecv abstimesend reltimerecv
-syn keyword sqlFunction reltimesend tintervalrecv tintervalsend date_recv date_send time_recv
-syn keyword sqlFunction time_send timetz_recv timetz_send timestamp_recv timestamp_send
-syn keyword sqlFunction timestamptz_recv timestamptz_send interval_recv interval_send lseg_recv
-syn keyword sqlFunction lseg_send path_recv path_send box_recv box_send poly_recv poly_send
-syn keyword sqlFunction line_recv line_send circle_recv circle_send cash_recv cash_send
-syn keyword sqlFunction macaddr_recv macaddr_send inet_recv inet_send cidr_recv cidr_send
-syn keyword sqlFunction cstring_recv cstring_send anyarray_recv anyarray_send void_recv void_send
-syn keyword sqlFunction pg_get_ruledef pg_get_viewdef pg_get_viewdef pg_get_viewdef
-syn keyword sqlFunction pg_get_indexdef pg_get_constraintdef pg_get_expr pg_prepared_statement
-syn keyword sqlFunction pg_cursor pg_timezone_abbrevs pg_timezone_names pg_get_triggerdef
-syn keyword sqlFunction pg_listening_channels pg_notify generate_series generate_series
-syn keyword sqlFunction generate_series generate_series generate_series generate_series
-syn keyword sqlFunction generate_series generate_series booland_statefunc boolor_statefunc
-syn keyword sqlFunction bool_accum bool_accum_inv bool_alltrue bool_anytrue bool_and bool_or
-syn keyword sqlFunction every bit_and bit_or bit_and bit_or bit_and bit_or bit_and bit_or
-syn keyword sqlFunction interval_pl_date interval_pl_timetz interval_pl_timestamp
-syn keyword sqlFunction interval_pl_timestamptz integer_pl_date pg_tablespace_databases bool int4
-syn keyword sqlFunction lastval pg_postmaster_start_time pg_conf_load_time box_below
-syn keyword sqlFunction box_overbelow box_overabove box_above poly_below poly_overbelow
-syn keyword sqlFunction poly_overabove poly_above circle_overbelow circle_overabove
-syn keyword sqlFunction gist_box_consistent gist_box_compress gist_box_decompress gist_box_fetch
-syn keyword sqlFunction gist_box_penalty gist_box_picksplit gist_box_union gist_box_same
-syn keyword sqlFunction gist_poly_consistent gist_poly_compress gist_circle_consistent
-syn keyword sqlFunction gist_circle_compress gist_point_compress gist_point_fetch
-syn keyword sqlFunction gist_point_consistent gist_point_distance gist_bbox_distance gingetbitmap
-syn keyword sqlFunction gininsert ginbeginscan ginrescan ginendscan ginmarkpos ginrestrpos
-syn keyword sqlFunction ginbuild ginbuildempty ginbulkdelete ginvacuumcleanup gincostestimate
-syn keyword sqlFunction ginoptions ginarrayextract ginqueryarrayextract ginarrayconsistent
-syn keyword sqlFunction ginarraytriconsistent ginarrayextract arrayoverlap arraycontains
-syn keyword sqlFunction arraycontained brin_minmax_opcinfo brin_minmax_add_value
-syn keyword sqlFunction brin_minmax_consistent brin_minmax_union brin_inclusion_opcinfo
-syn keyword sqlFunction brin_inclusion_add_value brin_inclusion_consistent brin_inclusion_union
-syn keyword sqlFunction pg_advisory_lock pg_advisory_xact_lock pg_advisory_lock_shared
-syn keyword sqlFunction pg_advisory_xact_lock_shared pg_try_advisory_lock
-syn keyword sqlFunction pg_try_advisory_xact_lock pg_try_advisory_lock_shared
-syn keyword sqlFunction pg_try_advisory_xact_lock_shared pg_advisory_unlock
-syn keyword sqlFunction pg_advisory_unlock_shared pg_advisory_lock pg_advisory_xact_lock
-syn keyword sqlFunction pg_advisory_lock_shared pg_advisory_xact_lock_shared pg_try_advisory_lock
-syn keyword sqlFunction pg_try_advisory_xact_lock pg_try_advisory_lock_shared
-syn keyword sqlFunction pg_try_advisory_xact_lock_shared pg_advisory_unlock
-syn keyword sqlFunction pg_advisory_unlock_shared pg_advisory_unlock_all xml_in xml_out
-syn keyword sqlFunction xmlcomment xml xmlvalidate xml_recv xml_send xmlconcat2 xmlagg text
-syn keyword sqlFunction table_to_xml query_to_xml cursor_to_xml table_to_xmlschema
-syn keyword sqlFunction query_to_xmlschema cursor_to_xmlschema table_to_xml_and_xmlschema
-syn keyword sqlFunction query_to_xml_and_xmlschema schema_to_xml schema_to_xmlschema
-syn keyword sqlFunction schema_to_xml_and_xmlschema database_to_xml database_to_xmlschema
-syn keyword sqlFunction database_to_xml_and_xmlschema xpath xpath xmlexists xpath_exists
-syn keyword sqlFunction xpath_exists xml_is_well_formed xml_is_well_formed_document
-syn keyword sqlFunction xml_is_well_formed_content json_in json_out json_recv json_send
-syn keyword sqlFunction array_to_json array_to_json row_to_json row_to_json json_agg_transfn
-syn keyword sqlFunction json_agg_finalfn json_agg json_object_agg_transfn json_object_agg_finalfn
-syn keyword sqlFunction json_object_agg json_build_array json_build_array json_build_object
-syn keyword sqlFunction json_build_object json_object json_object to_json json_strip_nulls
-syn keyword sqlFunction json_object_field json_object_field_text json_array_element
-syn keyword sqlFunction json_array_element_text json_extract_path json_extract_path_text
-syn keyword sqlFunction json_array_elements json_array_elements_text json_array_length
-syn keyword sqlFunction json_object_keys json_each json_each_text json_to_record
-syn keyword sqlFunction json_to_recordset json_typeof uuid_in uuid_out uuid_lt uuid_le uuid_eq
-syn keyword sqlFunction uuid_ge uuid_gt uuid_ne uuid_cmp uuid_recv uuid_send uuid_hash pg_lsn_in
-syn keyword sqlFunction pg_lsn_out pg_lsn_lt pg_lsn_le pg_lsn_eq pg_lsn_ge pg_lsn_gt pg_lsn_ne
-syn keyword sqlFunction pg_lsn_mi pg_lsn_recv pg_lsn_send pg_lsn_cmp pg_lsn_hash anyenum_in
-syn keyword sqlFunction anyenum_out enum_in enum_out enum_eq enum_ne enum_lt enum_gt enum_le
-syn keyword sqlFunction enum_ge enum_cmp hashenum enum_smaller enum_larger max min enum_first
-syn keyword sqlFunction enum_last enum_range enum_range enum_recv enum_send tsvectorin
-syn keyword sqlFunction tsvectorrecv tsvectorout tsvectorsend tsqueryin tsqueryrecv tsqueryout
-syn keyword sqlFunction tsquerysend gtsvectorin gtsvectorout tsvector_lt tsvector_le tsvector_eq
-syn keyword sqlFunction tsvector_ne tsvector_ge tsvector_gt tsvector_cmp length strip setweight
-syn keyword sqlFunction tsvector_concat ts_match_vq ts_match_qv ts_match_tt ts_match_tq
-syn keyword sqlFunction gtsvector_compress gtsvector_decompress gtsvector_picksplit
-syn keyword sqlFunction gtsvector_union gtsvector_same gtsvector_penalty gtsvector_consistent
-syn keyword sqlFunction gin_extract_tsvector gin_extract_tsquery gin_tsquery_consistent
-syn keyword sqlFunction gin_tsquery_triconsistent gin_cmp_tslexeme gin_cmp_prefix
-syn keyword sqlFunction gin_extract_tsvector gin_extract_tsquery gin_tsquery_consistent
-syn keyword sqlFunction tsquery_lt tsquery_le tsquery_eq tsquery_ne tsquery_ge tsquery_gt
-syn keyword sqlFunction tsquery_cmp tsquery_and tsquery_or tsquery_not tsq_mcontains
-syn keyword sqlFunction tsq_mcontained numnode querytree ts_rewrite ts_rewrite gtsquery_compress
-syn keyword sqlFunction gtsquery_decompress gtsquery_picksplit gtsquery_union gtsquery_same
-syn keyword sqlFunction gtsquery_penalty gtsquery_consistent tsmatchsel tsmatchjoinsel
-syn keyword sqlFunction ts_typanalyze ts_stat ts_stat ts_rank ts_rank ts_rank ts_rank ts_rank_cd
-syn keyword sqlFunction ts_rank_cd ts_rank_cd ts_rank_cd ts_token_type ts_token_type ts_parse
-syn keyword sqlFunction ts_parse prsd_start prsd_nexttoken prsd_end prsd_headline prsd_lextype
-syn keyword sqlFunction ts_lexize dsimple_init dsimple_lexize dsynonym_init dsynonym_lexize
-syn keyword sqlFunction dispell_init dispell_lexize thesaurus_init thesaurus_lexize ts_headline
-syn keyword sqlFunction ts_headline ts_headline ts_headline to_tsvector to_tsquery
-syn keyword sqlFunction plainto_tsquery to_tsvector to_tsquery plainto_tsquery
-syn keyword sqlFunction tsvector_update_trigger tsvector_update_trigger_column
-syn keyword sqlFunction get_current_ts_config regconfigin regconfigout regconfigrecv
-syn keyword sqlFunction regconfigsend regdictionaryin regdictionaryout regdictionaryrecv
-syn keyword sqlFunction regdictionarysend jsonb_in jsonb_recv jsonb_out jsonb_send jsonb_object
-syn keyword sqlFunction jsonb_object to_jsonb jsonb_agg_transfn jsonb_agg_finalfn jsonb_agg
-syn keyword sqlFunction jsonb_object_agg_transfn jsonb_object_agg_finalfn jsonb_object_agg
-syn keyword sqlFunction jsonb_build_array jsonb_build_array jsonb_build_object jsonb_build_object
-syn keyword sqlFunction jsonb_strip_nulls jsonb_object_field jsonb_object_field_text
-syn keyword sqlFunction jsonb_array_element jsonb_array_element_text jsonb_extract_path
-syn keyword sqlFunction jsonb_extract_path_text jsonb_array_elements jsonb_array_elements_text
-syn keyword sqlFunction jsonb_array_length jsonb_object_keys jsonb_each jsonb_each_text
-syn keyword sqlFunction jsonb_populate_record jsonb_populate_recordset jsonb_to_record
-syn keyword sqlFunction jsonb_to_recordset jsonb_typeof jsonb_ne jsonb_lt jsonb_gt jsonb_le
-syn keyword sqlFunction jsonb_ge jsonb_eq jsonb_cmp jsonb_hash jsonb_contains jsonb_exists
-syn keyword sqlFunction jsonb_exists_any jsonb_exists_all jsonb_contained gin_compare_jsonb
-syn keyword sqlFunction gin_extract_jsonb gin_extract_jsonb_query gin_consistent_jsonb
-syn keyword sqlFunction gin_triconsistent_jsonb gin_extract_jsonb_path
-syn keyword sqlFunction gin_extract_jsonb_query_path gin_consistent_jsonb_path
-syn keyword sqlFunction gin_triconsistent_jsonb_path jsonb_concat jsonb_delete jsonb_delete
-syn keyword sqlFunction jsonb_delete_path jsonb_pretty txid_snapshot_in txid_snapshot_out
-syn keyword sqlFunction txid_snapshot_recv txid_snapshot_send txid_current txid_current_snapshot
-syn keyword sqlFunction txid_snapshot_xmin txid_snapshot_xmax txid_snapshot_xip
-syn keyword sqlFunction txid_visible_in_snapshot record_eq record_ne record_lt record_gt
-syn keyword sqlFunction record_le record_ge btrecordcmp record_image_eq record_image_ne
-syn keyword sqlFunction record_image_lt record_image_gt record_image_le record_image_ge
-syn keyword sqlFunction btrecordimagecmp pg_available_extensions pg_available_extension_versions
-syn keyword sqlFunction pg_extension_update_paths pg_extension_config_dump row_number rank
-syn keyword sqlFunction dense_rank percent_rank cume_dist ntile lag lag lag lead lead lead
-syn keyword sqlFunction first_value last_value nth_value anyrange_in anyrange_out range_in
-syn keyword sqlFunction range_out range_recv range_send lower upper isempty lower_inc upper_inc
-syn keyword sqlFunction lower_inf upper_inf range_eq range_ne range_overlaps range_contains_elem
-syn keyword sqlFunction range_contains elem_contained_by_range range_contained_by range_adjacent
-syn keyword sqlFunction range_before range_after range_overleft range_overright range_union
-syn keyword sqlFunction range_merge range_intersect range_minus range_cmp range_lt range_le
-syn keyword sqlFunction range_ge range_gt range_gist_consistent range_gist_union
-syn keyword sqlFunction range_gist_compress range_gist_decompress range_gist_fetch
-syn keyword sqlFunction range_gist_penalty range_gist_picksplit range_gist_same hash_range
-syn keyword sqlFunction range_typanalyze rangesel int4range_canonical int8range_canonical
-syn keyword sqlFunction daterange_canonical int4range_subdiff int8range_subdiff numrange_subdiff
-syn keyword sqlFunction daterange_subdiff tsrange_subdiff tstzrange_subdiff int4range int4range
-syn keyword sqlFunction numrange numrange tsrange tsrange tstzrange tstzrange daterange daterange
-syn keyword sqlFunction int8range int8range make_date make_time make_timestamp make_timestamptz
-syn keyword sqlFunction make_timestamptz spggettuple spggetbitmap spginsert spgbeginscan
-syn keyword sqlFunction spgrescan spgendscan spgmarkpos spgrestrpos spgbuild spgbuildempty
-syn keyword sqlFunction spgbulkdelete spgvacuumcleanup spgcanreturn spgcostestimate spgoptions
-syn keyword sqlFunction spg_quad_config spg_quad_choose spg_quad_picksplit
-syn keyword sqlFunction spg_quad_inner_consistent spg_quad_leaf_consistent spg_kd_config
-syn keyword sqlFunction spg_kd_choose spg_kd_picksplit spg_kd_inner_consistent spg_text_config
-syn keyword sqlFunction spg_text_choose spg_text_picksplit spg_text_inner_consistent
-syn keyword sqlFunction spg_text_leaf_consistent spg_range_quad_config spg_range_quad_choose
-syn keyword sqlFunction spg_range_quad_picksplit spg_range_quad_inner_consistent
-syn keyword sqlFunction spg_range_quad_leaf_consistent pg_create_physical_replication_slot
-syn keyword sqlFunction pg_drop_replication_slot pg_get_replication_slots
-syn keyword sqlFunction pg_create_logical_replication_slot pg_event_trigger_dropped_objects
-syn keyword sqlFunction pg_event_trigger_table_rewrite_oid pg_event_trigger_table_rewrite_reason
-syn keyword sqlFunction pg_event_trigger_ddl_commands ordered_set_transition
-syn keyword sqlFunction ordered_set_transition_multi percentile_disc percentile_disc_final
-syn keyword sqlFunction percentile_cont percentile_cont_float8_final percentile_cont
-syn keyword sqlFunction percentile_cont_interval_final percentile_disc
-syn keyword sqlFunction percentile_disc_multi_final percentile_cont
-syn keyword sqlFunction percentile_cont_float8_multi_final percentile_cont
-syn keyword sqlFunction percentile_cont_interval_multi_final mode mode_final rank rank_final
-syn keyword sqlFunction percent_rank percent_rank_final cume_dist cume_dist_final dense_rank
-syn keyword sqlFunction dense_rank_final binary_upgrade_set_next_pg_type_oid
-syn keyword sqlFunction binary_upgrade_set_next_array_pg_type_oid
-syn keyword sqlFunction binary_upgrade_set_next_toast_pg_type_oid
-syn keyword sqlFunction binary_upgrade_set_next_heap_pg_class_oid
-syn keyword sqlFunction binary_upgrade_set_next_index_pg_class_oid
-syn keyword sqlFunction binary_upgrade_set_next_toast_pg_class_oid
-syn keyword sqlFunction binary_upgrade_set_next_pg_enum_oid binary_upgrade_set_next_pg_authid_oid
-syn keyword sqlFunction binary_upgrade_create_empty_extension pg_replication_origin_create
-syn keyword sqlFunction pg_replication_origin_drop pg_replication_origin_oid
-syn keyword sqlFunction pg_replication_origin_session_setup pg_replication_origin_session_reset
-syn keyword sqlFunction pg_replication_origin_session_is_setup
-syn keyword sqlFunction pg_replication_origin_session_progress pg_replication_origin_xact_setup
-syn keyword sqlFunction pg_replication_origin_xact_reset pg_replication_origin_advance
-syn keyword sqlFunction pg_replication_origin_progress pg_show_replication_origin_status
-syn keyword sqlFunction row_security_active row_security_active pg_show_all_file_settings
-syn keyword sqlFunction ts_debug ts_debug pg_start_backup json_populate_record
-syn keyword sqlFunction json_populate_recordset pg_logical_slot_get_changes
-syn keyword sqlFunction pg_logical_slot_peek_changes pg_logical_slot_get_binary_changes
-syn keyword sqlFunction pg_logical_slot_peek_binary_changes make_interval jsonb_set ascii_to_mic
-syn keyword sqlFunction mic_to_ascii koi8r_to_mic mic_to_koi8r iso_to_mic mic_to_iso
-syn keyword sqlFunction win1251_to_mic mic_to_win1251 win866_to_mic mic_to_win866
-syn keyword sqlFunction koi8r_to_win1251 win1251_to_koi8r koi8r_to_win866 win866_to_koi8r
-syn keyword sqlFunction win866_to_win1251 win1251_to_win866 iso_to_koi8r koi8r_to_iso
-syn keyword sqlFunction iso_to_win1251 win1251_to_iso iso_to_win866 win866_to_iso euc_cn_to_mic
-syn keyword sqlFunction mic_to_euc_cn euc_jp_to_sjis sjis_to_euc_jp euc_jp_to_mic sjis_to_mic
-syn keyword sqlFunction mic_to_euc_jp mic_to_sjis euc_kr_to_mic mic_to_euc_kr euc_tw_to_big5
-syn keyword sqlFunction big5_to_euc_tw euc_tw_to_mic big5_to_mic mic_to_euc_tw mic_to_big5
-syn keyword sqlFunction latin2_to_mic mic_to_latin2 win1250_to_mic mic_to_win1250
-syn keyword sqlFunction latin2_to_win1250 win1250_to_latin2 latin1_to_mic mic_to_latin1
-syn keyword sqlFunction latin3_to_mic mic_to_latin3 latin4_to_mic mic_to_latin4 ascii_to_utf8
-syn keyword sqlFunction utf8_to_ascii big5_to_utf8 utf8_to_big5 utf8_to_koi8r koi8r_to_utf8
-syn keyword sqlFunction utf8_to_koi8u koi8u_to_utf8 utf8_to_euc_cn euc_jp_to_utf8 utf8_to_euc_jp
-syn keyword sqlFunction euc_kr_to_utf8 utf8_to_euc_kr euc_tw_to_utf8 utf8_to_euc_tw
-syn keyword sqlFunction gb18030_to_utf8 utf8_to_gb18030 gbk_to_utf8 utf8_to_gbk johab_to_utf8
-syn keyword sqlFunction utf8_to_iso8859 utf8_to_johab iso8859_to_utf8 iso8859_1_to_utf8
-syn keyword sqlFunction utf8_to_win win_to_utf8 euc_cn_to_utf8 utf8_to_iso8859_1 sjis_to_utf8
-syn keyword sqlFunction utf8_to_sjis uhc_to_utf8 utf8_to_uhc euc_jis_2004_to_utf8
-syn keyword sqlFunction utf8_to_euc_jis_2004 shift_jis_2004_to_utf8 utf8_to_shift_jis_2004
-syn keyword sqlFunction euc_jis_2004_to_shift_jis_2004 shift_jis_2004_to_euc_jis_2004
-syn keyword sqlFunction dsnowball_init dsnowball_lexize _pg_expandarray _pg_keysequal
-syn keyword sqlFunction _pg_index_position _pg_truetypid _pg_truetypmod _pg_char_max_length
-syn keyword sqlFunction _pg_char_octet_length _pg_numeric_precision _pg_numeric_precision_radix
-syn keyword sqlFunction _pg_numeric_scale _pg_datetime_precision _pg_interval_type
-syn keyword sqlFunction plpgsql_call_handler plpgsql_inline_handler plpgsql_validator
+syn keyword sqlFunction repeat jsonb_object_field texticregexeq pg_stat_get_buf_alloc to_regtype
+syn keyword sqlFunction int28ge timestamptz_eq_timestamp int8div lo_creat bool_alltrue macaddr_lt
+syn keyword sqlFunction interval_in inet_same_family pg_relation_filepath biteq
+syn keyword sqlFunction has_type_privilege jsonb_delete text_lt regexp_split_to_table
+syn keyword sqlFunction json_object_agg_transfn tsquery_cmp gist_box_same timestamptz_gt
+syn keyword sqlFunction textnlike date_ge numeric_div_trunc timestamptz_le_timestamp tintervalne
+syn keyword sqlFunction brinvacuumcleanup interval_larger regclassin gin_extract_jsonb
+syn keyword sqlFunction regdictionaryrecv unnest cash_in numeric_div jsonb_each btfloat8cmp
+syn keyword sqlFunction smgreq close_lseg jsonb_object_keys numerictypmodin varbit_recv int8send
+syn keyword sqlFunction timestamptz_lt_timestamp pg_tablespace_size iso_to_win866
+syn keyword sqlFunction elem_contained_by_range varbit_transform gtsvectorout regprocin
+syn keyword sqlFunction varcharrecv poly_overabove gist_point_consistent anyarray_send sign
+syn keyword sqlFunction brin_inclusion_consistent trigger_out point_vert lead RI_FKey_setnull_upd
+syn keyword sqlFunction hashgettuple tidsend pt_contained_circle circle_left btboolcmp
+syn keyword sqlFunction pg_stat_get_backend_pid gtsvector_consistent timestamptz
+syn keyword sqlFunction int8_avg_accum_inv abstimeeq tsrange time_out poly_center setval xml_send
+syn keyword sqlFunction pg_function_is_visible btbuildempty inet_server_port convert_to
+syn keyword sqlFunction network_larger poly_above spg_kd_choose timestamptz_ge tsquery_or
+syn keyword sqlFunction bitshiftright regconfigrecv float8mul rangesel point_in ts_token_type
+syn keyword sqlFunction poly_left table_to_xml_and_xmlschema dsqrt byteacat json_to_recordset
+syn keyword sqlFunction pg_stat_get_backend_xact_start reltimesend pg_stat_get_blocks_fetched
+syn keyword sqlFunction bytealike txid_snapshot_xmin dcbrt domain_recv networkjoinsel reltimerecv
+syn keyword sqlFunction range_overright regprocout iso8859_1_to_utf8 tintervalsame point_eq
+syn keyword sqlFunction int48ge date_ne namelt box_overlap int2larger network_gt
+syn keyword sqlFunction gin_extract_jsonb_path binary_upgrade_set_next_toast_pg_type_oid char
+syn keyword sqlFunction float84mul timetztypmodout fmgr_internal_validator int2gt numeric_in
+syn keyword sqlFunction float4smaller spg_text_inner_consistent numeric_lt schema_to_xmlschema
+syn keyword sqlFunction to_tsquery pi range_minus tsm_handler_in cash_out bitand big5_to_mic
+syn keyword sqlFunction brinrescan pg_show_all_settings textregexne mktinterval int84pl
+syn keyword sqlFunction pg_stat_get_last_analyze_time timestamp_eq_timestamptz time_gt date_mi
+syn keyword sqlFunction win866_to_iso date_part hashenum btcharcmp ts_parse bitor
+syn keyword sqlFunction pg_stat_get_bgwriter_buf_written_checkpoints lower_inf hashoidvector
+syn keyword sqlFunction float8_regr_avgx byteane _pg_index_position to_ascii tintervallenne
+syn keyword sqlFunction string_agg pg_get_object_address json_object_field_text array_positions
+syn keyword sqlFunction pg_last_xlog_replay_location range_cmp lseg_perp tan json_each_text
+syn keyword sqlFunction time_in sin cursor_to_xmlschema uuid_gt similar_escape
+syn keyword sqlFunction brin_inclusion_union timestamptz_send regoperatorout box_lt oidlarger
+syn keyword sqlFunction path_n_ge point_sub line_vertical get_bit int4larger abstimegt
+syn keyword sqlFunction int8_avg_accum inet_merge round textcat ginarrayextract set_byte
+syn keyword sqlFunction pg_replication_origin_session_is_setup brincostestimate date_mii
+syn keyword sqlFunction make_interval pg_ts_template_is_visible utf8_to_big5 int2out
+syn keyword sqlFunction percentile_cont_float8_final dsimple_lexize on_ppath booleq
+syn keyword sqlFunction bpcharicregexeq network_ne regtypein oidsmaller bitne gist_point_fetch
+syn keyword sqlFunction pg_replication_origin_session_reset area uuid_in
+syn keyword sqlFunction schema_to_xml_and_xmlschema shell_out int8shr numeric_avg_accum
+syn keyword sqlFunction range_contains_elem box_out int2or range_out int4pl bpchargt tsvector_lt
+syn keyword sqlFunction ginbuild spgvacuumcleanup string_agg_transfn uuid_recv int8not
+syn keyword sqlFunction has_column_privilege date_gt_timestamp nameicnlike win866_to_koi8r
+syn keyword sqlFunction anytextcat float48gt circle_contain int4or pg_stat_get_blocks_hit
+syn keyword sqlFunction brin_minmax_opcinfo pg_stat_get_mod_since_analyze float48ge macaddr_out
+syn keyword sqlFunction pg_lsn_hash pg_stat_get_db_conflict_all circle_recv like_escape bitlt
+syn keyword sqlFunction date_cmp_timestamp has_database_privilege jsonb_recv poly_contain int4out
+syn keyword sqlFunction tidlt isparallel int2xor float4recv cstring_out
+syn keyword sqlFunction pg_stat_reset_single_table_counters pg_read_binary_file box_contained
+syn keyword sqlFunction cidr_send percentile_cont_float8_multi_final latin4_to_mic range_send
+syn keyword sqlFunction tintervalct int8_accum_inv regconfigout box_center textlike boolin
+syn keyword sqlFunction pg_char_to_encoding pg_available_extensions
+syn keyword sqlFunction pg_stat_get_db_conflict_tablespace gin_tsquery_consistent ts_stat
+syn keyword sqlFunction box_left timestamp_ge btarraycmp time_send int24ne
+syn keyword sqlFunction pg_stat_get_db_temp_bytes gist_bbox_distance timestamp_lt varcharin
+syn keyword sqlFunction pg_stat_get_buf_written_backend pg_stat_get_db_deadlocks
+syn keyword sqlFunction gin_triconsistent_jsonb lseg_ne pg_stat_get_db_numbackends
+syn keyword sqlFunction jsonb_extract_path_text mic_to_latin2 circle_center pg_ddl_command_recv
+syn keyword sqlFunction isperp network_cmp sqrt pg_stat_reset_single_function_counters
+syn keyword sqlFunction percentile_disc_final version int28mul ln timestamptz_cmp_date varbiteq
+syn keyword sqlFunction utf8_to_gb18030 date_smaller unique_key_recheck jsonb_contained isfinite
+syn keyword sqlFunction timestamptz_lt array_larger circle_right uhc_to_utf8 internal_in
+syn keyword sqlFunction float8larger cidsend RI_FKey_check_ins bpcharge rank_final btrim
+syn keyword sqlFunction cash_mul_int4 int2up reltimelt float84div enum_cmp gtsquery_same
+syn keyword sqlFunction pg_stat_get_xact_tuples_deleted setweight varbitge
+syn keyword sqlFunction pg_stat_get_bgwriter_requested_checkpoints float4in
+syn keyword sqlFunction timestamptz_pl_interval _pg_numeric_precision_radix point_distance
+syn keyword sqlFunction poly_distance bpchartypmodin float8le abstimerecv path_recv floor
+syn keyword sqlFunction jsonb_concat texticregexne int28gt oidne euc_tw_to_mic regclassrecv
+syn keyword sqlFunction smgrout btmarkpos quote_nullable int2ne spg_range_quad_picksplit
+syn keyword sqlFunction tsquery_ne cash_mul_int2 macaddr_ge inetor unknownrecv
+syn keyword sqlFunction pg_replication_origin_create arraycontsel record_recv utf8_to_johab
+syn keyword sqlFunction _pg_numeric_precision postgresql_fdw_validator json_populate_record
+syn keyword sqlFunction tsvector_concat isempty pg_stat_get_last_autovacuum_time timestamptz_out
+syn keyword sqlFunction circle_same timestamptz_in isvertical timetz_mi_interval mic_to_win1250
+syn keyword sqlFunction utf8_to_euc_kr xmlagg int4inc spgbuildempty btoidvectorcmp
+syn keyword sqlFunction gistcostestimate bpcharout bytearecv box pg_replication_origin_xact_reset
+syn keyword sqlFunction texteq dist_ppoly int82lt void_in timestamp_cmp_timestamptz
+syn keyword sqlFunction intervaltypmodout network_subeq time_mi_interval regtyperecv
+syn keyword sqlFunction win866_to_mic int42gt timetz_cmp tintervalle gist_point_compress cash_ge
+syn keyword sqlFunction poly_in gist_box_compress jsonb_lt xidsend btbulkdelete array_remove
+syn keyword sqlFunction on_pl timestamp_izone_transform float8ge bpchar_smaller pg_sleep_until
+syn keyword sqlFunction mic_to_euc_jp cidr_out btgetbitmap enum_out texticnlike pg_xlogfile_name
+syn keyword sqlFunction int42eq int2le pg_stat_get_autovacuum_count path_n_eq regrolein
+syn keyword sqlFunction ginbeginscan point_below xmlcomment lo_import
+syn keyword sqlFunction pg_try_advisory_xact_lock_shared float8_covar_samp spg_range_quad_choose
+syn keyword sqlFunction pg_stat_get_db_conflict_snapshot pg_size_pretty int2send numeric_mod
+syn keyword sqlFunction numeric_ge pg_is_xlog_replay_paused pg_try_advisory_lock
+syn keyword sqlFunction jsonb_array_elements_text spg_quad_choose concat_ws host character_length
+syn keyword sqlFunction bool_accum box_recv float4pl pg_current_xlog_location cash_div_cash cbrt
+syn keyword sqlFunction jsonb_object_agg_transfn pg_ddl_command_in brin_summarize_new_values
+syn keyword sqlFunction suppress_redundant_updates_trigger int2pl
+syn keyword sqlFunction pg_stat_get_checkpoint_write_time abs pg_stat_get_activity regr_count
+syn keyword sqlFunction regclasssend int8_sum quote_ident pg_opclass_is_visible line_send
+syn keyword sqlFunction ordered_set_transition_multi pg_xlog_replay_pause int8mod jsonb_gt
+syn keyword sqlFunction bpcharicnlike inetpl lo_from_bytea
+syn keyword sqlFunction binary_upgrade_set_next_index_pg_class_oid set_config oidin reltimele
+syn keyword sqlFunction point_ne uuid_eq hash_aclitem ts_rewrite lo_lseek64 timetypmodout int2and
+syn keyword sqlFunction point text_pattern_gt ginmarkpos range_gist_same shell_in record_send
+syn keyword sqlFunction iclikejoinsel jsonb_agg_finalfn txid_snapshot_send chargt array_cat
+syn keyword sqlFunction timestamptz_gt_date session_user bpchar timepl hashbuild opaque_in
+syn keyword sqlFunction unknownin regr_sxy pg_stat_get_xact_tuples_hot_updated tintervalleneq
+syn keyword sqlFunction int24lt inet_out lseg_send int24mul hashoid abstimesend point_add degrees
+syn keyword sqlFunction on_sb macaddr_ne sjis_to_utf8 iclikesel bitshiftleft likesel int4not
+syn keyword sqlFunction plpgsql_validator arraycontained timestamp_eq date_ge_timestamptz
+syn keyword sqlFunction pg_stat_get_tuples_fetched box_overleft timestamp factorial
+syn keyword sqlFunction pg_advisory_unlock_all tsvectorout areajoinsel regr_avgy
+syn keyword sqlFunction pg_total_relation_size prsd_nexttoken float4send inet_gist_same
+syn keyword sqlFunction has_server_privilege tstzrange make_date timestamp_gt namerecv power
+syn keyword sqlFunction networksel pg_xlog_replay_resume tsqueryin hashint4 get_current_ts_config
+syn keyword sqlFunction cidrecv acos lseg_gt pg_trigger_depth text_le numeric_accum xmlvalidate
+syn keyword sqlFunction float8gt array_recv timetypmodin numeric_poly_var_pop pg_get_viewdef
+syn keyword sqlFunction interval_avg pg_stat_get_backend_waiting int84lt numeric_stddev_pop
+syn keyword sqlFunction regnamespacein bit_or date_sortsupport numnode tintervalge
+syn keyword sqlFunction pg_advisory_lock gistcanreturn latin2_to_win1250 numeric_eq dist_pl
+syn keyword sqlFunction mul_d_interval record_image_lt array_ge int2_avg_accum var_samp int2shl
+syn keyword sqlFunction timetz_pl_interval int42mul timetz_eq oid pg_rotate_logfile boolne
+syn keyword sqlFunction btcostestimate gistrestrpos cidr txid_snapshot_out lseg_horizontal
+syn keyword sqlFunction int2_accum pg_stat_get_backend_dbid regr_slope
+syn keyword sqlFunction pg_last_xlog_receive_location spgcostestimate
+syn keyword sqlFunction pg_stat_get_last_autoanalyze_time aclcontains strip to_tsvector
+syn keyword sqlFunction pg_listening_channels namenlike float48mul pg_stat_get_backend_idset
+syn keyword sqlFunction pg_terminate_backend array_typanalyze reltimege
+syn keyword sqlFunction pg_replication_origin_progress lseg_parallel macaddr_and nameregexeq
+syn keyword sqlFunction int8shl euc_jp_to_sjis float8mi upper regexnesel network_smaller
+syn keyword sqlFunction tsvector_cmp flt8_mul_cash regr_r2 system line_out oidvectorout
+syn keyword sqlFunction dist_cpoint int4and pg_lsn_ge random timestamp_cmp_date
+syn keyword sqlFunction timestamp_lt_timestamptz array_prepend pg_xlog_location_diff
+syn keyword sqlFunction date_ge_timestamp range_gist_decompress int4ne
+syn keyword sqlFunction pg_last_xact_replay_timestamp mic_to_latin3 utf8_to_uhc
+syn keyword sqlFunction binary_upgrade_set_next_array_pg_type_oid positionjoinsel uuid_hash
+syn keyword sqlFunction icregexnesel iso_to_mic hashvacuumcleanup float84ge bitxor oidvectorsend
+syn keyword sqlFunction network_sub lag btbpchar_pattern_cmp btrecordimagecmp bit on_pb stddev
+syn keyword sqlFunction hash_array box_send json_to_record asin box_above right float48le
+syn keyword sqlFunction jsonb_hash tidout int42le int42ge time_pl_interval date_eq_timestamptz
+syn keyword sqlFunction float48ne enum_le gtsquery_picksplit last_value regroleout int8eq
+syn keyword sqlFunction interval_lt int84mul int82ge json_object fdw_handler_out icregexnejoinsel
+syn keyword sqlFunction pg_backup_start_time record_gt transaction_timestamp circle_below
+syn keyword sqlFunction interval_pl_time pg_stat_get_xact_function_self_time ascii_to_mic int82le
+syn keyword sqlFunction pg_xlogfile_name_offset float8um lseg_distance int24gt regr_syy
+syn keyword sqlFunction language_handler_out pg_stat_get_analyze_count spgoptions
+syn keyword sqlFunction pg_replication_origin_xact_setup eqsel RI_FKey_noaction_del
+syn keyword sqlFunction icnlikejoinsel int8mi gistvacuumcleanup jsonb_array_length pg_backend_pid
+syn keyword sqlFunction jsonb_ge float8 pg_describe_object spg_quad_inner_consistent int2mi
+syn keyword sqlFunction to_timestamp nameicregexne pg_get_function_arguments inetnot
+syn keyword sqlFunction numeric_smaller bttextcmp close_lb btint42cmp make_time bitle dist_pc
+syn keyword sqlFunction inetand gist_circle_consistent int4range_subdiff numeric_gt int2vectorout
+syn keyword sqlFunction pg_lsn_lt ts_match_vq varbitlt euc_cn_to_utf8 byteanlike
+syn keyword sqlFunction brin_inclusion_add_value poly_same width_bucket col_description cideq
+syn keyword sqlFunction popen timenow range_le namele int48eq circle_div_pt pg_table_size
+syn keyword sqlFunction utf8_to_koi8u inet_client_port brinbulkdelete array_out
+syn keyword sqlFunction pg_try_advisory_lock_shared cashsmaller numeric_sub mic_to_win866
+syn keyword sqlFunction broadcast brin_minmax_union tintervallt nameout pg_options_to_table
+syn keyword sqlFunction ginvacuumcleanup utf8_to_sjis inet_gist_consistent pt_contained_poly
+syn keyword sqlFunction box_div date_send path_contain_pt bpcharcmp timestamptypmodin
+syn keyword sqlFunction pg_stat_get_xact_function_calls pg_read_file jsonb_exists
+syn keyword sqlFunction has_table_privilege win1250_to_mic circle_overright sum dround cidr_recv
+syn keyword sqlFunction mic_to_koi8r pg_stat_get_backend_userid chareq
+syn keyword sqlFunction pg_stat_get_db_tuples_fetched int8larger npoints nameiclike inetmi int8pl
+syn keyword sqlFunction pg_filenode_relation array_agg_transfn date_gt spgendscan int24ge
+syn keyword sqlFunction textregexeq timestamp_ne range_in utf8_to_ascii ascii_to_utf8 btbuild
+syn keyword sqlFunction gistoptions bpchar_larger pg_ts_config_is_visible float4um box_contain
+syn keyword sqlFunction pg_get_constraintdef spg_kd_picksplit numeric_poly_avg line_perp xml_out
+syn keyword sqlFunction tidin path_length regprocedurerecv int8in float4_accum time_ge btint28cmp
+syn keyword sqlFunction json_each regexp_split_to_array pg_typeof uuid_out float84lt path
+syn keyword sqlFunction spg_quad_config scalarltsel record_image_ge loread boolgt
+syn keyword sqlFunction int8range_canonical hashrestrpos pg_conf_load_time int8ge path_add
+syn keyword sqlFunction spg_range_quad_inner_consistent timestamptz_le close_pl koi8r_to_win1251
+syn keyword sqlFunction inetmi_int8 cstring_recv text_smaller interval_out varbit
+syn keyword sqlFunction pg_stat_get_live_tuples range_eq pg_stat_get_bgwriter_stat_reset_time
+syn keyword sqlFunction timestamp_recv array_to_json binary_upgrade_set_next_pg_enum_oid
+syn keyword sqlFunction pg_operator_is_visible pg_extension_update_paths
+syn keyword sqlFunction pg_stat_get_xact_function_total_time timestamp_gt_date poly_send
+syn keyword sqlFunction set_masklen int2shr int42ne int8xor text_pattern_le to_number float8pl
+syn keyword sqlFunction utf8_to_koi8r scalargtsel inet_gist_picksplit boolsend prsd_end
+syn keyword sqlFunction gistbuildempty pg_stat_get_db_xact_commit octet_length network_supeq
+syn keyword sqlFunction box_gt enum_eq pg_stat_get_db_conflict_lock int4abs
+syn keyword sqlFunction pg_stat_get_buf_fsync_backend database_to_xmlschema
+syn keyword sqlFunction gin_triconsistent_jsonb_path spg_text_config numeric_add int8smaller
+syn keyword sqlFunction int4up btrescan charrecv enum_range int2in float4ge lseg_interpt
+syn keyword sqlFunction datetimetz_pl poly_right gistbuild int4xor has_function_privilege int84le
+syn keyword sqlFunction time_le mxid_age namein tsm_handler_out regrolesend jsonb_strip_nulls
+syn keyword sqlFunction gtsvectorin current_database bit_length pg_notify date_larger interval_gt
+syn keyword sqlFunction float4up float4eq gist_circle_compress mode_final macaddr_not
+syn keyword sqlFunction pg_stat_get_tuples_inserted timestamp_ge_date btnamecmp jsonb_set textout
+syn keyword sqlFunction binary_upgrade_set_next_pg_type_oid pg_stop_backup interval_pl_date
+syn keyword sqlFunction _pg_truetypmod pg_stat_get_xact_blocks_fetched byteage spg_text_picksplit
+syn keyword sqlFunction gistgetbitmap format_type pg_relation_is_updatable numeric
+syn keyword sqlFunction timestamp_larger int4_mul_cash bpcharlike sjis_to_euc_jp pg_get_userbyid
+syn keyword sqlFunction regexeqsel int8_accum timestamp_mi_interval record_ge range_before
+syn keyword sqlFunction bttidcmp pg_has_role make_timestamptz bit_recv has_sequence_privilege
+syn keyword sqlFunction text_pattern_lt pg_create_restore_point pg_collation_for ts_match_tt
+syn keyword sqlFunction float4mi pg_get_keywords pg_advisory_xact_lock to_json int2eq hashinsert
+syn keyword sqlFunction timestamptz_larger nameicregexeq quote_literal charge spgbuild close_sb
+syn keyword sqlFunction timetz_ge hashgetbitmap interval_cmp pg_stat_get_tuples_hot_updated
+syn keyword sqlFunction array_send box_overright network_lt hashfloat4 int28div float4out abbrev
+syn keyword sqlFunction tintervalrel line_eq dsnowball_init RI_FKey_setdefault_upd
+syn keyword sqlFunction pg_client_encoding name mic_to_latin1 int8um mode gb18030_to_utf8
+syn keyword sqlFunction datetime_pl enum_ge gin_extract_jsonb_query float48div tidle
+syn keyword sqlFunction pg_cancel_backend pg_stat_get_db_tuples_returned int2int4_sum tsvector_ne
+syn keyword sqlFunction int84div icregexeqjoinsel gin_extract_jsonb_query_path int8lt lo_put
+syn keyword sqlFunction numeric_send percentile_cont_interval_multi_final cash_le poly_npoints
+syn keyword sqlFunction circle_ge float8_var_samp big5_to_euc_tw int48ne json_recv oidvectorin
+syn keyword sqlFunction anyarray_out timestamptz_ge_timestamp scalargtjoinsel koi8r_to_utf8
+syn keyword sqlFunction brinmarkpos ascii btreltimecmp prsd_start scalarltjoinsel regoperatorin
+syn keyword sqlFunction txid_current convert_from pg_drop_replication_slot inter_sb
+syn keyword sqlFunction binary_upgrade_set_next_heap_pg_class_oid brinbuild time
+syn keyword sqlFunction brin_minmax_add_value tidsmaller pg_stat_get_tuples_updated radius
+syn keyword sqlFunction anynonarray_in gistendscan circle_sub_pt enum_last float8eq oidge
+syn keyword sqlFunction date_le_timestamptz timestamp_le point_recv areasel numeric_mul xml_recv
+syn keyword sqlFunction has_any_column_privilege gistbulkdelete cash_words timedate_pl
+syn keyword sqlFunction percent_rank_final _pg_datetime_precision gtsvector_penalty
+syn keyword sqlFunction pg_last_committed_xact _pg_expandarray poly_overlap pg_export_snapshot
+syn keyword sqlFunction line_distance string_to_array every tsvectorrecv interval_mul boolge
+syn keyword sqlFunction box_ge pg_node_tree_in tintervallenle pg_column_is_updatable
+syn keyword sqlFunction pg_stat_get_checkpoint_sync_time tstzrange_subdiff has_schema_privilege
+syn keyword sqlFunction int8inc_any pg_type_is_visible regprocedureout interval_accum tsmatchsel
+syn keyword sqlFunction bpchar_pattern_le char_length interval_ne regexp_replace
+syn keyword sqlFunction gtsvector_decompress path_out pg_node_tree_recv numeric_poly_sum
+syn keyword sqlFunction nameregexne hashmarkpos current_schemas ts_match_tq any_in mic_to_latin4
+syn keyword sqlFunction range_gist_consistent bytea_string_agg_finalfn dsnowball_lexize pg_lsn_ne
+syn keyword sqlFunction ntile range_overlaps float8_regr_sxy pg_stat_get_snapshot_timestamp
+syn keyword sqlFunction enum_smaller koi8r_to_mic time_recv bittypmodout bpchar_pattern_gt
+syn keyword sqlFunction inet_recv box_eq unknownout dist_ps cash_div_flt8 encode tsvector_gt
+syn keyword sqlFunction fmgr_c_validator regdictionarysend pg_show_replication_origin_status
+syn keyword sqlFunction json_array_elements_text rpad positionsel float8_regr_avgy
+syn keyword sqlFunction json_object_field float8div range_union box_overbelow aclitemin
+syn keyword sqlFunction dispell_init gin_compare_jsonb nlikejoinsel xmlexists gingetbitmap
+syn keyword sqlFunction date_mi_interval jsonb_agg_transfn rank float48lt path_in
+syn keyword sqlFunction gtsvector_picksplit brin_minmax_consistent int4um circle_eq btint82cmp
+syn keyword sqlFunction query_to_xml_and_xmlschema netmask timestamp_le_date
+syn keyword sqlFunction pg_stat_get_function_calls charout jsonb_object pg_get_replication_slots
+syn keyword sqlFunction daterange_canonical int4mod prsd_lextype date_ne_timestamp cidr_in
+syn keyword sqlFunction numeric_log bytea_string_agg_transfn cursor_to_xml btint4sortsupport
+syn keyword sqlFunction int82mul xml_is_well_formed bytealt lseg_le icregexeqsel bpcharicregexne
+syn keyword sqlFunction pg_stat_get_db_blk_read_time cstring_send neqjoinsel position tsvectorin
+syn keyword sqlFunction array_ndims hashchar int84gt textne range_contains textsend mic_to_euc_kr
+syn keyword sqlFunction float8_regr_syy int4ge int24mi array_position xml_is_well_formed_content
+syn keyword sqlFunction int2mul _pg_char_max_length regproceduresend isclosed
+syn keyword sqlFunction pg_stat_get_numscans regprocrecv point_left gist_box_fetch icnlikesel
+syn keyword sqlFunction float8send lseg_out float8up upper_inc hashbpchar pg_lock_status varbitgt
+syn keyword sqlFunction cash_send xml_is_well_formed_document array_agg bit_out date_lt lower_inc
+syn keyword sqlFunction tsquery_and float8_corr utf8_to_euc_cn concat pg_get_functiondef
+syn keyword sqlFunction json_extract_path smgrne smgrin pg_stat_get_db_temp_files int24le
+syn keyword sqlFunction bound_box bit_and macaddr_gt brinendscan regexnejoinsel record_image_ne
+syn keyword sqlFunction byteale pg_create_logical_replication_slot diagonal euc_kr_to_mic
+syn keyword sqlFunction johab_to_utf8 int48pl pg_ts_dict_is_visible tsquery_ge network
+syn keyword sqlFunction txid_snapshot_xmax poly_contain_pt spg_range_quad_leaf_consistent
+syn keyword sqlFunction bpchar_pattern_lt xidrecv lower sjis_to_mic cash_cmp enum_in
+syn keyword sqlFunction ginqueryarrayextract pg_start_backup overlay pg_get_expr float4div circle
+syn keyword sqlFunction pg_database_size json_strip_nulls int4recv ginbuildempty
+syn keyword sqlFunction date_ne_timestamptz bpcharrecv pg_get_function_identity_arguments
+syn keyword sqlFunction pg_stat_get_tuples_deleted abstimelt btbeginscan hashint2 iso8859_to_utf8
+syn keyword sqlFunction timezone varcharsend to_jsonb substr timetz_send numeric_recv int48mul
+syn keyword sqlFunction intinterval lseg_lt tsvector_ge timestamptz_gt_timestamp cash_div_int4
+syn keyword sqlFunction abstimege btoidsortsupport text_gt gincostestimate dpow json_object_keys
+syn keyword sqlFunction pg_stat_get_db_blocks_hit ginrescan gistrescan int8pl_inet
+syn keyword sqlFunction date_le_timestamp charlt pg_stat_get_bgwriter_timed_checkpoints boolrecv
+syn keyword sqlFunction spg_kd_inner_consistent var_pop regtypesend txid_visible_in_snapshot
+syn keyword sqlFunction booland_statefunc range_gist_penalty pg_replication_origin_drop
+syn keyword sqlFunction regnamespaceout statement_timestamp int2_sum enum_ne latin2_to_mic
+syn keyword sqlFunction circle_distance macaddr_eq numeric_var_pop covar_samp
+syn keyword sqlFunction gin_consistent_jsonb reltimeeq regconfigsend ltrim float8out interval_le
+syn keyword sqlFunction path_send pg_stat_get_xact_tuples_updated charsend line_interpt tideq
+syn keyword sqlFunction row_security_active ginbulkdelete hashbulkdelete daterange_subdiff
+syn keyword sqlFunction numrange_subdiff win1251_to_iso btabstimecmp inter_sl querytree
+syn keyword sqlFunction float8_var_pop enum_recv gtsquery_union box_overabove oidvectorne
+syn keyword sqlFunction prsd_headline pg_stat_get_bgwriter_maxwritten_clean bool_and
+syn keyword sqlFunction inet_gist_compress min network_ge dsynonym_init plpgsql_inline_handler
+syn keyword sqlFunction varbit_in strpos int24pl tinterval _pg_char_octet_length namelike
+syn keyword sqlFunction varbittypmodout jsonb_to_record anynonarray_out close_sl oidout
+syn keyword sqlFunction pg_tablespace_databases timestamptz_cmp hashendscan aclitemeq json_typeof
+syn keyword sqlFunction array_replace float8recv boollt reltime float8_accum array_fill
+syn keyword sqlFunction gtsquery_compress poly_overright dist_ppath
+syn keyword sqlFunction pg_stat_get_xact_tuples_fetched spginsert pg_lsn_send gtsvector_union
+syn keyword sqlFunction float48pl float8abs numeric_fac current_schema int82div oidvectortypes
+syn keyword sqlFunction corr ginarraytriconsistent timestamp_transform pg_get_serial_sequence
+syn keyword sqlFunction gtsquery_consistent xml cashlarger pg_stat_get_xact_blocks_hit
+syn keyword sqlFunction spg_range_quad_config hostmask obj_description cidout numeric_accum_inv
+syn keyword sqlFunction timetz_lt spggettuple to_date date_trunc timestamptz_eq_date point_right
+syn keyword sqlFunction point_above textrecv int84ne timestamptz_ge_date textin
+syn keyword sqlFunction pg_stat_get_last_vacuum_time regoperout int8le varchartypmodin float8ne
+syn keyword sqlFunction pg_stat_get_db_blocks_fetched log timetz_out json_in unknownsend
+syn keyword sqlFunction timestamptz_cmp_timestamp chr masklen lo_truncate bit_send ts_lexize
+syn keyword sqlFunction btint8sortsupport to_regnamespace pg_get_ruledef anyenum_out int42lt
+syn keyword sqlFunction tsmatchjoinsel oidvectorle euc_tw_to_utf8 timestamp_zone_transform atan2
+syn keyword sqlFunction bringetbitmap btint2cmp anyenum_in _pg_keysequal ts_debug
+syn keyword sqlFunction pg_relation_size line_recv pg_encoding_to_char box_above_eq
+syn keyword sqlFunction txid_snapshot_recv box_same network_sup oidrecv
+syn keyword sqlFunction pg_stat_get_function_self_time int8up point_send int2not
+syn keyword sqlFunction timestamp_gt_timestamptz btoptions iso_to_win1251 latin3_to_mic array_ne
+syn keyword sqlFunction interval_pl_timestamptz int4smaller interval_pl_timetz arrayoverlap
+syn keyword sqlFunction btint8cmp utf8_to_shift_jis_2004 byteagt md5 pg_try_advisory_xact_lock
+syn keyword sqlFunction gtsvector_same anyarray_in koi8r_to_win866 ishorizontal covar_pop
+syn keyword sqlFunction percentile_cont lseg_ge latin1_to_mic timestamptz_recv dense_rank_final
+syn keyword sqlFunction timeofday pg_ls_dir jsonb_array_element_text lseg_center lseg variance
+syn keyword sqlFunction dense_rank ceiling int4div pg_stat_get_bgwriter_buf_written_clean
+syn keyword sqlFunction inet_gist_penalty int8inc_float8_float8 initcap bpcharnlike mic_to_euc_cn
+syn keyword sqlFunction bernoulli anyrange_out namene time_eq pg_stat_get_backend_activity_start
+syn keyword sqlFunction bttintervalcmp gin_extract_tsvector float8smaller win866_to_win1251
+syn keyword sqlFunction int84eq jsonb_in path_sub_pt btint4cmp btint2sortsupport box_distance
+syn keyword sqlFunction timestamp_ne_date reltimegt json_populate_recordset isopen first_value
+syn keyword sqlFunction json_object_agg decode regclassout numerictypmodout pg_ddl_command_send
+syn keyword sqlFunction array_dims circle_send pg_replication_origin_advance justify_interval
+syn keyword sqlFunction oidlt int4mi tintervalsend cume_dist_final timestamp_hash pg_column_size
+syn keyword sqlFunction query_to_xmlschema interval_accum_inv circle_overbelow
+syn keyword sqlFunction pg_stat_get_db_conflict_bufferpin bitge spg_quad_leaf_consistent
+syn keyword sqlFunction upper_inf uuid_lt pg_lsn_eq int4le family timestamp_ne_timestamptz
+syn keyword sqlFunction pg_stat_get_backend_client_addr box_intersect
+syn keyword sqlFunction pg_logical_slot_peek_binary_changes table_to_xml spggetbitmap jsonb_le
+syn keyword sqlFunction timestamptztypmodout abstimeout macaddr_le record_in ginendscan
+syn keyword sqlFunction int2_accum_inv pg_sleep_for lseg_eq tsvectorsend int4_avg_accum diameter
+syn keyword sqlFunction tidrecv RI_FKey_setnull_del tintervallengt radians regexp_matches dist_sl
+syn keyword sqlFunction bpchar_pattern_ge tintervalrecv rtrim pg_is_in_backup pg_lsn_le
+syn keyword sqlFunction to_regclass age RI_FKey_restrict_del pg_stat_get_backend_activity
+syn keyword sqlFunction pg_event_trigger_ddl_commands brinbuildempty poly_overleft
+syn keyword sqlFunction percentile_disc_multi_final flt4_mul_cash uuid_ne interval_pl_timestamp
+syn keyword sqlFunction float8in mod int8recv pg_prepared_xact row_to_json date_cmp_timestamptz
+syn keyword sqlFunction array_length inet_gist_fetch date_in int2_avg_accum_inv
+syn keyword sqlFunction pg_extension_config_dump abstimene oidsend eqjoinsel array_lower
+syn keyword sqlFunction pg_stat_get_db_tuples_inserted current_query numeric_poly_var_samp cos
+syn keyword sqlFunction numeric_le jsonb_populate_record now reltimein timestamp_send avg
+syn keyword sqlFunction array_le to_regoper pg_create_physical_replication_slot uuid_send
+syn keyword sqlFunction btfloat4cmp RI_FKey_cascade_upd circle_le pow
+syn keyword sqlFunction pg_stat_get_db_tuples_updated has_language_privilege
+syn keyword sqlFunction pg_show_all_file_settings cstring_in pg_prepared_statement
+syn keyword sqlFunction pg_get_function_result interval_div hashmacaddr circle_mul_pt
+syn keyword sqlFunction dispell_lexize percent_rank cash_eq bitnot date_eq_timestamp
+syn keyword sqlFunction record_image_eq RI_FKey_setdefault_del close_ps dist_sb
+syn keyword sqlFunction pg_event_trigger_dropped_objects contjoinsel regr_intercept
+syn keyword sqlFunction line_intersect mic_to_ascii generate_series numeric_transform
+syn keyword sqlFunction mic_to_win1251 range_lt regdictionaryin mic_to_iso interval_recv
+syn keyword sqlFunction pg_stat_get_wal_senders reltimene pg_event_trigger_table_rewrite_reason
+syn keyword sqlFunction varbitne btfloat48cmp int2_mul_cash bpcharsend regdictionaryout
+syn keyword sqlFunction pg_logical_slot_get_changes tintervalout int8or int84mi varbitle
+syn keyword sqlFunction lo_export intervaltypmodin range_gt pg_stat_get_db_xact_rollback int8
+syn keyword sqlFunction date cash_recv textlen pg_stat_get_xact_numscans interval_eq hashfloat8
+syn keyword sqlFunction timestamptz_ne utf8_to_euc_jis_2004 plpgsql_call_handler jsonb_typeof
+syn keyword sqlFunction pg_get_indexdef boolout ts_match_qv tsquery_lt cash_mi database_to_xml
+syn keyword sqlFunction circle_overlap binary_upgrade_set_next_toast_pg_class_oid ceil texticlike
+syn keyword sqlFunction RI_FKey_noaction_upd timestamptz_ne_date date_eq hashcostestimate
+syn keyword sqlFunction pg_lsn_gt line dist_cpoly array_lt tsvector_le win_to_utf8 int82pl
+syn keyword sqlFunction timetz_le int4lt string_agg_finalfn cash_div_flt4 numeric_var_samp
+syn keyword sqlFunction int28ne circle_overleft plainto_tsquery point_out tidne max
+syn keyword sqlFunction dsynonym_lexize neqsel dtrunc tintervalin int2vectorsend regnamespacesend
+syn keyword sqlFunction int2smaller array_smaller line_in int8out center jsonb_pretty btint84cmp
+syn keyword sqlFunction varbitcmp gin_consistent_jsonb_path spg_text_leaf_consistent
+syn keyword sqlFunction jsonb_delete_path bit_in charin pg_cursor date_lt_timestamptz timetz_hash
+syn keyword sqlFunction pg_lsn_cmp numeric_uplus float48eq int2recv aclinsert utf8_to_iso8859_1
+syn keyword sqlFunction pg_replication_origin_oid jsonb_object_agg_finalfn lo_create void_send
+syn keyword sqlFunction int48div interval event_trigger_in nlikesel int28le path_div_pt like
+syn keyword sqlFunction enum_first array_agg_array_transfn pg_timezone_names pg_my_temp_schema
+syn keyword sqlFunction poly_overbelow win1250_to_latin2 float8_avg fmgr_sql_validator date_pli
+syn keyword sqlFunction make_timestamp _pg_truetypid pg_relation_filenode int4eq cash_mul_flt4
+syn keyword sqlFunction oidle int24eq euc_cn_to_mic tsqueryrecv record_image_gt oidvectorgt
+syn keyword sqlFunction time_larger void_out array_append to_regrole
+syn keyword sqlFunction pg_stat_get_db_blk_write_time pg_is_other_temp_schema ginrestrpos
+syn keyword sqlFunction RI_FKey_cascade_del tsquery_eq int8dec pg_identify_object pg_switch_xlog
+syn keyword sqlFunction timestamp_sortsupport regrolerecv cot pg_stat_get_xact_tuples_returned
+syn keyword sqlFunction range_gist_fetch likejoinsel event_trigger_out koi8u_to_utf8 circle_gt
+syn keyword sqlFunction byteacmp float4mul split_part left range_intersect int8range
+syn keyword sqlFunction json_array_element koi8r_to_iso path_distance int82ne big5_to_utf8
+syn keyword sqlFunction pg_advisory_xact_lock_shared pg_stat_reset float4gt
+syn keyword sqlFunction binary_upgrade_set_next_pg_authid_oid numeric_ln
+syn keyword sqlFunction tsvector_update_trigger_column enum_gt spgmarkpos hashtext circle_ne
+syn keyword sqlFunction bitgt int2vectoreq network_le abstimein xidin json_out
+syn keyword sqlFunction shift_jis_2004_to_utf8 timestamp_smaller gist_poly_consistent int82mi
+syn keyword sqlFunction numeric_sqrt domain_in lo_close range_typanalyze tintervalend spgrescan
+syn keyword sqlFunction hashint8 float8_covar_pop timetz_gt cash_pl int2 gist_box_consistent
+syn keyword sqlFunction time_hash pg_identify_object_as_address namegt xideqint4 pg_indexes_size
+syn keyword sqlFunction varbit_send varchar date_lt_timestamp int2ge int2mod
+syn keyword sqlFunction pg_get_function_arg_default brininsert numeric_abs regoperin
+syn keyword sqlFunction gtsquery_decompress jsonb_out pg_replication_origin_session_setup
+syn keyword sqlFunction pg_node_tree_send numrange regr_avgx pg_node_tree_out
+syn keyword sqlFunction shift_jis_2004_to_euc_jis_2004 gistinsert numeric_out date_pl_interval
+syn keyword sqlFunction lseg_in tsrange_subdiff point_div byteaout hashvarlena aclexplode
+syn keyword sqlFunction arraycontains win1251_to_win866 inet_server_addr btrecordcmp macaddr_cmp
+syn keyword sqlFunction jsonb_eq lo_lseek tidgt timestamp_out jsonb_to_recordset json_agg_finalfn
+syn keyword sqlFunction network_overlap int8inc numeric_exp jsonb_build_array
+syn keyword sqlFunction jsonb_populate_recordset binary_upgrade_create_empty_extension btendscan
+syn keyword sqlFunction pg_stat_get_autoanalyze_count enum_send btvacuumcleanup
+syn keyword sqlFunction percentile_cont_interval_final to_hex uuid_ge oidvectorrecv current_user
+syn keyword sqlFunction box_add atan internal_out void_recv record_eq regprocsend on_ps array_in
+syn keyword sqlFunction tintervalov timetz_in ginarrayconsistent btoidcmp tintervalstart
+syn keyword sqlFunction tsq_mcontains int8mul pg_current_xlog_insert_location
+syn keyword sqlFunction range_gist_picksplit bool_accum_inv charne pg_encoding_max_length byteain
+syn keyword sqlFunction btgettuple poly_out record_lt row_number aclitemout int8gt jsonb_ne
+syn keyword sqlFunction currval int4shr bittypmodin inet_gist_union numeric_power
+syn keyword sqlFunction txid_current_snapshot date_gt_timestamptz record_image_le
+syn keyword sqlFunction pg_collation_is_visible pg_sequence_parameters
+syn keyword sqlFunction pg_stat_get_db_stat_reset_time convert range_gist_compress float4abs
+syn keyword sqlFunction to_char textanycat cume_dist jsonb_object_agg utf8_to_euc_jp get_byte
+syn keyword sqlFunction cash_lt numeric_uminus namesend ts_headline lowrite
+syn keyword sqlFunction pg_tablespace_location int2lt float8_regr_sxx json_object_agg_finalfn
+syn keyword sqlFunction int4in euc_jis_2004_to_utf8 point_mul numeric_poly_stddev_samp box_in
+syn keyword sqlFunction tsquerysend justify_hours thesaurus_lexize money language_handler_in
+syn keyword sqlFunction bpcharin timetz_recv int48lt euc_jp_to_mic any_out bool_or float84mi
+syn keyword sqlFunction int24div int8dec_any enum_larger time_smaller box_right aclremove
+syn keyword sqlFunction uuid_cmp macaddr_or hashoptions float4lt network_eq
+syn keyword sqlFunction timestamptz_ne_timestamp RI_FKey_check_upd spgcanreturn cash_div_int2
+syn keyword sqlFunction ts_rank lo_get lseg_intersect int42div gin_cmp_prefix timetz_ne
+syn keyword sqlFunction arraycontjoinsel bttextsortsupport btfloat8sortsupport
+syn keyword sqlFunction numeric_sortsupport numeric_poly_stddev_pop utf8_to_iso8859 float4larger
+syn keyword sqlFunction jsonb_exists_any regoperrecv box_sub gist_box_union timetztypmodin
+syn keyword sqlFunction gininsert bpcharle pg_reload_conf div pg_advisory_lock_shared oidgt
+syn keyword sqlFunction height circle_lt pg_logical_slot_peek_changes pg_stat_reset_shared timetz
+syn keyword sqlFunction jsonb_array_element currtid pg_stat_get_dead_tuples btinsert polygon
+syn keyword sqlFunction dlog10 opaque_out oidvectorlt int8and justify_days pg_lsn_recv stddev_pop
+syn keyword sqlFunction count format box_below_eq int4range_canonical float84ne pg_is_in_recovery
+syn keyword sqlFunction int4_accum cash_mul_flt8 timemi int4_accum_inv stddev_samp timestamptz_eq
+syn keyword sqlFunction exp time_lt gist_box_decompress hash_numeric
+syn keyword sqlFunction pg_logical_slot_get_binary_changes contsel int2abs timetz_larger
+syn keyword sqlFunction varcharout jsonb_extract_path json_array_length acldefault path_npoints
+syn keyword sqlFunction brinoptions path_n_lt interval_hash hashint2vector lseg_vertical
+syn keyword sqlFunction interval_transform bpcharregexeq database_to_xml_and_xmlschema path_inter
+syn keyword sqlFunction date_le circle_overabove lo_tell64 array_agg_array_finalfn bpchareq
+syn keyword sqlFunction tintervaleq pg_event_trigger_table_rewrite_oid byteaeq btrestrpos
+syn keyword sqlFunction dist_polyp circle_contained generate_subscripts gistbeginscan cardinality
+syn keyword sqlFunction ginoptions jsonb_contains translate float8_stddev_samp numeric_sum
+syn keyword sqlFunction spgrestrpos interval_mi lpad array_gt getpgusername regoperatorrecv
+syn keyword sqlFunction pg_xact_commit_timestamp xideq poly_contained
+syn keyword sqlFunction pg_stat_get_backend_client_port record_ne win1251_to_koi8r
+syn keyword sqlFunction varchar_transform json_agg_transfn set_bit poly_below dist_lb to_regproc
+syn keyword sqlFunction euc_jis_2004_to_shift_jis_2004 enum_lt interval_smaller oideq
+syn keyword sqlFunction numeric_larger gist_poly_compress json_array_elements json_agg
+syn keyword sqlFunction text_larger pg_get_multixact_members lseg_length txid_snapshot_in
+syn keyword sqlFunction spg_text_choose range_overleft nextval pg_lsn_in nth_value oidvectorge
+syn keyword sqlFunction lo_tell array_eq varbit_out range_gist_union float8lt lo_truncate64
+syn keyword sqlFunction array_upper inet_send tintervallenlt timestamp_lt_date euc_jp_to_utf8
+syn keyword sqlFunction replace byteasend pg_postmaster_start_time json_send timestamptz_le_date
+syn keyword sqlFunction lo_open has_tablespace_privilege float4ne range_recv dlog1 trigger_in
+syn keyword sqlFunction macaddr_recv xmlconcat2 varchartypmodout gin_extract_tsquery
+syn keyword sqlFunction timestamp_eq_date uuid_le path_n_le ordered_set_transition
+syn keyword sqlFunction float8_stddev_pop text_pattern_ge int2um regoperatorsend
+syn keyword sqlFunction getdatabaseencoding mic_to_euc_tw float8_regr_accum utf8_to_win
+syn keyword sqlFunction gist_box_penalty jsonb_build_object spgbulkdelete array_to_string
+syn keyword sqlFunction pg_table_is_visible anyarray_recv circle_out ts_rank_cd _pg_interval_type
+syn keyword sqlFunction bitcmp length numeric_avg int4_sum timestamptz_smaller int4shl
+syn keyword sqlFunction btfloat84cmp fdw_handler_in int4mul hashbuildempty hashinet numeric_inc
+syn keyword sqlFunction txid_snapshot_xip circle_contain_pt pg_timezone_abbrevs btint48cmp
+syn keyword sqlFunction json_extract_path_text utf8_to_gbk timestamp_cmp dexp abstimele
+syn keyword sqlFunction bpcharregexne time_transform bpcharne regconfigin
+syn keyword sqlFunction pg_stat_get_backend_start timestamp_in hashrescan pg_opfamily_is_visible
+syn keyword sqlFunction gist_point_distance float84gt ts_typanalyze array_agg_finalfn makeaclitem
+syn keyword sqlFunction time_cmp pg_stat_file current_setting pg_conversion_is_visible namege
+syn keyword sqlFunction on_sl int48gt int8_avg regprocedurein dsimple_init pg_lsn_out
+syn keyword sqlFunction brin_inclusion_opcinfo gistgettuple interval_um euc_kr_to_utf8 date_cmp
+syn keyword sqlFunction float8_regr_slope gtsquery_penalty iso_to_koi8r int4 bpchariclike
+syn keyword sqlFunction to_regoperator gtsvector_compress json_array_element_text
+syn keyword sqlFunction int8range_subdiff float4le path_mul_pt xidout int2div time_ne
+syn keyword sqlFunction pg_stat_get_tuples_returned numeric_cmp gin_cmp_tslexeme
+syn keyword sqlFunction tsvector_update_trigger regtypeout circle_in jsonb_send range_adjacent
+syn keyword sqlFunction bttext_pattern_cmp thesaurus_init to_regprocedure
+syn keyword sqlFunction pg_available_extension_versions close_pb cash_gt spg_kd_config path_n_gt
+syn keyword sqlFunction line_parallel range_ge slope float8_regr_r2 jsonb_array_elements inet_in
+syn keyword sqlFunction record_out range_ne path_center point_horiz table_to_xmlschema
+syn keyword sqlFunction timestamp_le_timestamptz int4range overlaps pg_advisory_unlock
+syn keyword sqlFunction box_contain_pt int4send hash_range timestamptztypmodin hashname int42mi
+syn keyword sqlFunction float84le boolor_statefunc text_ge bpcharlt int84ge
+syn keyword sqlFunction pg_stat_get_vacuum_count currtid2 daterange utf8_to_euc_tw
+syn keyword sqlFunction line_horizontal int28eq int8ne path_add_pt integer_pl_date cash_ne
+syn keyword sqlFunction pg_stat_get_function_total_time timestamptz_mi_interval pg_lsn_mi box_le
+syn keyword sqlFunction json_build_array btint24cmp range_merge bool int28lt btnamesortsupport
+syn keyword sqlFunction int2vectorrecv bitcat oidvectoreq regnamespacerecv gist_box_picksplit
+syn keyword sqlFunction RI_FKey_restrict_upd jsonb_exists_all lo_unlink setseed
+syn keyword sqlFunction has_foreign_data_wrapper_privilege int8abs int82gt macaddr_send
+syn keyword sqlFunction pg_stat_get_xact_tuples_inserted tintervalgt tsq_mcontained
+syn keyword sqlFunction json_build_object circle_above xpath pg_stat_clear_snapshot width pclose
+syn keyword sqlFunction int4gt int82eq spgbeginscan tintervallenge int42pl anyelement_out
+syn keyword sqlFunction percentile_disc _pg_numeric_scale range_after numeric_stddev_samp
+syn keyword sqlFunction gbk_to_utf8 win1251_to_mic mic_to_sjis box_mul btfloat4sortsupport
+syn keyword sqlFunction substring box_below mic_to_big5 regr_sxx abstime tidlarger charle dist_pb
+syn keyword sqlFunction pg_replication_origin_session_progress float4 int48mi
+syn keyword sqlFunction gin_tsquery_triconsistent timestamp_mi date_out inet_gist_decompress
+syn keyword sqlFunction float48mi anyelement_in hashbeginscan range_contained_by jsonb_cmp
+syn keyword sqlFunction timetzdate_pl timestamp_pl_interval btcanreturn clock_timestamp nameeq
+syn keyword sqlFunction numeric_ne tsquery_not jsonb_each_text regopersend timestamptz_mi
+syn keyword sqlFunction varbittypmodin timetz_smaller regclass pg_stat_get_archiver pg_sleep
+syn keyword sqlFunction pg_ddl_command_out anyrange_in macaddr_in tsqueryout int2vectorin
+syn keyword sqlFunction int4_avg_accum_inv tsvector_eq xml_in close_ls float84pl
+syn keyword sqlFunction shobj_description bool_anytrue brinrestrpos trunc reltimeout int28pl
+syn keyword sqlFunction timestamptz_lt_date tsquery_le reverse circle_add_pt tsquery_gt
+syn keyword sqlFunction time_mi_time schema_to_xml float84eq interval_ge notlike lseg_recv
+syn keyword sqlFunction xpath_exists inet_client_addr pg_ts_parser_is_visible poly_recv
+syn keyword sqlFunction query_to_xml boolle regexeqjoinsel tidge pg_advisory_unlock_shared
+syn keyword sqlFunction timestamp_ge_timestamptz brinbeginscan int48le
+syn keyword sqlFunction pg_stat_get_db_tuples_deleted pg_stat_get_db_conflict_startup_deadlock
+syn keyword sqlFunction cidin interval_send gistmarkpos euc_tw_to_big5 bpchartypmodout
+syn keyword sqlFunction float8_regr_intercept interval_pl pg_get_triggerdef spg_quad_picksplit
+syn keyword sqlFunction inter_lb date_recv text record_le jsonb_agg jsonb_object_field_text
+syn keyword sqlFunction int28mi lastval timestamptypmodout
 
 syn keyword sqlOperator  all and any between distinct escape except exists
 syn keyword sqlOperator  ilike in intersect like not or like_regex similar
