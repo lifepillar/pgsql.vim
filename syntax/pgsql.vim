@@ -480,11 +480,11 @@ HiLink sqlErrorCode      Special
 HiLink sqlExtension      Type
 HiLink sqlFunction       Function
 HiLink sqlIdentifier     Identifier
-HiLink sqlKeyword        Keyword
+HiLink sqlKeyword        sqlSpecial
 HiLink sqlNumber         Number
-HiLink sqlOperator       Operator
+HiLink sqlOperator       sqlStatement
 HiLink sqlOption         Define
-HiLink sqlSpecial        Boolean
+HiLink sqlSpecial        Special
 HiLink sqlStatement      Statement
 HiLink sqlString         String
 HiLink sqlType           Type
