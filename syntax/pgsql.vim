@@ -1038,7 +1038,6 @@ syn keyword sqlErrorCode fdw_unable_to_establish_connection plpgsql_error raise_
 syn keyword sqlErrorCode too_many_rows internal_error data_corrupted index_corrupted
 
 " Extensions
-
 syn keyword sqlExtension adminpack auth_delay auto_explain btree_gin btree_gist chkpass citext cube
 syn keyword sqlExtension dblink dict_int dict_xsyn dummy_seclabel earthdistance file_fdw fuzzystrmatch
 syn keyword sqlExtension hstore intagg intarray isn lo ltree pageinspect passwordcheck pg_buffercache
