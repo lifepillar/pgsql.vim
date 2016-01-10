@@ -11,7 +11,7 @@ endif
 
 syn case ignore
 
-syn keyword sqlSpecial   false null true unknown
+syn keyword sqlSpecial   false null true
 
 " SQL keywords (see Table C-1 in App. C of PostgreSQL manual)
 syn keyword sqlKeyword   abort abs absent absolute access according action ada add admin after array
