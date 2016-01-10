@@ -1,7 +1,12 @@
-# Vim PostgreSQL syntax plugin with PL/pgSQL and PL/Python support
+# Vim PostgreSQL syntax plugin
 
 This plugin provides syntax highlighting and auto-completion support for
-PostgreSQL version 9.4 or above.
+PostgreSQL version 9.4 or above and for some of its extensions:
+
+- PL/pgSQL;
+- PL/Python;
+- [PostGIS](http://postgis.net) 2.2 (including PostGIS Topology);
+- [pgTap](http://pgtap.org) 0.95.0.
 
 
 # Installation
