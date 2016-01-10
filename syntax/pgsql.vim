@@ -1038,13 +1038,15 @@ syn keyword sqlErrorCode fdw_unable_to_establish_connection plpgsql_error raise_
 syn keyword sqlErrorCode too_many_rows internal_error data_corrupted index_corrupted
 
 " Extensions
-syn keyword sqlExtension plpgsql plpythonu plpython plperl plpgsqlu hstore adminpack auth_delay
-syn keyword sqlExtension auto_explain btree_gin btree_gist chkpass citext cube dblink dict_int
-syn keyword sqlExtension dict_xsyn dummy_seclabel earthdistance file_fdw fuzzystrmatch intagg
-syn keyword sqlExtension intarray isn lo ltree pageinspect passwordcheck pg_buffercache pgcrypto
-syn keyword sqlExtension pg_freespacemap pg_prewarm pgrowlocks pg_stat_statements pgstattuple
-syn keyword sqlExtension pg_trgm postgres_fdw seg sepgsql spi sslinfo tablefunc tcn test_decoding
-syn keyword sqlExtension test_parser test_shm_mq tsearch2 unaccent uuid-ossp xml2
+
+syn keyword sqlExtension adminpack auth_delay auto_explain btree_gin btree_gist chkpass citext cube
+syn keyword sqlExtension dblink dict_int dict_xsyn dummy_seclabel earthdistance file_fdw fuzzystrmatch
+syn keyword sqlExtension hstore intagg intarray isn lo ltree pageinspect passwordcheck pg_buffercache
+syn keyword sqlExtension pg_freespacemap pg_prewarm pg_stat_statements pg_trgm pgcrypto pgrowlocks
+syn keyword sqlExtension pgstattuple pgtap pldbgapi plperl plperlu plpgsql plpgsqlu plpython plpythonu
+syn keyword sqlExtension pltcl pltclu postgis postgis_topology postgres_fdw seg sepgsql spi sslinfo
+syn keyword sqlExtension tablefunc tcn test_decoding test_parser test_shm_mq tsearch2 unaccent
+syn keyword sqlExtension uuid-ossp xml2
 
 " Psql Keywords
 syn keyword sqlPsqlKeyword cd conninfo echo qecho prompt pset setenv timing unset
