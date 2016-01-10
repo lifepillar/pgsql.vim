@@ -816,7 +816,9 @@ syn keyword sqlType varbit varchar void xid xml
 
 " PostGIS 2.2 types
 " From pg_type and PostGIS manual
-syn keyword sqlType box2d box2df box3d geography geometry geomtry_dump gidx pgis_abs raster spheroid
+syn keyword sqlType addbandarg agg_count agg_samealignment box2d box2df box3d geography
+syn keyword sqlType geometry geomtry_dump geomval gidx pgis_abs rastbandarg raster reclassarg
+syn keyword sqlType spheroid summarystats unionarg valid_detail
 
 " Constants
 syn keyword sqlConstant  debug5 debug4 debug3 debug2 debug1 log notice warning
