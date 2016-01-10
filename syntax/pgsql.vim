@@ -848,6 +848,9 @@ syn keyword sqlConstant  pg_trigger pg_ts_config pg_ts_config_map pg_ts_dict
 syn keyword sqlConstant  pg_ts_parser pg_ts_template pg_type pg_user
 syn keyword sqlConstant  pg_user_mapping pg_user_mappings pg_views
 
+" PostGIS 2.2 Grand Unified Custom Variables (GUCs) (§8.2 from the manual)
+syn keyword sqlConstant backend gdal_datapath gdal_enabled_drivers enable_outdb_rasters
+
 " Variables
 syn match sqlVariable    "\<_[A-Za-z0-9][A-Za-z0-9_]*\>"
 
