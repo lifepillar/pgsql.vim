@@ -807,6 +807,7 @@ syn keyword sqlStatement alter analyze comment commit copy create delete drop
 syn keyword sqlStatement execute explain grant insert lock revoke rollback
 syn keyword sqlStatement savepoint select set truncate update
 
+" SQL Types
 " To build this list:
 "
 " psql template1
