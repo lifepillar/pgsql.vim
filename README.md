@@ -1,5 +1,7 @@
 # Vim PostgreSQL syntax plugin
 
+![pgsql syntax highlighting](images/pgsql.png)
+
 This plugin provides syntax highlighting and auto-completion support for
 PostgreSQL version 9.4 or above and for some of its extensions:
 
