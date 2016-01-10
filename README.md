@@ -80,15 +80,9 @@ endif
 # PL/pgSQL Support
 
 Code between `$pgsql$` or `$$` pairs is considered PL/pgSQL and highlighted
-accordingly.
+accordingly:
 
-    create or replace function foo() returns void
-    language plpgsql immutable as
-    $$
-    begin
-      raise notice 'This is a PL/pgSQL function';
-    end;
-    $$;
+![PL/pgSQL snippet](images/plpgsql.png)
 
 Names starting with an underscore are considered variables and highlighted as
 such. It is recommended to adopt the convention of prefixing parameter and
@@ -99,13 +93,7 @@ local variable names with `_`.
 
 Code between `$python$` pairs is highlighted as Python. For example:
 
-    create or replace function plpythonu_version() returns text
-    language plpythonu as
-    $python$
-      res = plpy.execute('select * from version()')
-      return res[0]['version']
-    $python$;
-
+![PL/Pythonu snippet](images/plpython.png)
 
 # Customizing syntax coloring
 
