@@ -1,1 +1,2 @@
-au BufNewFile,BufRead *.pgsql setfiletype sql | SQLSetType pgsql
+au BufNewFile,BufRead *.pgsql let b:sql_type_override='pgsql' | setfiletype sql
+
