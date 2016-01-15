@@ -64,12 +64,8 @@ fun! s:TabComplete()
   endif
 endf
 
-fun! s:ShiftTabComplete()
-  return pumvisible() ? "\<c-p>" : "\<s-tab>"
-endf
-
-imap <silent><buffer> <tab>   <c-r>=<sid>TabComplete()<cr>
-imap <silent><buffer> <s-tab> <c-r>=<sid>ShiftTabComplete()<cr>
+inoremap <silent><buffer> <tab> <c-r>=<sid>TabComplete()<cr>
+inoremap <silent><buffer><expr> <s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 ```
 
 As far as I know, [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)
