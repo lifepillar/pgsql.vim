@@ -56,7 +56,7 @@ auto-completion. To do that, you may add the following snippet in
 fun! s:TabComplete()
   if pumvisible()
     return "\<c-n>"
-  elseif col('.') > 1 && strpart(getline('.'), col('.') - 2, 3) =~ '^\w'
+  elseif col('.')>1 && (matchstr(getline('.'), '\%' . (col('.')-1) . 'c.') =~ '\S')
     call sqlcomplete#Map('syntax') " See :h sql-completion-static
     return "\<c-x>\<c-o>"
   else
