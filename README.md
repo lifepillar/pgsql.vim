@@ -51,11 +51,6 @@ Code between `$python$` pairs is highlighted as Python. For example:
 ![PL/Pythonu snippet](images/plpython.png)
 
 
-# Bonus
-
-Some useful [UltiSnips](https://github.com/SirVer/ultisnips) snippets.
-
-
 # Acknowledgments
 
 Original code from [space::tekk](https://github.com/spacetekk/pgsql.vim).
