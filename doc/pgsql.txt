@@ -44,15 +44,27 @@ variables. It is recommended to adopt the convention of prefixing
 function parameters and local variables with `_`.
 
 Code between `$pgsql$` or `$$` pairs is interpreted as PL/pgSQL and
-highlighted accordingly.
-
-Code between `$python$` pairs is highlighted as Python.
+highlighted accordingly. To use any other language, such as PL/Perl,
+PL/Python, PL/R, and so on, see |pgsql-customization|.
 
 ====================================================================
 Section 2: Customization                       *pgsql-customization*
 
+To enable embedded syntax highlighting inside the body of
+user-defined functions for languages other than PL/pgSQL, you should
+set `g:pgsql_pl` accordingly. The value of the variable is a List of
+file types. For example, to use PL/Python and PL/R, you should
+define:
+
+    let g:pgsql_pl = ['python, 'r']
+
+After that, code between `$python$` pairs will be highlighted as
+Python, and code between $r$ pairs will be highlighted as R. There
+is also a buffer-local variable called `b:pgsql_pl` to override the
+global settings in a single buffer.
+
 PostGIS and pgTap syntax highlighting are enabled by default. You
-may disable them by putting the following in your `vimrc`:
+may disable them by putting the following settings in your `vimrc`:
 
     let g:pgsql_postgis_disabled = 1
     let g:pgsql_pgtap_disabled = 1

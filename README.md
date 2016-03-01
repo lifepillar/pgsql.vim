@@ -6,7 +6,7 @@ This plugin provides syntax highlighting and auto-completion support for
 PostgreSQL version 9.4 or above and for some of its extensions:
 
 - PL/pgSQL;
-- PL/Python;
+- any other language, like PL/Python, PL/R, etc...;
 - [PostGIS](http://postgis.net) 2.2 (including PostGIS Topology);
 - [pgTap](http://pgtap.org) 0.95.0.
 
@@ -41,12 +41,17 @@ To set the file type in new buffers use:
 
     :let b:sql_type_override='pgsql' | set ft=sql
 
-Code between `$pgsql$` or `$$` pairs is considered PL/pgSQL and highlighted
+Code between `$pgsql$` or `$$` pairs is treated as PL/pgSQL and highlighted
 accordingly:
 
 ![PL/pgSQL snippet](images/plpgsql.png)
 
-Code between `$python$` pairs is highlighted as Python. For example:
+You may set `g:pgsql_pl` to a list of file types to be used in user-defined
+functions. For example, after setting:
+
+    let g:pgsql_pl = ['python']
+
+code between `$python$` pairs will be highlighted as Python:
 
 ![PL/Pythonu snippet](images/plpython.png)
 

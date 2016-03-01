@@ -1066,9 +1066,22 @@ syn keyword sqlTodo contained TODO FIXME XXX DEBUG NOTE
 syn region plpgsql start=+\$pgsql\$+ end=+\$pgsql\$+ keepend contains=ALL
 syn region plpgsql start=+\$\$+ end=+\$\$+ keepend contains=ALL
 
-" PL/Python
-syn include @Python syntax/python.vim
-syn region plPython start=+\$python\$+ end=+\$python\$+ keepend contains=@Python
+" PL/<any other language>
+fun! s:add_syntax(s)
+  execute 'syn include @PL' . a:s . ' syntax/' . a:s . '.vim'
+  unlet b:current_syntax
+  execute 'syn region pgsqlpl' . a:s . ' start=+\$' . a:s . '\$+ end=+\$' . a:s . '\$+ keepend contains=@PL' . a:s
+endf
+
+if exists("b:pgsql_pl")
+  for pl in b:pgsql_pl
+    call s:add_syntax(pl)
+  endfor
+elseif exists("pgsql_pl")
+  for pl in g:pgsql_pl
+    call s:add_syntax(pl)
+  endfor
+endif
 
 " Syntax Synchronizing
 syn sync minlines=10 maxlines=100
