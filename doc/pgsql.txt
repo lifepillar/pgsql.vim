@@ -75,7 +75,7 @@ You may override the global settings on a per-buffer basis using
 Highlight group definitions may be changed in your `vimrc`, too. For
 example:
 
-  hi! sqlKeyword Keyword
+  hi! link sqlKeyword Keyword
 
 The defined highlight groups are the following:
 
