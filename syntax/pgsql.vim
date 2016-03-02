@@ -820,7 +820,9 @@ if (!exists("b:pgsql_pgtap_disabled") || b:pgsql_pgtap_disabled == 0) &&
   " from    pg_catalog.pg_namespace n
   " join    pg_catalog.pg_proc p
   " on      p.pronamespace = n.oid
-  " where   n.nspname = 'pgtap' and p.proname not like '\_%' order by p.proname;
+  " where   n.nspname = 'pgtap' and p.proname not like '\_%'
+  "   and   n.proname <> 'is' -- We want to highlight 'is' as a keyword
+  " order   by p.proname;
   syn keyword sqlFunction add_result alike any_column_privs_are bag_eq bag_has bag_hasnt bag_ne can
   syn keyword sqlFunction cast_context_is casts_are check_test cmp_ok col_default_is col_has_check
   syn keyword sqlFunction col_has_default col_hasnt_default col_is_fk col_is_null col_is_pk
@@ -842,7 +844,7 @@ if (!exists("b:pgsql_pgtap_disabled") || b:pgsql_pgtap_disabled == 0) &&
   syn keyword sqlFunction hasnt_relation hasnt_role hasnt_rule hasnt_schema hasnt_sequence
   syn keyword sqlFunction hasnt_table hasnt_tablespace hasnt_trigger hasnt_type hasnt_user
   syn keyword sqlFunction hasnt_view ialike imatches in_todo index_is_primary index_is_type
-  syn keyword sqlFunction index_is_unique index_owner_is indexes_are is is_aggregate is_clustered
+  syn keyword sqlFunction index_is_unique index_owner_is indexes_are is_aggregate is_clustered
   syn keyword sqlFunction is_definer is_empty is_member_of is_strict is_superuser isa_ok isnt
   syn keyword sqlFunction isnt_empty isnt_strict isnt_superuser language_is_trusted
   syn keyword sqlFunction language_owner_is language_privs_are languages_are lives_ok matches
