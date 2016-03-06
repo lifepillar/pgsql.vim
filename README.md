@@ -56,6 +56,20 @@ code between `$python$` pairs will be highlighted as Python:
 ![PL/Pythonu snippet](images/plpython.png)
 
 
+# Snippets
+
+UltiSnips snippets have been removed in commit
+aae77099bccaa5f443994821130688e0c30182d9, essentially for three reasons:
+
+- not everyone using this plugin uses UltiSnips;
+- UltiSnips already provides some basic SQL snippets;
+- snippets's style and behaviour are a matter of personal taste.
+
+So, if you want PostgreSQL-specific snippets, you'd better write your own. The
+ones I use are in my [Vim
+configuration](https://github.com/lifepillar/vimrc/blob/master/UltiSnips/sql.snippets).
+
+
 # Acknowledgments
 
 Original code from [space::tekk](https://github.com/spacetekk/pgsql.vim).
