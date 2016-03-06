@@ -59,7 +59,7 @@ code between `$python$` pairs will be highlighted as Python:
 # Snippets
 
 UltiSnips snippets have been removed in commit
-https://github.com/lifepillar/pgsql.vim/commit/aae77099bccaa5f443994821130688e0c30182d9
+[aae77099](https://github.com/lifepillar/pgsql.vim/commit/aae77099bccaa5f443994821130688e0c30182d9)
 essentially for three reasons:
 
 - not everyone using this plugin uses UltiSnips;
