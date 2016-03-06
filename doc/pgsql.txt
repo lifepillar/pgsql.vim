@@ -56,7 +56,7 @@ set `g:pgsql_pl` accordingly. The value of the variable is a List of
 file types. For example, to use PL/Python and PL/R, you should
 define:
 
-    let g:pgsql_pl = ['python, 'r']
+    let g:pgsql_pl = ['python', 'r']
 
 After that, code between `$python$` pairs will be highlighted as
 Python, and code between $r$ pairs will be highlighted as R. There
