@@ -804,7 +804,7 @@ if (!exists("b:pgsql_postgis_disabled") || b:pgsql_postgis_disabled == 0) &&
   " PostGIS 2.2 types
   " From pg_type and PostGIS manual
   syn keyword sqlType addbandarg agg_count agg_samealignment box2d box2df box3d geography
-  syn keyword sqlType geometry geomtry_dump geomval gidx pgis_abs rastbandarg raster reclassarg
+  syn keyword sqlType geometry geometry_dump geomval gidx pgis_abs rastbandarg raster reclassarg
   syn keyword sqlType spheroid summarystats unionarg valid_detail
   syn keyword sqlType getfaceedges_returntype layer topoelement topoelementarray topogeometry
   syn keyword sqlType topology topology_id_seq validatetopology_returntype
