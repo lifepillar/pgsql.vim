@@ -12,7 +12,7 @@ if exists("b:did_indent")
     finish
 endif
 let b:did_indent     = 1
-let b:current_indent = "sqlanywhere"
+let b:current_indent = "pgsql"
 
 setlocal indentkeys-=0{
 setlocal indentkeys-=0}
