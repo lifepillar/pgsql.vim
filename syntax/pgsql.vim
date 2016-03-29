@@ -3,7 +3,7 @@
 " Author:       space::tekk
 " Maintainer:   Lifepillar
 " Version:      1.0.1
-" License:      This file is placed in the public domain.   
+" License:      This file is placed in the public domain.
 
 if version < 600
   syntax clear
