@@ -1,7 +1,7 @@
 *pgsql.txt*  Syntax highlighting for PostgreSQL files
 
 Author:  Lifepillar <https://github.com/lifepillar>
-License: Same terms as Vim itself (see |license|)
+License: Public Domain
 
                                   _   ~
                                  | |  ~
