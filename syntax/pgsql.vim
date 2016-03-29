@@ -2,6 +2,8 @@
 " Language:     SQL, PL/pgSQL, PL/Python (PostgreSQL 9.5)
 " Author:       space::tekk
 " Maintainer:   Lifepillar
+" Version:      1.0
+" License:      This file is placed in the public domain.   
 
 if version < 600
   syntax clear
