@@ -13,7 +13,7 @@ endif
 
 syn case ignore
 
-syn keyword sqlSpecial   false null true
+syn keyword sqlSpecial false null true
 
 " Constants
 syn keyword sqlConstant debug5 debug4 debug3 debug2 debug1 log notice warning
@@ -871,9 +871,9 @@ if (!exists("b:pgsql_pgtap_disabled") || b:pgsql_pgtap_disabled == 0) &&
   syn keyword sqlFunction volatility_is
 endif " pgsql_pgtap_disabled
 
-syn keyword sqlOperator  all and any between distinct escape except exists
-syn keyword sqlOperator  ilike in intersect like not or like_regex similar
-syn keyword sqlOperator  some to union
+syn keyword sqlOperator all and any between distinct escape except exists
+syn keyword sqlOperator ilike in intersect like not or like_regex similar
+syn keyword sqlOperator some to union
 
 syn keyword sqlStatement alter analyze comment commit copy create delete drop
 syn keyword sqlStatement execute explain grant insert lock revoke rollback
