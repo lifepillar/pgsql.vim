@@ -13,14 +13,18 @@ PostgreSQL version 9.4 or above and for some of its extensions:
 
 # Installation
 
-- Using [Vundle](https://github.com/gmarik/vundle), add to `.vimrc`:
+If your Vim supports packages (`echo has('packages')` prints `1`), I strongly
+recommend that you use them. Just clone this repo inside `pack/*/start`, e.g.,
 
-        Plugin 'lifepillar/pgsql.vim'
+    cd ~/.vim
+    git clone https://github.com/lifepillar/pgsql.vim.git pack/bundle/start/pgsql
 
-- Using [Pathogen](https://github.com/tpope/vim-pathogen):
+Otherwise, if you don't have a preferred installation method, I recommend
+installing [Pathogen](https://github.com/tpope/vim-pathogen), and then simply
+copy and paste:
 
-        cd ~/.vim/bundle
-        git clone https://github.com/lifepillar/pgsql.vim.git
+    cd ~/.vim/bundle
+    git clone https://github.com/lifepillar/pgsql.vim.git
 
 
 # Usage
