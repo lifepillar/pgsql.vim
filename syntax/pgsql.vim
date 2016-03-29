@@ -2,7 +2,7 @@
 " Language:     SQL, PL/pgSQL, PL/Python (PostgreSQL 9.5)
 " Author:       space::tekk
 " Maintainer:   Lifepillar
-" Version:      1.0
+" Version:      1.0.1
 " License:      This file is placed in the public domain.   
 
 if version < 600
@@ -14,6 +14,10 @@ endif
 syn case ignore
 
 syn keyword sqlSpecial   false null true
+
+" Constants
+syn keyword sqlConstant debug5 debug4 debug3 debug2 debug1 log notice warning
+syn keyword sqlConstant error fatal panic
 
 " SQL keywords (see Table C-1 in App. C of PostgreSQL manual)
 syn keyword sqlKeyword abort abs absent absolute access according action ada add admin after array
@@ -909,9 +913,6 @@ syn keyword sqlType zone time without timestamp timestampz timetz tinterval trig
 syn keyword sqlType tsm_handler tsquery tsrange tstzrange tsvector txid_snapshot unknown uuid
 syn keyword sqlType varbit varchar void xid xml
 
-" Constants
-syn keyword sqlConstant debug5 debug4 debug3 debug2 debug1 log notice warning
-syn keyword sqlConstant error fatal panic
 " System catalogs:
 syn keyword sqlConstant pg_aggregate pg_am pg_amop pg_amproc pg_attrdef
 syn keyword sqlConstant pg_attribute pg_auth_members pg_authid
