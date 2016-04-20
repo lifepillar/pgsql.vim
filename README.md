@@ -20,10 +20,6 @@ recommend that you use them. Just clone this repo inside `pack/*/start`, e.g.,
     cd ~/.vim
     git clone https://github.com/lifepillar/pgsql.vim.git pack/bundle/start/pgsql
 
-To generate the help tags:
-
-    :helptags ~/.vim/pack/bundle/start/pgsql/doc
-
 Otherwise, if you don't have a preferred installation method, I recommend
 installing [Pathogen](https://github.com/tpope/vim-pathogen), and then simply
 copy and paste:
