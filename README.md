@@ -8,6 +8,7 @@ PostgreSQL version 9.4 or above and for some of its extensions:
 - PL/pgSQL;
 - any other language, like PL/Python, PL/R, etc...;
 - [PostGIS](http://postgis.net) 2.2 (including PostGIS Topology);
+- [pgRouting](http://pgrouting.org) 2.2.1;
 - [pgTap](http://pgtap.org) 0.95.0.
 
 

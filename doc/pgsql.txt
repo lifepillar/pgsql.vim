@@ -63,14 +63,15 @@ Python, and code between $r$ pairs will be highlighted as R. There
 is also a buffer-local variable called `b:pgsql_pl` to override the
 global settings in a single buffer.
 
-PostGIS and pgTap syntax highlighting are enabled by default. You
-may disable them by putting the following settings in your `vimrc`:
+PostGIS, pgRouting and pgTap syntax highlighting is enabled by
+default. To disable:
 
     let g:pgsql_postgis_disabled = 1
+    let g:pgsql_pgrouting_disabled = 1
     let g:pgsql_pgtap_disabled = 1
 
-You may override the global settings on a per-buffer basis using
-`b:pgsql_postgis_disabled` and `b:pgsql_pgtap_disabled`.
+For each of the variables above, a buffer-local version exists,
+which takes precedence over the global variable.
 
 Highlight group definitions may be changed in your `vimrc`, too. For
 example:

@@ -819,6 +819,32 @@ if (!exists("b:pgsql_postgis_disabled") || b:pgsql_postgis_disabled == 0) &&
   syn keyword sqlConstant backend gdal_datapath gdal_enabled_drivers enable_outdb_rasters
 endif " pgsql_postgis_disabled
 
+" pgRouting 2.2.1
+if (!exists("b:pgsql_pgrouting_disabled") || b:pgsql_pgrouting_disabled == 0) &&
+      \ (exists("b:pgsql_pgrouting_disabled") || !exists("g:pgsql_pgrouting_disabled") || g:pgsql_pgrouting_disabled == 0)
+  " create extension pgrouting with schema pgrouting;
+  " \t
+  " \o pgrouting_functions.txt
+  " select  distinct p.proname
+  " from    pg_catalog.pg_namespace n
+  " join    pg_catalog.pg_proc p
+  " on      p.pronamespace = n.oid
+  " where   n.nspname = 'pgrouting' and p.proname not like '\_%' order by p.proname;
+  syn keyword sqlFunction pgr_alphashape pgr_analyzegraph pgr_analyzeoneway pgr_apspjohnson
+  syn keyword sqlFunction pgr_apspwarshall pgr_astar pgr_bdastar pgr_bddijkstra pgr_createtopology
+  syn keyword sqlFunction pgr_createverticestable pgr_dijkstra pgr_dijkstracost pgr_dijkstravia
+  syn keyword sqlFunction pgr_drivingdistance pgr_endpoint pgr_flipedges pgr_floydwarshall
+  syn keyword sqlFunction pgr_getcolumnname pgr_gettablename pgr_gsoc_vrppdtw pgr_iscolumnindexed
+  syn keyword sqlFunction pgr_iscolumnintable pgr_johnson pgr_kdijkstracost pgr_kdijkstrapath pgr_ksp
+  syn keyword sqlFunction pgr_labelgraph pgr_nodenetwork pgr_pointsaspolygon pgr_pointstodmatrix
+  syn keyword sqlFunction pgr_pointstovids pgr_pointtoedgenode pgr_quote_ident pgr_startpoint
+  syn keyword sqlFunction pgr_texttopoints pgr_trsp pgr_trspviaedges pgr_trspviavertices pgr_tsp
+  syn keyword sqlFunction pgr_version pgr_versionless pgr_vidstodmatrix pgr_vrponedepot pgr_withpoints
+  syn keyword sqlFunction pgr_withpointscost pgr_withpointsdd pgr_withpointsksp
+  " From pgRouting manual
+  syn keyword sqlType pgr_costresult pgr_costresult3 pgr_geomresult
+endif " pgsql_pgrouting_disabled
+
 if (!exists("b:pgsql_pgtap_disabled") || b:pgsql_pgtap_disabled == 0) &&
       \ (exists("b:pgsql_pgtap_disabled") || !exists("g:pgsql_pgtap_disabled") || g:pgsql_pgtap_disabled == 0)
   " pgTap
