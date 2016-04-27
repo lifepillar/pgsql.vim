@@ -20,6 +20,8 @@ syn keyword sqlConstant debug5 debug4 debug3 debug2 debug1 log notice warning
 syn keyword sqlConstant error fatal panic
 
 " SQL keywords (see Table C-1 in App. C of PostgreSQL manual)
+" Keywords excluded from this list because they need special treatment:
+" - replace
 syn keyword sqlKeyword abort abs absent absolute access according action ada add admin after array
 syn keyword sqlKeyword aggregate allocate also always analyse are array_agg array_max_cardinality as
 syn keyword sqlKeyword asc asensitive assertion assignment asymmetric at atomic attribute attributes
@@ -76,7 +78,7 @@ syn keyword sqlKeyword position_regex power precedes preceding precision prepare
 syn keyword sqlKeyword primary prior privileges procedural procedure program public quote range rank
 syn keyword sqlKeyword read reads real reassign recheck recovery recursive ref references referencing
 syn keyword sqlKeyword refresh regr_avgx regr_avgy regr_count regr_intercept regr_r2 regr_slope
-syn keyword sqlKeyword regr_sxx regr_sxy regr_syy reindex relative release rename repeatable replace
+syn keyword sqlKeyword regr_sxx regr_sxy regr_syy reindex relative release rename repeatable
 syn keyword sqlKeyword replica requiring reset respect restart restore restrict result return
 syn keyword sqlKeyword returned_cardinality returned_length returned_octet_length returned_sqlstate
 syn keyword sqlKeyword returning returns right role rollup routine routine_catalog routine_name
@@ -128,6 +130,7 @@ syn keyword sqlKeyword contained while
 " join     pg_catalog.pg_proc p
 " on       p.pronamespace = n.oid
 " where    p.proname not like '\_%'
+" and      p.proname <> 'replace' -- needs special treatment
 " order by p.proname;
 syn keyword sqlFunction RI_FKey_cascade_del RI_FKey_cascade_upd RI_FKey_check_ins
 syn keyword sqlFunction RI_FKey_check_upd RI_FKey_noaction_del RI_FKey_noaction_upd
@@ -529,7 +532,7 @@ syn keyword sqlFunction regr_avgy regr_count regr_intercept regr_r2 regr_slope r
 syn keyword sqlFunction regr_syy regrolein regroleout regrolerecv regrolesend regtypein
 syn keyword sqlFunction regtypeout regtyperecv regtypesend reltime reltimeeq reltimege reltimegt
 syn keyword sqlFunction reltimein reltimele reltimelt reltimene reltimeout reltimerecv
-syn keyword sqlFunction reltimesend repeat replace reverse right round row_number
+syn keyword sqlFunction reltimesend repeat reverse right round row_number
 syn keyword sqlFunction row_security_active row_to_json rpad rtrim scalargtjoinsel scalargtsel
 syn keyword sqlFunction scalarltjoinsel scalarltsel schema_to_xml schema_to_xml_and_xmlschema
 syn keyword sqlFunction schema_to_xmlschema session_user set_bit set_byte set_config set_masklen
@@ -624,6 +627,11 @@ syn keyword sqlFunction win866_to_win1251 win_to_utf8 xideq xideqint4 xidin xido
 syn keyword sqlFunction xidsend xml xml_in xml_is_well_formed xml_is_well_formed_content
 syn keyword sqlFunction xml_is_well_formed_document xml_out xml_recv xml_send xmlagg xmlcomment
 syn keyword sqlFunction xmlconcat2 xmlexists xmlvalidate xpath xpath_exists
+
+" Tokens that need special treatment
+" Distinguish between `replace` keyword and replace() function.
+syn match sqlKeyword /replace\s\?/
+syn match sqlFunction /replace(/he=e-1
 
 if (!exists("b:pgsql_postgis_disabled") || b:pgsql_postgis_disabled == 0) &&
       \ (exists("b:pgsql_postgis_disabled") || !exists("g:pgsql_postgis_disabled") || g:pgsql_postgis_disabled == 0)
