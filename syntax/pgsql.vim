@@ -630,7 +630,8 @@ syn keyword sqlFunction xmlconcat2 xmlexists xmlvalidate xpath xpath_exists
 
 " Tokens that need special treatment
 " Distinguish between `replace` keyword and replace() function.
-syn match sqlKeyword /replace\s\?/
+syn match sqlKeyword /replace$/
+syn match sqlKeyword /replace\s/he=e-1
 syn match sqlFunction /replace(/he=e-1
 
 if (!exists("b:pgsql_postgis_disabled") || b:pgsql_postgis_disabled == 0) &&
