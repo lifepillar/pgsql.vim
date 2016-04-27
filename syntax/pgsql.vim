@@ -1127,27 +1127,23 @@ endif
 syn sync minlines=10 maxlines=100
 
 " Default highlighting
-command -nargs=+ HiLink hi def link <args>
-
-HiLink sqlComment        Comment
-HiLink sqlConstant       Constant
-HiLink sqlErrorCode      Special
-HiLink sqlExtension      Type
-HiLink sqlFunction       Function
-HiLink sqlIdentifier     Identifier
-HiLink sqlKeyword        sqlSpecial
-HiLink sqlNumber         Number
-HiLink sqlOperator       sqlStatement
-HiLink sqlOption         Define
-HiLink sqlSpecial        Special
-HiLink sqlStatement      Statement
-HiLink sqlString         String
-HiLink sqlType           Type
-HiLink sqlTodo           Todo
-HiLink sqlVariable       Identifier
-HiLink sqlPsqlKeyword    SpecialKey
-
-delcommand HiLink
+hi def link sqlComment        Comment
+hi def link sqlConstant       Constant
+hi def link sqlErrorCode      Special
+hi def link sqlExtension      Type
+hi def link sqlFunction       Function
+hi def link sqlIdentifier     Identifier
+hi def link sqlKeyword        sqlSpecial
+hi def link sqlNumber         Number
+hi def link sqlOperator       sqlStatement
+hi def link sqlOption         Define
+hi def link sqlSpecial        Special
+hi def link sqlStatement      Statement
+hi def link sqlString         String
+hi def link sqlType           Type
+hi def link sqlTodo           Todo
+hi def link sqlVariable       Identifier
+hi def link sqlPsqlKeyword    SpecialKey
 
 let b:current_syntax = "sql"
 
