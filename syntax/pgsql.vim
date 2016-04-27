@@ -909,9 +909,13 @@ syn keyword sqlOperator all and any between distinct escape except exists
 syn keyword sqlOperator ilike in intersect like not or like_regex similar
 syn keyword sqlOperator some to union
 
-syn keyword sqlStatement alter analyze comment commit copy create delete drop
+syn keyword sqlStatement alter analyze comment commit copy delete drop
 syn keyword sqlStatement execute explain grant insert lock revoke rollback
 syn keyword sqlStatement savepoint select set truncate update
+
+syn match sqlStatement /create$/
+syn match sqlStatement /create\s/he=e-1
+syn match sqlStatement /create\(\s\|\n\)\+or\(\s\|\n\)\+replace/
 
 " SQL Types
 " To build this list:
