@@ -21,6 +21,7 @@ syn keyword sqlConstant error fatal panic
 
 " SQL keywords (see Table C-1 in App. C of PostgreSQL manual)
 " Keywords excluded from this list because they need special treatment:
+" - cube
 " - replace
 syn keyword sqlKeyword abort abs absent absolute access according action ada add admin after array
 syn keyword sqlKeyword aggregate allocate also always analyse are array_agg array_max_cardinality as
@@ -37,7 +38,7 @@ syn keyword sqlKeyword concurrently condition condition_number configuration con
 syn keyword sqlKeyword connection connection_name constraint constraints constraint_catalog
 syn keyword sqlKeyword constraint_name constraint_schema constructor content continue contains
 syn keyword sqlKeyword control conversion convert corr corresponding cost count covar_pop covar_samp
-syn keyword sqlKeyword cross csv cube cume_dist current current_catalog current_date
+syn keyword sqlKeyword cross csv cume_dist current current_catalog current_date
 syn keyword sqlKeyword current_default_transform_group current_path current_role current_row
 syn keyword sqlKeyword current_schema current_time current_timestamp current_transform_group_for_type
 syn keyword sqlKeyword current_user cursor cursor_name cycle data database datalink
@@ -628,11 +629,37 @@ syn keyword sqlFunction xidsend xml xml_in xml_is_well_formed xml_is_well_formed
 syn keyword sqlFunction xml_is_well_formed_document xml_out xml_recv xml_send xmlagg xmlcomment
 syn keyword sqlFunction xmlconcat2 xmlexists xmlvalidate xpath xpath_exists
 
+" Cube extension
+" psql template1
+" create database tmp;
+" \c tmp
+" create schema cube;
+" create extension cube with schema cube;
+" \t
+" \o cube_functions.txt
+" select  distinct p.proname
+" from    pg_catalog.pg_namespace n
+" join    pg_catalog.pg_proc p
+" on      p.pronamespace = n.oid
+" where   n.nspname = 'cube' and p.proname not like '\_%'
+" and     n.proname <> 'cube'
+" order by p.proname;
+syn keyword sqlFunction cube_cmp cube_contained cube_contains cube_dim cube_distance
+syn keyword sqlFunction cube_enlarge cube_eq cube_ge cube_gt cube_in cube_inter
+syn keyword sqlFunction cube_is_point cube_le cube_ll_coord cube_lt cube_ne cube_out
+syn keyword sqlFunction cube_overlap cube_size cube_subset cube_union cube_ur_coord
+syn keyword sqlFunction g_cube_compress g_cube_consistent g_cube_decompress g_cube_penalty
+syn keyword sqlFunction g_cube_picksplit g_cube_same g_cube_union
+
 " Tokens that need special treatment
 " Distinguish between `replace` keyword and replace() function.
 syn match sqlKeyword /replace$/
 syn match sqlKeyword /replace\s/he=e-1
 syn match sqlFunction /replace(/he=e-1
+syn match sqlType /cube$/
+syn match sqlType /cube[^A-Za-z(]/he=e-1
+syn match sqlFunction /cube(/he=e-1
+
 
 if (!exists("b:pgsql_postgis_disabled") || b:pgsql_postgis_disabled == 0) &&
       \ (exists("b:pgsql_postgis_disabled") || !exists("g:pgsql_postgis_disabled") || g:pgsql_postgis_disabled == 0)
@@ -1092,7 +1119,7 @@ syn keyword sqlErrorCode windowing_error with_check_option_violation wrong_objec
 syn keyword sqlErrorCode zero_length_character_string
 
 " Extensions
-syn keyword sqlExtension adminpack auth_delay auto_explain btree_gin btree_gist chkpass citext cube
+syn keyword sqlExtension adminpack auth_delay auto_explain btree_gin btree_gist chkpass citext
 syn keyword sqlExtension dblink dict_int dict_xsyn dummy_seclabel earthdistance file_fdw fuzzystrmatch
 syn keyword sqlExtension hstore intagg intarray isn lo ltree pageinspect passwordcheck pg_buffercache
 syn keyword sqlExtension pg_freespacemap pg_prewarm pg_stat_statements pg_trgm pgcrypto pgrowlocks
