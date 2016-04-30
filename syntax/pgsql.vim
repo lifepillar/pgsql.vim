@@ -2,7 +2,7 @@
 " Language:     SQL, PL/pgSQL, PL/Python (PostgreSQL 9.5)
 " Author:       space::tekk
 " Maintainer:   Lifepillar
-" Version:      1.0.1
+" Version:      1.1.0
 " License:      This file is placed in the public domain.
 
 if version < 600
@@ -20,14 +20,11 @@ syn keyword sqlConstant debug5 debug4 debug3 debug2 debug1 log notice warning
 syn keyword sqlConstant error fatal panic
 
 " SQL keywords (see Table C-1 in App. C of PostgreSQL manual)
-" Keywords excluded from this list because they need special treatment:
-" - cube
-" - replace
 syn keyword sqlKeyword abort abs absent absolute access according action ada add admin after array
 syn keyword sqlKeyword aggregate allocate also always analyse are array_agg array_max_cardinality as
 syn keyword sqlKeyword asc asensitive assertion assignment asymmetric at atomic attribute attributes
 syn keyword sqlKeyword authorization avg backward base64 before begin begin_frame begin_partition
-syn keyword sqlKeyword bernoulli binary bit_length blob blocked bom both breadth by cache call called
+syn keyword sqlKeyword bernoulli binary blob blocked bom both breadth by cache call called
 syn keyword sqlKeyword cardinality cascade cascaded case cast catalog catalog_name ceil ceiling chain
 syn keyword sqlKeyword characteristics characters character_length character_set_catalog
 syn keyword sqlKeyword character_set_name character_set_schema char_length check checkpoint class
@@ -48,7 +45,7 @@ syn keyword sqlKeyword delimiters dense_rank depth deref derived desc describe d
 syn keyword sqlKeyword deterministic diagnostics dictionary disable discard disconnect dispatch
 syn keyword sqlKeyword dlnewcopy dlpreviouscopy dlurlcomplete dlurlcompleteonly dlurlcompletewrite
 syn keyword sqlKeyword dlurlpath dlurlpathonly dlurlpathwrite dlurlscheme dlurlserver dlvalue do
-syn keyword sqlKeyword document domain dynamic dynamic_function dynamic_function_code each element
+syn keyword sqlKeyword document domain dynamic dynamic_function dynamic_function_code element
 syn keyword sqlKeyword else empty enable encoding encrypted end end-exec end_frame end_partition
 syn keyword sqlKeyword enforced equals event every exception exclude excluding exclusive exec exp
 syn keyword sqlKeyword expression extension external extract family fetch file filter final first
@@ -76,7 +73,7 @@ syn keyword sqlKeyword parameter_specific_name parameter_specific_schema parser 
 syn keyword sqlKeyword pascal passing passthrough password percent percentile_cont percentile_disc
 syn keyword sqlKeyword percent_rank period permission placing plans pli policy portion position
 syn keyword sqlKeyword position_regex power precedes preceding precision prepare prepared preserve
-syn keyword sqlKeyword primary prior privileges procedural procedure program public quote range rank
+syn keyword sqlKeyword primary prior privileges procedural procedure program public quote range
 syn keyword sqlKeyword read reads real reassign recheck recovery recursive ref references referencing
 syn keyword sqlKeyword refresh regr_avgx regr_avgy regr_count regr_intercept regr_r2 regr_slope
 syn keyword sqlKeyword regr_sxx regr_sxy regr_syy reindex relative release rename repeatable
@@ -91,7 +88,7 @@ syn keyword sqlKeyword skip snapshot some source space specific specifictype spe
 syn keyword sqlKeyword sqlcode sqlerror sqlexception sqlstate sqlwarning sqrt stable standalone start
 syn keyword sqlKeyword state statement static statistics stddev_pop stddev_samp stdin stdout storage
 syn keyword sqlKeyword strict strip structure style subclass_origin submultiset substring
-syn keyword sqlKeyword substring_regex succeeds sum symmetric sysid system system_time system_user
+syn keyword sqlKeyword substring_regex succeeds sum symmetric sysid system system_user
 syn keyword sqlKeyword table tables tablesample tablespace table_name temp template temporary then
 syn keyword sqlKeyword ties timezone_hour timezone_minute to token top_level_count trailing
 syn keyword sqlKeyword transaction transactions_committed transactions_rolled_back transaction_active
@@ -107,6 +104,7 @@ syn keyword sqlKeyword without work wrapper write xmlagg xmlattributes xmlbinary
 syn keyword sqlKeyword xmlconcat xmldeclaration xmldocument xmlelement xmlexists xmlforest xmliterate
 syn keyword sqlKeyword xmlnamespaces xmlparse xmlpi xmlquery xmlroot xmlschema xmlserialize xmltable
 syn keyword sqlKeyword xmltext xmlvalidate year yes zone
+syn match   sqlKeyword /\<each\>/
 " PL/pgSQL
 syn keyword sqlKeyword contained alias all array as begin by case close collate column constant
 syn keyword sqlKeyword contained constraint continue current current cursor datatype declare
@@ -114,10 +112,11 @@ syn keyword sqlKeyword contained detail diagnostics else elsif end errcode excep
 syn keyword sqlKeyword contained exit fetch fetch for foreach forward found from get hint if
 syn keyword sqlKeyword contained into last loop message move next no notice open perform prepare
 syn keyword sqlKeyword contained query raise relative return reverse rowtype schema
-syn keyword sqlKeyword contained scroll slice sqlstate stacked strict table tg_argv tg_event
+syn keyword sqlKeyword contained scroll sqlstate stacked strict table tg_argv tg_event
 syn keyword sqlKeyword contained tg_level tg_name tg_nargs tg_op tg_relid tg_relname
 syn keyword sqlKeyword contained tg_table_name tg_table_schema tg_tag tg_when then type using
 syn keyword sqlKeyword contained while
+syn match   sqlKeyword /\<slice\>/ contained
 
 " Functions
 " To get the list of all PostgreSQL functions, give the following commands
@@ -506,7 +505,7 @@ syn keyword sqlFunction poly_above poly_below poly_center poly_contain poly_cont
 syn keyword sqlFunction poly_contained poly_distance poly_in poly_left poly_npoints poly_out
 syn keyword sqlFunction poly_overabove poly_overbelow poly_overlap poly_overleft poly_overright
 syn keyword sqlFunction poly_recv poly_right poly_same poly_send polygon popen position
-syn keyword sqlFunction positionjoinsel positionsel postgresql_fdw_validator pow power prsd_end
+syn keyword sqlFunction positionjoinsel positionsel pow power prsd_end
 syn keyword sqlFunction prsd_headline prsd_lextype prsd_nexttoken prsd_start pt_contained_circle
 syn keyword sqlFunction pt_contained_poly query_to_xml query_to_xml_and_xmlschema
 syn keyword sqlFunction query_to_xmlschema querytree quote_ident quote_literal quote_nullable
@@ -629,36 +628,250 @@ syn keyword sqlFunction xidsend xml xml_in xml_is_well_formed xml_is_well_formed
 syn keyword sqlFunction xml_is_well_formed_document xml_out xml_recv xml_send xmlagg xmlcomment
 syn keyword sqlFunction xmlconcat2 xmlexists xmlvalidate xpath xpath_exists
 
-" Cube extension
-" psql template1
-" create database tmp;
-" \c tmp
-" create schema cube;
-" create extension cube with schema cube;
-" \t
-" \o cube_functions.txt
-" select  distinct p.proname
-" from    pg_catalog.pg_namespace n
-" join    pg_catalog.pg_proc p
-" on      p.pronamespace = n.oid
-" where   n.nspname = 'cube' and p.proname not like '\_%'
-" and     n.proname <> 'cube'
-" order by p.proname;
-syn keyword sqlFunction cube_cmp cube_contained cube_contains cube_dim cube_distance
-syn keyword sqlFunction cube_enlarge cube_eq cube_ge cube_gt cube_in cube_inter
-syn keyword sqlFunction cube_is_point cube_le cube_ll_coord cube_lt cube_ne cube_out
-syn keyword sqlFunction cube_overlap cube_size cube_subset cube_union cube_ur_coord
-syn keyword sqlFunction g_cube_compress g_cube_consistent g_cube_decompress g_cube_penalty
-syn keyword sqlFunction g_cube_picksplit g_cube_same g_cube_union
-
 " Tokens that need special treatment
 " Distinguish between `replace` keyword and replace() function.
-syn match sqlType /cube$/
-syn match sqlType /cube[^A-Za-z(]/he=e-1
-syn match sqlFunction /cube(/he=e-1
 syn match sqlKeyword /\<replace\>/
 syn match sqlFunction /\<replace(/he=e-1
 
+" Extensions (Appendix F + third-party)
+if (!exists("b:pgsql_modules_disabled") || b:pgsql_modules_disabled == 0) &&
+      \ (exists("b:pgsql_modules_disabled") || !exists("g:pgsql_modules_disabled") || g:pgsql_modules_disabled == 0)
+  " adminpack
+  syn keyword sqlFunction pg_file_rename pg_file_unlink pg_file_write pg_logdir_ls pg_file_read
+  syn keyword sqlFunction pg_file_length pg_logfile_rotate
+  " btree_gin
+  syn keyword sqlFunction gin_btree_consistent gin_compare_prefix_bit
+  syn keyword sqlFunction gin_compare_prefix_bytea gin_compare_prefix_char
+  syn keyword sqlFunction gin_compare_prefix_cidr gin_compare_prefix_date
+  syn keyword sqlFunction gin_compare_prefix_float4 gin_compare_prefix_float8
+  syn keyword sqlFunction gin_compare_prefix_inet gin_compare_prefix_int2
+  syn keyword sqlFunction gin_compare_prefix_int4 gin_compare_prefix_int8
+  syn keyword sqlFunction gin_compare_prefix_interval gin_compare_prefix_macaddr
+  syn keyword sqlFunction gin_compare_prefix_money gin_compare_prefix_numeric
+  syn keyword sqlFunction gin_compare_prefix_oid gin_compare_prefix_text
+  syn keyword sqlFunction gin_compare_prefix_time gin_compare_prefix_timestamp
+  syn keyword sqlFunction gin_compare_prefix_timestamptz gin_compare_prefix_timetz
+  syn keyword sqlFunction gin_compare_prefix_varbit gin_extract_query_bit
+  syn keyword sqlFunction gin_extract_query_bytea gin_extract_query_char
+  syn keyword sqlFunction gin_extract_query_cidr gin_extract_query_date
+  syn keyword sqlFunction gin_extract_query_float4 gin_extract_query_float8
+  syn keyword sqlFunction gin_extract_query_inet gin_extract_query_int2
+  syn keyword sqlFunction gin_extract_query_int4 gin_extract_query_int8
+  syn keyword sqlFunction gin_extract_query_interval gin_extract_query_macaddr
+  syn keyword sqlFunction gin_extract_query_money gin_extract_query_numeric
+  syn keyword sqlFunction gin_extract_query_oid gin_extract_query_text gin_extract_query_time
+  syn keyword sqlFunction gin_extract_query_timestamp gin_extract_query_timestamptz
+  syn keyword sqlFunction gin_extract_query_timetz gin_extract_query_varbit
+  syn keyword sqlFunction gin_extract_value_bit gin_extract_value_bytea
+  syn keyword sqlFunction gin_extract_value_char gin_extract_value_cidr
+  syn keyword sqlFunction gin_extract_value_date gin_extract_value_float4
+  syn keyword sqlFunction gin_extract_value_float8 gin_extract_value_inet
+  syn keyword sqlFunction gin_extract_value_int2 gin_extract_value_int4
+  syn keyword sqlFunction gin_extract_value_int8 gin_extract_value_interval
+  syn keyword sqlFunction gin_extract_value_macaddr gin_extract_value_money
+  syn keyword sqlFunction gin_extract_value_numeric gin_extract_value_oid
+  syn keyword sqlFunction gin_extract_value_text gin_extract_value_time
+  syn keyword sqlFunction gin_extract_value_timestamp gin_extract_value_timestamptz
+  syn keyword sqlFunction gin_extract_value_timetz gin_extract_value_varbit gin_numeric_cmp
+  " btree_gist
+  syn keyword sqlFunction cash_dist date_dist float4_dist float8_dist gbt_bit_compress
+  syn keyword sqlFunction gbt_bit_consistent gbt_bit_penalty gbt_bit_picksplit gbt_bit_same
+  syn keyword sqlFunction gbt_bit_union gbt_bpchar_compress gbt_bpchar_consistent
+  syn keyword sqlFunction gbt_bytea_compress gbt_bytea_consistent gbt_bytea_penalty
+  syn keyword sqlFunction gbt_bytea_picksplit gbt_bytea_same gbt_bytea_union
+  syn keyword sqlFunction gbt_cash_compress gbt_cash_consistent gbt_cash_distance
+  syn keyword sqlFunction gbt_cash_fetch gbt_cash_penalty gbt_cash_picksplit gbt_cash_same
+  syn keyword sqlFunction gbt_cash_union gbt_date_compress gbt_date_consistent
+  syn keyword sqlFunction gbt_date_distance gbt_date_fetch gbt_date_penalty
+  syn keyword sqlFunction gbt_date_picksplit gbt_date_same gbt_date_union gbt_decompress
+  syn keyword sqlFunction gbt_float4_compress gbt_float4_consistent gbt_float4_distance
+  syn keyword sqlFunction gbt_float4_fetch gbt_float4_penalty gbt_float4_picksplit
+  syn keyword sqlFunction gbt_float4_same gbt_float4_union gbt_float8_compress
+  syn keyword sqlFunction gbt_float8_consistent gbt_float8_distance gbt_float8_fetch
+  syn keyword sqlFunction gbt_float8_penalty gbt_float8_picksplit gbt_float8_same
+  syn keyword sqlFunction gbt_float8_union gbt_inet_compress gbt_inet_consistent
+  syn keyword sqlFunction gbt_inet_penalty gbt_inet_picksplit gbt_inet_same gbt_inet_union
+  syn keyword sqlFunction gbt_int2_compress gbt_int2_consistent gbt_int2_distance
+  syn keyword sqlFunction gbt_int2_fetch gbt_int2_penalty gbt_int2_picksplit gbt_int2_same
+  syn keyword sqlFunction gbt_int2_union gbt_int4_compress gbt_int4_consistent
+  syn keyword sqlFunction gbt_int4_distance gbt_int4_fetch gbt_int4_penalty
+  syn keyword sqlFunction gbt_int4_picksplit gbt_int4_same gbt_int4_union gbt_int8_compress
+  syn keyword sqlFunction gbt_int8_consistent gbt_int8_distance gbt_int8_fetch
+  syn keyword sqlFunction gbt_int8_penalty gbt_int8_picksplit gbt_int8_same gbt_int8_union
+  syn keyword sqlFunction gbt_intv_compress gbt_intv_consistent gbt_intv_decompress
+  syn keyword sqlFunction gbt_intv_distance gbt_intv_fetch gbt_intv_penalty
+  syn keyword sqlFunction gbt_intv_picksplit gbt_intv_same gbt_intv_union gbt_macad_compress
+  syn keyword sqlFunction gbt_macad_consistent gbt_macad_fetch gbt_macad_penalty
+  syn keyword sqlFunction gbt_macad_picksplit gbt_macad_same gbt_macad_union
+  syn keyword sqlFunction gbt_numeric_compress gbt_numeric_consistent gbt_numeric_penalty
+  syn keyword sqlFunction gbt_numeric_picksplit gbt_numeric_same gbt_numeric_union
+  syn keyword sqlFunction gbt_oid_compress gbt_oid_consistent gbt_oid_distance gbt_oid_fetch
+  syn keyword sqlFunction gbt_oid_penalty gbt_oid_picksplit gbt_oid_same gbt_oid_union
+  syn keyword sqlFunction gbt_text_compress gbt_text_consistent gbt_text_penalty
+  syn keyword sqlFunction gbt_text_picksplit gbt_text_same gbt_text_union gbt_time_compress
+  syn keyword sqlFunction gbt_time_consistent gbt_time_distance gbt_time_fetch
+  syn keyword sqlFunction gbt_time_penalty gbt_time_picksplit gbt_time_same gbt_time_union
+  syn keyword sqlFunction gbt_timetz_compress gbt_timetz_consistent gbt_ts_compress
+  syn keyword sqlFunction gbt_ts_consistent gbt_ts_distance gbt_ts_fetch gbt_ts_penalty
+  syn keyword sqlFunction gbt_ts_picksplit gbt_ts_same gbt_ts_union gbt_tstz_compress
+  syn keyword sqlFunction gbt_tstz_consistent gbt_tstz_distance gbt_var_decompress
+  syn keyword sqlFunction gbt_var_fetch gbtreekey16_in gbtreekey16_out gbtreekey32_in
+  syn keyword sqlFunction gbtreekey32_out gbtreekey4_in gbtreekey4_out gbtreekey8_in
+  syn keyword sqlFunction gbtreekey8_out gbtreekey_var_in gbtreekey_var_out int2_dist
+  syn keyword sqlFunction int4_dist int8_dist interval_dist oid_dist time_dist ts_dist
+  syn keyword sqlFunction tstz_dist
+  syn keyword sqlType gbtreekey32 gbtreekey4 gbtreekey8 gbtreekey_var
+  " chkpass
+  syn keyword sqlFunction chkpass_in chkpass_out eq ne raw
+  syn keyword sqlType chkpass
+  " citext
+  syn keyword sqlFunction citext_cmp citext_eq citext_ge citext_gt citext_hash
+  syn keyword sqlFunction citext_larger citext_le citext_lt citext_ne citext_smaller citextin
+  syn keyword sqlFunction citextout citextrecv citextsend max min regexp_matches
+  syn match sqlType /\<citext\>/
+  syn match sqlFunction /\<citext(/he=e-1
+  " cube
+  syn keyword sqlFunction cube_cmp cube_contained cube_contains cube_dim cube_distance
+  syn keyword sqlFunction cube_enlarge cube_eq cube_ge cube_gt cube_in cube_inter
+  syn keyword sqlFunction cube_is_point cube_le cube_ll_coord cube_lt cube_ne cube_out
+  syn keyword sqlFunction cube_overlap cube_size cube_subset cube_union cube_ur_coord
+  syn keyword sqlFunction g_cube_compress g_cube_consistent g_cube_decompress g_cube_penalty
+  syn keyword sqlFunction g_cube_picksplit g_cube_same g_cube_union
+  syn match sqlType /\<cube\>/
+  syn match sqlFunction /\<cube(/he=e-1
+  " dblink
+  syn keyword sqlFunction dblink dblink_build_sql_delete dblink_build_sql_insert
+  syn keyword sqlFunction dblink_build_sql_update dblink_cancel_query dblink_close
+  syn keyword sqlFunction dblink_connect dblink_connect_u dblink_current_query
+  syn keyword sqlFunction dblink_disconnect dblink_error_message dblink_exec
+  syn keyword sqlFunction dblink_fdw_validator dblink_fetch dblink_get_connections
+  syn keyword sqlFunction dblink_get_notify dblink_get_pkey dblink_get_result dblink_is_busy
+  syn keyword sqlFunction dblink_open dblink_send_query
+  syn keyword sqlType dblink_pkey_results
+  " dict_int and dict_xsyn
+  syn keyword sqlFunction dintdict_init dintdict_lexize dxsyn_init dxsyn_lexize
+  " earthdistance
+  syn keyword sqlFunction earth earth_box earth_distance gc_to_sec geo_distance latitude
+  syn keyword sqlFunction ll_to_earth longitude sec_to_gc
+  " file_fdw
+  syn keyword sqlFunction file_fdw_handler file_fdw_validator
+  " fuzzystrmatch
+  syn keyword sqlFunction difference dmetaphone dmetaphone_alt levenshtein
+  syn keyword sqlFunction levenshtein_less_equal metaphone soundex text_soundex
+  " hstore
+  syn keyword sqlFunction akeys avals exist exists_all exists_any
+  syn keyword sqlFunction fetchval ghstore_compress ghstore_consistent ghstore_decompress
+  syn keyword sqlFunction ghstore_in ghstore_out ghstore_penalty ghstore_picksplit
+  syn keyword sqlFunction ghstore_same ghstore_union gin_consistent_hstore gin_extract_hstore
+  syn keyword sqlFunction gin_extract_hstore_query hs_concat hs_contained hs_contains
+  syn keyword sqlFunction hstore_cmp hstore_eq hstore_ge hstore_gt hstore_hash hstore_in
+  syn keyword sqlFunction hstore_le hstore_lt hstore_ne hstore_out hstore_recv hstore_send
+  syn keyword sqlFunction hstore_to_array hstore_to_json hstore_to_json_loose hstore_to_jsonb
+  syn keyword sqlFunction hstore_to_jsonb_loose hstore_to_matrix hstore_version_diag
+  syn keyword sqlFunction isdefined isexists populate_record skeys slice_array svals
+  syn keyword sqlFunction tconvert
+  syn keyword sqlType     ghstore
+  syn match   sqlType     /\<hstore\>/
+  syn match   sqlFunction /\<hstore(/
+  syn match   sqlFunction /\<delete(/he=e-1
+  syn match   sqlFunction /\<each(/he=e-1
+  syn match   sqlFunction /\<slice(/he=e-1
+  " intagg
+  syn keyword sqlFunction int_array_aggregate int_agg_final_array int_agg_state int_array_enum
+  " intarray
+  syn keyword sqlFunction boolop bqarr_in bqarr_out g_int_compress g_int_consistent g_int_decompress
+  syn keyword sqlFunction g_int_penalty g_int_picksplit g_int_same g_int_union g_intbig_compress
+  syn keyword sqlFunction g_intbig_consistent g_intbig_decompress g_intbig_penalty g_intbig_picksplit
+  syn keyword sqlFunction g_intbig_same g_intbig_union ginint4_consistent ginint4_queryextract icount idx
+  syn keyword sqlFunction intarray_del_elem intarray_push_array intarray_push_elem intset intset_subtract
+  syn keyword sqlFunction intset_union_elem rboolop sort sort_asc sort_desc subarray uniq
+  syn keyword sqlType     intbig_gkey query_int
+  " isn
+  syn keyword sqlFunction btean13cmp btisbn13cmp btisbncmp btismn13cmp btismncmp btissn13cmp
+  syn keyword sqlFunction btissncmp btupccmp ean13_in ean13_out hashean13 hashisbn hashisbn13
+  syn keyword sqlFunction hashismn hashismn13 hashissn hashissn13 hashupc is_valid
+  syn keyword sqlFunction isbn13_in isbn_in ismn13_in ismn_in isn_out
+  syn keyword sqlFunction isn_weak isneq isnge isngt isnle isnlt isnne issn13_in
+  syn keyword sqlFunction issn_in make_valid upc_in
+  syn match   sqlType     /\<upc\>/
+  syn match   sqlFunction /\<upc(/he=e-1
+  syn match   sqlType     /\<\(ea\|isb\|ism\|iss\)n\(13\)\?\>/
+  syn match   sqlFunction /\<\(ea\|isb\|ism\|iss\)n\(13\)\?(/he=e-1
+  " lo
+  syn keyword sqlFunction lo_oid lo_manage
+  " ltree
+  syn keyword sqlFunction lca lquery_in lquery_out lt_q_regex lt_q_rregex ltq_regex
+  syn keyword sqlFunction ltq_rregex ltree2text ltree_addltree ltree_addtext ltree_cmp
+  syn keyword sqlFunction ltree_compress ltree_consistent ltree_decompress ltree_eq ltree_ge
+  syn keyword sqlFunction ltree_gist_in ltree_gist_out ltree_gt ltree_in ltree_isparent
+  syn keyword sqlFunction ltree_le ltree_lt ltree_ne ltree_out ltree_penalty ltree_picksplit
+  syn keyword sqlFunction ltree_risparent ltree_same ltree_textadd ltree_union ltreeparentsel
+  syn keyword sqlFunction ltxtq_exec ltxtq_in ltxtq_out ltxtq_rexec nlevel subltree subpath
+  syn keyword sqlFunction text2ltree
+  syn keyword sqlType     lquery ltree ltree_gist ltxtquery
+  " pageinspect
+  syn keyword sqlFunction brin_metapage_info brin_page_items brin_page_type brin_revmap_data bt_metap
+  syn keyword sqlFunction bt_page_items bt_page_stats fsm_page_contents get_raw_page gin_leafpage_items
+  syn keyword sqlFunction gin_metapage_info gin_page_opaque_info heap_page_items page_header
+  " pg_buffercache
+  syn keyword sqlFunction pg_buffercache_pages
+  syn keyword sqlConstant pg_buffercache
+  " pgcrypto
+  syn keyword sqlFunction armor crypt dearmor decrypt decrypt_iv digest encrypt encrypt_iv
+  syn keyword sqlFunction gen_random_bytes gen_random_uuid gen_salt hmac pgp_armor_headers pgp_key_id
+  syn keyword sqlFunction pgp_pub_decrypt pgp_pub_decrypt_bytea pgp_pub_encrypt pgp_pub_encrypt_bytea
+  syn keyword sqlFunction pgp_sym_decrypt pgp_sym_decrypt_bytea pgp_sym_encrypt pgp_sym_encrypt_bytea
+  " pg_freespacemap
+  syn keyword sqlFunction pg_freespace
+  " pg_prewarm
+  syn keyword sqlFunction pg_prewarm
+  " pgrowlocks
+  syn keyword sqlFunction pgrowlocks
+  " pg_stat_statements
+  syn match   sqlConstant /\<pg_stat_statements\>/
+  syn match   sqlFunction /\<pg_stat_statements(/he=e-1
+  syn keyword sqlFunction pg_stat_statements_reset
+  " pgstattuple
+  syn keyword sqlFunction pg_relpages pgstatginindex pgstatindex pgstattuple pgstattuple_approx
+  " pg_trgm
+  syn keyword sqlFunction gin_extract_query_trgm gin_extract_value_trgm gin_trgm_consistent
+  syn keyword sqlFunction gtrgm_compress gtrgm_consistent gtrgm_decompress gtrgm_distance gtrgm_in
+  syn keyword sqlFunction gtrgm_out gtrgm_penalty gtrgm_picksplit gtrgm_same gtrgm_union set_limit
+  syn keyword sqlFunction show_limit show_trgm similarity similarity_dist similarity_op
+  syn keyword sqlType     gtrgm
+  " postgres_fdw
+  syn keyword sqlFunction postgres_fdw_handler postgresql_fdw_validator
+  " seg
+  syn keyword sqlFunction gseg_compress gseg_consistent gseg_decompress gseg_penalty gseg_picksplit
+  syn keyword sqlFunction gseg_same gseg_union seg_center seg_cmp seg_contained seg_contains
+  syn keyword sqlFunction seg_different seg_ge seg_gt seg_in seg_inter seg_le seg_left seg_lower seg_lt
+  syn keyword sqlFunction seg_out seg_over_left seg_over_right seg_overlap seg_right seg_same seg_size
+  syn keyword sqlFunction seg_union seg_upper
+  syn keyword sqlType     seg
+  " sslinfo
+  syn keyword sqlFunction sl_cipher ssl_client_cert_present ssl_client_dn ssl_client_dn_field
+  syn keyword sqlFunction ssl_client_serial ssl_is_used ssl_issuer_dn ssl_issuer_field ssl_version
+  syn keyword sqlExtension tablefunc
+  syn keyword sqlFunction connectby crosstab crosstab2 crosstab3 crosstab4 normal_rand
+  syn keyword sqlType     tablefunc_crosstab_2 tablefunc_crosstab_3 tablefunc_crosstab_4
+  " tcn
+  syn keyword sqlFunction triggered_change_notification
+  " tsearch2
+  syn keyword sqlFunction dex_init dex_lexize get_covers headline lexize parse prsd_getlexeme rank_cd
+  syn keyword sqlFunction reset_tsearch rewrite rewrite_accum rewrite_finish set_curcfg set_curdict
+  syn keyword sqlFunction set_curprs show_curcfg snb_en_init snb_lexize snb_ru_init snb_ru_init_koi8
+  syn keyword sqlFunction snb_ru_init_utf8 spell_init spell_lexize stat syn_init syn_lexize token_type
+  syn keyword sqlFunction tsearch2
+  syn keyword sqlType     statinfo tokenout tokentype tsdebug
+  " tsm_system_rows and tsm_system_time
+  syn keyword sqlExtension system_rows system_time
+  " unaccent
+  syn keyword sqlFunction unaccent unaccent_init unaccent_lexize
+  " uuid-ossp
+  syn keyword sqlFunction uuid_nil uuid_ns_dns uuid_ns_url uuid_ns_oid uuid_ns_x500
+  syn keyword sqlFunction uuid_generate_v1 uuid_generate_v1mc uuid_generate_v3 uuid_generate_v4
+  syn keyword sqlFunction uuid_generate_v5
+endif " pgsql_modules_disabled
 
 if (!exists("b:pgsql_postgis_disabled") || b:pgsql_postgis_disabled == 0) &&
       \ (exists("b:pgsql_postgis_disabled") || !exists("g:pgsql_postgis_disabled") || g:pgsql_postgis_disabled == 0)
@@ -936,9 +1149,10 @@ syn keyword sqlOperator all and any between distinct escape except exists
 syn keyword sqlOperator ilike in intersect like not or like_regex similar
 syn keyword sqlOperator some to union
 
-syn keyword sqlStatement alter analyze comment commit copy delete drop
+syn keyword sqlStatement alter analyze comment commit copy drop
 syn keyword sqlStatement execute explain grant insert lock revoke rollback
 syn keyword sqlStatement savepoint select set truncate update
+syn match   sqlStatement /\<delete\>/
 
 syn match sqlStatement /\<create\>/
 syn match sqlStatement /\<create\(\s\|\n\)\+or\(\s\|\n\)\+replace/
