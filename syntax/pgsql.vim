@@ -633,7 +633,7 @@ syn keyword sqlFunction xmlconcat2 xmlexists xmlvalidate xpath xpath_exists
 syn match sqlKeyword /\<replace\>/
 syn match sqlFunction /\<replace(/he=e-1
 
-" Extensions (Appendix F + third-party)
+" Extensions (Appendix F)
 if (!exists("b:pgsql_modules_disabled") || b:pgsql_modules_disabled == 0) &&
       \ (exists("b:pgsql_modules_disabled") || !exists("g:pgsql_modules_disabled") || g:pgsql_modules_disabled == 0)
   " adminpack
@@ -720,16 +720,16 @@ if (!exists("b:pgsql_modules_disabled") || b:pgsql_modules_disabled == 0) &&
   syn keyword sqlFunction gbtreekey8_out gbtreekey_var_in gbtreekey_var_out int2_dist
   syn keyword sqlFunction int4_dist int8_dist interval_dist oid_dist time_dist ts_dist
   syn keyword sqlFunction tstz_dist
-  syn keyword sqlType gbtreekey32 gbtreekey4 gbtreekey8 gbtreekey_var
+  syn keyword sqlType     gbtreekey32 gbtreekey4 gbtreekey8 gbtreekey_var
   " chkpass
   syn keyword sqlFunction chkpass_in chkpass_out eq ne raw
-  syn keyword sqlType chkpass
+  syn keyword sqlType     chkpass
   " citext
   syn keyword sqlFunction citext_cmp citext_eq citext_ge citext_gt citext_hash
   syn keyword sqlFunction citext_larger citext_le citext_lt citext_ne citext_smaller citextin
   syn keyword sqlFunction citextout citextrecv citextsend max min regexp_matches
-  syn match sqlType /\<citext\>/
-  syn match sqlFunction /\<citext(/he=e-1
+  syn match   sqlType     /\<citext\>/
+  syn match   sqlFunction /\<citext(/he=e-1
   " cube
   syn keyword sqlFunction cube_cmp cube_contained cube_contains cube_dim cube_distance
   syn keyword sqlFunction cube_enlarge cube_eq cube_ge cube_gt cube_in cube_inter
@@ -737,8 +737,8 @@ if (!exists("b:pgsql_modules_disabled") || b:pgsql_modules_disabled == 0) &&
   syn keyword sqlFunction cube_overlap cube_size cube_subset cube_union cube_ur_coord
   syn keyword sqlFunction g_cube_compress g_cube_consistent g_cube_decompress g_cube_penalty
   syn keyword sqlFunction g_cube_picksplit g_cube_same g_cube_union
-  syn match sqlType /\<cube\>/
-  syn match sqlFunction /\<cube(/he=e-1
+  syn match   sqlType     /\<cube\>/
+  syn match   sqlFunction /\<cube(/he=e-1
   " dblink
   syn keyword sqlFunction dblink dblink_build_sql_delete dblink_build_sql_insert
   syn keyword sqlFunction dblink_build_sql_update dblink_cancel_query dblink_close
@@ -747,7 +747,7 @@ if (!exists("b:pgsql_modules_disabled") || b:pgsql_modules_disabled == 0) &&
   syn keyword sqlFunction dblink_fdw_validator dblink_fetch dblink_get_connections
   syn keyword sqlFunction dblink_get_notify dblink_get_pkey dblink_get_result dblink_is_busy
   syn keyword sqlFunction dblink_open dblink_send_query
-  syn keyword sqlType dblink_pkey_results
+  syn keyword sqlType     dblink_pkey_results
   " dict_int and dict_xsyn
   syn keyword sqlFunction dintdict_init dintdict_lexize dxsyn_init dxsyn_lexize
   " earthdistance
@@ -851,7 +851,7 @@ if (!exists("b:pgsql_modules_disabled") || b:pgsql_modules_disabled == 0) &&
   " sslinfo
   syn keyword sqlFunction sl_cipher ssl_client_cert_present ssl_client_dn ssl_client_dn_field
   syn keyword sqlFunction ssl_client_serial ssl_is_used ssl_issuer_dn ssl_issuer_field ssl_version
-  syn keyword sqlExtension tablefunc
+  " tablefunc
   syn keyword sqlFunction connectby crosstab crosstab2 crosstab3 crosstab4 normal_rand
   syn keyword sqlType     tablefunc_crosstab_2 tablefunc_crosstab_3 tablefunc_crosstab_4
   " tcn
@@ -864,7 +864,7 @@ if (!exists("b:pgsql_modules_disabled") || b:pgsql_modules_disabled == 0) &&
   syn keyword sqlFunction tsearch2
   syn keyword sqlType     statinfo tokenout tokentype tsdebug
   " tsm_system_rows and tsm_system_time
-  syn keyword sqlExtension system_rows system_time
+  syn keyword sqlFunction system_rows system_time
   " unaccent
   syn keyword sqlFunction unaccent unaccent_init unaccent_lexize
   " uuid-ossp
