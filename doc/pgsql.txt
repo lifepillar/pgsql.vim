@@ -64,11 +64,14 @@ is also a buffer-local variable called `b:pgsql_pl` to override the
 global settings in a single buffer.
 
 PostGIS, pgRouting and pgTap syntax highlighting is enabled by
-default. To disable:
+default. Functions and data types for PostgreSQL modules are
+highlighted, too (see Appendix F of PostgreSQL's manual). To
+disable:
 
     let g:pgsql_postgis_disabled = 1
     let g:pgsql_pgrouting_disabled = 1
     let g:pgsql_pgtap_disabled = 1
+    let g:pgsql_modules_disabled = 1
 
 For each of the variables above, a buffer-local version exists,
 which takes precedence over the global variable.
@@ -83,7 +86,6 @@ The defined highlight groups are the following:
   sqlComment
   sqlConstant
   sqlErrorCode
-  sqlExtension
   sqlFunction
   sqlIdentifier
   sqlKeyword
