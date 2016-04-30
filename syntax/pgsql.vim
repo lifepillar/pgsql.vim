@@ -1118,16 +1118,6 @@ syn keyword sqlErrorCode unique_violation unterminated_c_string untranslatable_c
 syn keyword sqlErrorCode windowing_error with_check_option_violation wrong_object_type
 syn keyword sqlErrorCode zero_length_character_string
 
-" Extensions
-syn keyword sqlExtension adminpack auth_delay auto_explain btree_gin btree_gist chkpass citext
-syn keyword sqlExtension dblink dict_int dict_xsyn dummy_seclabel earthdistance file_fdw fuzzystrmatch
-syn keyword sqlExtension hstore intagg intarray isn lo ltree pageinspect passwordcheck pg_buffercache
-syn keyword sqlExtension pg_freespacemap pg_prewarm pg_stat_statements pg_trgm pgcrypto pgrowlocks
-syn keyword sqlExtension pgstattuple pgtap pldbgapi plperl plperlu plpgsql plpgsqlu plpython plpythonu
-syn keyword sqlExtension pltcl pltclu postgis postgis_topology postgres_fdw seg sepgsql spi sslinfo
-syn keyword sqlExtension tablefunc tcn test_decoding test_parser test_shm_mq tsearch2 unaccent
-syn keyword sqlExtension uuid-ossp xml2
-
 " Psql Keywords
 syn keyword sqlPsqlKeyword cd conninfo echo qecho prompt pset setenv timing unset
 
@@ -1162,7 +1152,6 @@ syn sync minlines=10 maxlines=100
 hi def link sqlComment        Comment
 hi def link sqlConstant       Constant
 hi def link sqlErrorCode      Special
-hi def link sqlExtension      Type
 hi def link sqlFunction       Function
 hi def link sqlIdentifier     Identifier
 hi def link sqlKeyword        sqlSpecial
