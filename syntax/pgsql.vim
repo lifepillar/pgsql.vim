@@ -653,12 +653,11 @@ syn keyword sqlFunction g_cube_picksplit g_cube_same g_cube_union
 
 " Tokens that need special treatment
 " Distinguish between `replace` keyword and replace() function.
-syn match sqlKeyword /replace$/
-syn match sqlKeyword /replace\s/he=e-1
-syn match sqlFunction /replace(/he=e-1
 syn match sqlType /cube$/
 syn match sqlType /cube[^A-Za-z(]/he=e-1
 syn match sqlFunction /cube(/he=e-1
+syn match sqlKeyword /\<replace\>/
+syn match sqlFunction /\<replace(/he=e-1
 
 
 if (!exists("b:pgsql_postgis_disabled") || b:pgsql_postgis_disabled == 0) &&
@@ -941,9 +940,8 @@ syn keyword sqlStatement alter analyze comment commit copy delete drop
 syn keyword sqlStatement execute explain grant insert lock revoke rollback
 syn keyword sqlStatement savepoint select set truncate update
 
-syn match sqlStatement /create$/
-syn match sqlStatement /create\s/he=e-1
-syn match sqlStatement /create\(\s\|\n\)\+or\(\s\|\n\)\+replace/
+syn match sqlStatement /\<create\>/
+syn match sqlStatement /\<create\(\s\|\n\)\+or\(\s\|\n\)\+replace/
 
 " SQL Types
 " To build this list:
