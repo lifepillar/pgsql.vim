@@ -19,6 +19,13 @@ syn keyword sqlSpecial false null true
 syn keyword sqlConstant debug5 debug4 debug3 debug2 debug1 log notice warning
 syn keyword sqlConstant error fatal panic
 
+syn keyword sqlStatement alter analyze comment commit copy drop
+syn keyword sqlStatement execute explain grant insert lock revoke rollback
+syn keyword sqlStatement savepoint select set truncate update
+syn match   sqlStatement /\<delete\>/
+syn match   sqlStatement /\<create\>/
+syn match   sqlStatement /\<create\(\s\|\n\)\+or\(\s\|\n\)\+replace/
+
 " SQL keywords (see Table C-1 in App. C of PostgreSQL manual)
 syn keyword sqlKeyword abort abs absent absolute access according action ada add admin after array
 syn keyword sqlKeyword aggregate allocate also always analyse are array_agg array_max_cardinality as
@@ -1148,14 +1155,6 @@ endif " pgsql_pgtap_disabled
 syn keyword sqlOperator all and any between distinct escape except exists
 syn keyword sqlOperator ilike in intersect like not or like_regex similar
 syn keyword sqlOperator some to union
-
-syn keyword sqlStatement alter analyze comment commit copy drop
-syn keyword sqlStatement execute explain grant insert lock revoke rollback
-syn keyword sqlStatement savepoint select set truncate update
-syn match   sqlStatement /\<delete\>/
-
-syn match sqlStatement /\<create\>/
-syn match sqlStatement /\<create\(\s\|\n\)\+or\(\s\|\n\)\+replace/
 
 " SQL Types
 " To build this list:
