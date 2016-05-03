@@ -21,7 +21,7 @@ syn keyword sqlConstant error fatal panic
 
 syn keyword sqlStatement alter analyze comment commit copy drop
 syn keyword sqlStatement execute explain grant insert lock revoke rollback
-syn keyword sqlStatement savepoint select set truncate update
+syn keyword sqlStatement savepoint select set truncate update vacuum
 syn match   sqlStatement /\<delete\>/
 syn match   sqlStatement /\<create\>/
 syn match   sqlStatement /\<create\(\s\|\n\)\+or\(\s\|\n\)\+replace/
@@ -104,7 +104,7 @@ syn keyword sqlKeyword trigger_catalog trigger_name trigger_schema trim trim_arr
 syn keyword sqlKeyword uescape unbounded uncommitted under unencrypted union unique unknown unlink
 syn keyword sqlKeyword unlisten unlogged unnamed unnest until untyped upper uri usage user
 syn keyword sqlKeyword user_defined_type_catalog user_defined_type_code user_defined_type_name
-syn keyword sqlKeyword user_defined_type_schema using vacuum valid validate validator value values
+syn keyword sqlKeyword user_defined_type_schema using valid validate validator value values
 syn keyword sqlKeyword value_of varbinary variadic var_pop var_samp verbose version versioning view
 syn keyword sqlKeyword views volatile when whenever where whitespace width_bucket window with within
 syn keyword sqlKeyword without work wrapper write xmlagg xmlattributes xmlbinary xmlcast xmlcomment
