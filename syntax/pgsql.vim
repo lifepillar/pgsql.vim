@@ -92,14 +92,14 @@ syn keyword sqlKeyword returning returns right role rollup routine routine_catal
 syn keyword sqlKeyword routine_schema row rows row_count row_number rule scale schema schema_name
 syn keyword sqlKeyword scope scope_catalog scope_name scope_schema scroll search second section
 syn keyword sqlKeyword selective self sensitive sequence sequences serializable server
-syn keyword sqlKeyword server_name session session_user setof sets share similar simple size
+syn keyword sqlKeyword server_name session session_user setof sets share simple size
 syn keyword sqlKeyword skip snapshot some source space specific specifictype specific_name sql
 syn keyword sqlKeyword sqlcode sqlerror sqlexception sqlstate sqlwarning sqrt stable standalone
 syn keyword sqlKeyword state statement static statistics stddev_pop stddev_samp stdin stdout storage
 syn keyword sqlKeyword strict strip structure style subclass_origin submultiset substring
 syn keyword sqlKeyword substring_regex succeeds sum symmetric sysid system system_user
 syn keyword sqlKeyword table tables tablesample tablespace table_name temp template temporary then
-syn keyword sqlKeyword ties timezone_hour timezone_minute to token top_level_count trailing
+syn keyword sqlKeyword ties timezone_hour timezone_minute token top_level_count trailing
 syn keyword sqlKeyword transactions_committed transactions_rolled_back transaction_active
 syn keyword sqlKeyword transform transforms translate translate_regex translation treat trigger
 syn keyword sqlKeyword trigger_catalog trigger_name trigger_schema trim trim_array trusted type types
@@ -114,6 +114,7 @@ syn keyword sqlKeyword xmlconcat xmldeclaration xmldocument xmlelement xmlexists
 syn keyword sqlKeyword xmlnamespaces xmlparse xmlpi xmlquery xmlroot xmlschema xmlserialize xmltable
 syn keyword sqlKeyword xmltext xmlvalidate year yes zone
 syn match   sqlKeyword /\<each\>/
+syn match   sqlKeyword /\<to\>/
 " PL/pgSQL
 syn keyword sqlKeyword contained alias all array as begin by case close collate column constant
 syn keyword sqlKeyword contained constraint continue current current cursor datatype declare
@@ -1157,8 +1158,9 @@ if (!exists("b:pgsql_pgtap_disabled") || b:pgsql_pgtap_disabled == 0) &&
 endif " pgsql_pgtap_disabled
 
 syn keyword sqlOperator all and any between distinct escape except exists
-syn keyword sqlOperator ilike in intersect like not or like_regex similar
-syn keyword sqlOperator some to union
+syn keyword sqlOperator ilike in intersect like not or like_regex
+syn keyword sqlOperator some union
+syn match   sqlOperator /\<similar\_s\+to\>/
 
 " SQL Types
 " To build this list:
