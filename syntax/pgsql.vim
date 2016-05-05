@@ -239,7 +239,7 @@ syn keyword sqlFunction enum_ne enum_out enum_range enum_recv enum_send enum_sma
 syn keyword sqlFunction eqsel euc_cn_to_mic euc_cn_to_utf8 euc_jis_2004_to_shift_jis_2004
 syn keyword sqlFunction euc_jis_2004_to_utf8 euc_jp_to_mic euc_jp_to_sjis euc_jp_to_utf8
 syn keyword sqlFunction euc_kr_to_mic euc_kr_to_utf8 euc_tw_to_big5 euc_tw_to_mic euc_tw_to_utf8
-syn keyword sqlFunction event_trigger_in event_trigger_out every exp factorial family
+syn keyword sqlFunction event_trigger_in event_trigger_out every exp factorial
 syn keyword sqlFunction fdw_handler_in fdw_handler_out first_value float4 float48div float48eq
 syn keyword sqlFunction float48ge float48gt float48le float48lt float48mi float48mul float48ne
 syn keyword sqlFunction float48pl float4_accum float4abs float4div float4eq float4ge float4gt
@@ -637,6 +637,8 @@ syn keyword sqlFunction xmlconcat2 xmlexists xmlvalidate xpath xpath_exists
 
 " Tokens that need special treatment
 " Distinguish between `replace` keyword and replace() function.
+syn match sqlKeyword /\<family\>/
+syn match sqlFunction /\<family(/he=e-1
 syn match sqlKeyword /\<replace\>/
 syn match sqlFunction /\<replace(/he=e-1
 
