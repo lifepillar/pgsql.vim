@@ -97,7 +97,7 @@ syn keyword sqlKeyword skip snapshot some source space specific specifictype spe
 syn keyword sqlKeyword sqlcode sqlerror sqlexception sqlstate sqlwarning sqrt stable standalone
 syn keyword sqlKeyword state statement static statistics stddev_pop stddev_samp stdin stdout storage
 syn keyword sqlKeyword strict strip structure style subclass_origin submultiset substring
-syn keyword sqlKeyword substring_regex succeeds sum symmetric sysid system system_user
+syn keyword sqlKeyword substring_regex succeeds sum symmetric sysid system_user
 syn keyword sqlKeyword table tables tablesample tablespace table_name temp template temporary then
 syn keyword sqlKeyword ties timezone_hour timezone_minute token top_level_count trailing
 syn keyword sqlKeyword transactions_committed transactions_rolled_back transaction_active
@@ -561,7 +561,7 @@ syn keyword sqlFunction spgcostestimate spgendscan spggetbitmap spggettuple spgi
 syn keyword sqlFunction spgoptions spgrescan spgrestrpos spgvacuumcleanup split_part sqrt
 syn keyword sqlFunction statement_timestamp stddev stddev_pop stddev_samp string_agg
 syn keyword sqlFunction string_agg_finalfn string_agg_transfn string_to_array strip strpos substr
-syn keyword sqlFunction substring sum suppress_redundant_updates_trigger system table_to_xml
+syn keyword sqlFunction substring sum suppress_redundant_updates_trigger table_to_xml
 syn keyword sqlFunction table_to_xml_and_xmlschema table_to_xmlschema tan text_ge text_gt
 syn keyword sqlFunction text_larger text_le text_lt text_pattern_ge text_pattern_gt
 syn keyword sqlFunction text_pattern_le text_pattern_lt text_smaller textanycat textcat texteq
@@ -644,6 +644,8 @@ syn match sqlKeyword /\<family\>/
 syn match sqlFunction /\<family\_s*(/he=e-1
 syn match sqlKeyword /\<replace\>/
 syn match sqlFunction /\<replace\_s*(/he=e-1
+syn match sqlKeyword /\<system\>/
+syn match sqlFunction /\<system\_s*(/he=e-1
 
 " Extensions (Appendix F)
 if (!exists("b:pgsql_modules_disabled") || b:pgsql_modules_disabled == 0) &&
