@@ -21,9 +21,9 @@ syn keyword sqlConstant error fatal panic
 
 syn keyword sqlStatement abort alter analyze begin checkpoint close cluster comment commit constraints
 syn keyword sqlStatement copy deallocate declare discard do drop end execute explain fetch grant import
-syn keyword sqlStatement insert label listen load lock move notify prepare reassign reindex refresh
+syn keyword sqlStatement insert label listen load lock move notify prepare prepared reassign reindex refresh
 syn keyword sqlStatement release reset revoke rollback savepoint security select set show start
-syn keyword sqlStatement transaction truncate unlisten update vacuum values
+syn keyword sqlStatement transaction truncate unlisten update vacuum values work
 syn match   sqlStatement /\<delete\>/
 syn match   sqlStatement /\<create\>/
 syn match   sqlStatement /\<create\_s\+or\_s\+replace\>/
@@ -81,7 +81,7 @@ syn keyword sqlKeyword parameter_name parameter_ordinal_position parameter_speci
 syn keyword sqlKeyword parameter_specific_name parameter_specific_schema parser partial partition
 syn keyword sqlKeyword pascal passing passthrough password percent percentile_cont percentile_disc
 syn keyword sqlKeyword percent_rank period permission placing plans pli policy portion position
-syn keyword sqlKeyword position_regex power precedes preceding precision prepared preserve
+syn keyword sqlKeyword position_regex power precedes preceding precision preserve
 syn keyword sqlKeyword primary prior privileges procedural procedure program public quote range
 syn keyword sqlKeyword read reads real recheck recovery recursive ref references referencing
 syn keyword sqlKeyword regr_avgx regr_avgy regr_count regr_intercept regr_r2 regr_slope
@@ -109,7 +109,7 @@ syn keyword sqlKeyword user_defined_type_catalog user_defined_type_code user_def
 syn keyword sqlKeyword user_defined_type_schema using valid validate validator value
 syn keyword sqlKeyword value_of varbinary variadic var_pop var_samp verbose version versioning view
 syn keyword sqlKeyword views volatile when whenever where whitespace width_bucket window with within
-syn keyword sqlKeyword without work wrapper write xmlagg xmlattributes xmlbinary xmlcast xmlcomment
+syn keyword sqlKeyword without wrapper write xmlagg xmlattributes xmlbinary xmlcast xmlcomment
 syn keyword sqlKeyword xmlconcat xmldeclaration xmldocument xmlelement xmlexists xmlforest xmliterate
 syn keyword sqlKeyword xmlnamespaces xmlparse xmlpi xmlquery xmlroot xmlschema xmlserialize xmltable
 syn keyword sqlKeyword xmltext xmlvalidate year yes zone
