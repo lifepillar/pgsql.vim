@@ -26,7 +26,7 @@ syn keyword sqlStatement release reset revoke rollback savepoint security select
 syn keyword sqlStatement transaction truncate unlisten update vacuum values
 syn match   sqlStatement /\<delete\>/
 syn match   sqlStatement /\<create\>/
-syn match   sqlStatement /\<create\_s\+or\_s\+replace/
+syn match   sqlStatement /\<create\_s\+or\_s\+replace\>/
 
 " SQL keywords (see Table C-1 in App. C of PostgreSQL manual)
 syn keyword sqlKeyword abs absent absolute access according action ada add admin after array
