@@ -641,9 +641,9 @@ syn keyword sqlFunction xmlconcat2 xmlexists xmlvalidate xpath xpath_exists
 " Tokens that need special treatment
 " Distinguish between `replace` keyword and replace() function.
 syn match sqlKeyword /\<family\>/
-syn match sqlFunction /\<family(/he=e-1
+syn match sqlFunction /\<family\_s*(/he=e-1
 syn match sqlKeyword /\<replace\>/
-syn match sqlFunction /\<replace(/he=e-1
+syn match sqlFunction /\<replace\_s*(/he=e-1
 
 " Extensions (Appendix F)
 if (!exists("b:pgsql_modules_disabled") || b:pgsql_modules_disabled == 0) &&
@@ -741,7 +741,7 @@ if (!exists("b:pgsql_modules_disabled") || b:pgsql_modules_disabled == 0) &&
   syn keyword sqlFunction citext_larger citext_le citext_lt citext_ne citext_smaller citextin
   syn keyword sqlFunction citextout citextrecv citextsend max min regexp_matches
   syn match   sqlType     /\<citext\>/
-  syn match   sqlFunction /\<citext(/he=e-1
+  syn match   sqlFunction /\<citext\_s*(/he=e-1
   " cube
   syn keyword sqlFunction cube_cmp cube_contained cube_contains cube_dim cube_distance
   syn keyword sqlFunction cube_enlarge cube_eq cube_ge cube_gt cube_in cube_inter
@@ -750,7 +750,7 @@ if (!exists("b:pgsql_modules_disabled") || b:pgsql_modules_disabled == 0) &&
   syn keyword sqlFunction g_cube_compress g_cube_consistent g_cube_decompress g_cube_penalty
   syn keyword sqlFunction g_cube_picksplit g_cube_same g_cube_union
   syn match   sqlType     /\<cube\>/
-  syn match   sqlFunction /\<cube(/he=e-1
+  syn match   sqlFunction /\<cube\_s*(/he=e-1
   " dblink
   syn keyword sqlFunction dblink dblink_build_sql_delete dblink_build_sql_insert
   syn keyword sqlFunction dblink_build_sql_update dblink_cancel_query dblink_close
@@ -784,10 +784,10 @@ if (!exists("b:pgsql_modules_disabled") || b:pgsql_modules_disabled == 0) &&
   syn keyword sqlFunction tconvert
   syn keyword sqlType     ghstore
   syn match   sqlType     /\<hstore\>/
-  syn match   sqlFunction /\<hstore(/
-  syn match   sqlFunction /\<delete(/he=e-1
-  syn match   sqlFunction /\<each(/he=e-1
-  syn match   sqlFunction /\<slice(/he=e-1
+  syn match   sqlFunction /\<hstore\_s*(/
+  syn match   sqlFunction /\<delete\_s*(/he=e-1
+  syn match   sqlFunction /\<each\_s*(/he=e-1
+  syn match   sqlFunction /\<slice\_s*(/he=e-1
   " intagg
   syn keyword sqlFunction int_array_aggregate int_agg_final_array int_agg_state int_array_enum
   " intarray
@@ -806,9 +806,9 @@ if (!exists("b:pgsql_modules_disabled") || b:pgsql_modules_disabled == 0) &&
   syn keyword sqlFunction isn_weak isneq isnge isngt isnle isnlt isnne issn13_in
   syn keyword sqlFunction issn_in make_valid upc_in
   syn match   sqlType     /\<upc\>/
-  syn match   sqlFunction /\<upc(/he=e-1
+  syn match   sqlFunction /\<upc\_s*(/he=e-1
   syn match   sqlType     /\<\(ea\|isb\|ism\|iss\)n\(13\)\?\>/
-  syn match   sqlFunction /\<\(ea\|isb\|ism\|iss\)n\(13\)\?(/he=e-1
+  syn match   sqlFunction /\<\(ea\|isb\|ism\|iss\)n\(13\)\?\_s*(/he=e-1
   " lo
   syn keyword sqlFunction lo_oid lo_manage
   " ltree
@@ -841,7 +841,7 @@ if (!exists("b:pgsql_modules_disabled") || b:pgsql_modules_disabled == 0) &&
   syn keyword sqlFunction pgrowlocks
   " pg_stat_statements
   syn match   sqlConstant /\<pg_stat_statements\>/
-  syn match   sqlFunction /\<pg_stat_statements(/he=e-1
+  syn match   sqlFunction /\<pg_stat_statements\_s*(/he=e-1
   syn keyword sqlFunction pg_stat_statements_reset
   " pgstattuple
   syn keyword sqlFunction pg_relpages pgstatginindex pgstatindex pgstattuple pgstattuple_approx
@@ -1199,7 +1199,7 @@ syn keyword sqlType tsm_handler tsquery tsrange tstzrange tsvector txid_snapshot
 syn keyword sqlType varbit varchar void xid xml
 syn match   sqlType     /\<text\>/
 syn match   sqlKeyword  /\<text\_s\+search\>/
-syn match   sqlFunction /\<text(/he=e-1
+syn match   sqlFunction /\<text\_s*(/he=e-1
 
 " System catalogs:
 syn keyword sqlConstant pg_aggregate pg_am pg_amop pg_amproc pg_attrdef
