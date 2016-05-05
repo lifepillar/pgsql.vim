@@ -562,7 +562,7 @@ syn keyword sqlFunction spgoptions spgrescan spgrestrpos spgvacuumcleanup split_
 syn keyword sqlFunction statement_timestamp stddev stddev_pop stddev_samp string_agg
 syn keyword sqlFunction string_agg_finalfn string_agg_transfn string_to_array strip strpos substr
 syn keyword sqlFunction substring sum suppress_redundant_updates_trigger system table_to_xml
-syn keyword sqlFunction table_to_xml_and_xmlschema table_to_xmlschema tan text text_ge text_gt
+syn keyword sqlFunction table_to_xml_and_xmlschema table_to_xmlschema tan text_ge text_gt
 syn keyword sqlFunction text_larger text_le text_lt text_pattern_ge text_pattern_gt
 syn keyword sqlFunction text_pattern_le text_pattern_lt text_smaller textanycat textcat texteq
 syn keyword sqlFunction texticlike texticnlike texticregexeq texticregexne textin textlen
@@ -901,7 +901,9 @@ if (!exists("b:pgsql_postgis_disabled") || b:pgsql_postgis_disabled == 0) &&
   " from    pg_catalog.pg_namespace n
   " join    pg_catalog.pg_proc p
   " on      p.pronamespace = n.oid
-  " where   n.nspname = 'postgis' and p.proname not like '\_%' order by p.proname;
+  " where   n.nspname = 'postgis' and p.proname not like '\_%'
+  " and     p.proname <> 'text'
+  " order   by p.proname;
   syn keyword sqlFunction addauth addgeometrycolumn addoverviewconstraints addrasterconstraints box
   syn keyword sqlFunction box2d box2d_in box2d_out box2df_in box2df_out box3d box3d_in box3d_out
   syn keyword sqlFunction box3dtobox bytea checkauth checkauthtrigger disablelongtransactions
@@ -1037,7 +1039,7 @@ if (!exists("b:pgsql_postgis_disabled") || b:pgsql_postgis_disabled == 0) &&
   syn keyword sqlFunction st_upperlefty st_value st_valuecount st_valuepercent st_width st_within
   syn keyword sqlFunction st_wkbtosql st_wkttosql st_worldtorastercoord st_worldtorastercoordx
   syn keyword sqlFunction st_worldtorastercoordy st_x st_xmax st_xmin st_y st_ymax st_ymin st_z
-  syn keyword sqlFunction st_zmax st_zmflag st_zmin text unlockrows updategeometrysrid
+  syn keyword sqlFunction st_zmax st_zmflag st_zmin unlockrows updategeometrysrid
   syn keyword sqlFunction updaterastersrid
 
   " PostGIS 2.2 Topology functions
@@ -1191,10 +1193,13 @@ syn keyword sqlType language_handler line lseg macaddr money name numeric numran
 syn keyword sqlType oidvector opaque path pg_ddl_command pg_lsn pg_node_tree point polygon
 syn keyword sqlType real record refcursor regclass regconfig regdictionary regnamespace
 syn keyword sqlType regoper regoperator regproc regprocedure regrole regtype reltime serial
-syn keyword sqlType serial2 serial4 serial8 smallint smallserial smgr text tid time with time
+syn keyword sqlType serial2 serial4 serial8 smallint smallserial smgr tid time with time
 syn keyword sqlType zone time without timestamp timestampz timetz tinterval trigger
 syn keyword sqlType tsm_handler tsquery tsrange tstzrange tsvector txid_snapshot unknown uuid
 syn keyword sqlType varbit varchar void xid xml
+syn match   sqlType     /\<text\>/
+syn match   sqlKeyword  /\<text\_s\+search\>/
+syn match   sqlFunction /\<text(/he=e-1
 
 " System catalogs:
 syn keyword sqlConstant pg_aggregate pg_am pg_amop pg_amproc pg_attrdef
