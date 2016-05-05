@@ -1196,7 +1196,7 @@ syn keyword sqlType oidvector opaque path pg_ddl_command pg_lsn pg_node_tree poi
 syn keyword sqlType real record refcursor regclass regconfig regdictionary regnamespace
 syn keyword sqlType regoper regoperator regproc regprocedure regrole regtype reltime serial
 syn keyword sqlType serial2 serial4 serial8 smallint smallserial smgr tid time with time
-syn keyword sqlType zone time without timestamp timestampz timetz tinterval trigger
+syn keyword sqlType zone time without timestamp timestampz timetz tinterval
 syn keyword sqlType tsm_handler tsquery tsrange tstzrange tsvector txid_snapshot unknown uuid
 syn keyword sqlType varbit varchar void xid xml
 syn match   sqlType     /\<text\>/
