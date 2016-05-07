@@ -89,6 +89,7 @@ The defined highlight groups are the following:
   sqlFunction
   sqlIdentifier
   sqlKeyword
+  sqlplpgsqLKeyword
   sqlNumber
   sqlOperator
   sqlOption
