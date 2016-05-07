@@ -12,7 +12,7 @@ elseif exists("b:current_syntax")
 endif
 
 syn case ignore
-" syn sync ccomment sqlComment
+syn sync ccomment sqlComment
 syn sync minlines=10 maxlines=100
 
 syn keyword sqlSpecial contained false null true
