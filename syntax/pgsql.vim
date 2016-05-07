@@ -12,6 +12,8 @@ elseif exists("b:current_syntax")
 endif
 
 syn case ignore
+syn sync ccomment sqlComment
+syn sync minlines=10 maxlines=100
 
 syn keyword sqlSpecial false null true
 
@@ -1245,8 +1247,6 @@ syn region sqlComment    start="/\*" end="\*/" contains=sqlTodo,@Spell
 syn match  sqlComment    "#.*$"                contains=sqlTodo,@Spell
 syn match  sqlComment    "--.*$"               contains=sqlTodo,@Spell
 
-syn sync ccomment sqlComment
-
 " Options
 syn keyword sqlOption client_min_messages search_path
 
@@ -1368,9 +1368,6 @@ elseif exists("pgsql_pl")
     call s:add_syntax(pl)
   endfor
 endif
-
-" Syntax Synchronizing
-syn sync minlines=10 maxlines=100
 
 " Default highlighting
 hi def link sqlComment        Comment
