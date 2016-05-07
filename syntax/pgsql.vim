@@ -2,7 +2,7 @@
 " Language:     SQL, PL/pgSQL, PL/… (PostgreSQL 9.5)
 " Author:       space::tekk
 " Maintainer:   Lifepillar
-" Version:      1.1.1
+" Version:      1.2.0
 " License:      This file is placed in the public domain.
 
 if version < 600
