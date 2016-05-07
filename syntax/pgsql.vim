@@ -20,6 +20,13 @@ syn keyword sqlSpecial contained false null true
 " Constants
 syn keyword sqlConstant contained debug5 debug4 debug3 debug2 debug1 log notice warning
 syn keyword sqlConstant contained error fatal panic
+" These are not really constants, but it's nice to see them highlighted
+syn keyword sqlConstant contained adminpack auth_delay auto_explain btree_gin btree_gist
+syn keyword sqlConstant contained dict_int dict_xsyn dummy_seclabel earthdistance file_fdw fuzzystrmatch
+syn keyword sqlConstant contained intagg intarray isn lo pageinspect passwordcheck pg_freespacemap
+syn keyword sqlConstant contained pldbgapi plperl plperlu plpgsql plpgsqlu plpython plpythonu
+syn keyword sqlConstant contained pltcl pltclu postgis postgis_topology postgres_fdw sepgsql spi sslinfo
+syn keyword sqlConstant contained tablefunc tcn test_decoding test_parser test_shm_mq uuid-ossp xml2
 
 syn match   sqlIsKeyword /\<\h\w*\>/ contains=sqlStatement,sqlKeyword,sqlConstant,sqlSpecial,sqlType,sqlOperator,sqlOption,sqlErrorCode,sqlPsqlKeyword
 syn match   sqlIsFunction /\<\w\+\s*\ze(/ contains=sqlFunction
