@@ -1217,7 +1217,7 @@ syn keyword sqlConstant contained pg_ts_parser pg_ts_template pg_type pg_user
 syn keyword sqlConstant contained pg_user_mapping pg_user_mappings pg_views
 
 " Variables
-syn match sqlVariable "\contained <_[A-Za-z0-9][A-Za-z0-9_]*\>"
+syn match sqlVariable "\<_[A-Za-z0-9][A-Za-z0-9_]*\>"
 
 " Numbers
 syn match sqlNumber "-\=\<\d*\.\=[0-9_]\>"
