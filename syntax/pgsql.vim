@@ -12,7 +12,7 @@ elseif exists("b:current_syntax")
 endif
 
 syn case ignore
-syn sync ccomment sqlComment
+" syn sync ccomment sqlComment
 syn sync minlines=10 maxlines=100
 
 syn keyword sqlSpecial contained false null true
@@ -116,6 +116,11 @@ syn keyword sqlKeyword contained without wrapper write xmlagg xmlattributes xmlb
 syn keyword sqlKeyword contained xmlconcat xmldeclaration xmldocument xmlelement xmlexists xmlforest xmliterate
 syn keyword sqlKeyword contained xmlnamespaces xmlparse xmlpi xmlquery xmlroot xmlschema xmlserialize xmltable
 syn keyword sqlKeyword contained xmltext xmlvalidate year yes zone
+" Not listed in Table C-1
+syn keyword sqlKeyword contained bypassrls createdb createrole createuser login nobypassrls
+syn keyword sqlKeyword contained nocreatedb nocreaterole nocreateuser noinherit nologin noreplication
+syn keyword sqlKeyword contained nosuperuser replication superuser
+
 
 syn keyword sqlStatement contained abort alter analyze begin checkpoint close cluster comment commit constraints
 syn keyword sqlStatement contained copy create deallocate declare delete discard do drop end execute explain fetch grant import
