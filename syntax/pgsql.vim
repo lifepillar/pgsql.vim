@@ -29,7 +29,7 @@ syn keyword sqlConstant contained pltcl pltclu postgis postgis_topology postgres
 syn keyword sqlConstant contained tablefunc tcn test_decoding test_parser test_shm_mq uuid-ossp xml2
 
 syn match   sqlIsKeyword /\<\h\w*\>/ contains=sqlStatement,sqlKeyword,sqlConstant,sqlSpecial,sqlType,sqlOperator,sqlOption,sqlErrorCode,sqlPsqlKeyword
-syn match   sqlIsFunction /\<\w\+\ze(/ contains=sqlFunction
+syn match   sqlIsFunction /\<\h\w*\ze(/ contains=sqlFunction
 
 " SQL keywords (see Table C-1 in App. C of PostgreSQL manual)
 syn keyword sqlKeyword contained abs absent absolute access according action ada add admin after array
