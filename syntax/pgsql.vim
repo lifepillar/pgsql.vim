@@ -5,9 +5,7 @@
 " Version:      1.2.0
 " License:      This file is placed in the public domain.
 
-if version < 600
-  syntax clear
-elseif exists("b:current_syntax")
+if exists("b:current_syntax")
   finish
 endif
 
