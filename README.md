@@ -1,6 +1,6 @@
 # Vim PostgreSQL syntax plugin
 
-![pgsql syntax highlighting](images/pgsql.png)
+![pgsql syntax highlighting](https://raw.github.com/lifepillar/Resources/master/pgsql/pgsql.png)
 
 This plugin provides syntax highlighting and auto-completion support for
 PostgreSQL version 9.4 or above and for some of its extensions:
@@ -48,7 +48,7 @@ To set the file type in new buffers use:
 Code between `$pgsql$` or `$$` pairs is treated as PL/pgSQL and highlighted
 accordingly:
 
-![PL/pgSQL snippet](images/plpgsql.png)
+![PL/pgSQL snippet](https://raw.github.com/lifepillar/Resources/master/pgsql/plpgsql.png)
 
 You may set `g:pgsql_pl` to a list of file types to be used in user-defined
 functions. For example, after setting:
@@ -57,7 +57,7 @@ functions. For example, after setting:
 
 code between `$python$` pairs will be highlighted as Python:
 
-![PL/Pythonu snippet](images/plpython.png)
+![PL/Pythonu snippet](https://raw.github.com/lifepillar/Resources/master/pgsql/plpython.png)
 
 
 # Snippets
