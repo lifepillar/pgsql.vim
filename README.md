@@ -70,9 +70,7 @@ essentially for three reasons:
 - UltiSnips already provides some basic SQL snippets;
 - snippets's style and behaviour are a matter of personal taste.
 
-So, if you want PostgreSQL-specific snippets, you'd better write your own. The
-ones I use are in my [Vim
-configuration](https://github.com/lifepillar/vimrc/blob/master/UltiSnips/sql.snippets).
+So, if you want PostgreSQL-specific snippets, you'd better write your own.
 
 
 # Acknowledgments
