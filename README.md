@@ -63,17 +63,18 @@ code between `$python$` pairs will be highlighted as Python:
 ![PL/Pythonu snippet](https://raw.github.com/lifepillar/Resources/master/pgsql/plpython.png)
 
 
-# Snippets
+# Hacking
 
-UltiSnips snippets have been removed in commit
-[aae77099](https://github.com/lifepillar/pgsql.vim/commit/aae77099bccaa5f443994821130688e0c30182d9)
-essentially for three reasons:
+The syntax file is generated automatically. If you want to hack it, edit
+`src/pgsql.vim`, then execute:
 
-- not everyone using this plugin uses UltiSnips;
-- UltiSnips already provides some basic SQL snippets;
-- snippets's style and behaviour are a matter of personal taste.
+```sh
+cd src
+make install
+```
 
-So, if you want PostgreSQL-specific snippets, you'd better write your own.
+This will update `syntax/pgsql.vim`. The script has been tested in macOS, but it
+should work on any *nix system.
 
 
 # Acknowledgments
