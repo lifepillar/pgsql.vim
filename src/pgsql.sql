@@ -48,7 +48,7 @@ $$;
 
 
 create or replace function create_extensions()
-returns void
+returns setof void
 language plpgsql volatile
 set search_path = "public","pg_catalog"
 set client_min_messages to 'error' as
@@ -71,7 +71,7 @@ $$
 $$;
 
 create or replace function preflight_requirements()
-returns void
+returns setof void
 language plpgsql stable
 set search_path to "public" as
 $$
@@ -91,7 +91,6 @@ begin
   loop
     raise warning '% is missing. No syntax items will be generated for it.', _missing;
   end loop;
-
   return;
 end;
 $$;
