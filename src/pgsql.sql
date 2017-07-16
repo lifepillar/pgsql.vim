@@ -144,6 +144,7 @@ $$
      and  refobjid = (select e.oid from pg_extension e where e.extname ~ ('^(' || _extname || ')$'))
      and  deptype = 'e'
      and  pg_describe_object(classid, objid, 0) ~* '^(function|table|type|view)\s+[^_]'
+     and not pg_describe_object(classid, objid, 0) ~* '\w+\.\_' -- Do not match things like 'public._some_func()'
 order by  synclass, synkeyword;
 $$;
 
