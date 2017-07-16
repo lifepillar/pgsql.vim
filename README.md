@@ -3,13 +3,15 @@
 ![pgsql syntax highlighting](https://raw.github.com/lifepillar/Resources/master/pgsql/pgsql.png)
 
 This plugin provides syntax highlighting and auto-completion support for
-PostgreSQL version 9.4 or above and for some of its extensions:
+PostgreSQL version 9.6 or above and for some of its extensions, including:
 
 - PL/pgSQL;
-- any other language, like PL/Python, PL/R, etc...;
-- [PostGIS](http://postgis.net) 2.2 (including PostGIS Topology);
-- [pgRouting](http://pgrouting.org) 2.2.1;
-- [pgTap](http://pgtap.org) 0.95.0.
+- [PostGIS](http://postgis.net) (including PostGIS Topology);
+- [pgRouting](http://pgrouting.org);
+- [pgTap](http://pgtap.org).
+
+Besides, syntax highlighting for any language may be activated inside functions
+(see below).
 
 
 # Installation
@@ -26,6 +28,7 @@ copy and paste:
 
     cd ~/.vim/bundle
     git clone https://github.com/lifepillar/pgsql.vim.git
+
 
 # Usage
 
@@ -75,5 +78,7 @@ So, if you want PostgreSQL-specific snippets, you'd better write your own.
 
 # Acknowledgments
 
-Original code from [space::tekk](https://github.com/spacetekk/pgsql.vim).
+This plugin was originally based on code from
+[space::tekk](https://github.com/spacetekk/pgsql.vim) (and completely
+rewritten).
 

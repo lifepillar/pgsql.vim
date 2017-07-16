@@ -47,6 +47,9 @@ Code between `$pgsql$` or `$$` pairs is interpreted as PL/pgSQL and
 highlighted accordingly. To use any other language, such as PL/Perl,
 PL/Python, PL/R, and so on, see |pgsql-customization|.
 
+Text enclosed between `$HERE$` pairs is highlighted as
+a (multi-line) string.
+
 ====================================================================
 Section 2: Customization                       *pgsql-customization*
 
@@ -63,43 +66,16 @@ Python, and code between $r$ pairs will be highlighted as R. There
 is also a buffer-local variable called `b:pgsql_pl` to override the
 global settings in a single buffer.
 
-PostGIS, pgRouting and pgTap syntax highlighting is enabled by
-default. Functions and data types for PostgreSQL modules are
-highlighted, too (see Appendix F of PostgreSQL's manual). To
-disable:
-
-    let g:pgsql_postgis_disabled = 1
-    let g:pgsql_pgrouting_disabled = 1
-    let g:pgsql_pgtap_disabled = 1
-    let g:pgsql_modules_disabled = 1
-
-For each of the variables above, a buffer-local version exists,
-which takes precedence over the global variable.
+Support for the most common PostgreSQL extensions is enabled by
+default. You may set |g:pgsql_disabled_extensions| to a List of
+unwanted extensions.
 
 Highlight group definitions may be changed in your `vimrc`, too. For
 example:
 
   hi! link sqlKeyword Keyword
 
-The defined highlight groups are the following:
-
-  sqlComment
-  sqlConstant
-  sqlErrorCode
-  sqlFunction
-  sqlIdentifier
-  sqlKeyword
-  sqlplpgsqLKeyword
-  sqlNumber
-  sqlOperator
-  sqlOption
-  sqlSpecial
-  sqlStatement
-  sqlString
-  sqlType
-  sqlTodo
-  sqlVariable
-  sqlPsqlKeyword
+See the source code for the available highlight groups.
 
 ====================================================================
 Section 3: Autocompletion                     *pgsql-autocompletion*
@@ -111,21 +87,6 @@ use `<C-c>f` to complete function names, `<C-c>T` to complete types,
 and so on. See |ft_sql.txt| for thorough documentation about SQL
 support in Vim.
 
-In addition to the default mappings, I find it convenient to use
-`Tab` for auto-completion. To do that, you may add the following
-mappings in `.vim/after/ftplugin/sql.vim`:
-
-  imap <expr><silent><buffer> <tab> pumvisible()
-        \ ? "\<c-n>"
-        \ : (col('.')>1 && (matchstr(getline('.'),
-            \ '\%' . (col('.')-1) . 'c.') =~ '\S')
-          \ ? "\<c-c>a"
-          \ : "\<tab>"
-          \ )
-
-  inoremap <expr><silent><buffer> <s-tab>
-       \ pumvisible() ? "\<c-p>" : "\<s-tab>"
-
 As far as I know, YouCompleteMe does not support SQL. If you use
 YouCompleteMe you may want to disable it for SQL buffers. Add this
 to `.vim/after/ftplugin/sql.vim`:
@@ -133,6 +94,8 @@ to `.vim/after/ftplugin/sql.vim`:
   if exists('g:ycm_filetype_blacklist')
     call extend(g:ycm_filetype_blacklist, { 'sql': 1 })
   endif
+
+Of course, I recommend using my own plugin MUcomplete over YCM ;)
 
 ====================================================================
 Section 4: Contributing                         *pgsql-contributing*
@@ -149,4 +112,3 @@ Section 5: Credits                                   *pgsql-credits*
 This plugin was originally a fork of space::tekk's
 
     https://github.com/spacetekk/pgsql.vim
-
