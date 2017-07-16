@@ -66,7 +66,7 @@ code between `$python$` pairs will be highlighted as Python:
 # Hacking
 
 The syntax file is generated automatically. If you want to hack it, edit
-`src/pgsql.vim`, then execute:
+`src/pgsql.sql`, then execute:
 
 ```sh
 cd src
