@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 9.6.3
-" Automatically generated on 2017-07-16 at 19:27:36
+" Automatically generated on 2017-07-16 at 19:50:31
 
 if exists("b:current_syntax")
   finish
@@ -1068,6 +1068,7 @@ syn keyword sqlCatalog contained role_udt_grants role_usage_grants routine_privi
 syn keyword sqlCatalog contained sql_languages sql_packages sql_parts sql_sizing sql_sizing_profiles table_constraints table_privileges tables
 syn keyword sqlCatalog contained transforms triggered_update_columns triggers udt_privileges usage_privileges user_defined_types user_mapping_options user_mappings
 syn keyword sqlCatalog contained view_column_usage view_routine_usage view_table_usage views
+syn keyword sqlConstant contained pg_catalog information_schema
 syn keyword sqlKeyword contained absolute access action add admin after aggregate all
 syn keyword sqlKeyword contained also always analyse and any array as asc
 syn keyword sqlKeyword contained assertion assignment asymmetric at attribute authorization backward before

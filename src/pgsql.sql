@@ -408,6 +408,7 @@ select vim_syntax_functions();
 select vim_syntax_extensions();
 select vim_syntax_extension_names();
 select vim_syntax_catalog();
+select 'syn keyword sqlConstant contained pg_catalog information_schema';
 select vim_syntax_keywords();
 select vim_syntax_errcodes();
 
