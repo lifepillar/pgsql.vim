@@ -63,17 +63,36 @@ begin
 end;
 $$;
 
+create or replace function recommended_extensions()
+returns table (extname text)
+language sql immutable as
+$$
+  values ('pgrouting'), ('pgtap'), ('pldbgapi'), ('postgis'), ('postgis_topology');
+$$;
 
 create or replace function preflight_requirements()
-returns boolean
-language plpgsql stable as
+returns void
+language plpgsql stable
+set search_path to "public" as
 $$
+declare
+  _missing text;
 begin
-  -- 0. Make sure at least the following third-party extensions are available
-  --    before running this script, otherwise you won't get syntax support for
-  --    them: pgrouting, pgtap, pldbgapi, postgis, postgis_topology
-  -- TODO: Refute to execute if db does not have the right name
-  return true;
+  -- Refute to execute if db does not have the right name
+  if current_database() <> 'vim_pgsql_syntax' then
+    raise exception 'ERROR: Wrong database name!';
+  end if;
+
+  -- Print a warning if a recommended extension is missing
+  for _missing in
+    select extname from recommended_extensions()
+    except
+    select extname::text from extension_names()
+  loop
+    raise warning '% is missing. No syntax items will be generated for it.', _missing;
+  end loop;
+
+  return;
 end;
 $$;
 
@@ -363,6 +382,8 @@ end;
 $$;
 
 -------------------------------------------------------------------------------
+
+select preflight_requirements();
 
 -- Install all the available extensions
 select 'Creating extensions...';
