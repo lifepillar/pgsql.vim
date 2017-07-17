@@ -112,12 +112,13 @@ $$;
 create or replace function get_types()
 returns table ("type" text)
 language sql stable
-set search_path to "pg_catalog" as
+set search_path to "pg_catalog", "public" as
 $$
   select distinct typname::text
     from pg_type
    where typname not like '\_%'
-     and typname not like 'pg_toast_%';
+     and typname not like 'pg_toast_%'
+     and typname not in (select get_catalog_tables());
 $$;
 
 
