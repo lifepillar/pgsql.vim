@@ -167,6 +167,17 @@ order by  synclass, synkeyword;
 $$;
 
 
+-- Keywords that cannot be extracted from system catalogs
+create or replace function additional_keywords()
+returns table (keyword text)
+language sql immutable as
+$$
+  -- Serial types are not true types, but merely a notational convenience for creating unique identifier columns.
+  -- See https://www.postgresql.org/docs/current/static/datatype-numeric.html#DATATYPE-SERIAL
+  values ('smallserial'), ('serial'), ('bigserial'), ('serial2'), ('serial4'), ('serial8');
+$$;
+
+
 -- Define keywords for built-in functions
 create or replace function vim_syntax_functions()
 returns setof text
@@ -304,6 +315,27 @@ end;
 $$;
 
 
+create or replace function vim_syntax_additional_keywords()
+returns setof text
+language plpgsql stable
+set search_path to "public" as
+$$
+begin
+  return query
+  with T as (
+    select  rank() over (order by keyword) as num, keyword
+      from  additional_keywords()
+  )
+  select  'syn keyword sqlKeyword contained ' || string_agg(keyword, ' ')
+    from  T
+   group by (num - 1) / 8
+   order by (num - 1) / 8;
+
+  return;
+end;
+$$;
+
+
 create or replace function vim_syntax_extension_names()
 returns setof text
 language plpgsql stable
@@ -431,6 +463,7 @@ select vim_syntax_extension_names();
 select vim_syntax_catalog();
 select 'syn keyword sqlConstant contained pg_catalog information_schema';
 select vim_syntax_keywords();
+select vim_syntax_additional_keywords();
 select vim_syntax_errcodes();
 
 select

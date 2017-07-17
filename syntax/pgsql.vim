@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 9.6.3
-" Automatically generated on 2017-07-17 at 09:01:39
+" Automatically generated on 2017-07-17 at 12:06:01
 
 if exists("b:current_syntax")
   finish
@@ -1121,6 +1121,7 @@ syn keyword sqlKeyword contained variadic varying verbose version view views vol
 syn keyword sqlKeyword contained where whitespace window with within without wrapper write
 syn keyword sqlKeyword contained xml xmlattributes xmlconcat xmlelement xmlexists xmlforest xmlparse xmlpi
 syn keyword sqlKeyword contained xmlroot xmlserialize year yes zone
+syn keyword sqlKeyword contained bigserial serial serial2 serial4 serial8 smallserial
 " Error codes (Appendix A, Table A-1)
 syn keyword sqlErrorCode contained active_sql_transaction admin_shutdown ambiguous_alias ambiguous_column ambiguous_function
 syn keyword sqlErrorCode contained ambiguous_parameter array_subscript_error assert_failure bad_copy_file_format branch_transaction_already_active
