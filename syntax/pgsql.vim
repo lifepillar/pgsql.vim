@@ -5,14 +5,14 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 9.6.3
-" Automatically generated on 2017-07-17 at 16:21:02
+" Automatically generated on 2017-07-17 at 17:22:39
 
 if exists("b:current_syntax")
   finish
 endif
 
 syn case ignore
-syn sync minlines=50
+syn sync minlines=100
 syn iskeyword @,48-57,192-255,_
 
 syn match sqlIsKeyword  /\<\h\w*\>/   contains=sqlStatement,sqlKeyword,sqlCatalog,sqlConstant,sqlOperator,sqlSpecial,sqlOption,sqlErrorCode,sqlType
