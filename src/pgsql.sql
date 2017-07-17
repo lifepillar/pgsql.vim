@@ -327,7 +327,7 @@ if exists("b:current_syntax")
 endif
 
 syn case ignore
-syn sync minlines=50
+syn sync minlines=100
 syn iskeyword @,48-57,192-255,_
 
 syn match sqlIsKeyword  /\<\h\w*\>/   contains=sqlStatement,sqlKeyword,sqlCatalog,sqlConstant,sqlOperator,sqlSpecial,sqlOption,sqlErrorCode,sqlType
