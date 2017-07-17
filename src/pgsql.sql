@@ -493,7 +493,7 @@ end;
 $$;
 
 
-\o test.sql
+\o keywords.sql
 select '-- Statements';
 select stm from get_statements();
 select '-- Types';
