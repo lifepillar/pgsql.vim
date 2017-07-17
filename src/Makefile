@@ -1,14 +1,16 @@
-PSQLBIN := psql
-DBUSER  := postgres
-DBNAME  := vim_pgsql_syntax
-SRCFILE := pgsql.sql
-SYNFILE := pgsql.vim
-DESTDIR := ../syntax
+PSQLBIN  := psql
+DBUSER   := postgres
+DBNAME   := vim_pgsql_syntax
+SRCFILE  := pgsql.sql
+SYNFILE  := pgsql.vim
+TESTFILE := test.sql
+KEYWORDS := keywords.sql
+DESTDIR  := ../syntax
 
 PSQL := PGOPTIONS='--client-min-messages=warning' $(PSQLBIN) -X --pset pager=off --quiet -v ON_ERROR_STOP=1 -U $(DBUSER)
 
 .PHONY: all
-all: $(SYNFILE)
+all: $(SYNFILE) $(KEYWORDS)
 
 createdb:
 	@- $(PSQL) -tc "select 1 from pg_database where datname = '$(DBNAME)'" | grep -q 1 || $(PSQL) -c "create database $(DBNAME)"
@@ -24,6 +26,9 @@ errcodes.txt:
 
 $(SYNFILE): createdb errcodes.txt $(SRCFILE)
 	@ $(PSQL) -d $(DBNAME) -f $(SRCFILE)
+
+$(KEYWORDS): $(TESTFILE)
+	@ $(PSQL) -d $(DBNAME) -f $<
 
 .PHONY: install
 install: $(SYNFILE)
