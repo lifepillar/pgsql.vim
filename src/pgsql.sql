@@ -178,6 +178,14 @@ $$
 $$;
 
 
+-- Constants that canno be extracted from system catalogs
+create or replace function additional_constants()
+returns table (keyword text)
+language sql immutable as
+$$
+  values ('pg_catalog'), ('information_schema');
+$$;
+
 -- Define keywords for built-in functions
 create or replace function vim_syntax_functions()
 returns setof text
@@ -381,6 +389,28 @@ begin
 end;
 $$;
 
+
+create or replace function vim_syntax_additional_constants()
+returns setof text
+language plpgsql stable
+set search_path to "public" as
+$$
+begin
+  return query
+  with T as (
+    select  rank() over (order by keyword) as num, keyword
+      from  additional_constants()
+  )
+  select  'syn keyword sqlConstant contained ' || string_agg(keyword, ' ')
+    from  T
+   group by (num - 1) / 8
+   order by (num - 1) / 8;
+
+  return;
+end;
+$$;
+
+
 drop table if exists errcodes;
 
 create table errcodes (
@@ -461,7 +491,7 @@ select vim_syntax_functions();
 select vim_syntax_extensions();
 select vim_syntax_extension_names();
 select vim_syntax_catalog();
-select 'syn keyword sqlConstant contained pg_catalog information_schema';
+select vim_syntax_additional_constants();
 select vim_syntax_keywords();
 select vim_syntax_additional_keywords();
 select vim_syntax_errcodes();
