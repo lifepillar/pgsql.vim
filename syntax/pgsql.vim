@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 9.6.3
-" Automatically generated on 2017-07-17 at 14:37:09
+" Automatically generated on 2017-07-17 at 16:21:02
 
 if exists("b:current_syntax")
   finish
@@ -21,9 +21,7 @@ syn region sqlIsPsql    start=/^\s*\\/ end=/\n/ oneline contains=sqlPsqlCommand,
 
 syn keyword sqlSpecial contained false null true
 
-" Variables (identifiers starting with an underscore)
-syn match sqlVariable "\<_[A-Za-z0-9][A-Za-z0-9_]*\>"
-
+" Statements
 syn keyword sqlStatement contained abort alter analyze begin checkpoint close cluster comment
 syn keyword sqlStatement contained commit constraints copy create deallocate declare delete discard
 syn keyword sqlStatement contained do drop end execute explain fetch grant import
@@ -31,6 +29,7 @@ syn keyword sqlStatement contained insert label listen load lock move notify pre
 syn keyword sqlStatement contained prepared reassign refresh reindex release replace reset revoke
 syn keyword sqlStatement contained rollback savepoint security select select set show start
 syn keyword sqlStatement contained transaction truncate unlisten update vacuum values work
+" Types
 syn keyword sqlType contained abstime aclitem addbandarg addr addr_gid_seq addrfeat addrfeat_gid_seq administrable_role_authorizations
 syn keyword sqlType contained agg_count agg_samealignment any anyarray anyelement anyenum anynonarray anyrange
 syn keyword sqlType contained applicable_roles attributes bg bg_gid_seq bit bool box box2d
@@ -1043,6 +1042,7 @@ if index(get(g:, 'pgsql_disabled_extensions', []), 'xml2') == -1
   syn keyword sqlFunction contained xml_encode_special_chars xml_valid xpath_bool xpath_list xpath_nodeset xpath_number
   syn keyword sqlFunction contained xpath_string xpath_table xslt_process
 endif " xml2
+" Extensions names
 syn keyword sqlConstant contained address_standardizer address_standardizer_data_us adminpack autoinc bloom btree_gin btree_gist chkpass
 syn keyword sqlConstant contained citext cube dblink dict_int dict_xsyn earthdistance file_fdw fuzzystrmatch
 syn keyword sqlConstant contained hstore hstore_plperl hstore_plperlu hstore_plpython2u hstore_plpythonu insert_username intagg intarray
@@ -1052,6 +1052,7 @@ syn keyword sqlConstant contained pgstattuple pgtap pldbgapi plperl plperlu plpg
 syn keyword sqlConstant contained pltcl pltclu postgis postgis_sfcgal postgis_tiger_geocoder postgis_topology postgres_fdw refint
 syn keyword sqlConstant contained seg sslinfo tablefunc tcn timetravel tsearch2 tsm_system_rows tsm_system_time
 syn keyword sqlConstant contained unaccent xml2
+" Catalog tables
 syn keyword sqlCatalog contained administrable_role_authorizations applicable_roles attributes character_sets check_constraint_routine_usage check_constraints collation_character_set_applicability collations
 syn keyword sqlCatalog contained column_domain_usage column_options column_privileges column_udt_usage columns constraint_column_usage constraint_table_usage data_type_privileges
 syn keyword sqlCatalog contained domain_constraints domain_udt_usage domains element_types enabled_roles foreign_data_wrapper_options foreign_data_wrappers foreign_server_options
@@ -1074,7 +1075,7 @@ syn keyword sqlCatalog contained role_udt_grants role_usage_grants routine_privi
 syn keyword sqlCatalog contained sql_languages sql_packages sql_parts sql_sizing sql_sizing_profiles table_constraints table_privileges tables
 syn keyword sqlCatalog contained transforms triggered_update_columns triggers udt_privileges usage_privileges user_defined_types user_mapping_options user_mappings
 syn keyword sqlCatalog contained view_column_usage view_routine_usage view_table_usage views
-syn keyword sqlConstant contained information_schema pg_catalog
+" Keywords
 syn keyword sqlKeyword contained absolute access action add admin after aggregate all
 syn keyword sqlKeyword contained also always analyse and any array as asc
 syn keyword sqlKeyword contained assertion assignment asymmetric at attribute authorization backward before
@@ -1121,7 +1122,9 @@ syn keyword sqlKeyword contained variadic varying verbose version view views vol
 syn keyword sqlKeyword contained where whitespace window with within without wrapper write
 syn keyword sqlKeyword contained xml xmlattributes xmlconcat xmlelement xmlexists xmlforest xmlparse xmlpi
 syn keyword sqlKeyword contained xmlroot xmlserialize year yes zone
+" Additional keywords and constants
 syn keyword sqlKeyword contained bigserial serial serial2 serial4 serial8 smallserial
+syn keyword sqlConstant contained information_schema pg_catalog
 " Error codes (Appendix A, Table A-1)
 syn keyword sqlErrorCode contained active_sql_transaction admin_shutdown ambiguous_alias ambiguous_column ambiguous_function
 syn keyword sqlErrorCode contained ambiguous_parameter array_subscript_error assert_failure bad_copy_file_format branch_transaction_already_active
@@ -1174,6 +1177,9 @@ syn keyword sqlErrorCode contained zero_length_character_string
 
 " Numbers
 syn match sqlNumber "-\=\<\d*\.\=[0-9_]\>"
+
+" Variables (identifiers starting with an underscore)
+syn match sqlVariable "\<_[A-Za-z0-9][A-Za-z0-9_]*\>"
 
 " Strings
 syn region sqlIdentifier start=+"+  skip=+\\\\\|\\"+  end=+"+

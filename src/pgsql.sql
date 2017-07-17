@@ -1,5 +1,3 @@
-
---
 -- To generate the syntax file, proceed as follows:
 --
 -- 1. createdb -T template0 vim_pgsql_syntax
@@ -29,6 +27,15 @@ set local schema 'public';
 
 select 'Populating the schema...';
 
+drop table if exists errcodes;
+
+create table errcodes (
+  "errcode" text primary key
+);
+
+\copy errcodes from program 'cat errcodes.txt | awk -F "[ ]+" ''{ if ($1 != "#" && $4 != "-" && $4 != "") { print $4 } }'' | sort | uniq'
+
+
 create or replace function extension_names()
 returns table (
           extname    name,
@@ -37,8 +44,8 @@ returns table (
 language sql stable
 set search_path to "pg_catalog" as
 $$
-  select  name, default_version from pg_available_extensions()
-   where  name not in ( -- Extensions to skip
+  select name, default_version from pg_available_extensions()
+   where name not in ( -- Extensions to skip
     'citus',
     'hstore_plpython3u',
     'ltree_plpython3u',
@@ -47,10 +54,18 @@ $$
 $$;
 
 
+create or replace function recommended_extensions()
+returns table (extname text)
+language sql immutable as
+$$
+  values ('pgrouting'), ('pgtap'), ('pldbgapi'), ('postgis'), ('postgis_topology');
+$$;
+
+
 create or replace function create_extensions()
 returns setof void
 language plpgsql volatile
-set search_path = "public","pg_catalog"
+set search_path to "public", "pg_catalog"
 set client_min_messages to 'error' as
 $$
 declare
@@ -63,12 +78,200 @@ begin
 end;
 $$;
 
-create or replace function recommended_extensions()
-returns table (extname text)
+-- TODO:
+-- auth_delay
+-- auto_explain
+-- dummy_seclabel
+-- passwordcheck
+-- sepgsql
+-- spi
+-- test_decoding
+-- test_parser
+-- test_shm_mq
+
+
+-- Among the keywords, we distinguish those corresponding to 'statements', as
+-- other SQL syntax types do.
+create or replace function get_statements()
+returns table (stm text)
 language sql immutable as
 $$
-  values ('pgrouting'), ('pgtap'), ('pldbgapi'), ('postgis'), ('postgis_topology');
+  values ('create'), ('select'), ('abort'), ('alter'), ('analyze'), ('begin'),
+         ('checkpoint'), ('close'), ('cluster'), ('comment'), ('commit'), ('constraints'),
+         ('copy'), ('deallocate'), ('declare'), ('delete'), ('discard'),
+         ('do'), ('drop'), ('end'), ('execute'), ('explain'), ('fetch'), ('grant'),
+         ('import'), ('insert'), ('label'), ('listen'), ('load'), ('lock'), ('move'),
+         ('notify'), ('prepare'), ('prepared'), ('reassign'), ('reindex'), ('refresh'), ('release'),
+         ('replace'), ('reset'), ('revoke'), ('rollback'), ('savepoint'), ('security'),
+         ('select'), ('set'), ('show'), ('start'), ('transaction'), ('truncate'),
+         ('unlisten'), ('update'), ('vacuum'), ('values'), ('work');
 $$;
+
+
+-- Built-in keywords (except statements)
+create or replace function get_keywords()
+returns table (keyword text)
+language sql stable
+set search_path to "public", "pg_catalog" as
+$$
+  select word from pg_get_keywords()
+  except
+  select stm from get_statements();
+$$;
+
+
+-- Keywords that cannot be extracted from system catalogs
+create or replace function get_additional_keywords()
+returns table (keyword text)
+language sql immutable as
+$$
+  -- Serial types are not true types, but merely a notational convenience for creating unique identifier columns.
+  -- See https://www.postgresql.org/docs/current/static/datatype-numeric.html#DATATYPE-SERIAL
+  values ('smallserial'), ('serial'), ('bigserial'), ('serial2'), ('serial4'), ('serial8');
+$$;
+
+
+create or replace function get_builtin_functions()
+returns table (synfunction text)
+language sql stable
+set search_path to "information_schema" as
+$$
+  select distinct routine_name::text
+    from routines
+   where specific_schema = 'pg_catalog';
+$$;
+
+
+create or replace function get_types()
+returns table ("type" text)
+language sql stable
+set search_path to "pg_catalog" as
+$$
+  select distinct typname::text
+    from pg_type
+   where typname not like '\_%'
+     and typname not like 'pg_toast_%';
+$$;
+
+
+-- Get the list of functions, tables, types and views installed by a given extension.
+-- Query adapted from psql (\set ECHO_HIDDEN ON and \dx+ <extname> to see the query).
+create or replace function get_extension_objects(_extname name)
+returns table (
+          synclass text,
+          synkeyword text
+        )
+language sql stable
+set search_path to "pg_catalog" as
+$$
+  select  distinct
+          regexp_replace(pg_catalog.pg_describe_object(classid, objid, 0), '^(function|table|type|view).*', '\1') as synclass,
+          regexp_replace(pg_catalog.pg_describe_object(classid, objid, 0), '^(function|table|type|view)\s+([^\(]+).*', '\2') as synkeyword
+    from  pg_depend
+   where  refclassid = 'pg_catalog.pg_extension'::pg_catalog.regclass
+     and  refobjid = (select e.oid from pg_extension e where e.extname ~ ('^(' || _extname || ')$'))
+     and  deptype = 'e'
+     and  pg_describe_object(classid, objid, 0) ~* '^(function|table|type|view)\s+[^_]'
+     and not pg_describe_object(classid, objid, 0) ~* '\w+\.\_'; -- Do not match things like 'public._some_func()';
+$$;
+
+
+-- Constants that cannot be extracted from system catalogs
+create or replace function get_additional_constants()
+returns table (keyword text)
+language sql immutable as
+$$
+  values ('pg_catalog'), ('information_schema');
+$$;
+
+
+create or replace function get_catalog_tables()
+returns table (table_name text)
+language sql stable
+set search_path to "information_schema" as
+$$
+  select table_name::text
+    from tables
+   where table_catalog = 'vim_pgsql_syntax' -- database name
+     and table_name not like '\_%'
+     and table_schema in ('pg_catalog', 'information_schema');
+$$;
+
+
+create or replace function get_errcodes()
+returns table (errcode text)
+language sql stable
+set search_path to "public" as
+$$
+  select "errcode" from errcodes;
+$$;
+
+
+-- Format keywords to use in a Vim syntax file.
+-- _keywords is a list of keywords.
+-- _kind is the highlight group (without the 'sql' prefix).
+-- _wrap specifies the number of keywords per line.
+--
+-- Example: select vim_format('[create, select]', 'Statement', 6).
+create or replace function vim_format(
+  _keywords text[],
+  _kind text,
+  _wrap integer default 8)
+returns setof text
+language plpgsql stable
+set search_path to "public" as
+$$
+begin
+  return query
+    with T as (
+      select rank() over (order by keyword) as num, keyword
+        from unnest(_keywords) K(keyword)
+    )
+    select 'syn keyword sql' || _kind || ' contained ' || string_agg(keyword, ' ')
+      from T
+     group by (num - 1) / _wrap
+     order by (num - 1) / _wrap;
+  return;
+end;
+$$;
+
+
+-- Define keywords for all extensions
+create or replace function vim_format_extensions()
+returns setof text
+language plpgsql stable
+set search_path to "public" as
+$$
+declare
+  _ext record;
+begin
+  for _ext in select extname, extversion from extension_names() loop
+
+    return query
+    select '" Extension: ' || _ext.extname || ' (v' || _ext.extversion || ')';
+
+    return query
+    select 'if index(get(g:, ''pgsql_disabled_extensions'', []), ''' || _ext.extname || ''') == -1';
+
+    return query
+    with T as (
+      select rank() over (partition by synclass order by synkeyword) num, synclass, synkeyword
+        from get_extension_objects(_ext.extname)
+      )
+      select '  syn keyword sql' || initcap(synclass) || ' contained ' || string_agg(regexp_replace(synkeyword, '^\w+\.|"', '', 'g'), ' ') -- remove schema name and double quotes
+        from T
+      group by synclass, (num - 1) / 6
+      order by synclass, (num - 1) / 6;
+
+    return query
+      select 'endif " ' || _ext.extname;
+
+  end loop;
+
+  return;
+end;
+$$;
+
 
 create or replace function preflight_requirements()
 returns setof void
@@ -91,353 +294,6 @@ begin
   loop
     raise warning '% is missing. No syntax items will be generated for it.', _missing;
   end loop;
-  return;
-end;
-$$;
-
-
--- TODO:
--- auth_delay
--- auto_explain
--- dummy_seclabel
--- passwordcheck
--- sepgsql
--- spi
--- test_decoding
--- test_parser
--- test_shm_mq
-
-
--- Among the keywords, we distinguish those corresponding to 'statements', as
--- other SQL syntax types do.
-create or replace function sql_statements()
-returns table (stm text)
-language sql immutable as
-$$
-  values ('create'), ('select'), ('abort'), ('alter'), ('analyze'), ('begin'),
-         ('checkpoint'), ('close'), ('cluster'), ('comment'), ('commit'), ('constraints'),
-         ('copy'), ('deallocate'), ('declare'), ('delete'), ('discard'),
-         ('do'), ('drop'), ('end'), ('execute'), ('explain'), ('fetch'), ('grant'),
-         ('import'), ('insert'), ('label'), ('listen'), ('load'), ('lock'), ('move'),
-         ('notify'), ('prepare'), ('prepared'), ('reassign'), ('reindex'), ('refresh'), ('release'),
-         ('replace'), ('reset'), ('revoke'), ('rollback'), ('savepoint'), ('security'),
-         ('select'), ('set'), ('show'), ('start'), ('transaction'), ('truncate'),
-         ('unlisten'), ('update'), ('vacuum'), ('values'), ('work');
-$$;
-
-
--- Get the list of built-in functions
-create or replace function get_builtin_functions()
-returns table (
-          synfunction text
-        )
-language plpgsql stable
-set search_path to "information_schema" as
-$$
-begin
-  return query
-    select  distinct routine_name::text
-      from  information_schema.routines
-     where  specific_schema = 'pg_catalog'
-  order by  routine_name;
-end;
-$$;
-
-
--- Get the list of functions, tables, types and views installed by a given extension.
--- Query adapted from psql (\set ECHO_HIDDEN ON and \dx+ <extname> to see the query).
-create or replace function get_extension_objects(_extname name)
-returns table (
-          synclass text,
-          synkeyword text
-        )
-language sql stable
-set search_path to "pg_catalog" as
-$$
-  select  distinct
-          regexp_replace(pg_catalog.pg_describe_object(classid, objid, 0), '^(function|table|type|view).*', '\1') as synclass,
-          regexp_replace(pg_catalog.pg_describe_object(classid, objid, 0), '^(function|table|type|view)\s+([^\(]+).*', '\2') as synkeyword
-    from  pg_depend
-   where  refclassid = 'pg_catalog.pg_extension'::pg_catalog.regclass
-     and  refobjid = (select e.oid from pg_extension e where e.extname ~ ('^(' || _extname || ')$'))
-     and  deptype = 'e'
-     and  pg_describe_object(classid, objid, 0) ~* '^(function|table|type|view)\s+[^_]'
-     and not pg_describe_object(classid, objid, 0) ~* '\w+\.\_' -- Do not match things like 'public._some_func()'
-order by  synclass, synkeyword;
-$$;
-
-
--- Keywords that cannot be extracted from system catalogs
-create or replace function additional_keywords()
-returns table (keyword text)
-language sql immutable as
-$$
-  -- Serial types are not true types, but merely a notational convenience for creating unique identifier columns.
-  -- See https://www.postgresql.org/docs/current/static/datatype-numeric.html#DATATYPE-SERIAL
-  values ('smallserial'), ('serial'), ('bigserial'), ('serial2'), ('serial4'), ('serial8');
-$$;
-
-
--- Constants that canno be extracted from system catalogs
-create or replace function additional_constants()
-returns table (keyword text)
-language sql immutable as
-$$
-  values ('pg_catalog'), ('information_schema');
-$$;
-
--- Define keywords for built-in functions
-create or replace function vim_syntax_functions()
-returns setof text
-language plpgsql stable
-set search_path to "public" as
-$$
-begin
-  return query
-    select '" Built-in functions'::text;
-
-  return query
-    with T as (
-    select  rank() over (order by synfunction) num, synfunction
-      from  get_builtin_functions()
-    )
-    select  'syn keyword sqlFunction contained ' || string_agg(synfunction, ' ')
-      from  T
-  group by  (num - 1) / 6
-  order by  (num - 1) / 6;
-
-  return;
-end;
-$$;
-
-
--- Define keywords for all extensions
-create or replace function vim_syntax_extensions()
-returns setof text
-language plpgsql stable
-set search_path to "public" as
-$$
-declare
-  _ext record;
-begin
-  for _ext in select extname, extversion from extension_names() loop
-
-    return query
-      select '" Extension: ' || _ext.extname || ' (v' || _ext.extversion || ')';
-
-    return query
-      select 'if index(get(g:, ''pgsql_disabled_extensions'', []), ''' || _ext.extname || ''') == -1';
-
-    return query
-      with T as (
-        select  rank() over (partition by synclass order by synkeyword) num, synclass, synkeyword
-          from  get_extension_objects(_ext.extname)
-      )
-      select  '  syn keyword sql' || initcap(synclass) || ' contained ' || string_agg(regexp_replace(synkeyword, '^\w+\.|"', '', 'g'), ' ') -- remove schema name and double quotes
-        from  T
-    group by  synclass, (num - 1) / 6
-    order by  synclass, (num - 1) / 6;
-
-    return query
-      select 'endif " ' || _ext.extname;
-
-  end loop;
-
-  return;
-end;
-$$;
-
-
-create or replace function vim_syntax_statements()
-returns setof text
-language plpgsql stable
-set search_path to "public" as
-$$
-begin
-  return query
-    with T as (
-      select  rank() over (order by stm) num, stm
-        from  sql_statements()
-    )
-    select  'syn keyword sqlStatement contained ' || string_agg(stm, ' ')
-      from  T
-  group by  (num - 1) / 8  -- 8 keywords per line
-  order by  (num - 1) / 8;
-
-  return;
-end;
-$$;
-
-
-create or replace function vim_syntax_types()
-returns setof text
-language plpgsql stable
-set search_path to "pg_catalog" as
-$$
-begin
-  return query
-    with T as (
-      select  distinct typname
-        from  pg_type
-       where  typname not like '\_%'
-         and  typname not like 'pg_toast_%'
-    order by  typname
-    ),
-    U as (
-      select  rank() over (order by typname) as num, typname
-        from  T
-    )
-    select  'syn keyword sqlType contained ' || string_agg(typname, ' ')
-      from  U
-  group by (num - 1) / 8
-  order by (num - 1) / 8;
-
-    return;
-end;
-$$;
-
-
-create or replace function vim_syntax_keywords()
-returns setof text
-language plpgsql stable
-set search_path to "public", "pg_catalog" as
-$$
-begin
-  return query
-    with S as (
-      select  word from pg_get_keywords()
-      except
-      select  stm from sql_statements()
-    ),
-    T as (
-      select  rank() over (order by word) num, word
-        from  S
-    )
-    select  'syn keyword sqlKeyword contained ' || string_agg(word, ' ')
-      from  T
-  group by  (num - 1) / 8
-  order by  (num - 1) / 8;
-
-  return;
-end;
-$$;
-
-
-create or replace function vim_syntax_additional_keywords()
-returns setof text
-language plpgsql stable
-set search_path to "public" as
-$$
-begin
-  return query
-  with T as (
-    select  rank() over (order by keyword) as num, keyword
-      from  additional_keywords()
-  )
-  select  'syn keyword sqlKeyword contained ' || string_agg(keyword, ' ')
-    from  T
-   group by (num - 1) / 8
-   order by (num - 1) / 8;
-
-  return;
-end;
-$$;
-
-
-create or replace function vim_syntax_extension_names()
-returns setof text
-language plpgsql stable
-set search_path to "public" as
-$$
-begin
-  return query
-  with T as (
-    select  rank() over (order by extname) as num, extname
-    from    extension_names()
-    where   extname not like '%-%' -- Exclude names containing dashes (e.g., uuid-ossp), which should be quoted anyway
-  )
-    select  'syn keyword sqlConstant contained ' || string_agg(extname, ' ')
-      from  T
-  group by  (num - 1) / 8
-  order by  (num - 1) / 8;
-
-  return;
-end;
-$$;
-
-
-create or replace function vim_syntax_catalog()
-returns setof text
-language plpgsql stable
-set search_path to "information_schema" as
-$$
-begin
-  return query
-    with T as (
-      select  rank() over (order by table_name) as num, table_name
-        from  tables
-       where  table_catalog = 'vim_pgsql_syntax' -- database name
-         and  table_name not like '\_%'
-         and  table_schema in ('pg_catalog', 'information_schema')
-    )
-      select  'syn keyword sqlCatalog contained ' || string_agg(table_name, ' ')
-        from  T
-    group by  (num - 1) / 8
-    order by  (num - 1) / 8;
-
-  return;
-end;
-$$;
-
-
-create or replace function vim_syntax_additional_constants()
-returns setof text
-language plpgsql stable
-set search_path to "public" as
-$$
-begin
-  return query
-  with T as (
-    select  rank() over (order by keyword) as num, keyword
-      from  additional_constants()
-  )
-  select  'syn keyword sqlConstant contained ' || string_agg(keyword, ' ')
-    from  T
-   group by (num - 1) / 8
-   order by (num - 1) / 8;
-
-  return;
-end;
-$$;
-
-
-drop table if exists errcodes;
-
-create table errcodes (
-  "errcode" text primary key
-);
-
-\copy errcodes from program 'cat errcodes.txt | awk -F "[ ]+" ''{ if ($1 != "#" && $4 != "-" && $4 != "") { print $4 } }'' | sort | uniq'
-
-create or replace function vim_syntax_errcodes()
-returns setof text
-language plpgsql stable
-set search_path to "public" as
-$$
-begin
-  return query
-    select  '" Error codes (Appendix A, Table A-1)'::text;
-
-  return query
-    with T as (
-      select  rank() over (order by "errcode") as num, "errcode"
-        from  errcodes
-    )
-    select  'syn keyword sqlErrorCode contained ' || string_agg("errcode", ' ')
-      from  T
-  group by  (num - 1) / 5
-  order by  (num - 1) / 5;
-
   return;
 end;
 $$;
@@ -479,27 +335,35 @@ syn match sqlIsFunction /\<\h\w*\ze(/ contains=sqlFunction
 syn region sqlIsPsql    start=/^\s*\\/ end=/\n/ oneline contains=sqlPsqlCommand,sqlPsqlKeyword,sqlNumber,sqlString
 
 syn keyword sqlSpecial contained false null true
-
-" Variables (identifiers starting with an underscore)
-syn match sqlVariable "\<_[A-Za-z0-9][A-Za-z0-9_]*\>"
 $HERE$;
 
-select vim_syntax_statements();
-select vim_syntax_types();
+select '" Statements';
+select vim_format(array(select get_statements()), 'Statement');
+select '" Types';
+select vim_format(array(select get_types()), 'Type');
 select 'syn match sqlType /pg_toast_\d\+/';
-select vim_syntax_functions();
-select vim_syntax_extensions();
-select vim_syntax_extension_names();
-select vim_syntax_catalog();
-select vim_syntax_additional_constants();
-select vim_syntax_keywords();
-select vim_syntax_additional_keywords();
-select vim_syntax_errcodes();
+select '" Built-in functions';
+select vim_format(array(select get_builtin_functions()), 'Function', 6);
+select vim_format_extensions();
+select '" Extensions names';
+select vim_format(array(select extname from extension_names() where not extname ~* '-'), 'Constant');
+select '" Catalog tables';
+select vim_format(array(select get_catalog_tables()), 'Catalog');
+select '" Keywords';
+select vim_format(array(select get_keywords()), 'Keyword');
+select '" Additional keywords and constants';
+select vim_format(array(select get_additional_keywords()), 'Keyword');
+select vim_format(array(select get_additional_constants()), 'Constant');
+select  '" Error codes (Appendix A, Table A-1)';
+select vim_format(array(select get_errcodes()), 'ErrorCode', 5);
 
 select
 $HERE$
 " Numbers
 syn match sqlNumber "-\=\<\d*\.\=[0-9_]\>"
+
+" Variables (identifiers starting with an underscore)
+syn match sqlVariable "\<_[A-Za-z0-9][A-Za-z0-9_]*\>"
 
 " Strings
 syn region sqlIdentifier start=+"+  skip=+\\\\\|\\"+  end=+"+
@@ -599,3 +463,15 @@ $HERE$;
 select 'done!';
 commit;
 \o
+
+
+-- Generate test file
+
+\o test.vim
+select '-- Extensions';
+select extname from extension_names();
+select '-- Statements';
+select stm from get_statements();
+select '-- Built-in keywords';
+select
+
