@@ -32,7 +32,7 @@ begin
   for _ext in select extname from extension_names() loop
 
     return query
-    select '-- Extension: ' || _ext.extname;
+    select format('-- Extension: ', _ext.extname);
 
     return query
     select regexp_replace(synkeyword, '^\w+\.|"', '', 'g')       ||

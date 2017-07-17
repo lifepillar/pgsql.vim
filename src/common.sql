@@ -50,7 +50,7 @@ declare
   _fn name;
 begin
   for _fn in select extname from extension_names() loop
-    execute 'create extension if not exists "' || _fn || '" cascade';
+    execute format('create extension if not exists "%s" cascade', _fn);
   end loop;
   return;
 end;
@@ -137,7 +137,7 @@ $$
           regexp_replace(pg_catalog.pg_describe_object(classid, objid, 0), '^(function|table|type|view)\s+([^\(]+).*', '\2') as synkeyword
     from  pg_depend
    where  refclassid = 'pg_catalog.pg_extension'::pg_catalog.regclass
-     and  refobjid = (select e.oid from pg_extension e where e.extname ~ ('^(' || _extname || ')$'))
+     and  refobjid = (select e.oid from pg_extension e where e.extname ~ format('^(%s)$', _extname))
      and  deptype = 'e'
      and  pg_describe_object(classid, objid, 0) ~* '^(function|table|type|view)\s+[^_]'
      and not pg_describe_object(classid, objid, 0) ~* '\w+\.\_'; -- Do not match things like 'public._some_func()';

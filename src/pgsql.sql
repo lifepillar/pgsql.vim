@@ -47,7 +47,7 @@ begin
       select rank() over (order by keyword) as num, keyword
         from unnest(_keywords) K(keyword)
     )
-    select 'syn keyword sql' || _kind || ' contained ' || string_agg(keyword, ' ')
+    select format('syn keyword sql%s contained %s', _kind, string_agg(keyword, ' '))
       from T
      group by (num - 1) / _wrap
      order by (num - 1) / _wrap;
@@ -68,23 +68,23 @@ begin
   for _ext in select extname, extversion from extension_names() loop
 
     return query
-    select '" Extension: ' || _ext.extname || ' (v' || _ext.extversion || ')';
+    select format('" Extension: %s (v%s)', _ext.extname, _ext.extversion);
 
     return query
-    select 'if index(get(g:, ''pgsql_disabled_extensions'', []), ''' || _ext.extname || ''') == -1';
+    select format('if index(get(g:, ''pgsql_disabled_extensions'', []), ''%s'') == -1', _ext.extname);
 
     return query
     with T as (
       select rank() over (partition by synclass order by synkeyword) num, synclass, synkeyword
         from get_extension_objects(_ext.extname)
       )
-      select '  syn keyword sql' || initcap(synclass) || ' contained ' || string_agg(regexp_replace(synkeyword, '^\w+\.|"', '', 'g'), ' ') -- remove schema name and double quotes
+      select format('  syn keyword sql%s contained %s', initcap(synclass), string_agg(regexp_replace(synkeyword, '^\w+\.|"', '', 'g'), ' ')) -- remove schema name and double quotes
         from T
       group by synclass, (num - 1) / 6
       order by synclass, (num - 1) / 6;
 
     return query
-      select 'endif " ' || _ext.extname;
+      select format('endif " %s', _ext.extname);
 
   end loop;
 
