@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 9.6.3
-" Automatically generated on 2017-07-17 at 17:22:39
+" Automatically generated on 2017-07-17 at 22:10:48
 
 if exists("b:current_syntax")
   finish
@@ -30,57 +30,36 @@ syn keyword sqlStatement contained prepared reassign refresh reindex release rep
 syn keyword sqlStatement contained rollback savepoint security select select set show start
 syn keyword sqlStatement contained transaction truncate unlisten update vacuum values work
 " Types
-syn keyword sqlType contained abstime aclitem addbandarg addr addr_gid_seq addrfeat addrfeat_gid_seq administrable_role_authorizations
-syn keyword sqlType contained agg_count agg_samealignment any anyarray anyelement anyenum anynonarray anyrange
-syn keyword sqlType contained applicable_roles attributes bg bg_gid_seq bit bool box box2d
-syn keyword sqlType contained box2df box3d bpchar breakpoint bytea cardinal_number char character_data
-syn keyword sqlType contained character_sets check_constraint_routine_usage check_constraints chkpass cid cidr circle citext
-syn keyword sqlType contained collation_character_set_applicability collations column_domain_usage column_options column_privileges column_udt_usage columns constraint_column_usage
-syn keyword sqlType contained constraint_table_usage county county_gid_seq county_lookup countysub_lookup cousub cousub_gid_seq cstring
-syn keyword sqlType contained cube data_type_privileges date daterange dblink_pkey_results direction_lookup domain_constraints domain_udt_usage
-syn keyword sqlType contained domains ean13 earth edges edges_gid_seq element_types enabled_roles errcodes
-syn keyword sqlType contained event_trigger faces faces_gid_seq fdw_handler featnames featnames_gid_seq float4 float8
-syn keyword sqlType contained foreign_data_wrapper_options foreign_data_wrappers foreign_server_options foreign_servers foreign_table_options foreign_tables frame gbtreekey16
-syn keyword sqlType contained gbtreekey32 gbtreekey4 gbtreekey8 gbtreekey_var geocode_settings geocode_settings_default geography geography_columns
-syn keyword sqlType contained geometry geometry_columns geometry_dump geomval getfaceedges_returntype ghstore gidx gtrgm
-syn keyword sqlType contained gtsq gtsvector hstore index_am_handler inet information_schema_catalog_name int2 int2vector
-syn keyword sqlType contained int4 int4range int8 int8range intbig_gkey internal interval isbn
-syn keyword sqlType contained isbn13 ismn ismn13 issn issn13 json jsonb key_column_usage
-syn keyword sqlType contained language_handler layer line lo loader_lookuptables loader_platform loader_variables lquery
-syn keyword sqlType contained lseg ltree ltree_gist ltxtquery macaddr money name norm_addy
-syn keyword sqlType contained numeric numrange oid oidvector opaque pagc_gaz pagc_gaz_id_seq pagc_lex
-syn keyword sqlType contained pagc_lex_id_seq pagc_rules pagc_rules_id_seq parameters path pg_aggregate pg_all_foreign_keys pg_am
-syn keyword sqlType contained pg_amop pg_amproc pg_attrdef pg_attribute pg_auth_members pg_authid pg_available_extension_versions pg_available_extensions
-syn keyword sqlType contained pg_buffercache pg_cast pg_class pg_collation pg_config pg_constraint pg_conversion pg_cursors
-syn keyword sqlType contained pg_database pg_db_role_setting pg_ddl_command pg_default_acl pg_depend pg_description pg_enum pg_event_trigger
-syn keyword sqlType contained pg_extension pg_file_settings pg_foreign_data_wrapper pg_foreign_server pg_foreign_table pg_group pg_index pg_indexes
-syn keyword sqlType contained pg_inherits pg_init_privs pg_language pg_largeobject pg_largeobject_metadata pg_locks pg_lsn pg_matviews
-syn keyword sqlType contained pg_namespace pg_node_tree pg_opclass pg_operator pg_opfamily pg_pltemplate pg_policies pg_policy
-syn keyword sqlType contained pg_prepared_statements pg_prepared_xacts pg_proc pg_range pg_replication_origin pg_replication_origin_status pg_replication_slots pg_rewrite
-syn keyword sqlType contained pg_roles pg_rules pg_seclabel pg_seclabels pg_settings pg_shadow pg_shdepend pg_shdescription
-syn keyword sqlType contained pg_shseclabel pg_stat_activity pg_stat_all_indexes pg_stat_all_tables pg_stat_archiver pg_stat_bgwriter pg_stat_database pg_stat_database_conflicts
-syn keyword sqlType contained pg_stat_progress_vacuum pg_stat_replication pg_stat_ssl pg_stat_statements pg_stat_sys_indexes pg_stat_sys_tables pg_stat_user_functions pg_stat_user_indexes
-syn keyword sqlType contained pg_stat_user_tables pg_stat_wal_receiver pg_stat_xact_all_tables pg_stat_xact_sys_tables pg_stat_xact_user_functions pg_stat_xact_user_tables pg_statio_all_indexes pg_statio_all_sequences
-syn keyword sqlType contained pg_statio_all_tables pg_statio_sys_indexes pg_statio_sys_sequences pg_statio_sys_tables pg_statio_user_indexes pg_statio_user_sequences pg_statio_user_tables pg_statistic
-syn keyword sqlType contained pg_stats pg_tables pg_tablespace pg_timezone_abbrevs pg_timezone_names pg_transform pg_trigger pg_ts_config
-syn keyword sqlType contained pg_ts_config_map pg_ts_dict pg_ts_parser pg_ts_template pg_type pg_user pg_user_mapping pg_user_mappings
-syn keyword sqlType contained pg_views pgis_abs pgr_costresult pgr_costresult3 pgr_geomresult place place_gid_seq place_lookup
-syn keyword sqlType contained point polygon proxyinfo query_int rastbandarg raster raster_columns raster_overviews
-syn keyword sqlType contained reclassarg record refcursor referential_constraints regclass regconfig regdictionary regnamespace
-syn keyword sqlType contained regoper regoperator regproc regprocedure regrole regtype reltime role_column_grants
-syn keyword sqlType contained role_routine_grants role_table_grants role_udt_grants role_usage_grants routine_privileges routines schemata secondary_unit_lookup
-syn keyword sqlType contained seg sequences smgr spatial_ref_sys spheroid sql_features sql_identifier sql_implementation_info
-syn keyword sqlType contained sql_languages sql_packages sql_parts sql_sizing sql_sizing_profiles state state_gid_seq state_lookup
-syn keyword sqlType contained statinfo stdaddr street_type_lookup summarystats tabblock tabblock_gid_seq table_constraints table_privileges
-syn keyword sqlType contained tablefunc_crosstab_2 tablefunc_crosstab_3 tablefunc_crosstab_4 tables tap_funky targetinfo text tid
+syn keyword sqlType contained abstime aclitem addbandarg addr addr_gid_seq addrfeat addrfeat_gid_seq agg_count
+syn keyword sqlType contained agg_samealignment any anyarray anyelement anyenum anynonarray anyrange bg
+syn keyword sqlType contained bg_gid_seq bit bool box box2d box2df box3d bpchar
+syn keyword sqlType contained breakpoint bytea cardinal_number char character_data chkpass cid cidr
+syn keyword sqlType contained circle citext county county_gid_seq county_lookup countysub_lookup cousub cousub_gid_seq
+syn keyword sqlType contained cstring cube date daterange dblink_pkey_results direction_lookup ean13 earth
+syn keyword sqlType contained edges edges_gid_seq errcodes event_trigger faces faces_gid_seq fdw_handler featnames
+syn keyword sqlType contained featnames_gid_seq float4 float8 frame gbtreekey16 gbtreekey32 gbtreekey4 gbtreekey8
+syn keyword sqlType contained gbtreekey_var geocode_settings geocode_settings_default geography geography_columns geometry geometry_columns geometry_dump
+syn keyword sqlType contained geomval getfaceedges_returntype ghstore gidx gtrgm gtsq gtsvector hstore
+syn keyword sqlType contained index_am_handler inet int2 int2vector int4 int4range int8 int8range
+syn keyword sqlType contained intbig_gkey internal interval isbn isbn13 ismn ismn13 issn
+syn keyword sqlType contained issn13 json jsonb language_handler layer line lo loader_lookuptables
+syn keyword sqlType contained loader_platform loader_variables lquery lseg ltree ltree_gist ltxtquery macaddr
+syn keyword sqlType contained money name norm_addy numeric numrange oid oidvector opaque
+syn keyword sqlType contained pagc_gaz pagc_gaz_id_seq pagc_lex pagc_lex_id_seq pagc_rules pagc_rules_id_seq path pg_all_foreign_keys
+syn keyword sqlType contained pg_buffercache pg_ddl_command pg_lsn pg_node_tree pg_stat_statements pgis_abs pgr_costresult pgr_costresult3
+syn keyword sqlType contained pgr_geomresult place place_gid_seq place_lookup point polygon proxyinfo query_int
+syn keyword sqlType contained rastbandarg raster raster_columns raster_overviews reclassarg record refcursor regclass
+syn keyword sqlType contained regconfig regdictionary regnamespace regoper regoperator regproc regprocedure regrole
+syn keyword sqlType contained regtype reltime secondary_unit_lookup seg smgr spatial_ref_sys spheroid sql_identifier
+syn keyword sqlType contained state state_gid_seq state_lookup statinfo stdaddr street_type_lookup summarystats tabblock
+syn keyword sqlType contained tabblock_gid_seq tablefunc_crosstab_2 tablefunc_crosstab_3 tablefunc_crosstab_4 tap_funky targetinfo text tid
 syn keyword sqlType contained time time_stamp timestamp timestamptz timetz tinterval tokenout tokentype
-syn keyword sqlType contained topoelement topoelementarray topogeometry topology topology_id_seq tract tract_gid_seq transforms
-syn keyword sqlType contained trigger triggered_update_columns triggers tsdebug tsm_handler tsquery tsrange tstzrange
-syn keyword sqlType contained tsvector txid_snapshot udt_privileges unionarg unknown upc us_gaz us_gaz_id_seq
-syn keyword sqlType contained us_lex us_lex_id_seq us_rules us_rules_id_seq usage_privileges user_defined_types user_mapping_options user_mappings
-syn keyword sqlType contained uuid valid_detail validatetopology_returntype var varbit varchar view_column_usage view_routine_usage
-syn keyword sqlType contained view_table_usage views void xid xml yes_or_no zcta5 zcta5_gid_seq
-syn keyword sqlType contained zip_lookup zip_lookup_all zip_lookup_base zip_state zip_state_loc
+syn keyword sqlType contained topoelement topoelementarray topogeometry topology topology_id_seq tract tract_gid_seq trigger
+syn keyword sqlType contained tsdebug tsm_handler tsquery tsrange tstzrange tsvector txid_snapshot unionarg
+syn keyword sqlType contained unknown upc us_gaz us_gaz_id_seq us_lex us_lex_id_seq us_rules us_rules_id_seq
+syn keyword sqlType contained uuid valid_detail validatetopology_returntype var varbit varchar void xid
+syn keyword sqlType contained xml yes_or_no zcta5 zcta5_gid_seq zip_lookup zip_lookup_all zip_lookup_base zip_state
+syn keyword sqlType contained zip_state_loc
 syn match sqlType /pg_toast_\d\+/
 " Built-in functions
 syn keyword sqlFunction contained RI_FKey_cascade_del RI_FKey_cascade_upd RI_FKey_check_ins RI_FKey_check_upd RI_FKey_noaction_del RI_FKey_noaction_upd
@@ -474,6 +453,16 @@ syn keyword sqlFunction contained xidneqint4 xidout xidrecv xidsend xml xml_in
 syn keyword sqlFunction contained xml_is_well_formed xml_is_well_formed_content xml_is_well_formed_document xml_out xml_recv xml_send
 syn keyword sqlFunction contained xmlagg xmlcomment xmlconcat2 xmlexists xmlvalidate xpath
 syn keyword sqlFunction contained xpath_exists
+" Extensions names
+syn keyword sqlConstant contained address_standardizer address_standardizer_data_us adminpack autoinc bloom btree_gin btree_gist chkpass
+syn keyword sqlConstant contained citext cube dblink dict_int dict_xsyn earthdistance file_fdw fuzzystrmatch
+syn keyword sqlConstant contained hstore hstore_plperl hstore_plperlu hstore_plpython2u hstore_plpythonu insert_username intagg intarray
+syn keyword sqlConstant contained isn lo ltree ltree_plpython2u ltree_plpythonu moddatetime pageinspect pg_buffercache
+syn keyword sqlConstant contained pg_freespacemap pg_prewarm pg_stat_statements pg_trgm pg_visibility pgcrypto pgrouting pgrowlocks
+syn keyword sqlConstant contained pgstattuple pgtap pldbgapi plperl plperlu plpgsql plpython2u plpythonu
+syn keyword sqlConstant contained pltcl pltclu postgis postgis_sfcgal postgis_tiger_geocoder postgis_topology postgres_fdw refint
+syn keyword sqlConstant contained seg sslinfo tablefunc tcn timetravel tsearch2 tsm_system_rows tsm_system_time
+syn keyword sqlConstant contained unaccent xml2
 " Extension: address_standardizer (v2.3.2)
 if index(get(g:, 'pgsql_disabled_extensions', []), 'address_standardizer') == -1
   syn keyword sqlFunction contained parse_address standardize_address
@@ -1042,16 +1031,6 @@ if index(get(g:, 'pgsql_disabled_extensions', []), 'xml2') == -1
   syn keyword sqlFunction contained xml_encode_special_chars xml_valid xpath_bool xpath_list xpath_nodeset xpath_number
   syn keyword sqlFunction contained xpath_string xpath_table xslt_process
 endif " xml2
-" Extensions names
-syn keyword sqlConstant contained address_standardizer address_standardizer_data_us adminpack autoinc bloom btree_gin btree_gist chkpass
-syn keyword sqlConstant contained citext cube dblink dict_int dict_xsyn earthdistance file_fdw fuzzystrmatch
-syn keyword sqlConstant contained hstore hstore_plperl hstore_plperlu hstore_plpython2u hstore_plpythonu insert_username intagg intarray
-syn keyword sqlConstant contained isn lo ltree ltree_plpython2u ltree_plpythonu moddatetime pageinspect pg_buffercache
-syn keyword sqlConstant contained pg_freespacemap pg_prewarm pg_stat_statements pg_trgm pg_visibility pgcrypto pgrouting pgrowlocks
-syn keyword sqlConstant contained pgstattuple pgtap pldbgapi plperl plperlu plpgsql plpython2u plpythonu
-syn keyword sqlConstant contained pltcl pltclu postgis postgis_sfcgal postgis_tiger_geocoder postgis_topology postgres_fdw refint
-syn keyword sqlConstant contained seg sslinfo tablefunc tcn timetravel tsearch2 tsm_system_rows tsm_system_time
-syn keyword sqlConstant contained unaccent xml2
 " Catalog tables
 syn keyword sqlCatalog contained administrable_role_authorizations applicable_roles attributes character_sets check_constraint_routine_usage check_constraints collation_character_set_applicability collations
 syn keyword sqlCatalog contained column_domain_usage column_options column_privileges column_udt_usage columns constraint_column_usage constraint_table_usage data_type_privileges
