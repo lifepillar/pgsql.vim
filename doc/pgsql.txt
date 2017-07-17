@@ -95,7 +95,7 @@ to `.vim/after/ftplugin/sql.vim`:
     call extend(g:ycm_filetype_blacklist, { 'sql': 1 })
   endif
 
-Of course, I recommend using my own plugin MUcomplete over YCM ;)
+Of course, I recommend using my own MUcomplete plugin over YCM ;)
 
 ====================================================================
 Section 4: Contributing                         *pgsql-contributing*
