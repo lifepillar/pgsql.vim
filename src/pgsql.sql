@@ -1,4 +1,4 @@
--- License: This file is placed in the public domain.
+
 --
 -- To generate the syntax file, proceed as follows:
 --
@@ -492,8 +492,8 @@ syn keyword sqlPlpgsqlKeyword contained tg_level tg_name tg_nargs tg_op tg_relid
 syn keyword sqlPlpgsqlKeyword contained tg_table_name tg_table_schema tg_tag tg_when then type using
 syn keyword sqlPlpgsqlKeyword contained while
 
-syn region plpgsql start=+\$pgsql\$+ end=+\$pgsql\$+ keepend contains=ALL
-syn region plpgsql start=+\$\$+ end=+\$\$+ keepend contains=ALL
+syn region plpgsql matchgroup=sqlString start=+\$pgsql\$+ end=+\$pgsql\$+ keepend contains=ALL
+syn region plpgsql matchgroup=sqlString start=+\$\$+ end=+\$\$+ keepend contains=ALL
 
 " PL/<any other language>
 fun! s:add_syntax(s)

@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 9.6.3
-" Automatically generated on 2017-07-16 at 21:26:35
+" Automatically generated on 2017-07-17 at 09:01:39
 
 if exists("b:current_syntax")
   finish
@@ -1228,8 +1228,8 @@ syn keyword sqlPlpgsqlKeyword contained tg_level tg_name tg_nargs tg_op tg_relid
 syn keyword sqlPlpgsqlKeyword contained tg_table_name tg_table_schema tg_tag tg_when then type using
 syn keyword sqlPlpgsqlKeyword contained while
 
-syn region plpgsql start=+\$pgsql\$+ end=+\$pgsql\$+ keepend contains=ALL
-syn region plpgsql start=+\$\$+ end=+\$\$+ keepend contains=ALL
+syn region plpgsql matchgroup=sqlString start=+\$pgsql\$+ end=+\$pgsql\$+ keepend contains=ALL
+syn region plpgsql matchgroup=sqlString start=+\$\$+ end=+\$\$+ keepend contains=ALL
 
 " PL/<any other language>
 fun! s:add_syntax(s)
