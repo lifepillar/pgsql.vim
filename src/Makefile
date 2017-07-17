@@ -1,6 +1,7 @@
 PSQLBIN  := psql
 DBUSER   := postgres
 DBNAME   := vim_pgsql_syntax
+COMMON   := common.sql
 SRCFILE  := pgsql.sql
 SYNFILE  := pgsql.vim
 TESTFILE := test.sql
@@ -24,10 +25,10 @@ dropdb:
 errcodes.txt:
 	curl -fsSL https://rawgit.com/postgres/postgres/master/src/backend/utils/errcodes.txt >errcodes.txt
 
-$(SYNFILE): createdb errcodes.txt $(SRCFILE)
+$(SYNFILE): createdb errcodes.txt $(COMMON) $(SRCFILE)
 	@ $(PSQL) -d $(DBNAME) -f $(SRCFILE)
 
-$(KEYWORDS): $(TESTFILE)
+$(KEYWORDS): $(TESTFILE) $(COMMON)
 	@ $(PSQL) -d $(DBNAME) -f $<
 
 .PHONY: install
