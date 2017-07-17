@@ -1078,7 +1078,7 @@ syn keyword sqlConstant contained pg_catalog information_schema
 syn keyword sqlKeyword contained absolute access action add admin after aggregate all
 syn keyword sqlKeyword contained also always analyse and any array as asc
 syn keyword sqlKeyword contained assertion assignment asymmetric at attribute authorization backward before
-syn keyword sqlKeyword contained between bigint binary bit boolean both by cache
+syn keyword sqlKeyword contained between bigint bigserial binary bit boolean both by cache
 syn keyword sqlKeyword contained called cascade cascaded case cast catalog chain char
 syn keyword sqlKeyword contained character characteristics check class coalesce collate collation column
 syn keyword sqlKeyword contained comments committed concurrently configuration conflict connection constraint content
@@ -1109,7 +1109,7 @@ syn keyword sqlKeyword contained prior privileges procedural procedure program q
 syn keyword sqlKeyword contained real recheck recursive ref references relative rename repeatable
 syn keyword sqlKeyword contained replica restart restrict returning returns right role rollup
 syn keyword sqlKeyword contained row rows rule schema scroll search second sequence
-syn keyword sqlKeyword contained sequences serializable server session session_user setof sets share
+syn keyword sqlKeyword contained sequences serial serializable server session session_user setof sets share
 syn keyword sqlKeyword contained similar simple skip smallint snapshot some sql stable
 syn keyword sqlKeyword contained standalone statement statistics stdin stdout storage strict strip
 syn keyword sqlKeyword contained substring symmetric sysid system table tables tablesample tablespace
