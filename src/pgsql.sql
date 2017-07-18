@@ -30,13 +30,13 @@ set local schema 'public';
 -- Format keywords to use in a Vim syntax file.
 -- _keywords is a list of keywords.
 -- _kind is the highlight group (without the 'sql' prefix).
--- _wrap specifies the number of keywords per line.
+-- _wrap is the (approximate) number of columns after which a new line should start.
 --
 -- Example: select vim_format('[create, select]', 'Statement', 6).
 create or replace function vim_format(
   _keywords text[],
   _kind text,
-  _wrap integer default 8)
+  _wrap integer default 60)
 returns setof text
 language plpgsql stable
 set search_path to "public" as
@@ -44,20 +44,22 @@ $$
 begin
   return query
     with T as (
-      select rank() over (order by keyword) as num, keyword
+      select sum(char_length(keyword)) over (order by keyword) as num, keyword
         from unnest(_keywords) K(keyword)
     )
     select format('syn keyword sql%s contained %s', _kind, string_agg(keyword, ' '))
       from T
-     group by (num - 1) / _wrap
-     order by (num - 1) / _wrap;
+     group by num / (_wrap - 1)
+     order by num / (_wrap - 1);
   return;
 end;
 $$;
 
 
 -- Define keywords for all extensions
-create or replace function vim_format_extensions()
+create or replace function vim_format_extensions(
+  _wrap integer default 60
+)
 returns setof text
 language plpgsql stable
 set search_path to "public" as
@@ -75,13 +77,13 @@ begin
 
     return query
     with T as (
-      select rank() over (partition by synclass order by synkeyword) num, synclass, synkeyword
+      select sum(char_length(synkeyword)) over (partition by synclass order by synkeyword) num, synclass, synkeyword
         from get_extension_objects(_ext.extname)
       )
       select format('  syn keyword sql%s contained %s', initcap(synclass), string_agg(regexp_replace(synkeyword, '^\w+\.|"', '', 'g'), ' ')) -- remove schema name and double quotes
         from T
-      group by synclass, (num - 1) / 6
-      order by synclass, (num - 1) / 6;
+      group by synclass, num / (_wrap - 1)
+      order by synclass, num / (_wrap - 1);
 
     return query
       select format('endif " %s', _ext.extname);
@@ -132,7 +134,7 @@ select '" Types';
 select vim_format(array(select get_types()), 'Type');
 select 'syn match sqlType /pg_toast_\d\+/';
 select '" Built-in functions';
-select vim_format(array(select get_builtin_functions()), 'Function', 6);
+select vim_format(array(select get_builtin_functions()), 'Function');
 select '" Extensions names';
 select vim_format(array(select extname from extension_names() where not extname ~* '-'), 'Constant');
 select vim_format_extensions();
@@ -144,7 +146,7 @@ select '" Additional keywords and constants';
 select vim_format(array(select get_additional_keywords()), 'Keyword');
 select vim_format(array(select get_additional_constants()), 'Constant');
 select  '" Error codes (Appendix A, Table A-1)';
-select vim_format(array(select get_errcodes()), 'ErrorCode', 5);
+select vim_format(array(select get_errcodes()), 'ErrorCode');
 
 select
 $HERE$
