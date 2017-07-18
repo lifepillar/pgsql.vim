@@ -69,7 +69,7 @@ $$
          ('do'), ('drop'), ('end'), ('execute'), ('explain'), ('fetch'), ('grant'),
          ('import'), ('insert'), ('label'), ('listen'), ('load'), ('lock'), ('move'),
          ('notify'), ('prepare'), ('prepared'), ('reassign'), ('reindex'), ('refresh'), ('release'),
-         ('replace'), ('reset'), ('revoke'), ('rollback'), ('savepoint'), ('security'),
+         ('reset'), ('revoke'), ('rollback'), ('savepoint'), ('security'),
          ('select'), ('set'), ('show'), ('start'), ('transaction'), ('truncate'),
          ('unlisten'), ('update'), ('vacuum'), ('values'), ('work');
 $$;

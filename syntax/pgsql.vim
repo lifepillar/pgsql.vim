@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 9.6.3
-" Automatically generated on 2017-07-18 at 08:43:34
+" Automatically generated on 2017-07-18 at 09:08:18
 
 if exists("b:current_syntax")
   finish
@@ -25,8 +25,8 @@ syn keyword sqlSpecial contained false null true
 syn keyword sqlStatement contained abort alter analyze begin checkpoint close cluster comment commit
 syn keyword sqlStatement contained constraints copy create deallocate declare delete discard do drop end
 syn keyword sqlStatement contained execute explain fetch grant import insert label listen load lock move
-syn keyword sqlStatement contained notify prepare prepared reassign refresh reindex release replace
-syn keyword sqlStatement contained reset revoke rollback savepoint security select select set show start
+syn keyword sqlStatement contained notify prepare prepared reassign refresh reindex release reset
+syn keyword sqlStatement contained revoke rollback savepoint security select select set show start
 syn keyword sqlStatement contained transaction truncate unlisten update vacuum values work
 " Types
 syn keyword sqlType contained abstime aclitem addbandarg addr addr_gid_seq addrfeat
@@ -1597,19 +1597,19 @@ syn keyword sqlKeyword contained options or order ordinality out outer over over
 syn keyword sqlKeyword contained parallel parser partial partition passing password placing plans policy
 syn keyword sqlKeyword contained position preceding precision preserve primary prior privileges
 syn keyword sqlKeyword contained procedural procedure program quote range read real recheck recursive
-syn keyword sqlKeyword contained ref references relative rename repeatable replica restart restrict
-syn keyword sqlKeyword contained returning returns right role rollup row rows rule schema scroll search
-syn keyword sqlKeyword contained second sequence sequences serializable server session session_user
-syn keyword sqlKeyword contained setof sets share similar simple skip smallint snapshot some sql
-syn keyword sqlKeyword contained stable standalone statement statistics stdin stdout storage strict strip
-syn keyword sqlKeyword contained substring symmetric sysid system table tables tablesample
-syn keyword sqlKeyword contained tablespace temp template temporary text then time timestamp to trailing
-syn keyword sqlKeyword contained transform treat trigger trim true trusted type types unbounded
-syn keyword sqlKeyword contained uncommitted unencrypted union unique unknown unlogged until user using valid
-syn keyword sqlKeyword contained validate validator value varchar variadic varying verbose version
-syn keyword sqlKeyword contained view views volatile when where whitespace window with within without
-syn keyword sqlKeyword contained wrapper write xml xmlattributes xmlconcat xmlelement xmlexists
-syn keyword sqlKeyword contained xmlforest xmlparse xmlpi xmlroot xmlserialize year yes zone
+syn keyword sqlKeyword contained ref references relative rename repeatable replace replica restart
+syn keyword sqlKeyword contained restrict returning returns right role rollup row rows rule schema scroll
+syn keyword sqlKeyword contained search second sequence sequences serializable server session
+syn keyword sqlKeyword contained session_user setof sets share similar simple skip smallint snapshot some
+syn keyword sqlKeyword contained sql stable standalone statement statistics stdin stdout storage
+syn keyword sqlKeyword contained strict strip substring symmetric sysid system table tables tablesample
+syn keyword sqlKeyword contained tablespace temp template temporary text then time timestamp to
+syn keyword sqlKeyword contained trailing transform treat trigger trim true trusted type types unbounded
+syn keyword sqlKeyword contained uncommitted unencrypted union unique unknown unlogged until user using
+syn keyword sqlKeyword contained valid validate validator value varchar variadic varying verbose
+syn keyword sqlKeyword contained version view views volatile when where whitespace window with within
+syn keyword sqlKeyword contained without wrapper write xml xmlattributes xmlconcat xmlelement
+syn keyword sqlKeyword contained xmlexists xmlforest xmlparse xmlpi xmlroot xmlserialize year yes zone
 " Additional keywords and constants
 syn keyword sqlKeyword contained bigserial serial serial2 serial4 serial8 smallserial
 syn keyword sqlConstant contained information_schema pg_catalog
