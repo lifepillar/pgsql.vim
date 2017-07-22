@@ -62,12 +62,12 @@ define:
     let g:pgsql_pl = ['python', 'r']
 
 After that, code between `$python$` pairs will be highlighted as
-Python, and code between $r$ pairs will be highlighted as R. There
+Python, and code between `$r$` pairs will be highlighted as R. There
 is also a buffer-local variable called `b:pgsql_pl` to override the
 global settings in a single buffer.
 
 Support for the most common PostgreSQL extensions is enabled by
-default. You may set |g:pgsql_disabled_extensions| to a List of
+default. You may set |g:pgsql_disabled_extensions| to a |List| of
 unwanted extensions.
 
 Highlight group definitions may be changed in your `vimrc`, too. For
