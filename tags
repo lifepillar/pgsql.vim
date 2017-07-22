@@ -1,7 +1,0 @@
-pgsql-autocompletion	doc/pgsql.txt	/*pgsql-autocompletion*
-pgsql-contents	doc/pgsql.txt	/*pgsql-contents*
-pgsql-contributing	doc/pgsql.txt	/*pgsql-contributing*
-pgsql-credits	doc/pgsql.txt	/*pgsql-credits*
-pgsql-customization	doc/pgsql.txt	/*pgsql-customization*
-pgsql-syntax	doc/pgsql.txt	/*pgsql-syntax*
-pgsql.txt	doc/pgsql.txt	/*pgsql.txt*
