@@ -108,7 +108,7 @@ $HERE$" Vim syntax file
 " License:      This file is placed in the public domain.
 $HERE$;
 
-select '" Based on ' || substring(version() from '\w+ \d+\.\d+\.\d+');
+select '" Based on ' || substring(version() from 'PostgreSQL \d+\.\d+\.?\d*');
 select '" Automatically generated on ' || current_date || ' at ' || localtime(0);
 
 select
