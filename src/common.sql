@@ -109,6 +109,19 @@ $$
 $$;
 
 
+create or replace function get_catalog_tables()
+returns table (table_name text)
+language sql stable
+set search_path to "information_schema" as
+$$
+  select table_name::text
+    from tables
+   where table_catalog = 'vim_pgsql_syntax' -- database name
+     and table_name not like '\_%'
+     and table_schema in ('pg_catalog', 'information_schema');
+$$;
+
+
 create or replace function get_types()
 returns table ("type" text)
 language sql stable
@@ -150,19 +163,6 @@ returns table (keyword text)
 language sql immutable as
 $$
   values ('pg_catalog'), ('information_schema');
-$$;
-
-
-create or replace function get_catalog_tables()
-returns table (table_name text)
-language sql stable
-set search_path to "information_schema" as
-$$
-  select table_name::text
-    from tables
-   where table_catalog = 'vim_pgsql_syntax' -- database name
-     and table_name not like '\_%'
-     and table_schema in ('pg_catalog', 'information_schema');
 $$;
 
 
