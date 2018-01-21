@@ -104,7 +104,7 @@ select
 $HERE$" Vim syntax file
 " Language:     SQL (PostgreSQL dialect), PL/pgSQL, PL/…, PostGIS, …
 " Maintainer:   Lifepillar
-" Version:      2.0.0
+" Version:      2.1.0
 " License:      This file is placed in the public domain.
 $HERE$;
 
