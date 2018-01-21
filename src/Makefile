@@ -32,7 +32,7 @@ $(KEYWORDS): $(TESTFILE) $(COMMON)
 	@ $(PSQL) -d $(DBNAME) -f $<
 
 .PHONY: install
-install: $(SYNFILE)
+install: $(SYNFILE) $(KEYWORDS)
 	cp $< $(DESTDIR)/$(SYNFILE)
 
 .PHONY: clean
