@@ -42,3 +42,4 @@ clean:
 .PHONY: distclean
 distclean: clean dropdb
 	@- $(RM) errcodes.txt
+	@- $(RM) keywords.sql
