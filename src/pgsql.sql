@@ -174,7 +174,7 @@ select vim_format(array(select get_errcodes()), 'ErrorCode');
 select
 $HERE$
 " Numbers
-syn match sqlNumber "-\=\<\d*\.\=[0-9_]\>"
+syn match sqlNumber "\<\d*\.\=[0-9_]\>"
 
 " Variables (identifiers starting with an underscore)
 syn match sqlVariable "\<_[A-Za-z0-9][A-Za-z0-9_]*\>"
