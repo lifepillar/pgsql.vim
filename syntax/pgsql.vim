@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 10.2
-" Automatically generated on 2018-02-17 at 12:24:25
+" Automatically generated on 2018-02-17 at 13:07:58
 
 if exists("b:current_syntax")
   finish
@@ -15,7 +15,7 @@ syn case ignore
 syn sync minlines=100
 syn iskeyword @,48-57,192-255,_
 
-syn match sqlIsKeyword  /\<\h\w*\>/   contains=sqlStatement,sqlKeyword,sqlCatalog,sqlConstant,sqlSpecial,sqlOption,sqlErrorCode,sqlType
+syn match sqlIsKeyword  /\<\h\w*\>/   contains=sqlStatement,sqlKeyword,sqlCatalog,sqlConstant,sqlSpecial,sqlOption,sqlErrorCode,sqlType,sqlTable,sqlView
 syn match sqlIsFunction /\<\h\w*\ze(/ contains=sqlFunction,sqlKeyword
 syn region sqlIsPsql    start=/^\s*\\/ end=/\n/ oneline contains=sqlPsqlCommand,sqlPsqlKeyword,sqlNumber,sqlString
 
