@@ -5611,5 +5611,5 @@ zero_length_character_string
 
 -- More checks
 -- See https://github.com/lifepillar/pgsql.vim/issues/4
-where cast (t.data #>> '{user,id_str}' as bigint) = 123;
+where cast(t.data #>> '{user,id_str}' as bigint) = 123;
 
