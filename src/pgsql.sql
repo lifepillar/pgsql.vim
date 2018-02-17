@@ -55,7 +55,7 @@ begin
 end;
 $$;
 
-create or replace function vim_format_match(
+create or replace function vim_format_operators(
   _keywords text[],
   _kind text,
   _wrap integer default 50)
@@ -69,7 +69,7 @@ begin
       select sum(char_length(keyword)) over (order by char_length(keyword) desc, keyword) as num, keyword
         from unnest(_keywords) K(keyword)
     )
-    select format('syn match sql%s contained "%s"',
+    select format('syn match sql%s contained "\%%(%s\)\ze\%%([^!?~#^@<=>%%&|*/+-]\|$\)"',
                    _kind,
                    string_agg(regexp_replace(keyword, '[~^*#]', E'\\\\\\&', 'g'), '\|'))
       from T
@@ -185,10 +185,10 @@ syn region sqlString     start=+'+  skip=+\\\\\|\\'+  end=+'+ contains=@Spell
 syn region sqlString     start=+\$HERE\$+ end=+\$HERE\$+
 
 " Operators
-syn match sqlIsOperator "[!?~#^@<=>%&|*/+-]\+" contains=sqlOperator
+syn match sqlIsOperator "\%(^\|[^!?~#^@<=>%&|*/+-]\)\zs[!?~#^@<=>%&|*/+-]\+" contains=sqlOperator
 $HERE$;
 
-select vim_format_match(array(select get_operators()), 'Operator');
+select vim_format_operators(array(select get_operators()), 'Operator');
 
 select
 $HERE$

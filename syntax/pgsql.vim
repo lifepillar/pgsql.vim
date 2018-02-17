@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 10.2
-" Automatically generated on 2018-02-17 at 13:07:58
+" Automatically generated on 2018-02-17 at 22:45:24
 
 if exists("b:current_syntax")
   finish
@@ -1753,14 +1753,14 @@ syn region sqlString     start=+'+  skip=+\\\\\|\\'+  end=+'+ contains=@Spell
 syn region sqlString     start=+\$HERE\$+ end=+\$HERE\$+
 
 " Operators
-syn match sqlIsOperator "[!?~#^@<=>%&|*/+-]\+" contains=sqlOperator
+syn match sqlIsOperator "\%(^\|[^!?~#^@<=>%&|*/+-]\)\zs[!?~#^@<=>%&|*/+-]\+" contains=sqlOperator
 
-syn match sqlOperator contained "<<->>\|!\~\~\*\|\#<=\#\|\#>=\#\|<->>\|<<->\|\~<=\~\|\~>=\~\|!\~\*\|!\~\~\|\#<\#\|\#<=\|\#<>"
-syn match sqlOperator contained "\#>\#\|\#>=\|\#>>\|&&&\|&<|\|\*<=\|\*<>\|\*>=\|->>\|-|-\|<\#>\|<->\|<<=\|<<|\|<=>\|<?>"
-syn match sqlOperator contained "<@>\|>>=\|?-|\|?<@\|?@>\|?||\|@-@\|@@@\|\^<@\|\^@>\||&>\||=|\||>>\|||/\|\~<\~\|\~>\~"
-syn match sqlOperator contained "\~\~\*\|!!\|!\~\|\#\#\|\#-\|\#<\|\#=\|\#>\|%\#\|%%\|%>\|&&\|&<\|&>\|\*<\|\*=\|\*>\|->\|<%\|<<\|<=\|<>\|<@\|<\^\|>="
-syn match sqlOperator contained ">>\|>\^\|?\#\|?&\|?-\|?@\|?|\|?\~\|@>\|@@\|\^?\|\^@\|\^\~\||/\|||\|\~\*\|\~=\|\~>\|\~\~\|!\|\#\|%\|&\|\*\|+\|-\|/\|<\|=\|>"
-syn match sqlOperator contained "?\|@\|\^\||\|\~"
+syn match sqlOperator contained "\%(<<->>\|!\~\~\*\|\#<=\#\|\#>=\#\|<->>\|<<->\|\~<=\~\|\~>=\~\|!\~\*\|!\~\~\|\#<\#\|\#<=\|\#<>\)\ze\%([^!?~#^@<=>%&|*/+-]\|$\)"
+syn match sqlOperator contained "\%(\#>\#\|\#>=\|\#>>\|&&&\|&<|\|\*<=\|\*<>\|\*>=\|->>\|-|-\|<\#>\|<->\|<<=\|<<|\|<=>\|<?>\)\ze\%([^!?~#^@<=>%&|*/+-]\|$\)"
+syn match sqlOperator contained "\%(<@>\|>>=\|?-|\|?<@\|?@>\|?||\|@-@\|@@@\|\^<@\|\^@>\||&>\||=|\||>>\|||/\|\~<\~\|\~>\~\)\ze\%([^!?~#^@<=>%&|*/+-]\|$\)"
+syn match sqlOperator contained "\%(\~\~\*\|!!\|!\~\|\#\#\|\#-\|\#<\|\#=\|\#>\|%\#\|%%\|%>\|&&\|&<\|&>\|\*<\|\*=\|\*>\|->\|<%\|<<\|<=\|<>\|<@\|<\^\|>=\)\ze\%([^!?~#^@<=>%&|*/+-]\|$\)"
+syn match sqlOperator contained "\%(>>\|>\^\|?\#\|?&\|?-\|?@\|?|\|?\~\|@>\|@@\|\^?\|\^@\|\^\~\||/\|||\|\~\*\|\~=\|\~>\|\~\~\|!\|\#\|%\|&\|\*\|+\|-\|/\|<\|=\|>\)\ze\%([^!?~#^@<=>%&|*/+-]\|$\)"
+syn match sqlOperator contained "\%(?\|@\|\^\||\|\~\)\ze\%([^!?~#^@<=>%&|*/+-]\|$\)"
 
 " Comments
 syn region sqlComment    start="/\*" end="\*/" contains=sqlTodo,@Spell
