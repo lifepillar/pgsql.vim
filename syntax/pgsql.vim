@@ -4,8 +4,8 @@
 " Version:      2.1.0
 " License:      This file is placed in the public domain.
 
-" Based on PostgreSQL 10.1
-" Automatically generated on 2018-01-21 at 17:26:39
+" Based on PostgreSQL 10.2
+" Automatically generated on 2018-02-17 at 10:35:11
 
 if exists("b:current_syntax")
   finish
@@ -15,7 +15,7 @@ syn case ignore
 syn sync minlines=100
 syn iskeyword @,48-57,192-255,_
 
-syn match sqlIsKeyword  /\<\h\w*\>/   contains=sqlStatement,sqlKeyword,sqlCatalog,sqlConstant,sqlOperator,sqlSpecial,sqlOption,sqlErrorCode,sqlType
+syn match sqlIsKeyword  /\<\h\w*\>/   contains=sqlStatement,sqlKeyword,sqlCatalog,sqlConstant,sqlSpecial,sqlOption,sqlErrorCode,sqlType
 syn match sqlIsFunction /\<\h\w*\ze(/ contains=sqlFunction
 syn region sqlIsPsql    start=/^\s*\\/ end=/\n/ oneline contains=sqlPsqlCommand,sqlPsqlKeyword,sqlNumber,sqlString
 
@@ -1697,49 +1697,49 @@ syn keyword sqlErrorCode contained invalid_escape_sequence invalid_foreign_key
 syn keyword sqlErrorCode contained invalid_function_definition invalid_grant_operation invalid_grantor
 syn keyword sqlErrorCode contained invalid_indicator_parameter_value invalid_locator_specification invalid_name
 syn keyword sqlErrorCode contained invalid_object_definition invalid_parameter_value
-syn keyword sqlErrorCode contained invalid_password invalid_prepared_statement_definition invalid_recursion
-syn keyword sqlErrorCode contained invalid_regular_expression invalid_role_specification
-syn keyword sqlErrorCode contained invalid_row_count_in_limit_clause
-syn keyword sqlErrorCode contained invalid_row_count_in_result_offset_clause invalid_savepoint_specification
-syn keyword sqlErrorCode contained invalid_schema_definition invalid_schema_name invalid_sql_statement_name
-syn keyword sqlErrorCode contained invalid_sqlstate_returned invalid_table_definition
-syn keyword sqlErrorCode contained invalid_tablesample_argument invalid_tablesample_repeat
-syn keyword sqlErrorCode contained invalid_text_representation invalid_time_zone_displacement_value
-syn keyword sqlErrorCode contained invalid_transaction_initiation invalid_transaction_state
-syn keyword sqlErrorCode contained invalid_transaction_termination invalid_use_of_escape_character invalid_xml_comment
-syn keyword sqlErrorCode contained invalid_xml_content invalid_xml_document
-syn keyword sqlErrorCode contained invalid_xml_processing_instruction io_error locator_exception lock_file_exists
-syn keyword sqlErrorCode contained lock_not_available modifying_sql_data_not_permitted
-syn keyword sqlErrorCode contained most_specific_type_mismatch name_too_long no_active_sql_transaction
-syn keyword sqlErrorCode contained no_active_sql_transaction_for_branch_transaction
-syn keyword sqlErrorCode contained no_additional_dynamic_result_sets_returned no_data no_data_found
-syn keyword sqlErrorCode contained nonstandard_use_of_escape_character not_an_xml_document not_null_violation
-syn keyword sqlErrorCode contained null_value_eliminated_in_set_function
-syn keyword sqlErrorCode contained null_value_no_indicator_parameter null_value_not_allowed numeric_value_out_of_range
-syn keyword sqlErrorCode contained object_in_use object_not_in_prerequisite_state
-syn keyword sqlErrorCode contained operator_intervention out_of_memory plpgsql_error privilege_not_granted
-syn keyword sqlErrorCode contained privilege_not_revoked program_limit_exceeded
-syn keyword sqlErrorCode contained prohibited_sql_statement_attempted protocol_violation query_canceled raise_exception
-syn keyword sqlErrorCode contained read_only_sql_transaction reading_sql_data_not_permitted
-syn keyword sqlErrorCode contained reserved_name restrict_violation savepoint_exception
-syn keyword sqlErrorCode contained schema_and_data_statement_mixing_not_supported
-syn keyword sqlErrorCode contained sequence_generator_limit_exceeded serialization_failure snapshot_too_old
-syn keyword sqlErrorCode contained sql_routine_exception sql_statement_not_yet_complete
-syn keyword sqlErrorCode contained sqlclient_unable_to_establish_sqlconnection
+syn keyword sqlErrorCode contained invalid_password invalid_preceding_following_size
+syn keyword sqlErrorCode contained invalid_prepared_statement_definition invalid_recursion invalid_regular_expression
+syn keyword sqlErrorCode contained invalid_role_specification invalid_row_count_in_limit_clause
+syn keyword sqlErrorCode contained invalid_row_count_in_result_offset_clause
+syn keyword sqlErrorCode contained invalid_savepoint_specification invalid_schema_definition invalid_schema_name
+syn keyword sqlErrorCode contained invalid_sql_statement_name invalid_sqlstate_returned
+syn keyword sqlErrorCode contained invalid_table_definition invalid_tablesample_argument
+syn keyword sqlErrorCode contained invalid_tablesample_repeat invalid_text_representation
+syn keyword sqlErrorCode contained invalid_time_zone_displacement_value invalid_transaction_initiation
+syn keyword sqlErrorCode contained invalid_transaction_state invalid_transaction_termination
+syn keyword sqlErrorCode contained invalid_use_of_escape_character invalid_xml_comment invalid_xml_content
+syn keyword sqlErrorCode contained invalid_xml_document invalid_xml_processing_instruction io_error
+syn keyword sqlErrorCode contained locator_exception lock_file_exists lock_not_available
+syn keyword sqlErrorCode contained modifying_sql_data_not_permitted most_specific_type_mismatch name_too_long
+syn keyword sqlErrorCode contained no_active_sql_transaction
+syn keyword sqlErrorCode contained no_active_sql_transaction_for_branch_transaction no_additional_dynamic_result_sets_returned no_data
+syn keyword sqlErrorCode contained no_data_found nonstandard_use_of_escape_character
+syn keyword sqlErrorCode contained not_an_xml_document not_null_violation
+syn keyword sqlErrorCode contained null_value_eliminated_in_set_function null_value_no_indicator_parameter null_value_not_allowed
+syn keyword sqlErrorCode contained numeric_value_out_of_range object_in_use
+syn keyword sqlErrorCode contained object_not_in_prerequisite_state operator_intervention out_of_memory plpgsql_error
+syn keyword sqlErrorCode contained privilege_not_granted privilege_not_revoked
+syn keyword sqlErrorCode contained program_limit_exceeded prohibited_sql_statement_attempted protocol_violation
+syn keyword sqlErrorCode contained query_canceled raise_exception read_only_sql_transaction
+syn keyword sqlErrorCode contained reading_sql_data_not_permitted reserved_name restrict_violation
+syn keyword sqlErrorCode contained savepoint_exception
+syn keyword sqlErrorCode contained schema_and_data_statement_mixing_not_supported sequence_generator_limit_exceeded serialization_failure
+syn keyword sqlErrorCode contained snapshot_too_old sql_routine_exception
+syn keyword sqlErrorCode contained sql_statement_not_yet_complete sqlclient_unable_to_establish_sqlconnection
 syn keyword sqlErrorCode contained sqlserver_rejected_establishment_of_sqlconnection srf_protocol_violated
-syn keyword sqlErrorCode contained stacked_diagnostics_accessed_without_active_handler statement_completion_unknown
-syn keyword sqlErrorCode contained statement_too_complex string_data_length_mismatch
-syn keyword sqlErrorCode contained string_data_right_truncation substring_error successful_completion syntax_error
-syn keyword sqlErrorCode contained syntax_error_or_access_rule_violation system_error
-syn keyword sqlErrorCode contained too_many_arguments too_many_columns too_many_connections too_many_rows
-syn keyword sqlErrorCode contained transaction_integrity_constraint_violation
-syn keyword sqlErrorCode contained transaction_resolution_unknown transaction_rollback trigger_protocol_violated
-syn keyword sqlErrorCode contained triggered_action_exception triggered_data_change_violation trim_error
-syn keyword sqlErrorCode contained undefined_column undefined_file undefined_function
-syn keyword sqlErrorCode contained undefined_object undefined_parameter undefined_table unique_violation
-syn keyword sqlErrorCode contained unterminated_c_string untranslatable_character warning
-syn keyword sqlErrorCode contained windowing_error with_check_option_violation wrong_object_type
-syn keyword sqlErrorCode contained zero_length_character_string
+syn keyword sqlErrorCode contained stacked_diagnostics_accessed_without_active_handler
+syn keyword sqlErrorCode contained statement_completion_unknown statement_too_complex
+syn keyword sqlErrorCode contained string_data_length_mismatch string_data_right_truncation substring_error
+syn keyword sqlErrorCode contained successful_completion syntax_error
+syn keyword sqlErrorCode contained syntax_error_or_access_rule_violation system_error too_many_arguments too_many_columns
+syn keyword sqlErrorCode contained too_many_connections too_many_rows
+syn keyword sqlErrorCode contained transaction_integrity_constraint_violation transaction_resolution_unknown transaction_rollback
+syn keyword sqlErrorCode contained trigger_protocol_violated triggered_action_exception
+syn keyword sqlErrorCode contained triggered_data_change_violation trim_error undefined_column
+syn keyword sqlErrorCode contained undefined_file undefined_function undefined_object undefined_parameter
+syn keyword sqlErrorCode contained undefined_table unique_violation unterminated_c_string
+syn keyword sqlErrorCode contained untranslatable_character warning windowing_error
+syn keyword sqlErrorCode contained with_check_option_violation wrong_object_type zero_length_character_string
 
 " Numbers
 syn match sqlNumber "-\=\<\d*\.\=[0-9_]\>"
@@ -1752,9 +1752,19 @@ syn region sqlIdentifier start=+"+  skip=+\\\\\|\\"+  end=+"+
 syn region sqlString     start=+'+  skip=+\\\\\|\\'+  end=+'+ contains=@Spell
 syn region sqlString     start=+\$HERE\$+ end=+\$HERE\$+
 
+" Operators
+syn match sqlIsOperator "[!?~#^@<=>%&|*/+-]\+" contains=sqlOperator
+
+syn match sqlOperator contained "<<->>\|!\~\~\*\|\#<=\#\|\#>=\#\|<->>\|<<->\|\~<=\~\|\~>=\~\|!\~\*\|!\~\~\|\#<\#\|\#<=\|\#<>"
+syn match sqlOperator contained "\#>\#\|\#>=\|\#>>\|&&&\|&<|\|\*<=\|\*<>\|\*>=\|->>\|-|-\|<\#>\|<->\|<<=\|<<|\|<=>\|<?>"
+syn match sqlOperator contained "<@>\|>>=\|?-|\|?<@\|?@>\|?||\|@-@\|@@@\|\^<@\|\^@>\||&>\||=|\||>>\|||/\|\~<\~\|\~>\~"
+syn match sqlOperator contained "\~\~\*\|!!\|!\~\|\#\#\|\#-\|\#<\|\#=\|\#>\|%\#\|%%\|%>\|&&\|&<\|&>\|\*<\|\*=\|\*>\|->\|<%\|<<\|<=\|<>\|<@\|<\^\|>="
+syn match sqlOperator contained ">>\|>\^\|?\#\|?&\|?-\|?@\|?|\|?\~\|@>\|@@\|\^?\|\^@\|\^\~\||/\|||\|\~\*\|\~=\|\~>\|\~\~\|!\|\#\|%\|&\|\*\|+\|-\|/\|<\|=\|>"
+syn match sqlOperator contained "?\|@\|\^\||\|\~"
+
 " Comments
 syn region sqlComment    start="/\*" end="\*/" contains=sqlTodo,@Spell
-syn match  sqlComment    "#.*$"                contains=sqlTodo,@Spell
+syn match  sqlComment    "#\s.*$"              contains=sqlTodo,@Spell
 syn match  sqlComment    "--.*$"               contains=sqlTodo,@Spell
 
 " Options

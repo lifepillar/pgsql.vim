@@ -55,6 +55,29 @@ begin
 end;
 $$;
 
+create or replace function vim_format_match(
+  _keywords text[],
+  _kind text,
+  _wrap integer default 50)
+returns setof text
+language plpgsql stable
+set search_path to "public" as
+$$
+begin
+  return query
+    with T as (
+      select sum(char_length(keyword)) over (order by char_length(keyword) desc, keyword) as num, keyword
+        from unnest(_keywords) K(keyword)
+    )
+    select format('syn match sql%s contained "%s"',
+                   _kind,
+                   string_agg(regexp_replace(keyword, '[~^*#]', E'\\\\\\&', 'g'), '\|'))
+      from T
+     group by num / (_wrap - 1)
+     order by num / (_wrap - 1);
+  return;
+end;
+$$;
 
 -- Define keywords for all extensions
 create or replace function vim_format_extensions(
@@ -121,7 +144,7 @@ syn case ignore
 syn sync minlines=100
 syn iskeyword @,48-57,192-255,_
 
-syn match sqlIsKeyword  /\<\h\w*\>/   contains=sqlStatement,sqlKeyword,sqlCatalog,sqlConstant,sqlOperator,sqlSpecial,sqlOption,sqlErrorCode,sqlType
+syn match sqlIsKeyword  /\<\h\w*\>/   contains=sqlStatement,sqlKeyword,sqlCatalog,sqlConstant,sqlSpecial,sqlOption,sqlErrorCode,sqlType
 syn match sqlIsFunction /\<\h\w*\ze(/ contains=sqlFunction
 syn region sqlIsPsql    start=/^\s*\\/ end=/\n/ oneline contains=sqlPsqlCommand,sqlPsqlKeyword,sqlNumber,sqlString
 
@@ -161,9 +184,17 @@ syn region sqlIdentifier start=+"+  skip=+\\\\\|\\"+  end=+"+
 syn region sqlString     start=+'+  skip=+\\\\\|\\'+  end=+'+ contains=@Spell
 syn region sqlString     start=+\$HERE\$+ end=+\$HERE\$+
 
+" Operators
+syn match sqlIsOperator "[!?~#^@<=>%&|*/+-]\+" contains=sqlOperator
+$HERE$;
+
+select vim_format_match(array(select get_operators()), 'Operator');
+
+select
+$HERE$
 " Comments
 syn region sqlComment    start="/\*" end="\*/" contains=sqlTodo,@Spell
-syn match  sqlComment    "#.*$"                contains=sqlTodo,@Spell
+syn match  sqlComment    "#\s.*$"              contains=sqlTodo,@Spell
 syn match  sqlComment    "--.*$"               contains=sqlTodo,@Spell
 
 " Options

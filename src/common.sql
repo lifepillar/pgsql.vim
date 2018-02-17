@@ -99,6 +99,20 @@ $$
 $$;
 
 
+create or replace function get_operators()
+returns table(keyword text)
+language sql stable
+set search_path to "pg_catalog", "public" as
+$$
+  -- Query adapted from \doS
+  select distinct o.oprname::text as keyword
+    from pg_catalog.pg_operator o
+    left join pg_catalog.pg_namespace n
+      on n.oid = o.oprnamespace
+   where pg_catalog.pg_operator_is_visible(o.oid)
+   order by keyword;
+$$;
+
 create or replace function get_types()
 returns table ("type" text)
 language sql stable
