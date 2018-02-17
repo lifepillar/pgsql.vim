@@ -145,7 +145,7 @@ syn sync minlines=100
 syn iskeyword @,48-57,192-255,_
 
 syn match sqlIsKeyword  /\<\h\w*\>/   contains=sqlStatement,sqlKeyword,sqlCatalog,sqlConstant,sqlSpecial,sqlOption,sqlErrorCode,sqlType
-syn match sqlIsFunction /\<\h\w*\ze(/ contains=sqlFunction
+syn match sqlIsFunction /\<\h\w*\ze(/ contains=sqlFunction,sqlKeyword
 syn region sqlIsPsql    start=/^\s*\\/ end=/\n/ oneline contains=sqlPsqlCommand,sqlPsqlKeyword,sqlNumber,sqlString
 
 syn keyword sqlSpecial contained false null true
@@ -158,6 +158,9 @@ select vim_format(array(select get_types()), 'Type');
 select 'syn match sqlType /pg_toast_\d\+/';
 select '" Additional types';
 select vim_format(array(select get_additional_types()), 'Type');
+select '" Keywords';
+select vim_format(array(select get_keywords()), 'Keyword');
+select vim_format(array(select get_additional_constants()), 'Constant');
 select '" Built-in functions';
 select vim_format(array(select get_builtin_functions()), 'Function');
 select '" Extensions names';
@@ -165,9 +168,6 @@ select vim_format(array(select extname from extension_names() where not extname 
 select vim_format_extensions();
 select '" Catalog tables';
 select vim_format(array(select get_catalog_tables()), 'Catalog');
-select '" Keywords';
-select vim_format(array(select get_keywords()), 'Keyword');
-select vim_format(array(select get_additional_constants()), 'Constant');
 select  '" Error codes (Appendix A, Table A-1)';
 select vim_format(array(select get_errcodes()), 'ErrorCode');
 

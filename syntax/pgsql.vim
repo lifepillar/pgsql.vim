@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 10.2
-" Automatically generated on 2018-02-17 at 10:35:11
+" Automatically generated on 2018-02-17 at 12:24:25
 
 if exists("b:current_syntax")
   finish
@@ -16,7 +16,7 @@ syn sync minlines=100
 syn iskeyword @,48-57,192-255,_
 
 syn match sqlIsKeyword  /\<\h\w*\>/   contains=sqlStatement,sqlKeyword,sqlCatalog,sqlConstant,sqlSpecial,sqlOption,sqlErrorCode,sqlType
-syn match sqlIsFunction /\<\h\w*\ze(/ contains=sqlFunction
+syn match sqlIsFunction /\<\h\w*\ze(/ contains=sqlFunction,sqlKeyword
 syn region sqlIsPsql    start=/^\s*\\/ end=/\n/ oneline contains=sqlPsqlCommand,sqlPsqlKeyword,sqlNumber,sqlString
 
 syn keyword sqlSpecial contained false null true
@@ -71,6 +71,49 @@ syn keyword sqlType contained array bigint bigserial bit boolean char character 
 syn keyword sqlType contained double int integer interval numeric precision real serial serial2
 syn keyword sqlType contained serial4 serial8 smallint smallserial text timestamp varchar varying xml
 syn keyword sqlType contained zone
+" Keywords
+syn keyword sqlKeyword contained absolute access action add admin after aggregate all also always
+syn keyword sqlKeyword contained analyse and any as asc assertion assignment asymmetric at attach
+syn keyword sqlKeyword contained attribute authorization backward before between binary both by cache called
+syn keyword sqlKeyword contained cascade cascaded case cast catalog chain characteristics check
+syn keyword sqlKeyword contained class coalesce collate collation column columns comments committed
+syn keyword sqlKeyword contained concurrently configuration conflict connection constraint content
+syn keyword sqlKeyword contained continue conversion cost cross csv current current_catalog
+syn keyword sqlKeyword contained current_date current_role current_schema current_time current_timestamp
+syn keyword sqlKeyword contained current_user cursor cycle data database day dec default defaults
+syn keyword sqlKeyword contained deferrable deferred definer delimiter delimiters depends desc detach
+syn keyword sqlKeyword contained dictionary disable distinct document domain each else enable encoding
+syn keyword sqlKeyword contained encrypted enum escape event except exclude excluding exclusive
+syn keyword sqlKeyword contained exists extension external extract false family filter first float
+syn keyword sqlKeyword contained following for force foreign forward freeze from full function functions
+syn keyword sqlKeyword contained generated global granted greatest group grouping handler having header
+syn keyword sqlKeyword contained hold hour identity if ilike immediate immutable implicit in including
+syn keyword sqlKeyword contained increment index indexes inherit inherits initially inline inner
+syn keyword sqlKeyword contained inout input insensitive instead intersect into invoker is isnull
+syn keyword sqlKeyword contained isolation join key language large last lateral leading leakproof least left
+syn keyword sqlKeyword contained level like limit local localtime localtimestamp location locked
+syn keyword sqlKeyword contained logged mapping match materialized maxvalue method minute minvalue mode
+syn keyword sqlKeyword contained month name names national natural nchar new next no none not nothing
+syn keyword sqlKeyword contained notnull nowait null nullif nulls object of off offset oids old on only
+syn keyword sqlKeyword contained operator option options or order ordinality out outer over overlaps
+syn keyword sqlKeyword contained overlay overriding owned owner parallel parser partial partition
+syn keyword sqlKeyword contained passing password placing plans policy position preceding preserve primary
+syn keyword sqlKeyword contained prior privileges procedural procedure program publication quote
+syn keyword sqlKeyword contained range read recheck recursive ref references referencing relative
+syn keyword sqlKeyword contained rename repeatable replace replica restart restrict returning returns
+syn keyword sqlKeyword contained right role rollup row rows rule schema schemas scroll search second
+syn keyword sqlKeyword contained sequence sequences serializable server session session_user setof sets
+syn keyword sqlKeyword contained share similar simple skip snapshot some sql stable standalone
+syn keyword sqlKeyword contained statement statistics stdin stdout storage strict strip subscription
+syn keyword sqlKeyword contained substring symmetric sysid system table tables tablesample tablespace
+syn keyword sqlKeyword contained temp template temporary then to trailing transform treat trigger trim
+syn keyword sqlKeyword contained true trusted type types unbounded uncommitted unencrypted union
+syn keyword sqlKeyword contained unique unknown unlogged until user using valid validate validator value
+syn keyword sqlKeyword contained variadic verbose version view views volatile when where whitespace
+syn keyword sqlKeyword contained window with within without wrapper write xmlattributes xmlconcat
+syn keyword sqlKeyword contained xmlelement xmlexists xmlforest xmlnamespaces xmlparse xmlpi xmlroot
+syn keyword sqlKeyword contained xmlserialize xmltable year yes
+syn keyword sqlConstant contained information_schema pg_catalog
 " Built-in functions
 syn keyword sqlFunction contained RI_FKey_cascade_del RI_FKey_cascade_upd RI_FKey_check_ins
 syn keyword sqlFunction contained RI_FKey_check_upd RI_FKey_noaction_del RI_FKey_noaction_upd
@@ -1601,49 +1644,6 @@ syn keyword sqlCatalog contained table_constraints table_privileges tables trans
 syn keyword sqlCatalog contained triggered_update_columns triggers udt_privileges usage_privileges
 syn keyword sqlCatalog contained user_defined_types user_mapping_options user_mappings
 syn keyword sqlCatalog contained view_column_usage view_routine_usage view_table_usage views
-" Keywords
-syn keyword sqlKeyword contained absolute access action add admin after aggregate all also always
-syn keyword sqlKeyword contained analyse and any as asc assertion assignment asymmetric at attach
-syn keyword sqlKeyword contained attribute authorization backward before between binary both by cache called
-syn keyword sqlKeyword contained cascade cascaded case cast catalog chain characteristics check
-syn keyword sqlKeyword contained class coalesce collate collation column columns comments committed
-syn keyword sqlKeyword contained concurrently configuration conflict connection constraint content
-syn keyword sqlKeyword contained continue conversion cost cross csv current current_catalog
-syn keyword sqlKeyword contained current_date current_role current_schema current_time current_timestamp
-syn keyword sqlKeyword contained current_user cursor cycle data database day dec default defaults
-syn keyword sqlKeyword contained deferrable deferred definer delimiter delimiters depends desc detach
-syn keyword sqlKeyword contained dictionary disable distinct document domain each else enable encoding
-syn keyword sqlKeyword contained encrypted enum escape event except exclude excluding exclusive
-syn keyword sqlKeyword contained exists extension external extract false family filter first float
-syn keyword sqlKeyword contained following for force foreign forward freeze from full function functions
-syn keyword sqlKeyword contained generated global granted greatest group grouping handler having header
-syn keyword sqlKeyword contained hold hour identity if ilike immediate immutable implicit in including
-syn keyword sqlKeyword contained increment index indexes inherit inherits initially inline inner
-syn keyword sqlKeyword contained inout input insensitive instead intersect into invoker is isnull
-syn keyword sqlKeyword contained isolation join key language large last lateral leading leakproof least left
-syn keyword sqlKeyword contained level like limit local localtime localtimestamp location locked
-syn keyword sqlKeyword contained logged mapping match materialized maxvalue method minute minvalue mode
-syn keyword sqlKeyword contained month name names national natural nchar new next no none not nothing
-syn keyword sqlKeyword contained notnull nowait null nullif nulls object of off offset oids old on only
-syn keyword sqlKeyword contained operator option options or order ordinality out outer over overlaps
-syn keyword sqlKeyword contained overlay overriding owned owner parallel parser partial partition
-syn keyword sqlKeyword contained passing password placing plans policy position preceding preserve primary
-syn keyword sqlKeyword contained prior privileges procedural procedure program publication quote
-syn keyword sqlKeyword contained range read recheck recursive ref references referencing relative
-syn keyword sqlKeyword contained rename repeatable replace replica restart restrict returning returns
-syn keyword sqlKeyword contained right role rollup row rows rule schema schemas scroll search second
-syn keyword sqlKeyword contained sequence sequences serializable server session session_user setof sets
-syn keyword sqlKeyword contained share similar simple skip snapshot some sql stable standalone
-syn keyword sqlKeyword contained statement statistics stdin stdout storage strict strip subscription
-syn keyword sqlKeyword contained substring symmetric sysid system table tables tablesample tablespace
-syn keyword sqlKeyword contained temp template temporary then to trailing transform treat trigger trim
-syn keyword sqlKeyword contained true trusted type types unbounded uncommitted unencrypted union
-syn keyword sqlKeyword contained unique unknown unlogged until user using valid validate validator value
-syn keyword sqlKeyword contained variadic verbose version view views volatile when where whitespace
-syn keyword sqlKeyword contained window with within without wrapper write xmlattributes xmlconcat
-syn keyword sqlKeyword contained xmlelement xmlexists xmlforest xmlnamespaces xmlparse xmlpi xmlroot
-syn keyword sqlKeyword contained xmlserialize xmltable year yes
-syn keyword sqlConstant contained information_schema pg_catalog
 " Error codes (Appendix A, Table A-1)
 syn keyword sqlErrorCode contained active_sql_transaction admin_shutdown ambiguous_alias
 syn keyword sqlErrorCode contained ambiguous_column ambiguous_function ambiguous_parameter
@@ -1742,7 +1742,7 @@ syn keyword sqlErrorCode contained untranslatable_character warning windowing_er
 syn keyword sqlErrorCode contained with_check_option_violation wrong_object_type zero_length_character_string
 
 " Numbers
-syn match sqlNumber "-\=\<\d*\.\=[0-9_]\>"
+syn match sqlNumber "\<\d*\.\=[0-9_]\>"
 
 " Variables (identifiers starting with an underscore)
 syn match sqlVariable "\<_[A-Za-z0-9][A-Za-z0-9_]*\>"
