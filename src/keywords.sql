@@ -2041,12 +2041,9 @@ plperlu_validator()
 plpgsql_call_handler()
 plpgsql_inline_handler()
 plpgsql_validator()
-plpython2_call_handler()
-plpython2_inline_handler()
-plpython2_validator()
-plpython_call_handler()
-plpython_inline_handler()
-plpython_validator()
+plpython3_call_handler()
+plpython3_inline_handler()
+plpython3_validator()
 pltcl_call_handler()
 pltclu_call_handler()
 point()
@@ -3406,10 +3403,10 @@ gin_extract_value_timestamptz() -- function
 gin_extract_value_timetz() -- function
 gin_extract_value_varbit() -- function
 gin_numeric_cmp() -- function
--- Extension: plpython2u
-plpython2_call_handler() -- function
-plpython2_inline_handler() -- function
-plpython2_validator() -- function
+-- Extension: plpython3u
+plpython3_call_handler() -- function
+plpython3_inline_handler() -- function
+plpython3_validator() -- function
 -- Extension: ltree
 index() -- function
 lca() -- function
@@ -3458,8 +3455,6 @@ ltree_gist -- type
 ltxtquery -- type
 -- Extension: tsm_system_rows
 system_rows() -- function
--- Extension: ltree_plpythonu
-ltree_to_plpython() -- function
 -- Extension: adminpack
 pg_file_length() -- function
 pg_file_read() -- function
@@ -3799,9 +3794,9 @@ autoinc() -- function
 us_gaz -- table
 us_lex -- table
 us_rules -- table
--- Extension: hstore_plpython2u
-hstore_to_plpython2() -- function
-plpython2_to_hstore() -- function
+-- Extension: hstore_plpython3u
+hstore_to_plpython3() -- function
+plpython3_to_hstore() -- function
 -- Extension: postgis_topology
 addedge() -- function
 addface() -- function
@@ -4430,10 +4425,6 @@ hstore_to_plperl() -- function
 plperl_to_hstore() -- function
 -- Extension: moddatetime
 moddatetime() -- function
--- Extension: plpythonu
-plpython_call_handler() -- function
-plpython_inline_handler() -- function
-plpython_validator() -- function
 -- Extension: fuzzystrmatch
 difference() -- function
 dmetaphone() -- function
@@ -4443,8 +4434,8 @@ levenshtein_less_equal() -- function
 metaphone() -- function
 soundex() -- function
 text_soundex() -- function
--- Extension: ltree_plpython2u
-ltree_to_plpython2() -- function
+-- Extension: ltree_plpython3u
+ltree_to_plpython3() -- function
 -- Extension: pgrouting
 pgr_alphashape() -- function
 pgr_analyzegraph() -- function
@@ -4490,6 +4481,7 @@ pgr_kdijkstrapath() -- function
 pgr_ksp() -- function
 pgr_labelgraph() -- function
 pgr_linegraph() -- function
+pgr_linegraphfull() -- function
 pgr_maxcardinalitymatch() -- function
 pgr_maxflow() -- function
 pgr_maxflowboykovkolmogorov() -- function
@@ -4615,9 +4607,6 @@ postgres_fdw_validator() -- function
 blhandler() -- function
 -- Extension: pltcl
 pltcl_call_handler() -- function
--- Extension: hstore_plpythonu
-hstore_to_plpython() -- function
-plpython_to_hstore() -- function
 -- Extension: citext
 citext() -- function
 citext_cmp() -- function
@@ -4675,16 +4664,14 @@ fuzzystrmatch
 hstore
 hstore_plperl
 hstore_plperlu
-hstore_plpython2u
-hstore_plpythonu
+hstore_plpython3u
 insert_username
 intagg
 intarray
 isn
 lo
 ltree
-ltree_plpython2u
-ltree_plpythonu
+ltree_plpython3u
 moddatetime
 pageinspect
 pg_buffercache
@@ -4702,8 +4689,7 @@ pldbgapi
 plperl
 plperlu
 plpgsql
-plpython2u
-plpythonu
+plpython3u
 pltcl
 pltclu
 postgis

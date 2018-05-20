@@ -113,6 +113,29 @@ begin
 
   end loop;
 
+  for _ext in select extname from legacy_extension_names() loop
+
+    return query
+    select format('" Extension: %s', _ext.extname);
+
+    return query
+    select format('if index(get(g:, ''pgsql_disabled_extensions'', []), ''%s'') == -1', _ext.extname);
+
+    return query
+    with T as (
+      select sum(char_length(synkeyword)) over (partition by synclass order by synkeyword) num, synclass, synkeyword
+        from get_legacy_extension_objects(_ext.extname)
+      )
+      select format('  syn keyword sql%s contained %s', initcap(synclass), string_agg(regexp_replace(synkeyword, '^\w+\.|"', '', 'g'), ' ')) -- remove schema name and double quotes
+        from T
+      group by synclass, num / (_wrap - 1)
+      order by synclass, num / (_wrap - 1);
+
+    return query
+      select format('endif " %s', _ext.extname);
+
+  end loop;
+
   return;
 end;
 $$;
@@ -165,6 +188,8 @@ select '" Built-in functions';
 select vim_format(array(select get_builtin_functions()), 'Function');
 select '" Extensions names';
 select vim_format(array(select extname from extension_names() where not extname ~* '-'), 'Constant');
+select '" Legacy extensions names';
+select vim_format(array(select extname from legacy_extension_names() where not extname ~* '-'), 'Constant');
 select vim_format_extensions();
 select '" Catalog tables';
 select vim_format(array(select get_catalog_tables()), 'Catalog');
