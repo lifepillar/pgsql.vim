@@ -4643,6 +4643,24 @@ citext -- type
 plpgsql_call_handler() -- function
 plpgsql_inline_handler() -- function
 plpgsql_validator() -- function
+-- Extension: plpythonu
+plpython_call_handler() -- function
+plpython_inline_handler() -- function
+plpython_validator() -- function
+-- Extension: plpython2u
+plpython2_call_handler() -- function
+plpython2_inline_handler() -- function
+plpython2_validator() -- function
+-- Extension: hstore_plpythonu
+hstore_to_plpython() -- function
+plpython_to_hstore() -- function
+-- Extension: hstore_plpython2u
+hstore_to_plpython2() -- function
+plpython2_to_hstore() -- function
+-- Extension: ltree_plpythonu
+ltree_to_plpython() -- function
+-- Extension: ltree_plpython2u
+ltree_to_plpython2() -- function
 -- Extensions names
 address_standardizer
 address_standardizer_data_us
@@ -4707,6 +4725,13 @@ tsm_system_rows
 tsm_system_time
 unaccent
 xml2
+-- Lgeacy extensions names
+hstore_plpython2u
+hstore_plpythonu
+ltree_plpython2u
+ltree_plpythonu
+plpython2u
+plpythonu
 -- Catalog tables
 administrable_role_authorizations
 applicable_roles

@@ -42,6 +42,18 @@ begin
 
   end loop;
 
+  for _ext in select extname from legacy_extension_names() loop
+
+    return query
+    select format('-- Extension: %s', _ext.extname);
+
+    return query
+    select regexp_replace(synkeyword, '^\w+\.|"', '', 'g')       ||
+           case when synclass = 'function' then '()' else '' end ||
+           ' -- ' || synclass
+      from get_legacy_extension_objects(_ext.extname);
+
+  end loop;
   return;
 end;
 $$;
@@ -61,6 +73,8 @@ select synfunction || '()' from get_builtin_functions() order by synfunction;
 select vim_extensions();
 select '-- Extensions names';
 select extname from extension_names() where not extname ~* '-' order by extname;
+select '-- Lgeacy extensions names';
+select extname from legacy_extension_names() where not extname ~* '-' order by extname;
 select '-- Catalog tables';
 select table_name from get_catalog_tables() order by table_name;
 select '-- Built-in keywords';

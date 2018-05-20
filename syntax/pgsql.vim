@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 10.4
-" Automatically generated on 2018-05-20 at 10:59:59
+" Automatically generated on 2018-05-20 at 11:10:18
 
 if exists("b:current_syntax")
   finish
