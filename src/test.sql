@@ -88,9 +88,28 @@ select errcode from get_errcodes() order by errcode;
 
 select
 $HERE$
+--
 -- More checks
+--
+
 -- See https://github.com/lifepillar/pgsql.vim/issues/4
 where cast(t.data #>> '{user,id_str}' as bigint) = 123;
+
+-- Backslashes and quotes are not special in identifiers:
+select "a\" from T;
+select "a\\" from T;
+select "a""" from T;
+select "a'" from T;
+select "a\'" from T;
+
+-- Backslashes and quotes are not special in strings:
+select '\';
+select '\\';
+select '\''';
+select '''' || 'ok';
+select '"';
+select '""';
+select '\"';
 $HERE$;
 
 \o
