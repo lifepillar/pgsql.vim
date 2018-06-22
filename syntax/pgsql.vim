@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 10.4
-" Automatically generated on 2018-05-20 at 11:10:18
+" Automatically generated on 2018-06-22 at 20:20:17
 
 if exists("b:current_syntax")
   finish
@@ -1762,8 +1762,8 @@ syn match sqlNumber "\<\d*\.\=[0-9_]\>"
 syn match sqlVariable "\<_[A-Za-z0-9][A-Za-z0-9_]*\>"
 
 " Strings
-syn region sqlIdentifier start=+"+  skip=+\\\\\|\\"+  end=+"+
-syn region sqlString     start=+'+  skip=+\\\\\|\\'+  end=+'+ contains=@Spell
+syn region sqlIdentifier start=+"+ end=+"+
+syn region sqlString     start=+'+ end=+'+ contains=@Spell
 syn region sqlString     start=+\$HERE\$+ end=+\$HERE\$+
 
 " Operators
