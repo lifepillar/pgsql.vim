@@ -4,8 +4,8 @@
 " Version:      2.1.1
 " License:      This file is placed in the public domain.
 
-" Based on PostgreSQL 10.4
-" Automatically generated on 2018-06-22 at 20:20:17
+" Based on PostgreSQL 10.5
+" Automatically generated on 2018-08-12 at 20:51:33
 
 if exists("b:current_syntax")
   finish
@@ -1711,7 +1711,7 @@ syn keyword sqlErrorCode contained invalid_escape_sequence invalid_foreign_key
 syn keyword sqlErrorCode contained invalid_function_definition invalid_grant_operation invalid_grantor
 syn keyword sqlErrorCode contained invalid_indicator_parameter_value invalid_locator_specification invalid_name
 syn keyword sqlErrorCode contained invalid_object_definition invalid_parameter_value
-syn keyword sqlErrorCode contained invalid_password invalid_preceding_following_size
+syn keyword sqlErrorCode contained invalid_password invalid_preceding_or_following_size
 syn keyword sqlErrorCode contained invalid_prepared_statement_definition invalid_recursion invalid_regular_expression
 syn keyword sqlErrorCode contained invalid_role_specification invalid_row_count_in_limit_clause
 syn keyword sqlErrorCode contained invalid_row_count_in_result_offset_clause
@@ -1726,22 +1726,22 @@ syn keyword sqlErrorCode contained invalid_xml_document invalid_xml_processing_i
 syn keyword sqlErrorCode contained locator_exception lock_file_exists lock_not_available
 syn keyword sqlErrorCode contained modifying_sql_data_not_permitted most_specific_type_mismatch name_too_long
 syn keyword sqlErrorCode contained no_active_sql_transaction
-syn keyword sqlErrorCode contained no_active_sql_transaction_for_branch_transaction no_additional_dynamic_result_sets_returned no_data
-syn keyword sqlErrorCode contained no_data_found nonstandard_use_of_escape_character
+syn keyword sqlErrorCode contained no_active_sql_transaction_for_branch_transaction no_additional_dynamic_result_sets_returned
+syn keyword sqlErrorCode contained no_data no_data_found nonstandard_use_of_escape_character
 syn keyword sqlErrorCode contained not_an_xml_document not_null_violation
-syn keyword sqlErrorCode contained null_value_eliminated_in_set_function null_value_no_indicator_parameter null_value_not_allowed
-syn keyword sqlErrorCode contained numeric_value_out_of_range object_in_use
-syn keyword sqlErrorCode contained object_not_in_prerequisite_state operator_intervention out_of_memory plpgsql_error
-syn keyword sqlErrorCode contained privilege_not_granted privilege_not_revoked
-syn keyword sqlErrorCode contained program_limit_exceeded prohibited_sql_statement_attempted protocol_violation
-syn keyword sqlErrorCode contained query_canceled raise_exception read_only_sql_transaction
+syn keyword sqlErrorCode contained null_value_eliminated_in_set_function null_value_no_indicator_parameter
+syn keyword sqlErrorCode contained null_value_not_allowed numeric_value_out_of_range object_in_use
+syn keyword sqlErrorCode contained object_not_in_prerequisite_state operator_intervention out_of_memory
+syn keyword sqlErrorCode contained plpgsql_error privilege_not_granted privilege_not_revoked
+syn keyword sqlErrorCode contained program_limit_exceeded prohibited_sql_statement_attempted
+syn keyword sqlErrorCode contained protocol_violation query_canceled raise_exception read_only_sql_transaction
 syn keyword sqlErrorCode contained reading_sql_data_not_permitted reserved_name restrict_violation
 syn keyword sqlErrorCode contained savepoint_exception
 syn keyword sqlErrorCode contained schema_and_data_statement_mixing_not_supported sequence_generator_limit_exceeded serialization_failure
 syn keyword sqlErrorCode contained snapshot_too_old sql_routine_exception
 syn keyword sqlErrorCode contained sql_statement_not_yet_complete sqlclient_unable_to_establish_sqlconnection
-syn keyword sqlErrorCode contained sqlserver_rejected_establishment_of_sqlconnection srf_protocol_violated
-syn keyword sqlErrorCode contained stacked_diagnostics_accessed_without_active_handler
+syn keyword sqlErrorCode contained sqlserver_rejected_establishment_of_sqlconnection
+syn keyword sqlErrorCode contained srf_protocol_violated stacked_diagnostics_accessed_without_active_handler
 syn keyword sqlErrorCode contained statement_completion_unknown statement_too_complex
 syn keyword sqlErrorCode contained string_data_length_mismatch string_data_right_truncation substring_error
 syn keyword sqlErrorCode contained successful_completion syntax_error
@@ -1754,6 +1754,9 @@ syn keyword sqlErrorCode contained undefined_file undefined_function undefined_o
 syn keyword sqlErrorCode contained undefined_table unique_violation unterminated_c_string
 syn keyword sqlErrorCode contained untranslatable_character warning windowing_error
 syn keyword sqlErrorCode contained with_check_option_violation wrong_object_type zero_length_character_string
+
+" Legacy error codes
+syn keyword sqlErrorCode contained invalid_preceding_following_size
 
 " Numbers
 syn match sqlNumber "\<\d*\.\=[0-9_]\>"

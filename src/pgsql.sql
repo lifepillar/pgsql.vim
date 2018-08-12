@@ -198,6 +198,9 @@ select vim_format(array(select get_errcodes()), 'ErrorCode');
 
 select
 $HERE$
+" Legacy error codes
+syn keyword sqlErrorCode contained invalid_preceding_following_size
+
 " Numbers
 syn match sqlNumber "\<\d*\.\=[0-9_]\>"
 

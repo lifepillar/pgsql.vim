@@ -5514,7 +5514,7 @@ invalid_name
 invalid_object_definition
 invalid_parameter_value
 invalid_password
-invalid_preceding_following_size
+invalid_preceding_or_following_size
 invalid_prepared_statement_definition
 invalid_recursion
 invalid_regular_expression
