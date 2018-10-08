@@ -214,7 +214,7 @@ if get(g:, 'pgsql_backslash_quote', 0)
   syn region sqlString start=+\$HERE\$+ end=+\$HERE\$+ contains=@Spell
 else
   syn region sqlString start=+E'+ skip=+\\\\\|\\'\|''+ end=+'+ contains=@Spell
-  syn region sqlConstant start=+'+ skip=+''+ end=+'+ contains=@Spell
+  syn region sqlString start=+'+ skip=+''+ end=+'+ contains=@Spell
   syn region sqlString start=+\$HERE\$+ end=+\$HERE\$+ contains=@Spell
 endif
 " Escape String Constants

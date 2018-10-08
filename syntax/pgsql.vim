@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 10.5
-" Automatically generated on 2018-10-08 at 21:57:08
+" Automatically generated on 2018-10-08 at 22:16:29
 
 if exists("b:current_syntax")
   finish
@@ -1771,7 +1771,7 @@ if get(g:, 'pgsql_backslash_quote', 0)
   syn region sqlString start=+\$HERE\$+ end=+\$HERE\$+ contains=@Spell
 else
   syn region sqlString start=+E'+ skip=+\\\\\|\\'\|''+ end=+'+ contains=@Spell
-  syn region sqlConstant start=+'+ skip=+''+ end=+'+ contains=@Spell
+  syn region sqlString start=+'+ skip=+''+ end=+'+ contains=@Spell
   syn region sqlString start=+\$HERE\$+ end=+\$HERE\$+ contains=@Spell
 endif
 " Escape String Constants
