@@ -5647,3 +5647,6 @@ select '\"';
 select U&"\0441\043B\043E\043D" from T;
 select U&"d!0061t!+000061" uescape '!' from T;
 
+-- String constants with C-style escapes
+select E'\b\f\n\r\t''abc\FF\'abc\'';
+

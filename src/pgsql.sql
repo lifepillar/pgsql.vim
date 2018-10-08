@@ -208,10 +208,19 @@ syn match sqlNumber "\<\d*\.\=[0-9_]\>"
 syn match sqlVariable "\<_[A-Za-z0-9][A-Za-z0-9_]*\>"
 
 " Strings
+
+if get(g:, 'pgsql_backslash_quote', 0)
+  syn region sqlString start=+E\?'+ skip=+\\\\\|\\'\|''+ end=+'+ contains=@Spell
+  syn region sqlString start=+\$HERE\$+ end=+\$HERE\$+ contains=@Spell
+else
+  syn region sqlString start=+E'+ skip=+\\\\\|\\'\|''+ end=+'+ contains=@Spell
+  syn region sqlConstant start=+'+ skip=+''+ end=+'+ contains=@Spell
+  syn region sqlString start=+\$HERE\$+ end=+\$HERE\$+ contains=@Spell
+endif
+" Escape String Constants
+" Identifiers
 syn region sqlIdentifier start=+\%(U&\)\?"+ end=+"+
 syn keyword sqlConstant UESCAPE
-syn region sqlString start=+'+ end=+'+ contains=@Spell
-syn region sqlString start=+\$HERE\$+ end=+\$HERE\$+
 
 " Operators
 syn match sqlIsOperator "\%(^\|[^!?~#^@<=>%&|*/+-]\)\zs[!?~#^@<=>%&|*/+-]\+" contains=sqlOperator
