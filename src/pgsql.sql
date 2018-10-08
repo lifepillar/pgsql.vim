@@ -208,9 +208,10 @@ syn match sqlNumber "\<\d*\.\=[0-9_]\>"
 syn match sqlVariable "\<_[A-Za-z0-9][A-Za-z0-9_]*\>"
 
 " Strings
-syn region sqlIdentifier start=+"+ end=+"+
-syn region sqlString     start=+'+ end=+'+ contains=@Spell
-syn region sqlString     start=+\$HERE\$+ end=+\$HERE\$+
+syn region sqlIdentifier start=+\%(U&\)\?"+ end=+"+
+syn keyword sqlConstant UESCAPE
+syn region sqlString start=+'+ end=+'+ contains=@Spell
+syn region sqlString start=+\$HERE\$+ end=+\$HERE\$+
 
 " Operators
 syn match sqlIsOperator "\%(^\|[^!?~#^@<=>%&|*/+-]\)\zs[!?~#^@<=>%&|*/+-]\+" contains=sqlOperator
