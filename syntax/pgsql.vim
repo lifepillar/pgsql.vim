@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 10.5
-" Automatically generated on 2018-10-08 at 22:16:29
+" Automatically generated on 2018-10-23 at 12:16:10
 
 if exists("b:current_syntax")
   finish
@@ -1765,11 +1765,7 @@ syn keyword sqlErrorCode contained invalid_preceding_following_size
 " Numbers
 syn match sqlNumber "\<\d*\.\=[0-9_]\>"
 
-" Variables (identifiers starting with an underscore)
-syn match sqlVariable "\<_[A-Za-z0-9][A-Za-z0-9_]*\>"
-
 " Strings
-
 if get(g:, 'pgsql_backslash_quote', 0)
   syn region sqlString start=+E\?'+ skip=+\\\\\|\\'\|''+ end=+'+ contains=@Spell
   syn region sqlString start=+\$HERE\$+ end=+\$HERE\$+ contains=@Spell
@@ -1842,6 +1838,13 @@ syn keyword sqlPlpgsqlKeyword contained tg_level tg_name tg_nargs tg_op tg_relid
 syn keyword sqlPlpgsqlKeyword contained tg_table_name tg_table_schema tg_tag tg_when then type using
 syn keyword sqlPlpgsqlKeyword contained while
 
+" Variables (identifiers conventionally starting with an underscore)
+syn match sqlplpgsqlVariable "\<_[A-Za-z0-9][A-Za-z0-9_]*\>" contained
+" Numbered arguments
+syn match sqlplpgsqlVariable "\$\d\+" contained
+" @ arguments
+syn match sqlplpgsqlVariable ".\zs@[A-z0-9_]\+" contained
+
 syn region plpgsql matchgroup=sqlString start=+\$pgsql\$+ end=+\$pgsql\$+ keepend contains=ALL
 syn region plpgsql matchgroup=sqlString start=+\$\$+ end=+\$\$+ keepend contains=ALL
 
@@ -1865,6 +1868,7 @@ hi def link sqlFunction       Function
 hi def link sqlIdentifier     Identifier
 hi def link sqlKeyword        sqlSpecial
 hi def link sqlplpgsqlKeyword sqlSpecial
+hi def link sqlplpgsqlVariable Identifier
 hi def link sqlNumber         Number
 hi def link sqlOperator       sqlStatement
 hi def link sqlOption         Define
@@ -1875,7 +1879,6 @@ hi def link sqlTable          Identifier
 hi def link sqlType           Type
 hi def link sqlView           sqlTable
 hi def link sqlTodo           Todo
-hi def link sqlVariable       Identifier
 hi def link sqlPsqlCommand    SpecialKey
 hi def link sqlPsqlKeyword    Keyword
 
