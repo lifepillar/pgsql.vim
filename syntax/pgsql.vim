@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 10.5
-" Automatically generated on 2018-10-23 at 12:16:10
+" Automatically generated on 2018-10-23 at 12:20:34
 
 if exists("b:current_syntax")
   finish
@@ -1839,11 +1839,11 @@ syn keyword sqlPlpgsqlKeyword contained tg_table_name tg_table_schema tg_tag tg_
 syn keyword sqlPlpgsqlKeyword contained while
 
 " Variables (identifiers conventionally starting with an underscore)
-syn match sqlplpgsqlVariable "\<_[A-Za-z0-9][A-Za-z0-9_]*\>" contained
+syn match sqlPlpgsqlVariable "\<_[A-Za-z0-9][A-Za-z0-9_]*\>" contained
 " Numbered arguments
-syn match sqlplpgsqlVariable "\$\d\+" contained
+syn match sqlPlpgsqlVariable "\$\d\+" contained
 " @ arguments
-syn match sqlplpgsqlVariable ".\zs@[A-z0-9_]\+" contained
+syn match sqlPlpgsqlVariable ".\zs@[A-z0-9_]\+" contained
 
 syn region plpgsql matchgroup=sqlString start=+\$pgsql\$+ end=+\$pgsql\$+ keepend contains=ALL
 syn region plpgsql matchgroup=sqlString start=+\$\$+ end=+\$\$+ keepend contains=ALL
@@ -1867,8 +1867,8 @@ hi def link sqlErrorCode      Special
 hi def link sqlFunction       Function
 hi def link sqlIdentifier     Identifier
 hi def link sqlKeyword        sqlSpecial
-hi def link sqlplpgsqlKeyword sqlSpecial
-hi def link sqlplpgsqlVariable Identifier
+hi def link sqlPlpgsqlKeyword sqlSpecial
+hi def link sqlPlpgsqlVariable Identifier
 hi def link sqlNumber         Number
 hi def link sqlOperator       sqlStatement
 hi def link sqlOption         Define
