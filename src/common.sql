@@ -47,7 +47,7 @@ create or replace function recommended_extensions()
 returns table (extname text)
 language sql immutable as
 $$
-  values ('pgrouting'), ('pgtap'), ('pldbgapi'), ('postgis'), ('postgis_topology');
+  values ('pgrouting'), ('pgtap'), ('pldbgapi'), ('postgis'), ('postgis_topology'), ('temporal_tables');
 $$;
 
 

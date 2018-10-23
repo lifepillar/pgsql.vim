@@ -660,8 +660,8 @@ syn keyword sqlConstant contained pageinspect pg_buffercache pg_freespacemap pg_
 syn keyword sqlConstant contained pg_trgm pg_visibility pgcrypto pgrouting pgrowlocks pgstattuple
 syn keyword sqlConstant contained pgtap pldbgapi plperl plperlu plpgsql plpython3u pltcl pltclu
 syn keyword sqlConstant contained postgis postgis_sfcgal postgis_tiger_geocoder postgis_topology
-syn keyword sqlConstant contained postgres_fdw refint seg sslinfo tablefunc tcn timetravel tsm_system_rows
-syn keyword sqlConstant contained tsm_system_time unaccent xml2
+syn keyword sqlConstant contained postgres_fdw refint seg sslinfo tablefunc tcn temporal_tables timetravel
+syn keyword sqlConstant contained tsm_system_rows tsm_system_time unaccent xml2
 " Legacy extensions names
 syn keyword sqlConstant contained hstore_plpython2u hstore_plpythonu ltree_plpython2u
 syn keyword sqlConstant contained ltree_plpythonu plpython2u plpythonu
@@ -976,6 +976,10 @@ endif " ltree
 if index(get(g:, 'pgsql_disabled_extensions', []), 'tsm_system_rows') == -1
   syn keyword sqlFunction contained system_rows
 endif " tsm_system_rows
+" Extension: temporal_tables (v1.2.0)
+if index(get(g:, 'pgsql_disabled_extensions', []), 'temporal_tables') == -1
+  syn keyword sqlFunction contained set_system_time versioning
+endif " temporal_tables
 " Extension: adminpack (v1.1)
 if index(get(g:, 'pgsql_disabled_extensions', []), 'adminpack') == -1
   syn keyword sqlFunction contained pg_file_length pg_file_read pg_file_rename pg_file_unlink

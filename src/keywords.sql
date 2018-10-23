@@ -3455,6 +3455,9 @@ ltree_gist -- type
 ltxtquery -- type
 -- Extension: tsm_system_rows
 system_rows() -- function
+-- Extension: temporal_tables
+set_system_time() -- function
+versioning() -- function
 -- Extension: adminpack
 pg_file_length() -- function
 pg_file_read() -- function
@@ -4720,6 +4723,7 @@ seg
 sslinfo
 tablefunc
 tcn
+temporal_tables
 timetravel
 tsm_system_rows
 tsm_system_time
