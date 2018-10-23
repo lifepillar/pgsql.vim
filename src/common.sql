@@ -191,7 +191,7 @@ begin
     return query
     values ('function', 'hstore_to_plpython'),
            ('function', 'plpython_to_hstore');
-  when 'hstore_plpython2u' then 
+  when 'hstore_plpython2u' then
     return query
     values ('function', 'hstore_to_plpython2'),
            ('function', 'plpython2_to_hstore');
