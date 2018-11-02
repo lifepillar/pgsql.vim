@@ -44,10 +44,22 @@ set cpo&vim
 " IS is excluded, since it is difficult to determine when the
 " ending block is (especially for procedures/functions).
 let s:SQLBlockStart = '^\s*\%('.
-                \ 'if\|else\|elseif\|elsif\|'.
-                \ 'while\|loop\|do\|for\|'.
-                \ 'declare\|begin\|'.
-                \ 'case\|when\|merge\|exception'.
+                \ 'if\>.*\<then\|'.
+                \ 'then\|'.
+                \ 'else\|'.
+                \ 'elseif\>.*\<then\|'.
+                \ 'elsif\>.*\<then\|'.
+                \ 'while\>.*\<loop\|'.
+                \ 'for\>.*\<loop\|'.
+                \ 'foreach\>.*\<loop\|'.
+                \ 'loop\|'.
+                \ 'do\|'.
+                \ 'declare\|'.
+                \ 'begin\|'.
+                \ 'case\|'.
+                \ 'when\|'.
+                \ 'merge\|'.
+                \ 'exception'.
                 \ '\)\>'
 let s:SQLBlockEnd = '^\s*\(end\)\>'
 
