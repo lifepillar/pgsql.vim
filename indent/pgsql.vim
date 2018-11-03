@@ -20,6 +20,17 @@ setlocal indentkeys-=:
 setlocal indentkeys-=0#
 setlocal indentkeys-=e
 
+if has('patch-7.3.694') || (v:version == 703 && has('patch694'))
+    fun! s:shiftwidth()
+        return shiftwidth()
+    endf
+
+else
+    fun! s:shiftwidth()
+        return &sw
+    endf
+endif
+
 " This indicates formatting should take place when one of these
 " expressions is used.  These expressions would normally be something
 " you would type at the BEGINNING of a line
@@ -136,7 +147,7 @@ function! s:CheckToIgnoreRightParen( prev_lnum, num_levels )
     endwhile
 
     " Fallback - just move back one
-    " return a:prev_indent - &sw
+    " return a:prev_indent - s:shiftwidth()
     return ignore_paren
 endfunction
 
@@ -155,7 +166,7 @@ function! s:GetStmtStarterIndent( keyword, curr_lnum )
     let lnum  = a:curr_lnum
 
     " Default - reduce indent by 1
-    let ind = indent(a:curr_lnum) - &sw
+    let ind = indent(a:curr_lnum) - s:shiftwidth()
 
     if a:keyword =~? 'end'
         exec 'normal! ^'
@@ -219,7 +230,7 @@ function! s:ModuloIndent(ind)
     let ind = a:ind
 
     if ind > 0
-        let modulo = ind % &shiftwidth
+        let modulo = ind % s:shiftwidth()
 
         if modulo > 0
             let ind = ind - modulo
@@ -280,7 +291,7 @@ function! GetSQLIndent()
     " where END IF, END, should decrease the indent.
     if prevline =~? s:SQLBlockStart
         " Move indent in
-        let ind = ind + &sw
+        let ind = ind + s:shiftwidth()
         " echom 'prevl - SQLBlockStart - indent ' . ind . '  line: ' . prevline
     elseif prevline =~ '[()]'
         if prevline =~ '('
@@ -297,7 +308,7 @@ function! GetSQLIndent()
         if num_unmatched_left > 0
             " There is a open left parenthesis
             " increase indent
-            let ind = ind + ( &sw * num_unmatched_left )
+            let ind = ind + ( s:shiftwidth() * num_unmatched_left )
         elseif num_unmatched_right > 0
             " if it is an unbalanced parenthesis only unindent if
             " it was part of a command (ie create table(..)  )
@@ -312,7 +323,7 @@ function! GetSQLIndent()
             endif
 
             if (num_unmatched_right - ignore) > 0
-                let ind = ind - ( &sw * (num_unmatched_right - ignore) )
+                let ind = ind - ( s:shiftwidth() * (num_unmatched_right - ignore) )
             endif
 
         endif
@@ -328,12 +339,12 @@ function! GetSQLIndent()
     if line =~? '^\s*els'
         " Any line when you type else will automatically back up one
         " ident level  (ie else, elseif, elsif)
-        let ind = ind - &sw
+        let ind = ind - s:shiftwidth()
         " echom 'curr - else - indent ' . ind
     elseif line =~? '^\s*end\>'
         let ind = s:GetStmtStarterIndent('end', v:lnum)
         " General case for end
-        " let ind = ind - &sw
+        " let ind = ind - s:shiftwidth()
         " echom 'curr - end - indent ' . ind
     elseif line =~? '^\s*when\>'
         let ind = s:GetStmtStarterIndent('when', v:lnum)
@@ -341,7 +352,7 @@ function! GetSQLIndent()
         " clause, do not change the indent level, since these
         " statements do not have a corresponding END statement.
         " if stmt_starter =~? 'case'
-        "    let ind = ind - &sw
+        "    let ind = ind - s:shiftwidth()
         " endif
         " elseif line =~ '^\s*)\s*;\?\s*$'
         " elseif line =~ '^\s*)'
@@ -360,14 +371,14 @@ function! GetSQLIndent()
         " let num_unmatched_right  = s:CountUnbalancedParen( line, ')' )
         " if num_unmatched_right > 0
         " elseif strpart( line, strlen(line)-1, 1 ) =~ ')'
-        " let ind = ind - &sw
+        " let ind = ind - s:shiftwidth()
         if line =~ '^\s*)'
             " let ignore = ignore + 1
             " echom 'curr - begins ) unbalanced ignore: ' . ignore
         endif
 
         if (num_unmatched_right - ignore) > 0
-            let ind = ind - ( &sw * (num_unmatched_right - ignore) )
+            let ind = ind - ( s:shiftwidth() * (num_unmatched_right - ignore) )
         endif
         " endif
     endif
