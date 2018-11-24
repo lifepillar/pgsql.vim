@@ -211,10 +211,8 @@ else
   syn region sqlString start=+E'+ skip=+\\\\\|\\'\|''+ end=+'+ contains=@Spell
   syn region sqlString start=+'+ skip=+''+ end=+'+ contains=@Spell
 endif
+" Multi-line strings ("here" documents)
 syn region sqlString start='\$\z(\w\+\)\$' end='\$\z1\$' contains=@Spell
-if get(g:, 'pgsql_dollars_as_text', 0)
-    syn region sqlString start=+\$\$+ end=+\$\$+ contains=@Spell
-endif
 
 " Escape String Constants
 " Identifiers
@@ -286,8 +284,10 @@ syn match sqlPlpgsqlVariable "\$\d\+" contained
 syn match sqlPlpgsqlVariable ".\zs@[A-z0-9_]\+" contained
 
 syn region plpgsql matchgroup=sqlString start=+\$pgsql\$+ end=+\$pgsql\$+ keepend contains=ALL
-syn region plpgsql matchgroup=sqlString start=+\$BODY\$+ end=+\$BODY\$+ keepend contains=ALL
-if ! get(g:, 'pgsql_dollars_as_text', 0)
+syn region plpgsql matchgroup=sqlString start=+\$body\$+ end=+\$body\$+ keepend contains=ALL
+if get(g:, 'pgsql_dollar_strings', 0)
+  syn region sqlString start=+\$\$+ end=+\$\$+ contains=@Spell
+else
   syn region plpgsql matchgroup=sqlString start=+\$\$+ end=+\$\$+ keepend contains=ALL
 endif
 

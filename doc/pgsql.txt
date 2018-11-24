@@ -43,10 +43,10 @@ Identifiers starting with an underscore are highlighted as
 variables. It is recommended to adopt the convention of prefixing
 function parameters and local variables with `_`.
 
-Code between `$pgsql$`, `$BODY$`, or `$$` pairs is interpreted as
+Code between `$pgsql$`, `$body$`, or `$$` pairs is interpreted as
 PL/pgSQL and highlighted accordingly. To use any other language,
 such as PL/Perl, PL/Python, PL/R, and so on, see
-|pgsql-customization|.  Also see |g:pgsql_dollars_as_text|.
+pgsql-customization|.  See also |g:pgsql_dollar_strings|.
 
 Text enclosed between `$anyword$` pairs is highlighted as a
 (multi-line) string.  `anyword` can be any sequence of word
@@ -86,7 +86,7 @@ enclosed in `E''`.
 
 By default, text quoted with `$$` will be highlighted as PL/pgSQL.
 If you prefer these to be highlighted as SQL strings, you may set
-|g:pgsql_dollars_as_text| to 1.
+|g:pgsql_dollar_strings| to 1.
 
 ====================================================================
 Section 3: Autocompletion                     *pgsql-autocompletion*

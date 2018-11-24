@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 10.5
-" Automatically generated on 2018-10-23 at 12:20:34
+" Automatically generated on 2018-11-24 at 11:16:36
 
 if exists("b:current_syntax")
   finish
@@ -1768,12 +1768,13 @@ syn match sqlNumber "\<\d*\.\=[0-9_]\>"
 " Strings
 if get(g:, 'pgsql_backslash_quote', 0)
   syn region sqlString start=+E\?'+ skip=+\\\\\|\\'\|''+ end=+'+ contains=@Spell
-  syn region sqlString start=+\$HERE\$+ end=+\$HERE\$+ contains=@Spell
 else
   syn region sqlString start=+E'+ skip=+\\\\\|\\'\|''+ end=+'+ contains=@Spell
   syn region sqlString start=+'+ skip=+''+ end=+'+ contains=@Spell
-  syn region sqlString start=+\$HERE\$+ end=+\$HERE\$+ contains=@Spell
 endif
+" Multi-line strings ("here" documents)
+syn region sqlString start='\$\z(\w\+\)\$' end='\$\z1\$' contains=@Spell
+
 " Escape String Constants
 " Identifiers
 syn region sqlIdentifier start=+\%(U&\)\?"+ end=+"+
@@ -1846,7 +1847,12 @@ syn match sqlPlpgsqlVariable "\$\d\+" contained
 syn match sqlPlpgsqlVariable ".\zs@[A-z0-9_]\+" contained
 
 syn region plpgsql matchgroup=sqlString start=+\$pgsql\$+ end=+\$pgsql\$+ keepend contains=ALL
-syn region plpgsql matchgroup=sqlString start=+\$\$+ end=+\$\$+ keepend contains=ALL
+syn region plpgsql matchgroup=sqlString start=+\$body\$+ end=+\$body\$+ keepend contains=ALL
+if get(g:, 'pgsql_dollar_strings', 0)
+  syn region sqlString start=+\$\$+ end=+\$\$+ contains=@Spell
+else
+  syn region plpgsql matchgroup=sqlString start=+\$\$+ end=+\$\$+ keepend contains=ALL
+endif
 
 " PL/<any other language>
 fun! s:add_syntax(s)
