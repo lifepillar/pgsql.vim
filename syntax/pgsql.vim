@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 10.5
-" Automatically generated on 2018-11-24 at 11:16:36
+" Automatically generated on 2018-11-27 at 21:13:00
 
 if exists("b:current_syntax")
   finish
@@ -1858,7 +1858,7 @@ endif
 fun! s:add_syntax(s)
   execute 'syn include @PL' . a:s . ' syntax/' . a:s . '.vim'
   unlet b:current_syntax
-  execute 'syn region pgsqlpl' . a:s . ' start=+\$' . a:s . '\$+ end=+\$' . a:s . '\$+ keepend contains=@PL' . a:s
+  execute 'syn region pgsqlpl' . a:s . ' matchgroup=sqlString start=+\$' . a:s . '\$+ end=+\$' . a:s . '\$+ keepend contains=@PL' . a:s
 endf
 
 for pl in get(b:, 'pgsql_pl', get(g:, 'pgsql_pl', []))
