@@ -108,6 +108,21 @@ begin
       group by synclass, num / (_wrap - 1)
       order by synclass, num / (_wrap - 1);
 
+      if _ext.extname = 'postgis' then
+        return query
+        select '  syn keyword sqlFunction contained geometry_eq pgis_abs_in pgis_abs_out pgis_abs';
+      end if;
+
+      if _ext.extname = 'cube' then
+        return query
+        select '  syn keyword sqlFunction contained g_cube_compress g_cube_decompress';
+      end if;
+
+      if _ext.extname = 'seg' then
+        return query
+        select '  syn keyword sqlFunction contained gseg_compress gseg_decompress';
+      end if;
+
     return query
       select format('endif " %s', _ext.extname);
 
@@ -150,7 +165,7 @@ select
 $HERE$" Vim syntax file
 " Language:     SQL (PostgreSQL dialect), PL/pgSQL, PL/…, PostGIS, …
 " Maintainer:   Lifepillar
-" Version:      2.1.1
+" Version:      2.2.0
 " License:      This file is placed in the public domain.
 $HERE$;
 
@@ -198,6 +213,12 @@ select vim_format(array(select get_errcodes()), 'ErrorCode');
 
 select
 $HERE$
+" Legacy keywords
+syn keyword sqlFunction contained gist_box_compress gist_box_decompress gist_box_fetch
+syn keyword sqlFunction contained gtsquery_decompress inet_gist_decompress
+syn keyword sqlFunction contained pg_file_length pg_file_read pg_logfile_rotate
+syn keyword sqlFunction contained range_gist_compress range_gist_decompress range_gist_fetch
+
 " Legacy error codes
 syn keyword sqlErrorCode contained invalid_preceding_following_size
 
