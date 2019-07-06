@@ -20,7 +20,7 @@ setlocal indentkeys-=:
 setlocal indentkeys-=0#
 setlocal indentkeys-=e
 
-if has('patch-7.3.694') || (v:version == 703 && has('patch694'))
+if exists('*shiftwidth')
     fun! s:shiftwidth()
         return shiftwidth()
     endf
