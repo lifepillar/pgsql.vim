@@ -73,7 +73,7 @@ select synfunction || '()' from get_builtin_functions() order by synfunction;
 select vim_extensions();
 select '-- Extensions names';
 select extname from extension_names() where not extname ~* '-' order by extname;
-select '-- Lgeacy extensions names';
+select '-- Legacy extensions names';
 select extname from legacy_extension_names() where not extname ~* '-' order by extname;
 select '-- Catalog tables';
 select table_name from get_catalog_tables() order by table_name;
