@@ -1,11 +1,11 @@
 " Vim syntax file
 " Language:     SQL (PostgreSQL dialect), PL/pgSQL, PL/…, PostGIS, …
 " Maintainer:   Lifepillar
-" Version:      2.2.0
+" Version:      2.2.2
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 11.4
-" Automatically generated on 2019-07-06 at 13:59:18
+" Automatically generated on 2019-07-06 at 14:01:09
 
 if exists("b:current_syntax")
   finish
