@@ -17,12 +17,18 @@ create or replace function legacy_extension_names()
 returns table (extname name)
 language sql immutable as
 $$
+  -- Python is here because it's sh... because Homebrew's PostgreSQL does not
+  -- come with Python extensions, and I'm lazy.
   values ('plpythonu'::name),
          ('plpython2u'::name),
+         ('plpython3u'::name),
          ('hstore_plpythonu'::name),
          ('hstore_plpython2u'::name),
+         ('hstore_plpython3u'::name),
+         ('jsonb_plpython3u'::name),
          ('ltree_plpythonu'::name),
          ('ltree_plpython2u'::name),
+         ('ltree_plpython3u'::name),
          ('pldbgapi'::name),
          ('chkpass'::name);
 $$;
@@ -40,9 +46,6 @@ $$
    where name not in ( -- Extensions to skip
                        'citus',
                        'cstore_fdw',
-                       'jsonb_plpythonu',
-                       'jsonb_plpython2u',
-                       'pldbgapi', -- Not available for PostgreSQL 11 or later?
                        'plr' -- Not available for PostgreSQL 9.6 or later?
                      )
      and name not in (select extname::name from public.legacy_extension_names());
@@ -193,6 +196,11 @@ begin
     values ('function', 'plpython2_call_handler'),
            ('function', 'plpython2_inline_handler'),
            ('function', 'plpython2_validator');
+  when 'plpython3u' then
+    return query
+    values ('function', 'plpython3_call_handler'),
+           ('function', 'plpython3_inline_handler'),
+           ('function', 'plpython3_validator');
   when 'hstore_plpythonu' then
     return query
     values ('function', 'hstore_to_plpython'),
@@ -201,12 +209,23 @@ begin
     return query
     values ('function', 'hstore_to_plpython2'),
            ('function', 'plpython2_to_hstore');
+  when 'hstore_plpython3u' then
+    return query
+    values ('function', 'hstore_to_plpython3'),
+           ('function', 'plpython3_to_hstore');
+  when 'jsonb_plpython3u' then
+    return query
+    values ('function', 'jsonb_to_plpython3'),
+           ('function', 'plpython3_to_jsonb');
   when 'ltree_plpythonu' then
     return query
     values ('function', 'ltree_to_plpython');
   when 'ltree_plpython2u' then
     return query
     values ('function', 'ltree_to_plpython2');
+  when 'ltree_plpython3u' then
+    return query
+    values ('function', 'ltree_to_plpython3');
   when 'pldbgapi' then
     return query
     values ('function', 'pldbg_abort_target'),

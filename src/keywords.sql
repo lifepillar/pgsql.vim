@@ -2057,9 +2057,6 @@ plperlu_validator()
 plpgsql_call_handler()
 plpgsql_inline_handler()
 plpgsql_validator()
-plpython3_call_handler()
-plpython3_inline_handler()
-plpython3_validator()
 pltcl_call_handler()
 pltclu_call_handler()
 point()
@@ -3480,10 +3477,6 @@ gin_extract_value_timetz() -- function
 gin_extract_value_uuid() -- function
 gin_extract_value_varbit() -- function
 gin_numeric_cmp() -- function
--- Extension: plpython3u
-plpython3_call_handler() -- function
-plpython3_inline_handler() -- function
-plpython3_validator() -- function
 -- Extension: ltree
 index() -- function
 lca() -- function
@@ -3839,9 +3832,6 @@ lo_oid() -- function
 lo -- type
 -- Extension: pgrowlocks
 pgrowlocks() -- function
--- Extension: jsonb_plpython3u
-jsonb_to_plpython3() -- function
-plpython3_to_jsonb() -- function
 -- Extension: sslinfo
 ssl_cipher() -- function
 ssl_client_cert_present() -- function
@@ -3866,9 +3856,6 @@ autoinc() -- function
 us_gaz -- table
 us_lex -- table
 us_rules -- table
--- Extension: hstore_plpython3u
-hstore_to_plpython3() -- function
-plpython3_to_hstore() -- function
 -- Extension: postgis_topology
 addedge() -- function
 addface() -- function
@@ -4526,8 +4513,6 @@ levenshtein_less_equal() -- function
 metaphone() -- function
 soundex() -- function
 text_soundex() -- function
--- Extension: ltree_plpython3u
-ltree_to_plpython3() -- function
 -- Extension: pgrouting
 pgr_alphashape() -- function
 pgr_analyzegraph() -- function
@@ -4724,16 +4709,28 @@ plpython_validator() -- function
 plpython2_call_handler() -- function
 plpython2_inline_handler() -- function
 plpython2_validator() -- function
+-- Extension: plpython3u
+plpython3_call_handler() -- function
+plpython3_inline_handler() -- function
+plpython3_validator() -- function
 -- Extension: hstore_plpythonu
 hstore_to_plpython() -- function
 plpython_to_hstore() -- function
 -- Extension: hstore_plpython2u
 hstore_to_plpython2() -- function
 plpython2_to_hstore() -- function
+-- Extension: hstore_plpython3u
+hstore_to_plpython3() -- function
+plpython3_to_hstore() -- function
+-- Extension: jsonb_plpython3u
+jsonb_to_plpython3() -- function
+plpython3_to_jsonb() -- function
 -- Extension: ltree_plpythonu
 ltree_to_plpython() -- function
 -- Extension: ltree_plpython2u
 ltree_to_plpython2() -- function
+-- Extension: ltree_plpython3u
+ltree_to_plpython3() -- function
 -- Extension: pldbgapi
 pldbg_abort_target() -- function
 pldbg_attach_to_port() -- function
@@ -4786,17 +4783,14 @@ fuzzystrmatch
 hstore
 hstore_plperl
 hstore_plperlu
-hstore_plpython3u
 insert_username
 intagg
 intarray
 isn
 jsonb_plperl
 jsonb_plperlu
-jsonb_plpython3u
 lo
 ltree
-ltree_plpython3u
 moddatetime
 pageinspect
 pg_buffercache
@@ -4813,7 +4807,6 @@ pgtap
 plperl
 plperlu
 plpgsql
-plpython3u
 pltcl
 pltclu
 postgis
@@ -4832,14 +4825,18 @@ tsm_system_rows
 tsm_system_time
 unaccent
 xml2
--- Lgeacy extensions names
+-- Legacy extensions names
 chkpass
 hstore_plpython2u
+hstore_plpython3u
 hstore_plpythonu
+jsonb_plpython3u
 ltree_plpython2u
+ltree_plpython3u
 ltree_plpythonu
 pldbgapi
 plpython2u
+plpython3u
 plpythonu
 -- Catalog tables
 administrable_role_authorizations
@@ -5551,6 +5548,7 @@ duplicate_cursor
 duplicate_database
 duplicate_file
 duplicate_function
+duplicate_json_object_key_value
 duplicate_object
 duplicate_prepared_statement
 duplicate_schema
@@ -5634,6 +5632,8 @@ invalid_function_definition
 invalid_grant_operation
 invalid_grantor
 invalid_indicator_parameter_value
+invalid_json_subscript
+invalid_json_text
 invalid_locator_specification
 invalid_name
 invalid_object_definition
@@ -5665,10 +5665,15 @@ invalid_xml_content
 invalid_xml_document
 invalid_xml_processing_instruction
 io_error
+json_array_not_found
+json_member_not_found
+json_number_not_found
+json_scalar_required
 locator_exception
 lock_file_exists
 lock_not_available
 modifying_sql_data_not_permitted
+more_than_one_json_item
 most_specific_type_mismatch
 name_too_long
 no_active_sql_transaction
@@ -5676,6 +5681,9 @@ no_active_sql_transaction_for_branch_transaction
 no_additional_dynamic_result_sets_returned
 no_data
 no_data_found
+no_json_item
+non_numeric_json_item
+non_unique_keys_in_json_object
 nonstandard_use_of_escape_character
 not_an_xml_document
 not_null_violation
@@ -5684,6 +5692,7 @@ null_value_no_indicator_parameter
 null_value_not_allowed
 numeric_value_out_of_range
 object_in_use
+object_not_found
 object_not_in_prerequisite_state
 operator_intervention
 out_of_memory
@@ -5703,6 +5712,7 @@ savepoint_exception
 schema_and_data_statement_mixing_not_supported
 sequence_generator_limit_exceeded
 serialization_failure
+singleton_json_item_required
 snapshot_too_old
 sql_routine_exception
 sql_statement_not_yet_complete
@@ -5722,6 +5732,8 @@ system_error
 too_many_arguments
 too_many_columns
 too_many_connections
+too_many_json_array_elements
+too_many_json_object_members
 too_many_rows
 transaction_integrity_constraint_violation
 transaction_resolution_unknown
