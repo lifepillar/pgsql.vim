@@ -37,7 +37,7 @@ endif
 " SQL is generally case insensitive, so this files assumes that
 " These keywords are something that would trigger an indent LEFT, not
 " an indent right, since the SQLBlockStart is used for those keywords
-setlocal indentkeys+==~begin,=~end,=~else,=~elseif,=~elsif,0=~when,0=)
+setlocal indentkeys+==~begin,=~end,=~else,=~elseif,=~elsif,0=~when,=~exception,0=)
 
 " GetSQLIndent is executed whenever one of the expressions
 " in the indentkeys is typed
@@ -336,7 +336,7 @@ function! GetSQLIndent()
     " Check current line; search for simplistic matching start-of-block
     let line = getline(v:lnum)
 
-    if line =~? '^\s*els' || line =~? '^\s*begin'
+    if line =~? '^\s*els' || line =~? '^\s*begin' || line =~? '^\s*exception'
         " Any line when you type else will automatically back up one
         " ident level  (ie else, elseif, elsif)
         let ind = ind - s:shiftwidth()
