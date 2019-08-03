@@ -43,10 +43,6 @@ setlocal indentkeys+==~begin,=~end,=~else,=~elseif,=~elsif,0=~when,=~exception,0
 " in the indentkeys is typed
 setlocal indentexpr=GetSQLIndent()
 
-" Only define the functions once.
-if exists("*GetSQLIndent")
-    finish
-endif
 let s:keepcpo= &cpo
 set cpo&vim
 
