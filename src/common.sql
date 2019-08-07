@@ -175,6 +175,8 @@ $$
   values ('century'), ('decade'), ('dow'), ('doy'), ('epoch'), ('isodow'), ('isoyear'),
          ('microseconds'), ('millennium'), ('milliseconds'), ('quarter'),
          ('timezone'), ('timezone_hour'), ('timezone_minute'), ('week')
+  union -- See CREATE FUNCTION's syntax (somehow, these are not returned by pg_get_keyword() as of v11.4)
+  values ('restricted'), ('safe'), ('unsafe')
   except
   (select stm from get_statements()
    union

@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 11.4
-" Automatically generated on 2019-08-07 at 15:06:49
+" Automatically generated on 2019-08-07 at 15:23:38
 
 if exists("b:current_syntax")
   finish
@@ -102,20 +102,20 @@ syn keyword sqlKeyword contained parallel parser partial partition passing passw
 syn keyword sqlKeyword contained policy position preceding preserve primary prior privileges procedural
 syn keyword sqlKeyword contained procedure procedures program publication quarter quote range read
 syn keyword sqlKeyword contained recheck recursive ref references referencing relative rename
-syn keyword sqlKeyword contained repeatable replace replica restart restrict returning returns right role
-syn keyword sqlKeyword contained rollup routine routines row rows rule schema schemas scroll search
-syn keyword sqlKeyword contained second sequence sequences serializable server session session_user
-syn keyword sqlKeyword contained setof sets share similar simple skip snapshot some sql stable standalone
-syn keyword sqlKeyword contained statement statistics stdin stdout storage strict strip
-syn keyword sqlKeyword contained subscription substring symmetric sysid system table tables tablesample
-syn keyword sqlKeyword contained tablespace temp template temporary then ties timezone timezone_hour
-syn keyword sqlKeyword contained timezone_minute to trailing transform treat trigger trim true trusted type
-syn keyword sqlKeyword contained types unbounded uncommitted unencrypted union unique unknown
-syn keyword sqlKeyword contained unlogged until user using valid validate validator value variadic verbose
-syn keyword sqlKeyword contained version view views volatile week when where whitespace window with
-syn keyword sqlKeyword contained within wrapper write xmlattributes xmlconcat xmlelement xmlexists
-syn keyword sqlKeyword contained xmlforest xmlnamespaces xmlparse xmlpi xmlroot xmlserialize
-syn keyword sqlKeyword contained xmltable year yes
+syn keyword sqlKeyword contained repeatable replace replica restart restrict restricted returning returns
+syn keyword sqlKeyword contained right role rollup routine routines row rows rule safe schema schemas
+syn keyword sqlKeyword contained scroll search second sequence sequences serializable server session
+syn keyword sqlKeyword contained session_user setof sets share similar simple skip snapshot some sql
+syn keyword sqlKeyword contained stable standalone statement statistics stdin stdout storage strict
+syn keyword sqlKeyword contained strip subscription substring symmetric sysid system table tables
+syn keyword sqlKeyword contained tablesample tablespace temp template temporary then ties timezone
+syn keyword sqlKeyword contained timezone_hour timezone_minute to trailing transform treat trigger trim
+syn keyword sqlKeyword contained true trusted type types unbounded uncommitted unencrypted union
+syn keyword sqlKeyword contained unique unknown unlogged unsafe until user using valid validate validator
+syn keyword sqlKeyword contained value variadic verbose version view views volatile week when where
+syn keyword sqlKeyword contained whitespace window with within wrapper write xmlattributes xmlconcat
+syn keyword sqlKeyword contained xmlelement xmlexists xmlforest xmlnamespaces xmlparse xmlpi
+syn keyword sqlKeyword contained xmlroot xmlserialize xmltable year yes
 syn keyword sqlConstant contained information_schema pg_catalog
 " Built-in functions
 syn keyword sqlFunction contained RI_FKey_cascade_del RI_FKey_cascade_upd RI_FKey_check_ins
@@ -1911,16 +1911,18 @@ syn match sqlPlpgsqlVariable "\<_[A-Za-z0-9][A-Za-z0-9_]*\>" contained
 syn match sqlPlpgsqlVariable "\$\d\+" contained
 " @ arguments
 syn match sqlPlpgsqlVariable ".\zs@[A-z0-9_]\+" contained
+" PL/pgSQL operators
+syn match sqlPlpgsqlOperator ":=" contained
 
 syn region plpgsql matchgroup=sqlString start=+\$pgsql\$+ end=+\$pgsql\$+ keepend
-  \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlNumber,sqlOperator,sqlString,sqlTodo
+  \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlPlpgsqlOperator,sqlNumber,sqlOperator,sqlString,sqlTodo
 syn region plpgsql matchgroup=sqlString start=+\$body\$+ end=+\$body\$+ keepend
-  \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlNumber,sqlOperator,sqlString,sqlTodo
+  \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlPlpgsqlOperator,sqlNumber,sqlOperator,sqlString,sqlTodo
 if get(g:, 'pgsql_dollar_strings', 0)
   syn region sqlString start=+\$\$+ end=+\$\$+ contains=@Spell
 else
   syn region plpgsql matchgroup=sqlString start=+\$\$+ end=+\$\$+ keepend
-    \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlNumber,sqlOperator,sqlString,sqlTodo
+    \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlPlpgsqlOperator,sqlNumber,sqlOperator,sqlString,sqlTodo
 endif
 
 " PL/<any other language>
@@ -1944,6 +1946,7 @@ hi def link sqlIdentifier     Identifier
 hi def link sqlKeyword        sqlSpecial
 hi def link sqlPlpgsqlKeyword sqlSpecial
 hi def link sqlPlpgsqlVariable Identifier
+hi def link sqlPlpgsqlOperator sqlOperator
 hi def link sqlNumber         Number
 hi def link sqlOperator       sqlStatement
 hi def link sqlOption         Define

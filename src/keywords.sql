@@ -5294,6 +5294,7 @@ replace
 replica
 restart
 restrict
+restricted
 returning
 returns
 right
@@ -5304,6 +5305,7 @@ routines
 row
 rows
 rule
+safe
 schema
 schemas
 scroll
@@ -5367,6 +5369,7 @@ union
 unique
 unknown
 unlogged
+unsafe
 until
 user
 using
