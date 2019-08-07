@@ -254,6 +254,18 @@ syn region sqlComment    start="/\*" end="\*/" contains=sqlTodo,@Spell
 syn match  sqlComment    "#\s.*$"              contains=sqlTodo,@Spell
 syn match  sqlComment    "--.*$"               contains=sqlTodo,@Spell
 
+" CREATE TYPE statement
+syn region sqlCreateType start=+create\s\+type.*(+ end=+)+
+      \ contains=sqlStatement,sqlKeyword,sqlCreateTypeKeyword,sqlOperator,sqlType,sqlString,sqlComment,sqlConstant,sqlNumber,sqlTodo
+syn keyword sqlCreateTypeKeyword contained input output receive send typmod_in typmod_out analyze internallength passedbyvalue
+syn keyword sqlCreateTypeKeyword contained alignment storage like category preferred default element delimiter collatable
+syn keyword sqlCreateTypeKeyword contained collate subtype subtype_opclass canonical subtype_diff
+
+" CREATE OPERATOR [CLASS] statements
+syn region sqlCreateOperator start=+create\s\+operator.*(+ end=+)+
+      \ contains=sqlStatement,sqlKeyword,sqlCreateOperatorKeyword,sqlOperator,sqlType,sqlString,sqlComment,sqlConstant,sqlNumber,sqlTodo
+syn keyword sqlCreateOperatorKeyword contained function procedure leftarg rightarg commutator negator restrict join hashes merges
+
 " Options
 syn keyword sqlOption contained client_min_messages search_path
 
@@ -352,6 +364,8 @@ hi def link sqlView           sqlTable
 hi def link sqlTodo           Todo
 hi def link sqlPsqlCommand    SpecialKey
 hi def link sqlPsqlKeyword    Keyword
+hi def link sqlCreateTypeKeyword sqlKeyword
+hi def link sqlCreateOperatorKeyword sqlKeyword
 
 let b:current_syntax = "sql"
 $HERE$;
