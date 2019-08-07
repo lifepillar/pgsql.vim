@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 11.4
-" Automatically generated on 2019-08-07 at 15:44:22
+" Automatically generated on 2019-08-07 at 16:02:27
 
 if exists("b:current_syntax")
   finish
@@ -1863,14 +1863,14 @@ syn match  sqlComment    "--.*$"               contains=sqlTodo,@Spell
 
 " CREATE TYPE statement
 syn region sqlCreateType start=+create\s\+type.*(+ end=+)+
-      \ contains=sqlStatement,sqlKeyword,sqlCreateTypeKeyword,sqlOperator,sqlType,sqlString,sqlComment,sqlConstant,sqlNumber,sqlTodo
+      \ contains=sqlIsKeyword,sqlCreateTypeKeyword,sqlIsOperator,sqlString,sqlComment,sqlNumber,sqlTodo
 syn keyword sqlCreateTypeKeyword contained input output receive send typmod_in typmod_out analyze internallength passedbyvalue
 syn keyword sqlCreateTypeKeyword contained alignment storage like category preferred default element delimiter collatable
 syn keyword sqlCreateTypeKeyword contained collate subtype subtype_opclass canonical subtype_diff
 
-" CREATE OPERATOR statement
+" CREATE OPERATOR [CLASS] statements
 syn region sqlCreateOperator start=+create\s\+operator.*(+ end=+)+
-      \ contains=sqlStatement,sqlKeyword,sqlCreateOperatorKeyword,sqlOperator,sqlType,sqlString,sqlComment,sqlConstant,sqlNumber,sqlTodo
+      \ contains=sqlIsKeyword,sqlCreateOperatorKeyword,sqlIsOperator,sqlString,sqlComment,sqlNumber,sqlTodo
 syn keyword sqlCreateOperatorKeyword contained function procedure leftarg rightarg commutator negator restrict join hashes merges
 
 " Options
@@ -1927,14 +1927,14 @@ syn match sqlPlpgsqlVariable ".\zs@[A-z0-9_]\+" contained
 syn match sqlPlpgsqlOperator ":=" contained
 
 syn region plpgsql matchgroup=sqlString start=+\$pgsql\$+ end=+\$pgsql\$+ keepend
-  \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlPlpgsqlOperator,sqlNumber,sqlOperator,sqlString,sqlTodo
+  \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlPlpgsqlOperator,sqlNumber,sqlIsOperator,sqlString,sqlTodo
 syn region plpgsql matchgroup=sqlString start=+\$body\$+ end=+\$body\$+ keepend
-  \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlPlpgsqlOperator,sqlNumber,sqlOperator,sqlString,sqlTodo
+  \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlPlpgsqlOperator,sqlNumber,sqlIsOperator,sqlString,sqlTodo
 if get(g:, 'pgsql_dollar_strings', 0)
   syn region sqlString start=+\$\$+ end=+\$\$+ contains=@Spell
 else
   syn region plpgsql matchgroup=sqlString start=+\$\$+ end=+\$\$+ keepend
-    \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlPlpgsqlOperator,sqlNumber,sqlOperator,sqlString,sqlTodo
+    \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlPlpgsqlOperator,sqlNumber,sqlIsOperator,sqlString,sqlTodo
 endif
 
 " PL/<any other language>
