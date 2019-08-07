@@ -130,6 +130,8 @@ $$
     left join pg_catalog.pg_namespace n
       on n.oid = o.oprnamespace
    where pg_catalog.pg_operator_is_visible(o.oid)
+   union
+   values ('=>') -- See https://www.postgresql.org/docs/current/functions-datetime.html (make_interval())
    order by keyword;
 $$;
 
