@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 11.4
-" Automatically generated on 2019-08-07 at 14:30:57
+" Automatically generated on 2019-08-07 at 15:06:49
 
 if exists("b:current_syntax")
   finish
@@ -1912,12 +1912,15 @@ syn match sqlPlpgsqlVariable "\$\d\+" contained
 " @ arguments
 syn match sqlPlpgsqlVariable ".\zs@[A-z0-9_]\+" contained
 
-syn region plpgsql matchgroup=sqlString start=+\$pgsql\$+ end=+\$pgsql\$+ keepend contains=ALL
-syn region plpgsql matchgroup=sqlString start=+\$body\$+ end=+\$body\$+ keepend contains=ALL
+syn region plpgsql matchgroup=sqlString start=+\$pgsql\$+ end=+\$pgsql\$+ keepend
+  \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlNumber,sqlOperator,sqlString,sqlTodo
+syn region plpgsql matchgroup=sqlString start=+\$body\$+ end=+\$body\$+ keepend
+  \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlNumber,sqlOperator,sqlString,sqlTodo
 if get(g:, 'pgsql_dollar_strings', 0)
   syn region sqlString start=+\$\$+ end=+\$\$+ contains=@Spell
 else
-  syn region plpgsql matchgroup=sqlString start=+\$\$+ end=+\$\$+ keepend contains=ALL
+  syn region plpgsql matchgroup=sqlString start=+\$\$+ end=+\$\$+ keepend
+    \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlNumber,sqlOperator,sqlString,sqlTodo
 endif
 
 " PL/<any other language>
