@@ -274,6 +274,7 @@ zip_state
 zip_state_loc
 -- Additional types
 array
+at
 bigint
 bigserial
 bit
@@ -299,6 +300,7 @@ text
 timestamp
 varchar
 varying
+without
 xml
 zone
 pg_toast_1234
@@ -5041,7 +5043,6 @@ asc
 assertion
 assignment
 asymmetric
-at
 attach
 attribute
 authorization
@@ -5059,6 +5060,7 @@ cascaded
 case
 cast
 catalog
+century
 chain
 characteristics
 check
@@ -5095,6 +5097,7 @@ data
 database
 day
 dec
+decade
 default
 defaults
 deferrable
@@ -5110,12 +5113,15 @@ disable
 distinct
 document
 domain
+dow
+doy
 each
 else
 enable
 encoding
 encrypted
 enum
+epoch
 escape
 event
 except
@@ -5179,7 +5185,9 @@ into
 invoker
 is
 isnull
+isodow
 isolation
+isoyear
 join
 key
 language
@@ -5204,6 +5212,9 @@ match
 materialized
 maxvalue
 method
+microseconds
+millennium
+milliseconds
 minute
 minvalue
 mode
@@ -5267,6 +5278,7 @@ procedure
 procedures
 program
 publication
+quarter
 quote
 range
 read
@@ -5335,6 +5347,9 @@ template
 temporary
 then
 ties
+timezone
+timezone_hour
+timezone_minute
 to
 trailing
 transform
@@ -5365,13 +5380,13 @@ version
 view
 views
 volatile
+week
 when
 where
 whitespace
 window
 with
 within
-without
 wrapper
 write
 xmlattributes
@@ -5787,4 +5802,27 @@ select U&"d!0061t!+000061" uescape '!' from T;
 
 -- String constants with C-style escapes
 select E'\b\f\n\r\t''abc\FF\'abc\'';
+
+-- Datetime expressions (https://www.postgresql.org/docs/current/functions-datetime.html)
+select make_interval(days => 10);
+select timestamp with time zone '2005-04-02 12:00-07' + interval '1 day';
+select timestamp without time zone '2005-04-02 12:00-07' + interval '1 day'
+select extract(epoch from timestamptz '2013-07-01 12:00:00') -
+       extract(epoch from timestamptz '2013-03-01 12:00:00');
+select extract(century from timestamp '2000-12-16 12:21:13');
+select extract(day from timestamp '2000-12-16 12:21:13');
+select extract(decade from timestamp '2000-12-16 12:21:13');
+select extract(dow from timestamp '2000-12-16 12:21:13');
+select extract(doy from timestamp '2000-12-16 12:21:13');
+select extract(isodow from timestamp '2000-12-16 12:21:13');
+select extract(isoyear from timestamp '2000-12-16 12:21:13');
+select extract(microseconds from timestamp '2000-12-16 12:21:13');
+select extract(millennium from timestamp '2000-12-16 12:21:13');
+select extract(milliseconds from timestamp '2000-12-16 12:21:13');
+select extract(quarter from timestamp '2000-12-16 12:21:13');
+select extract(timezone from timestamp '2000-12-16 12:21:13');
+select extract(timezone_hour from timestamp '2000-12-16 12:21:13');
+select extract(timezone_minute from timestamp '2000-12-16 12:21:13');
+select extract(week from timestamp '2000-12-16 12:21:13');
+select timestamp '2001-02-16 20:38:40' at time zone 'America/Denver';
 

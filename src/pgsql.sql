@@ -194,6 +194,7 @@ select vim_format(array(select get_statements()), 'Statement');
 select '" Types';
 select vim_format(array(select get_types()), 'Type');
 select 'syn match sqlType /pg_toast_\d\+/';
+select 'syn match sqlType /time\%[stamp]\s\+with\>/';
 select '" Additional types';
 select vim_format(array(select get_additional_types()), 'Type');
 select '" Keywords';

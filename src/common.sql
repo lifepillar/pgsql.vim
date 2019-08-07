@@ -158,7 +158,7 @@ $$
          ('array'), ('bigint'), ('bit'), ('boolean'), ('char'), ('character'), ('cube'), ('decimal'),
          ('double'), ('int'), ('integer'),
          ('interval'), ('numeric'), ('precision'), ('real'), ('smallint'), ('text'), ('timestamp'),
-         ('varchar'), ('varying'), ('xml'), ('zone');
+         ('varchar'), ('varying'), ('xml'), ('at'), ('without'), ('zone');
 $$;
 
 
@@ -169,6 +169,10 @@ language sql stable
 set search_path to "public", "pg_catalog" as
 $$
   select word from pg_get_keywords()
+  union -- https://www.postgresql.org/docs/current/functions-datetime.html
+  values ('century'), ('decade'), ('dow'), ('doy'), ('epoch'), ('isodow'), ('isoyear'),
+         ('microseconds'), ('millennium'), ('milliseconds'), ('quarter'),
+         ('timezone'), ('timezone_hour'), ('timezone_minute'), ('week')
   except
   (select stm from get_statements()
    union
