@@ -266,6 +266,11 @@ syn region sqlCreateOperator start=+create\s\+operator.*(+ end=+)+
       \ contains=sqlIsKeyword,sqlCreateOperatorKeyword,sqlIsOperator,sqlString,sqlComment,sqlNumber,sqlTodo
 syn keyword sqlCreateOperatorKeyword contained function procedure leftarg rightarg commutator negator restrict join hashes merges
 
+" CREATE TEXT SEARCH statements
+syn region sqlCreateTextSearch start=+create\s\+text\s\+search.*(+ end=+)+
+      \ contains=sqlIsKeyword,sqlCreateTextSearchKeyword,sqlIsOperator,sqlString,sqlComment,sqlNumber,sqlTodo
+syn keyword sqlCreateTextSearchKeyword contained parser copy template start gettoken end lextypes headline init lexize
+
 " Options
 syn keyword sqlOption contained client_min_messages search_path
 
@@ -366,6 +371,7 @@ hi def link sqlPsqlCommand    SpecialKey
 hi def link sqlPsqlKeyword    Keyword
 hi def link sqlCreateTypeKeyword sqlKeyword
 hi def link sqlCreateOperatorKeyword sqlKeyword
+hi def link sqlCreateTextSearchKeyword sqlKeyword
 
 let b:current_syntax = "sql"
 $HERE$;
