@@ -300,7 +300,6 @@ text
 timestamp
 varchar
 varying
-without
 xml
 zone
 pg_toast_1234
@@ -5435,6 +5434,7 @@ whitespace
 window
 with
 within
+without
 wrapper
 write
 xmlattributes

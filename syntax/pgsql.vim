@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 11.4
-" Automatically generated on 2019-08-08 at 11:03:20
+" Automatically generated on 2019-08-08 at 11:06:38
 
 if exists("b:current_syntax")
   finish
@@ -65,12 +65,12 @@ syn keyword sqlType contained us_rules us_rules_id_seq uuid valid_detail
 syn keyword sqlType contained validatetopology_returntype varbit varchar void xid xml yes_or_no zcta5 zcta5_gid_seq
 syn keyword sqlType contained zip_lookup zip_lookup_all zip_lookup_base zip_state zip_state_loc
 syn match sqlType /pg_toast_\d\+/
-syn match sqlType /time\%[stamp]\s\+with\>/
+syn match sqlType /time\%[stamp]\s\+with\%[out]\>/
 " Additional types
 syn keyword sqlType contained array at bigint bigserial bit boolean char character cube decimal
 syn keyword sqlType contained double int integer interval numeric precision real serial serial2
-syn keyword sqlType contained serial4 serial8 smallint smallserial text timestamp varchar varying
-syn keyword sqlType contained without xml zone
+syn keyword sqlType contained serial4 serial8 smallint smallserial text timestamp varchar varying xml
+syn keyword sqlType contained zone
 " Keywords
 syn keyword sqlKeyword contained absolute access action add admin after aggregate all also always
 syn keyword sqlKeyword contained analyse and any as asc assertion assignment asymmetric attach attribute
@@ -120,9 +120,9 @@ syn keyword sqlKeyword contained timezone_hour timezone_minute to trailing trans
 syn keyword sqlKeyword contained true trusted type types unbounded uncommitted unencrypted union
 syn keyword sqlKeyword contained unique unknown unlogged unsafe until usage user using valid validate
 syn keyword sqlKeyword contained validator value variadic verbose version view views volatile week when
-syn keyword sqlKeyword contained where whitespace window with within wrapper write xmlattributes
-syn keyword sqlKeyword contained xmlconcat xmlelement xmlexists xmlforest xmlnamespaces xmlparse xmlpi
-syn keyword sqlKeyword contained xmlroot xmlserialize xmltable year yes
+syn keyword sqlKeyword contained where whitespace window with within without wrapper write
+syn keyword sqlKeyword contained xmlattributes xmlconcat xmlelement xmlexists xmlforest xmlnamespaces
+syn keyword sqlKeyword contained xmlparse xmlpi xmlroot xmlserialize xmltable year yes
 syn keyword sqlConstant contained information_schema pg_catalog
 " Built-in functions
 syn keyword sqlFunction contained RI_FKey_cascade_del RI_FKey_cascade_upd RI_FKey_check_ins

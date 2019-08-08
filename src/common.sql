@@ -160,7 +160,7 @@ $$
          ('array'), ('bigint'), ('bit'), ('boolean'), ('char'), ('character'), ('cube'), ('decimal'),
          ('double'), ('int'), ('integer'),
          ('interval'), ('numeric'), ('precision'), ('real'), ('smallint'), ('text'), ('timestamp'),
-         ('varchar'), ('varying'), ('xml'), ('at'), ('without'), ('zone');
+         ('varchar'), ('varying'), ('xml'), ('at'), ('zone');
 $$;
 
 
