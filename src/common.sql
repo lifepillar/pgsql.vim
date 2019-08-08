@@ -83,7 +83,7 @@ create or replace function get_statements()
 returns table (stm text)
 language sql immutable as
 $$
-  values ('create'), ('select'), ('abort'), ('alter'), ('analyze'), ('begin'),
+  values ('add'), ('create'), ('select'), ('abort'), ('alter'), ('analyze'), ('begin'),
          ('checkpoint'), ('close'), ('cluster'), ('comment'), ('commit'), ('constraints'),
          ('copy'), ('deallocate'), ('declare'), ('delete'), ('discard'),
          ('do'), ('drop'), ('end'), ('execute'), ('explain'), ('fetch'), ('grant'),
@@ -159,7 +159,7 @@ $$
   values ('smallserial'), ('serial'), ('bigserial'), ('serial2'), ('serial4'), ('serial8'),
          ('array'), ('bigint'), ('bit'), ('boolean'), ('char'), ('character'), ('cube'), ('decimal'),
          ('double'), ('int'), ('integer'),
-         ('interval'), ('numeric'), ('precision'), ('real'), ('smallint'), ('text'), ('timestamp'),
+         ('interval'), ('numeric'), ('precision'), ('real'), ('smallint'), ('timestamp'),
          ('varchar'), ('varying'), ('xml'), ('at'), ('zone');
 $$;
 

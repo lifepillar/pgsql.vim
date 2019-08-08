@@ -193,8 +193,12 @@ select '" Statements';
 select vim_format(array(select get_statements()), 'Statement');
 select '" Types';
 select vim_format(array(select get_types()), 'Type');
-select 'syn match sqlType /pg_toast_\d\+/';
-select 'syn match sqlType /time\%[stamp]\s\+with\%[out]\>/';
+select 'syn match sqlType /\<pg_toast_\d\+\>/';
+select 'syn match sqlType /\<time\%[stamp]\s\+with\%[out]\>/';
+select 'syn match sqlKeyword /\<with\s\+grant\>/';
+select 'syn match sqlKeyword /\<on\s\+\%(tables\|sequences\|routines\)\>/';
+select 'syn match sqlType /\<text\>/';
+select 'syn match sqlKeyword /\<text\s\+search\>/';
 select '" Additional types';
 select vim_format(array(select get_additional_types()), 'Type');
 select '" Keywords';
@@ -269,7 +273,7 @@ syn keyword sqlCreateOperatorKeyword contained function procedure leftarg righta
 " CREATE TEXT SEARCH statements
 syn region sqlCreateTextSearch start=+create\s\+text\s\+search.*(+ end=+)+
       \ contains=sqlIsKeyword,sqlCreateTextSearchKeyword,sqlIsOperator,sqlString,sqlComment,sqlNumber,sqlTodo
-syn keyword sqlCreateTextSearchKeyword contained parser copy template start gettoken end lextypes headline init lexize
+syn keyword sqlCreateTextSearchKeyword contained text parser copy template start gettoken end lextypes headline init lexize
 
 " Options
 syn keyword sqlOption contained client_min_messages search_path

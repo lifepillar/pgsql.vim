@@ -1,5 +1,6 @@
 -- Statements
 abort
+add
 alter
 analyze
 begin
@@ -296,7 +297,6 @@ serial4
 serial8
 smallint
 smallserial
-text
 timestamp
 varchar
 varying
@@ -5027,7 +5027,6 @@ views
 absolute
 access
 action
-add
 admin
 after
 aggregate
