@@ -191,6 +191,7 @@ $HERE$;
 
 select '" Statements';
 select vim_format(array(select get_statements()), 'Statement');
+select 'syn match sqlStatement /\<create\_s\+or\_s\+replace\>/';
 select '" Types';
 select vim_format(array(select get_types()), 'Type');
 select 'syn match sqlType /\<pg_toast_\d\+\>/';
