@@ -19,7 +19,7 @@ Besides, syntax highlighting for any language may be activated inside functions
 If your Vim supports packages (`echo has('packages')` prints `1`), I strongly
 recommend that you use them. Just clone this repo inside `pack/*/start`, e.g.,
 
-    mkdir -p ~/.vim/pack/plugns/start
+    mkdir -p ~/.vim/pack/plugins/start
     git clone https://github.com/lifepillar/pgsql.vim.git ~/.vim/pack/plugins/start/pgsql
     
 
