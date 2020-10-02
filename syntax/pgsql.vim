@@ -1970,6 +1970,9 @@ else
     \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlPlpgsqlOperator,sqlNumber,sqlIsOperator,sqlString,sqlTodo
 endif
 
+" Folding
+syn region sqlFold start='^\s*\zs\c\(create\|update\|alter\|select\|insert\|do\)\>' end=';$' transparent fold contains=ALL
+
 " PL/<any other language>
 fun! s:add_syntax(s)
   execute 'syn include @PL' . a:s . ' syntax/' . a:s . '.vim'
