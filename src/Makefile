@@ -14,13 +14,11 @@ PSQL := PGOPTIONS='--client-min-messages=warning' $(PSQLBIN) -X --pset pager=off
 all: $(SYNFILE) $(KEYWORDS)
 
 createdb:
-	@- $(PSQL) -tc "select 1 from pg_database where datname = '$(DBNAME)'" | grep -q 1 || $(PSQL) -c "create database $(DBNAME)"
-	touch createdb
+	@- echo "select 'create database $(DBNAME)' where not exists (select 1 from pg_database where datname = '$(DBNAME)')\gexec" | $(PSQL)
 
 .PHONY: dropdb
 dropdb:
 	@- dropdb $(DBNAME) 2>/dev/null || true
-	@- $(RM) createdb
 
 errcodes.txt:
 	curl -fsSL https://rawgit.com/postgres/postgres/master/src/backend/utils/errcodes.txt >errcodes.txt
