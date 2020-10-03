@@ -1,5 +1,5 @@
 PSQLBIN  := psql
-DBUSER   := postgres
+DBUSER   ?= postgres
 DBNAME   := vim_pgsql_syntax
 COMMON   := common.sql
 SRCFILE  := pgsql.sql
