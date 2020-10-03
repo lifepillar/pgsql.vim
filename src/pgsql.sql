@@ -191,7 +191,7 @@ $HERE$;
 
 select '" Statements';
 select vim_format(array(select get_statements()), 'Statement');
-select 'syn match sqlStatement /\<create\_s\+or\_s\+replace\>/';
+select 'syn match sqlStatement contained /\<create\%(\_s\+or\_s\+replace\)\=\>/';
 select '" Types';
 select vim_format(array(select get_types()), 'Type');
 select 'syn match sqlType /\<pg_toast_\d\+\>/';
@@ -337,6 +337,9 @@ else
   syn region plpgsql matchgroup=sqlString start=+\$\$+ end=+\$\$+ keepend
     \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlPlpgsqlOperator,sqlNumber,sqlIsOperator,sqlString,sqlTodo
 endif
+
+" Folding
+syn region sqlFold start='^\s*\zs\c\(create\|update\|alter\|select\|insert\|do\)\>' end=';$' transparent fold contains=ALL
 
 " PL/<any other language>
 fun! s:add_syntax(s)
