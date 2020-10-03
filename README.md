@@ -21,7 +21,7 @@ recommend that you use them. Just clone this repo inside `pack/*/start`, e.g.,
 
     mkdir -p ~/.vim/pack/plugins/start
     git clone https://github.com/lifepillar/pgsql.vim.git ~/.vim/pack/plugins/start/pgsql
-    
+
 
 Otherwise, if you don't have a preferred installation method, I recommend
 installing [Pathogen](https://github.com/tpope/vim-pathogen), and then simply
@@ -71,15 +71,21 @@ The syntax file is generated automatically. If you want to hack it, edit
 
 ```sh
 cd src
-make install
+DBUSER=some_username make install
 ```
 
-This will update `syntax/pgsql.vim`. Note that you will need a working local
-PostgreSQL instance: `make` will create a database called `vim_pgsql_syntax` to
-extract all the keywords. You may then execute `make distclean` to drop the
-database.
+The environment variable may be used to specify the database user for connecting
+to PostgreSQL; if omitted, `postgres` is used. Note that, currently, the
+Makefile assumes that the user can connect without a password. Set up a user
+accordingly.
 
-The script has been tested in macOS, but it should work on any *nix system.
+The above command will update `syntax/pgsql.vim`. Note that you will need
+a working local PostgreSQL instance: `make` will create a database called
+`vim_pgsql_syntax` to extract all the keywords. You may then execute `make
+distclean` to drop the database.
+
+The script has been tested in macOS, but it should work on other systems as
+well.
 
 
 # Acknowledgments
