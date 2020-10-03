@@ -11,7 +11,6 @@ comment
 commit
 constraints
 copy
-create
 deallocate
 declare
 delete

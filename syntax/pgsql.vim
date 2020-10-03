@@ -5,7 +5,7 @@
 " License:      This file is placed in the public domain.
 
 " Based on PostgreSQL 12.4
-" Automatically generated on 2020-10-03 at 18:24:05
+" Automatically generated on 2020-10-03 at 18:36:49
 
 if exists("b:current_syntax")
   finish
@@ -23,11 +23,11 @@ syn keyword sqlSpecial contained false null true
 
 " Statements
 syn keyword sqlStatement contained abort add alter analyze begin checkpoint close cluster comment
-syn keyword sqlStatement contained commit constraints copy create deallocate declare delete discard do drop
-syn keyword sqlStatement contained end execute explain fetch grant import insert label listen load lock
-syn keyword sqlStatement contained move notify prepare prepared reassign refresh reindex release reset
-syn keyword sqlStatement contained revoke rollback savepoint security select select set show start
-syn keyword sqlStatement contained transaction truncate unlisten update vacuum values work
+syn keyword sqlStatement contained commit constraints copy deallocate declare delete discard do drop end
+syn keyword sqlStatement contained execute explain fetch grant import insert label listen load lock move
+syn keyword sqlStatement contained notify prepare prepared reassign refresh reindex release reset revoke
+syn keyword sqlStatement contained rollback savepoint security select select set show start transaction
+syn keyword sqlStatement contained truncate unlisten update vacuum values work
 syn match sqlStatement contained /\<create\%(\_s\+or\_s\+replace\)\=\>/
 " Types
 syn keyword sqlType contained aclitem addbandarg addr addr_gid_seq addrfeat addrfeat_gid_seq
