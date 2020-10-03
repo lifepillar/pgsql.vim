@@ -18,6 +18,7 @@ PSQL := PGOPTIONS='--client-min-messages=warning' $(PSQLBIN) -X --pset pager=off
 .PHONY: all
 all: $(SYNFILE) $(KEYWORDS)
 
+.PHONY: createdb
 createdb:
 	@- echo "select 'create database $(DBNAME)' where not exists (select 1 from pg_database where datname = '$(DBNAME)')\gexec" | $(PSQL) -d template1
 
