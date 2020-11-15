@@ -1,3 +1,6 @@
+-- Author:   Lifepillar
+-- License:  Vim license
+
 -- To generate the syntax file, proceed as follows:
 --
 -- 1. createdb -T template0 vim_pgsql_syntax
@@ -165,8 +168,8 @@ select
 $HERE$" Vim syntax file
 " Language:     SQL (PostgreSQL dialect), PL/pgSQL, PL/…, PostGIS, …
 " Maintainer:   Lifepillar
-" Version:      2.2.2
-" License:      This file is placed in the public domain.
+" Version:      2.3.0
+" License:      Vim license (see `:help license`)
 $HERE$;
 
 select '" Based on ' || substring(version() from 'PostgreSQL \d+\.\d+\.?\d*');

@@ -10,7 +10,7 @@
 		The best PostgreSQL plugin for Vim!
 
 Author:  Lifepillar <https://github.com/lifepillar>
-License: Public Domain
+License: Vim license (see `:help license`)
 
 ==============================================================================
 CONTENTS					*pgsql-contents*

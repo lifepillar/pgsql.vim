@@ -1,3 +1,5 @@
+-- Author:   Lifepillar
+-- License:  Vim license
 start transaction;
 
 set local client_min_messages to 'warning';
