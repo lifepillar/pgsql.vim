@@ -168,7 +168,7 @@ select
 $HERE$" Vim syntax file
 " Language:     SQL (PostgreSQL dialect), PL/pgSQL, PL/…, PostGIS, …
 " Maintainer:   Lifepillar
-" Version:      2.3.0
+" Version:      2.3.1
 " License:      Vim license (see `:help license`)
 $HERE$;
 
