@@ -1,11 +1,11 @@
 " Vim syntax file
 " Language:     SQL (PostgreSQL dialect), PL/pgSQL, PL/…, PostGIS, …
 " Maintainer:   Lifepillar
-" Version:      2.3.0
+" Version:      2.3.1
 " License:      Vim license (see `:help license`)
 
 " Based on PostgreSQL 13.1
-" Automatically generated on 2020-12-23 at 20:13:28
+" Automatically generated on 2020-12-30 at 09:56:46
 
 if exists("b:current_syntax")
   finish
@@ -709,7 +709,7 @@ syn keyword sqlConstant contained pageinspect pg_buffercache pg_freespacemap pg_
 syn keyword sqlConstant contained pg_stat_statements pg_trgm pg_visibility pgcrypto pgrouting pgrowlocks
 syn keyword sqlConstant contained pgstattuple pgtap plperl plperlu plpgsql pltcl pltclu postgis
 syn keyword sqlConstant contained postgis_raster postgis_sfcgal postgis_tiger_geocoder postgis_topology
-syn keyword sqlConstant contained postgres_fdw refint seg sslinfo tablefunc tcn tsm_system_rows
+syn keyword sqlConstant contained postgres_fdw refint seg sslinfo tablefunc tcn temporal_tables tsm_system_rows
 syn keyword sqlConstant contained tsm_system_time unaccent xml2
 " Legacy extensions names
 syn keyword sqlConstant contained chkpass hstore_plpython2u hstore_plpython3u hstore_plpythonu
@@ -2006,7 +2006,7 @@ else
 endif
 
 " Folding
-syn region sqlFold start='^\s*\zs\c\(create\|update\|alter\|select\|insert\|do\)\>' end=';$' transparent fold contains=ALL
+syn region sqlFold start='^\s*\zs\c\(create\|update\|alter\|select\|insert\|do\)\>' end=';$' transparent fold contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlIdentifier,sqlNumber,sqlOperator,sqlSpecial,sqlString,sqlTodo
 
 " PL/<any other language>
 fun! s:add_syntax(s)
