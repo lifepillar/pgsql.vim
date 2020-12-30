@@ -1969,6 +1969,7 @@ syn keyword sqlPsqlKeyword contained unicode_border_linestyle unicode_column_lin
 syn keyword sqlPsqlKeyword contained on off auto unaligned pager
 syn keyword sqlPsqlKeyword contained AUTOCOMMIT HISTCONTROL PROMPT VERBOSITY SHOW_CONTEXT VERSION
 syn keyword sqlPsqlKeyword contained DBNAME USER HOST PORT ENCODING HISTSIZE QUIET
+syn keyword sqlPsqlKeyword contained from program pstdin pstdout stdin stdout to where with
 
 " Todo
 syn keyword sqlTodo contained TODO FIXME XXX DEBUG NOTE
