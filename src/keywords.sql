@@ -281,7 +281,6 @@ bigint
 bigserial
 bit
 boolean
-char
 character
 cube
 decimal
@@ -299,7 +298,6 @@ serial8
 smallint
 smallserial
 timestamp
-varchar
 varying
 xml
 zone
@@ -633,7 +631,6 @@ cbrt()
 ceil()
 ceiling()
 center()
-char()
 char_length()
 character_length()
 chareq()
@@ -2744,7 +2741,6 @@ varbitlt()
 varbitne()
 varbittypmodin()
 varbittypmodout()
-varchar()
 varchar_support()
 varcharin()
 varcharout()
