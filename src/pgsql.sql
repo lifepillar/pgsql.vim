@@ -342,19 +342,25 @@ else
     \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlPlpgsqlOperator,sqlNumber,sqlIsOperator,sqlString,sqlTodo
 endif
 
-" Folding
-syn region sqlFold start='^\s*\zs\c\(create\|update\|alter\|select\|insert\|do\)\>' end=';$' transparent fold contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlIdentifier,sqlNumber,sqlOperator,sqlSpecial,sqlString,sqlTodo,plpgsql
+let s:plgroups = 'plpgsql'
 
 " PL/<any other language>
 fun! s:add_syntax(s)
-  execute 'syn include @PL' . a:s . ' syntax/' . a:s . '.vim'
+  execute 'syn include @PL' .. a:s .. ' syntax/' .. a:s .. '.vim'
   unlet b:current_syntax
-  execute 'syn region pgsqlpl' . a:s . ' matchgroup=sqlString start=+\$' . a:s . '\$+ end=+\$' . a:s . '\$+ keepend contains=@PL' . a:s
+  execute 'syn region pgsqlpl' .. a:s .. ' matchgroup=sqlString start=+\$' .. a:s .. '\$+ end=+\$' .. a:s .. '\$+ keepend contains=@PL' .. a:s
+  let s:plgroups ..= ',pgsqlpl' .. a:s
 endf
 
 for pl in get(b:, 'pgsql_pl', get(g:, 'pgsql_pl', []))
   call s:add_syntax(pl)
 endfor
+
+" Folding
+execute "syn region sqlFold start='^\s*\zs\c\(create\|update\|alter\|select\|insert\|do\)\>' end=';$' transparent fold "
+      \ .. "contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlIdentifier,sqlNumber,sqlOperator,sqlSpecial,sqlString,sqlTodo," .. s:plgroups
+
+unlet s:plgroups
 
 " Default highlighting
 hi def link sqlCatalog        Constant
