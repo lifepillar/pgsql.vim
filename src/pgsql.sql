@@ -357,7 +357,7 @@ for pl in get(b:, 'pgsql_pl', get(g:, 'pgsql_pl', []))
 endfor
 
 " Folding
-execute "syn region sqlFold start='^\s*\zs\c\(create\|update\|alter\|select\|insert\|do\)\>' end=';$' transparent fold "
+execute "syn region sqlFold start='^\\s*\\zs\\c\\(create\\|update\\|alter\\|select\\|insert\\|do\\)\\>' end=';$' transparent fold "
       \ .. "contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlIdentifier,sqlNumber,sqlOperator,sqlSpecial,sqlString,sqlTodo," .. s:plgroups
 
 unlet s:plgroups
