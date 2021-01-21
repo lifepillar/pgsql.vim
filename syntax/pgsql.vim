@@ -5,7 +5,7 @@
 " License:      Vim license (see `:help license`)
 
 " Based on PostgreSQL 13.1
-" Automatically generated on 2021-01-13 at 20:54:21
+" Automatically generated on 2021-01-15 at 08:37:30
 
 if exists("b:current_syntax")
   finish
@@ -2029,7 +2029,7 @@ if get(g:, 'pgsql_fold_functions_only', 0)
 else
 
     execute 'syn region sqlFold start=/^\s*\zs\c\(create\|update\|alter\|select\|insert\|do\)\>/ end=/;$/ transparent fold '
-      \ .. "contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlIdentifier,sqlNumber,sqlOperator,sqlSpecial,sqlString,sqlTodo," .. s:plgroups
+        \ .. "contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlIdentifier,sqlNumber,sqlOperator,sqlSpecial,sqlString,sqlTodo," .. s:plgroups
 
 endif
 
