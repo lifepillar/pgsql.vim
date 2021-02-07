@@ -80,6 +80,12 @@ By default, text quoted with `$$` is highlighted as PL/pgSQL.
 >
 	let g:pgsql_dollar_strings = 0
 <
+						*'g:pgsql_fold_functions_only'*
+Use this option if you want to fold obly code of stored functions, procedures
+and "do" blocks.
+>
+	let g:pgsql_fold_functions_only = 1
+<
 						*'g:pgsql_pl'*
 						*'b:pgsql_pl'*
 A List of the filetypes that should be highlighted inside the body of

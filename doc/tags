@@ -2,6 +2,7 @@
 'g:pgsql_backslash_quote'	pgsql.txt	/*'g:pgsql_backslash_quote'*
 'g:pgsql_disabled_extensions'	pgsql.txt	/*'g:pgsql_disabled_extensions'*
 'g:pgsql_dollar_strings'	pgsql.txt	/*'g:pgsql_dollar_strings'*
+'g:pgsql_fold_functions_only'	pgsql.txt	/*'g:pgsql_fold_functions_only'*
 'g:pgsql_pl'	pgsql.txt	/*'g:pgsql_pl'*
 pgsql-autocompletion	pgsql.txt	/*pgsql-autocompletion*
 pgsql-contents	pgsql.txt	/*pgsql-contents*
