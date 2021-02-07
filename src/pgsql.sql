@@ -183,7 +183,11 @@ endif
 
 syn case ignore
 syn sync minlines=100
-syn iskeyword @,48-57,192-255,_
+if has('patch-7.4.1142')
+  syn iskeyword @,48-57,192-255,_
+else
+  setlocal iskeyword=@,48-57,192-255,_
+endif
 
 syn match sqlIsKeyword  /\<\h\w*\>/   contains=sqlStatement,sqlKeyword,sqlCatalog,sqlConstant,sqlSpecial,sqlOption,sqlErrorCode,sqlType,sqlTable,sqlView
 syn match sqlIsFunction /\<\h\w*\ze(/ contains=sqlFunction,sqlKeyword,sqlType
