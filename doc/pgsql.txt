@@ -81,7 +81,7 @@ By default, text quoted with `$$` is highlighted as PL/pgSQL.
 	let g:pgsql_dollar_strings = 0
 <
 						*'g:pgsql_fold_functions_only'*
-Use this option if you want to fold obly code of stored functions, procedures
+Use this option if you want to fold only code of stored functions, procedures
 and "do" blocks.
 >
 	let g:pgsql_fold_functions_only = 1
