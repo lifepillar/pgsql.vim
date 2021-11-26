@@ -338,7 +338,7 @@ syn match sqlPlpgsqlVariable ".\zs@[A-z0-9_]\+" contained
 syn match sqlPlpgsqlOperator ":=" contained
 
 syn region plpgsql matchgroup=sqlString start=+\$\z(pgsql\|body\|function\)\$+ end=+\$\z1\$+ keepend
-  \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlPlpgsqlOperator,sqlNumber,sqlIsOperator,sqlString,sqlTodo
+  \ contains=sqlIsKeyword,sqlIsFunction,sqlComment,sqlPlpgsqlKeyword,sqlPlpgsqlVariable,sqlPlpgsqlOperator,sqlNumber,sqlIsOperator,sqlIdentifier,sqlString,sqlTodo
 if get(g:, 'pgsql_dollar_strings', 0)
   syn region sqlString start=+\$\$+ end=+\$\$+ contains=@Spell
 else
