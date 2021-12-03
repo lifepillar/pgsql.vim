@@ -48,7 +48,8 @@ $$
    where name not in ( -- Extensions to skip
                        'citus',
                        'cstore_fdw',
-                       'plr' -- Not available for PostgreSQL 9.6 or later?
+                       'plr', -- Not available for PostgreSQL 9.6 or later?
+                       'temporal_tables'
                      )
      and name not in (select extname::name from public.legacy_extension_names());
 $$;

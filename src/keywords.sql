@@ -57,22 +57,21 @@ work
 aclitem
 addbandarg
 addr
-addr_gid_seq
 addrfeat
-addrfeat_gid_seq
 agg_count
 agg_samealignment
 anyarray
 anycompatible
 anycompatiblearray
+anycompatiblemultirange
 anycompatiblenonarray
 anycompatiblerange
 anyelement
 anyenum
+anymultirange
 anynonarray
 anyrange
 bg
-bg_gid_seq
 bit
 bool
 box
@@ -89,28 +88,24 @@ cidr
 circle
 citext
 county
-county_gid_seq
 county_lookup
 countysub_lookup
 cousub
-cousub_gid_seq
 cstring
 cube
 date
+datemultirange
 daterange
 dblink_pkey_results
 direction_lookup
 ean13
 earth
 edges
-edges_gid_seq
 errcodes
 event_trigger
 faces
-faces_gid_seq
 fdw_handler
 featnames
-featnames_gid_seq
 float4
 float8
 gbtreekey16
@@ -137,8 +132,10 @@ inet
 int2
 int2vector
 int4
+int4multirange
 int4range
 int8
+int8multirange
 int8range
 intbig_gkey
 internal
@@ -169,17 +166,17 @@ macaddr8
 money
 norm_addy
 numeric
+nummultirange
 numrange
 oid
 oidvector
 pagc_gaz
-pagc_gaz_id_seq
 pagc_lex
-pagc_lex_id_seq
 pagc_rules
-pagc_rules_id_seq
 path
 pg_all_foreign_keys
+pg_brin_bloom_summary
+pg_brin_minmax_multi_summary
 pg_ddl_command
 pg_dependencies
 pg_lsn
@@ -187,8 +184,8 @@ pg_mcv_list
 pg_ndistinct
 pg_node_tree
 pg_snapshot
+pg_stat_statements_info
 place
-place_gid_seq
 place_lookup
 point
 polygon
@@ -217,13 +214,12 @@ spatial_ref_sys
 spheroid
 sql_identifier
 state
-state_gid_seq
 state_lookup
 stdaddr
 street_type_lookup
 summarystats
 tabblock
-tabblock_gid_seq
+tabblock20
 table_am_handler
 tablefunc_crosstab_2
 tablefunc_crosstab_3
@@ -240,23 +236,20 @@ topoelement
 topoelementarray
 topogeometry
 topology
-topology_id_seq
 tract
-tract_gid_seq
 tsm_handler
+tsmultirange
 tsquery
 tsrange
+tstzmultirange
 tstzrange
 tsvector
 txid_snapshot
 unionarg
 upc
 us_gaz
-us_gaz_id_seq
 us_lex
-us_lex_id_seq
 us_rules
-us_rules_id_seq
 uuid
 valid_detail
 validatetopology_returntype
@@ -268,7 +261,6 @@ xid8
 xml
 yes_or_no
 zcta5
-zcta5_gid_seq
 zip_lookup
 zip_lookup_all
 zip_lookup_base
@@ -342,6 +334,8 @@ anycompatiblearray_in()
 anycompatiblearray_out()
 anycompatiblearray_recv()
 anycompatiblearray_send()
+anycompatiblemultirange_in()
+anycompatiblemultirange_out()
 anycompatiblenonarray_in()
 anycompatiblenonarray_out()
 anycompatiblerange_in()
@@ -350,6 +344,8 @@ anyelement_in()
 anyelement_out()
 anyenum_in()
 anyenum_out()
+anymultirange_in()
+anymultirange_out()
 anynonarray_in()
 anynonarray_out()
 anyrange_in()
@@ -387,6 +383,7 @@ array_remove()
 array_replace()
 array_send()
 array_smaller()
+array_subscript_handler()
 array_to_json()
 array_to_string()
 array_to_tsvector()
@@ -417,20 +414,23 @@ binary_upgrade_set_missing_value()
 binary_upgrade_set_next_array_pg_type_oid()
 binary_upgrade_set_next_heap_pg_class_oid()
 binary_upgrade_set_next_index_pg_class_oid()
+binary_upgrade_set_next_multirange_array_pg_type_oid()
+binary_upgrade_set_next_multirange_pg_type_oid()
 binary_upgrade_set_next_pg_authid_oid()
 binary_upgrade_set_next_pg_enum_oid()
 binary_upgrade_set_next_pg_type_oid()
 binary_upgrade_set_next_toast_pg_class_oid()
-binary_upgrade_set_next_toast_pg_type_oid()
 binary_upgrade_set_record_init_privs()
 bit()
 bit_and()
+bit_count()
 bit_in()
 bit_length()
 bit_or()
 bit_out()
 bit_recv()
 bit_send()
+bit_xor()
 bitand()
 bitcat()
 bitcmp()
@@ -528,6 +528,15 @@ bpcharregexne()
 bpcharsend()
 bpchartypmodin()
 bpchartypmodout()
+brin_bloom_add_value()
+brin_bloom_consistent()
+brin_bloom_opcinfo()
+brin_bloom_options()
+brin_bloom_summary_in()
+brin_bloom_summary_out()
+brin_bloom_summary_recv()
+brin_bloom_summary_send()
+brin_bloom_union()
 brin_desummarize_range()
 brin_inclusion_add_value()
 brin_inclusion_consistent()
@@ -535,6 +544,32 @@ brin_inclusion_opcinfo()
 brin_inclusion_union()
 brin_minmax_add_value()
 brin_minmax_consistent()
+brin_minmax_multi_add_value()
+brin_minmax_multi_consistent()
+brin_minmax_multi_distance_date()
+brin_minmax_multi_distance_float4()
+brin_minmax_multi_distance_float8()
+brin_minmax_multi_distance_inet()
+brin_minmax_multi_distance_int2()
+brin_minmax_multi_distance_int4()
+brin_minmax_multi_distance_int8()
+brin_minmax_multi_distance_interval()
+brin_minmax_multi_distance_macaddr()
+brin_minmax_multi_distance_macaddr8()
+brin_minmax_multi_distance_numeric()
+brin_minmax_multi_distance_pg_lsn()
+brin_minmax_multi_distance_tid()
+brin_minmax_multi_distance_time()
+brin_minmax_multi_distance_timestamp()
+brin_minmax_multi_distance_timetz()
+brin_minmax_multi_distance_uuid()
+brin_minmax_multi_opcinfo()
+brin_minmax_multi_options()
+brin_minmax_multi_summary_in()
+brin_minmax_multi_summary_out()
+brin_minmax_multi_summary_recv()
+brin_minmax_multi_summary_send()
+brin_minmax_multi_union()
 brin_minmax_opcinfo()
 brin_minmax_union()
 brin_summarize_new_values()
@@ -722,7 +757,6 @@ current_schema()
 current_schemas()
 current_setting()
 current_user()
-currtid()
 currtid2()
 currval()
 cursor_to_xml()
@@ -731,6 +765,7 @@ database_to_xml()
 database_to_xml_and_xmlschema()
 database_to_xmlschema()
 date()
+date_bin()
 date_cmp()
 date_cmp_timestamp()
 date_cmp_timestamptz()
@@ -766,6 +801,7 @@ date_send()
 date_smaller()
 date_sortsupport()
 date_trunc()
+datemultirange()
 daterange()
 daterange_canonical()
 daterange_subdiff()
@@ -816,6 +852,7 @@ dsqrt()
 dsynonym_init()
 dsynonym_lexize()
 dtrunc()
+elem_contained_by_multirange()
 elem_contained_by_range()
 encode()
 enum_cmp()
@@ -852,6 +889,7 @@ event_trigger_in()
 event_trigger_out()
 every()
 exp()
+extract()
 factorial()
 family()
 fdw_handler_in()
@@ -993,6 +1031,7 @@ gist_point_compress()
 gist_point_consistent()
 gist_point_distance()
 gist_point_fetch()
+gist_point_sortsupport()
 gist_poly_compress()
 gist_poly_consistent()
 gist_poly_distance()
@@ -1029,10 +1068,14 @@ hash_aclitem()
 hash_aclitem_extended()
 hash_array()
 hash_array_extended()
+hash_multirange()
+hash_multirange_extended()
 hash_numeric()
 hash_numeric_extended()
 hash_range()
 hash_range_extended()
+hash_record()
+hash_record_extended()
 hashbpchar()
 hashbpcharextended()
 hashchar()
@@ -1212,6 +1255,7 @@ int4lt()
 int4mi()
 int4mod()
 int4mul()
+int4multirange()
 int4ne()
 int4not()
 int4or()
@@ -1277,6 +1321,7 @@ int8lt()
 int8mi()
 int8mod()
 int8mul()
+int8multirange()
 int8ne()
 int8not()
 int8or()
@@ -1442,6 +1487,7 @@ jsonb_send()
 jsonb_set()
 jsonb_set_lax()
 jsonb_strip_nulls()
+jsonb_subscript_handler()
 jsonb_to_record()
 jsonb_to_recordset()
 jsonb_to_tsvector()
@@ -1601,6 +1647,43 @@ mode()
 mode_final()
 money()
 mul_d_interval()
+multirange()
+multirange_adjacent_multirange()
+multirange_adjacent_range()
+multirange_after_multirange()
+multirange_after_range()
+multirange_before_multirange()
+multirange_before_range()
+multirange_cmp()
+multirange_contained_by_multirange()
+multirange_contained_by_range()
+multirange_contains_elem()
+multirange_contains_multirange()
+multirange_contains_range()
+multirange_eq()
+multirange_ge()
+multirange_gist_compress()
+multirange_gist_consistent()
+multirange_gt()
+multirange_in()
+multirange_intersect()
+multirange_intersect_agg_transfn()
+multirange_le()
+multirange_lt()
+multirange_minus()
+multirange_ne()
+multirange_out()
+multirange_overlaps_multirange()
+multirange_overlaps_range()
+multirange_overleft_multirange()
+multirange_overleft_range()
+multirange_overright_multirange()
+multirange_overright_range()
+multirange_recv()
+multirange_send()
+multirange_typanalyze()
+multirange_union()
+multirangesel()
 mxid_age()
 name()
 nameconcatoid()
@@ -1678,7 +1761,6 @@ numeric_div()
 numeric_div_trunc()
 numeric_eq()
 numeric_exp()
-numeric_fac()
 numeric_ge()
 numeric_gt()
 numeric_in()
@@ -1692,6 +1774,7 @@ numeric_mod()
 numeric_mul()
 numeric_ne()
 numeric_out()
+numeric_pl_pg_lsn()
 numeric_poly_avg()
 numeric_poly_combine()
 numeric_poly_deserialize()
@@ -1719,6 +1802,7 @@ numeric_var_pop()
 numeric_var_samp()
 numerictypmodin()
 numerictypmodout()
+nummultirange()
 numnode()
 numrange()
 numrange_subdiff()
@@ -1809,6 +1893,7 @@ pg_client_encoding()
 pg_collation_actual_version()
 pg_collation_for()
 pg_collation_is_visible()
+pg_column_compression()
 pg_column_is_updatable()
 pg_column_size()
 pg_conf_load_time()
@@ -1857,12 +1942,15 @@ pg_file_unlink()
 pg_file_write()
 pg_filenode_relation()
 pg_function_is_visible()
+pg_get_backend_memory_contexts()
+pg_get_catalog_foreign_keys()
 pg_get_constraintdef()
 pg_get_expr()
 pg_get_function_arg_default()
 pg_get_function_arguments()
 pg_get_function_identity_arguments()
 pg_get_function_result()
+pg_get_function_sqlbody()
 pg_get_functiondef()
 pg_get_indexdef()
 pg_get_keywords()
@@ -1877,9 +1965,12 @@ pg_get_ruledef()
 pg_get_serial_sequence()
 pg_get_shmem_allocations()
 pg_get_statisticsobjdef()
+pg_get_statisticsobjdef_columns()
+pg_get_statisticsobjdef_expressions()
 pg_get_triggerdef()
 pg_get_userbyid()
 pg_get_viewdef()
+pg_get_wal_replay_pause_state()
 pg_has_role()
 pg_hba_file_rules()
 pg_identify_object()
@@ -1902,6 +1993,7 @@ pg_last_wal_replay_lsn()
 pg_last_xact_replay_timestamp()
 pg_listening_channels()
 pg_lock_status()
+pg_log_backend_memory_contexts()
 pg_logdir_ls()
 pg_logical_emit_message()
 pg_logical_slot_get_binary_changes()
@@ -1913,6 +2005,7 @@ pg_ls_dir()
 pg_ls_logdir()
 pg_ls_tmpdir()
 pg_ls_waldir()
+pg_lsn()
 pg_lsn_cmp()
 pg_lsn_eq()
 pg_lsn_ge()
@@ -1924,8 +2017,10 @@ pg_lsn_larger()
 pg_lsn_le()
 pg_lsn_lt()
 pg_lsn_mi()
+pg_lsn_mii()
 pg_lsn_ne()
 pg_lsn_out()
+pg_lsn_pli()
 pg_lsn_recv()
 pg_lsn_send()
 pg_lsn_smaller()
@@ -2031,6 +2126,7 @@ pg_stat_get_buf_fsync_backend()
 pg_stat_get_buf_written_backend()
 pg_stat_get_checkpoint_sync_time()
 pg_stat_get_checkpoint_write_time()
+pg_stat_get_db_active_time()
 pg_stat_get_db_blk_read_time()
 pg_stat_get_db_blk_write_time()
 pg_stat_get_db_blocks_fetched()
@@ -2044,7 +2140,13 @@ pg_stat_get_db_conflict_snapshot()
 pg_stat_get_db_conflict_startup_deadlock()
 pg_stat_get_db_conflict_tablespace()
 pg_stat_get_db_deadlocks()
+pg_stat_get_db_idle_in_transaction_time()
 pg_stat_get_db_numbackends()
+pg_stat_get_db_session_time()
+pg_stat_get_db_sessions()
+pg_stat_get_db_sessions_abandoned()
+pg_stat_get_db_sessions_fatal()
+pg_stat_get_db_sessions_killed()
 pg_stat_get_db_stat_reset_time()
 pg_stat_get_db_temp_bytes()
 pg_stat_get_db_temp_files()
@@ -2068,6 +2170,7 @@ pg_stat_get_live_tuples()
 pg_stat_get_mod_since_analyze()
 pg_stat_get_numscans()
 pg_stat_get_progress_info()
+pg_stat_get_replication_slot()
 pg_stat_get_slru()
 pg_stat_get_snapshot_timestamp()
 pg_stat_get_subscription()
@@ -2078,6 +2181,7 @@ pg_stat_get_tuples_inserted()
 pg_stat_get_tuples_returned()
 pg_stat_get_tuples_updated()
 pg_stat_get_vacuum_count()
+pg_stat_get_wal()
 pg_stat_get_wal_receiver()
 pg_stat_get_wal_senders()
 pg_stat_get_xact_blocks_fetched()
@@ -2093,6 +2197,7 @@ pg_stat_get_xact_tuples_inserted()
 pg_stat_get_xact_tuples_returned()
 pg_stat_get_xact_tuples_updated()
 pg_stat_reset()
+pg_stat_reset_replication_slot()
 pg_stat_reset_shared()
 pg_stat_reset_single_function_counters()
 pg_stat_reset_single_table_counters()
@@ -2127,6 +2232,7 @@ pg_wal_replay_resume()
 pg_walfile_name()
 pg_walfile_name_offset()
 pg_xact_commit_timestamp()
+pg_xact_commit_timestamp_origin()
 pg_xact_status()
 phraseto_tsquery()
 pi()
@@ -2208,12 +2314,20 @@ radians()
 radius()
 random()
 range_adjacent()
+range_adjacent_multirange()
 range_after()
+range_after_multirange()
+range_agg()
+range_agg_finalfn()
+range_agg_transfn()
 range_before()
+range_before_multirange()
 range_cmp()
 range_contained_by()
+range_contained_by_multirange()
 range_contains()
 range_contains_elem()
+range_contains_multirange()
 range_eq()
 range_ge()
 range_gist_consistent()
@@ -2224,6 +2338,8 @@ range_gist_union()
 range_gt()
 range_in()
 range_intersect()
+range_intersect_agg()
+range_intersect_agg_transfn()
 range_le()
 range_lt()
 range_merge()
@@ -2231,8 +2347,11 @@ range_minus()
 range_ne()
 range_out()
 range_overlaps()
+range_overlaps_multirange()
 range_overleft()
+range_overleft_multirange()
 range_overright()
+range_overright_multirange()
 range_recv()
 range_send()
 range_typanalyze()
@@ -2240,6 +2359,7 @@ range_union()
 rangesel()
 rank()
 rank_final()
+raw_array_subscript_handler()
 record_eq()
 record_ge()
 record_gt()
@@ -2407,6 +2527,7 @@ string_agg()
 string_agg_finalfn()
 string_agg_transfn()
 string_to_array()
+string_to_table()
 strip()
 strpos()
 substr()
@@ -2613,6 +2734,7 @@ transaction_timestamp()
 translate()
 trigger_in()
 trigger_out()
+trim_array()
 trim_scale()
 trunc()
 ts_debug()
@@ -2635,6 +2757,7 @@ tsm_handler_in()
 tsm_handler_out()
 tsmatchjoinsel()
 tsmatchsel()
+tsmultirange()
 tsq_mcontained()
 tsq_mcontains()
 tsquery_and()
@@ -2654,6 +2777,7 @@ tsqueryrecv()
 tsquerysend()
 tsrange()
 tsrange_subdiff()
+tstzmultirange()
 tstzrange()
 tstzrange_subdiff()
 tsvector_cmp()
@@ -2685,6 +2809,7 @@ txid_status()
 txid_visible_in_snapshot()
 uhc_to_utf8()
 unique_key_recheck()
+unistr()
 unknownin()
 unknownout()
 unknownrecv()
@@ -3452,9 +3577,6 @@ ltree_gist -- type
 ltxtquery -- type
 -- Extension: tsm_system_rows
 system_rows() -- function
--- Extension: temporal_tables
-set_system_time() -- function
-versioning() -- function
 -- Extension: jsonb_plperl
 jsonb_to_plperl() -- function
 plperl_to_jsonb() -- function
@@ -3527,6 +3649,7 @@ hstore_ne() -- function
 hstore_out() -- function
 hstore_recv() -- function
 hstore_send() -- function
+hstore_subscript_handler() -- function
 hstore_to_array() -- function
 hstore_to_json() -- function
 hstore_to_json_loose() -- function
@@ -3573,6 +3696,8 @@ cube_lt() -- function
 cube_ne() -- function
 cube_out() -- function
 cube_overlap() -- function
+cube_recv() -- function
+cube_send() -- function
 cube_size() -- function
 cube_subset() -- function
 cube_union() -- function
@@ -3662,6 +3787,7 @@ state -- table
 state_lookup -- table
 street_type_lookup -- table
 tabblock -- table
+tabblock20 -- table
 tract -- table
 zcta5 -- table
 zip_lookup -- table
@@ -4051,6 +4177,9 @@ pg_freespace() -- function
 -- Extension: file_fdw
 file_fdw_handler() -- function
 file_fdw_validator() -- function
+-- Extension: pg_surgery
+heap_force_freeze() -- function
+heap_force_kill() -- function
 -- Extension: pg_buffercache
 pg_buffercache_pages() -- function
 pg_buffercache -- view
@@ -4079,14 +4208,18 @@ dblink_send_query() -- function
 dblink_pkey_results -- type
 -- Extension: pg_stat_statements
 pg_stat_statements() -- function
+pg_stat_statements_info() -- function
 pg_stat_statements_reset() -- function
 pg_stat_statements -- view
+pg_stat_statements_info -- view
 -- Extension: insert_username
 insert_username() -- function
 -- Extension: pg_prewarm
 autoprewarm_dump_now() -- function
 autoprewarm_start_worker() -- function
 pg_prewarm() -- function
+-- Extension: old_snapshot
+pg_old_snapshot_time_mapping() -- function
 -- Extension: pgtap
 is() -- function
 add_result() -- function
@@ -4410,6 +4543,7 @@ dintdict_lexize() -- function
 -- Extension: amcheck
 bt_index_check() -- function
 bt_index_parent_check() -- function
+verify_heapam() -- function
 -- Extension: btree_gist
 cash_dist() -- function
 date_dist() -- function
@@ -4608,6 +4742,9 @@ get_raw_page() -- function
 gin_leafpage_items() -- function
 gin_metapage_info() -- function
 gin_page_opaque_info() -- function
+gist_page_items() -- function
+gist_page_items_bytea() -- function
+gist_page_opaque_info() -- function
 hash_bitmap_info() -- function
 hash_metapage_info() -- function
 hash_page_items() -- function
@@ -4652,6 +4789,7 @@ pgr_bddijkstracostmatrix() -- function
 pgr_bellmanford() -- function
 pgr_biconnectedcomponents() -- function
 pgr_binarybreadthfirstsearch() -- function
+pgr_bipartite() -- function
 pgr_boykovkolmogorov() -- function
 pgr_breadthfirstsearch() -- function
 pgr_bridges() -- function
@@ -4662,25 +4800,32 @@ pgr_contraction() -- function
 pgr_createtopology() -- function
 pgr_createverticestable() -- function
 pgr_dagshortestpath() -- function
+pgr_depthfirstsearch() -- function
 pgr_dijkstra() -- function
 pgr_dijkstracost() -- function
 pgr_dijkstracostmatrix() -- function
+pgr_dijkstranear() -- function
+pgr_dijkstranearcost() -- function
 pgr_dijkstravia() -- function
 pgr_drivingdistance() -- function
+pgr_edgecoloring() -- function
 pgr_edgedisjointpaths() -- function
 pgr_edmondskarp() -- function
 pgr_edwardmoore() -- function
 pgr_extractvertices() -- function
 pgr_floydwarshall() -- function
 pgr_full_version() -- function
+pgr_isplanar() -- function
 pgr_johnson() -- function
 pgr_kruskal() -- function
 pgr_kruskalbfs() -- function
 pgr_kruskaldd() -- function
 pgr_kruskaldfs() -- function
 pgr_ksp() -- function
+pgr_lengauertarjandominatortree() -- function
 pgr_linegraph() -- function
 pgr_linegraphfull() -- function
+pgr_makeconnected() -- function
 pgr_maxcardinalitymatch() -- function
 pgr_maxflow() -- function
 pgr_maxflowmincost() -- function
@@ -4693,6 +4838,7 @@ pgr_primbfs() -- function
 pgr_primdd() -- function
 pgr_primdfs() -- function
 pgr_pushrelabel() -- function
+pgr_sequentialvertexcoloring() -- function
 pgr_stoerwagner() -- function
 pgr_strongcomponents() -- function
 pgr_topologicalsort() -- function
@@ -4771,6 +4917,9 @@ tablefunc_crosstab_2 -- type
 tablefunc_crosstab_3 -- type
 tablefunc_crosstab_4 -- type
 -- Extension: postgres_fdw
+postgres_fdw_disconnect() -- function
+postgres_fdw_disconnect_all() -- function
+postgres_fdw_get_connections() -- function
 postgres_fdw_handler() -- function
 postgres_fdw_validator() -- function
 -- Extension: bloom
@@ -4915,11 +5064,13 @@ jsonb_plperlu
 lo
 ltree
 moddatetime
+old_snapshot
 pageinspect
 pg_buffercache
 pg_freespacemap
 pg_prewarm
 pg_stat_statements
+pg_surgery
 pg_trgm
 pg_visibility
 pgcrypto
@@ -4943,7 +5094,6 @@ seg
 sslinfo
 tablefunc
 tcn
-temporal_tables
 tsm_system_rows
 tsm_system_time
 unaccent
@@ -5003,6 +5153,7 @@ pg_auth_members
 pg_authid
 pg_available_extension_versions
 pg_available_extensions
+pg_backend_memory_contexts
 pg_cast
 pg_class
 pg_collation
@@ -5074,9 +5225,11 @@ pg_stat_gssapi
 pg_stat_progress_analyze
 pg_stat_progress_basebackup
 pg_stat_progress_cluster
+pg_stat_progress_copy
 pg_stat_progress_create_index
 pg_stat_progress_vacuum
 pg_stat_replication
+pg_stat_replication_slots
 pg_stat_slru
 pg_stat_ssl
 pg_stat_subscription
@@ -5085,6 +5238,7 @@ pg_stat_sys_tables
 pg_stat_user_functions
 pg_stat_user_indexes
 pg_stat_user_tables
+pg_stat_wal
 pg_stat_wal_receiver
 pg_stat_xact_all_tables
 pg_stat_xact_sys_tables
@@ -5104,6 +5258,7 @@ pg_statistic_ext
 pg_statistic_ext_data
 pg_stats
 pg_stats_ext
+pg_stats_ext_exprs
 pg_subscription
 pg_subscription_rel
 pg_tables
@@ -5128,7 +5283,11 @@ role_routine_grants
 role_table_grants
 role_udt_grants
 role_usage_grants
+routine_column_usage
 routine_privileges
+routine_routine_usage
+routine_sequence_usage
+routine_table_usage
 routines
 schemata
 sequences
@@ -5166,9 +5325,11 @@ and
 any
 as
 asc
+asensitive
 assertion
 assignment
 asymmetric
+atomic
 attach
 attribute
 authorization
@@ -5178,6 +5339,7 @@ before
 between
 binary
 both
+breadth
 by
 bypassrls
 cache
@@ -5201,6 +5363,7 @@ columns
 combinefunc
 comments
 committed
+compression
 concurrently
 configuration
 conflict
@@ -5237,6 +5400,7 @@ definer
 delimiter
 delimiters
 depends
+depth
 desc
 deserialfunc
 detach
@@ -5271,6 +5435,7 @@ filter
 finalfunc
 finalfunc_extra
 finalfunc_modify
+finalize
 first
 float
 following
@@ -5465,6 +5630,7 @@ restart
 restrict
 restricted
 restrictive
+return
 returning
 returns
 right
@@ -5591,7 +5757,6 @@ yes
 information_schema
 pg_catalog
 -- Operators
-!
 !!
 !~
 !~*
@@ -5793,6 +5958,7 @@ generated_always
 grouping_error
 held_cursor_requires_same_isolation_level
 idle_in_transaction_session_timeout
+idle_session_timeout
 implicit_zero_bit_padding
 in_failed_sql_transaction
 inappropriate_access_mode_for_branch_transaction
