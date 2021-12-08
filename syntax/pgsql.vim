@@ -1999,7 +1999,7 @@ syn match sqlOperator contained "\%(\*>\|->\|<%\|<<\|<=\|<>\|<@\|<\^\|=>\|>=\|>>
 syn match sqlOperator contained "\%(||\|\~\*\|\~=\|\~>\|\~\~\|\#\|%\|&\|\*\|+\|-\|/\|<\|=\|>\|?\|@\|\^\||\|\~\)\ze\%([^!?~#^@<=>%&|*/+-]\|$\)"
 
 " Comments
-syn region sqlComment    start="/\*" end="\*/" contains=sqlTodo,@Spell
+syn region sqlComment    start="/\*" end="\*/" contains=sqlTodo,@Spell,sqlComment
 syn match  sqlComment    "#\s.*$"              contains=sqlTodo,@Spell
 syn match  sqlComment    "--.*$"               contains=sqlTodo,@Spell
 

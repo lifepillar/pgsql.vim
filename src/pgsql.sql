@@ -262,7 +262,7 @@ select vim_format_operators(array(select get_operators()), 'Operator');
 select
 $HERE$
 " Comments
-syn region sqlComment    start="/\*" end="\*/" contains=sqlTodo,@Spell
+syn region sqlComment    start="/\*" end="\*/" contains=sqlTodo,@Spell,sqlComment
 syn match  sqlComment    "#\s.*$"              contains=sqlTodo,@Spell
 syn match  sqlComment    "--.*$"               contains=sqlTodo,@Spell
 
