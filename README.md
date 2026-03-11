@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> **As of March 11, 2026, this repository is on [Codeberg](https://codeberg.org/lifepillar/pgsql.vim).**
+
 # Vim PostgreSQL syntax plugin
 
 ![pgsql syntax highlighting](https://raw.github.com/lifepillar/Resources/master/pgsql/pgsql.png)
